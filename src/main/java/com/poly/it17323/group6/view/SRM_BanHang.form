@@ -1045,9 +1045,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTongTien">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTongTienActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel14">
                           <Properties>
@@ -1058,9 +1055,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtGiamGia">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGiamGiaActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel15">
                           <Properties>
@@ -1071,9 +1065,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtThanhToan">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtThanhToanActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel16">
                           <Properties>
@@ -1084,9 +1075,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTienKhachDua">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTienKhachDuaActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel17">
                           <Properties>
@@ -1097,9 +1085,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTienThua">
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTienThuaActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblMaHD">
                           <Properties>
@@ -1137,9 +1122,6 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="T&#x1ea1;o h&#xf3;a &#x111;&#x1a1;n"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoHDActionPerformed"/>
-                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
