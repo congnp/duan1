@@ -10,12 +10,13 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.transaction.Transaction;
 import org.hibernate.Session;
+
 /**
  *
  * @author ThanhNam
  */
 public class AnhRepository {
-   
+
     private Session session = Hibernate_Util.getFACTORY().openSession();
     private String fromTable = "From Anh";
 
@@ -71,4 +72,5 @@ public class AnhRepository {
         }
         return null;
     }
+
 }
