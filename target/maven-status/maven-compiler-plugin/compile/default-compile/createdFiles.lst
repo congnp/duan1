@@ -1,3 +1,9 @@
-com\poly\it17323\group6\hibernateconfig\Hibernate_Util.class
+com\poly\it17323\group6\response\QLKhachHangResponse.class
+com\poly\it17323\group6\response\QLBanHangResponse.class
 com\poly\it17323\group6\domainmodel\HoaDon.class
-com\poly\it17323\group6\appication\Main.class
+com\poly\it17323\group6\response\QLKhuyenMaiResponse.class
+com\poly\it17323\group6\response\QLHoaDonResponse.class
+com\poly\it17323\group6\hibernateconfig\Hibernate_Util.class
+com\poly\it17323\group6\response\QLNguoiDungResponse.class
+com\poly\it17323\group6\response\QLSanPhamResponse.class
+com\poly\it17323\group6\response\QLThongKeResponse.class
