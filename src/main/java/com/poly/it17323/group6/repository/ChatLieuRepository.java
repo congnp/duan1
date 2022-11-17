@@ -72,8 +72,8 @@ public class ChatLieuRepository {
         }
         return null;
     }
-    
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         List<ChatLieu> list = new ChatLieuRepository().getAll();
         for (ChatLieu chatLieu : list) {
             System.out.println(chatLieu.toString());
