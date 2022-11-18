@@ -16,6 +16,7 @@ public class SRM_Login extends javax.swing.JFrame {
     public SRM_Login() {
         initComponents();
         setLocationRelativeTo(this);
+        
     }
 
     /**
