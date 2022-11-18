@@ -27,7 +27,7 @@ public class SizeRepository {
         return lists ;
     }
 
-    public Size getOne(Long id) {
+    public Size getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, Size.class);
         query.setParameter("id", id);

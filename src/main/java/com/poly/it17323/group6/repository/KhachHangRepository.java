@@ -27,7 +27,7 @@ public class KhachHangRepository {
         return lists ;
     }
     
-    public KhachHang getOne(Long id) {
+    public KhachHang getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhachHang.class);
         query.setParameter("id", id);

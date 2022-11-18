@@ -26,12 +26,12 @@ public class QLNguoiDungResponse {
     
     private String tinhTrang, ngayTao, ngaySua;
     
-    private String idCV, maCV, tenCV;
+    private String  maCV, tenCV;
 
     public QLNguoiDungResponse() {
     }
 
-    public QLNguoiDungResponse(NguoiDung nguoiDung, ChucVu chucVu) {
+    public QLNguoiDungResponse(NguoiDung nguoiDung) {
         this.maND = nguoiDung.getMaND();
         this.tenTK = nguoiDung.getTenTK();
         this.matKhau = nguoiDung.getMatKhau();
@@ -45,9 +45,8 @@ public class QLNguoiDungResponse {
         this.tinhTrang = nguoiDung.getTinhTrang()+"";
         this.ngayTao = nguoiDung.getNgayTao()+"";
         this.ngaySua = nguoiDung.getNgaySua()+"";
-        this.idCV = chucVu.getIdCV();
-        this.maCV = chucVu.getMaCV();
-        this.tenCV = chucVu.getTenCV();
+        this.maCV = nguoiDung.getChucVu().getMaCV();
+        this.tenCV = nguoiDung.getChucVu().getTenCV();
     }
     
     

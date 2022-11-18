@@ -26,7 +26,7 @@ public class SanPhamRepository {
         return lists ;
     }
     
-    public SanPham getOne(Long id) {
+    public SanPham getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, SanPham.class);
         query.setParameter("id", id);

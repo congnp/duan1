@@ -26,7 +26,7 @@ public class MauSacRepository {
         return lists ;
     }
     
-    public MauSac getOne(Long id) {
+    public MauSac getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, MauSac.class);
         query.setParameter("id", id);

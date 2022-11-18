@@ -26,7 +26,7 @@ public class NguoiDungRepository {
         return lists ;
     }
     
-    public NguoiDung getOne(Long id) {
+    public NguoiDung getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, NguoiDung.class);
         query.setParameter("id", id);

@@ -26,7 +26,7 @@ public class LoaiSPRepository {
         return lists ;
     }
     
-    public LoaiSP getOne(Long id) {
+    public LoaiSP getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, LoaiSP.class);
         query.setParameter("id", id);

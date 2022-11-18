@@ -26,7 +26,7 @@ public class KhuyenMaiRepository {
         return lists ;
     }
     
-    public KhuyenMai getOne(Long id) {
+    public KhuyenMai getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhuyenMai.class);
         query.setParameter("id", id);
