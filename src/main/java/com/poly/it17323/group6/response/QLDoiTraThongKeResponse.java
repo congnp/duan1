@@ -17,7 +17,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class QLThongKeResponse {
+public class QLDoiTraThongKeResponse {
     private String maND;
     
     private String lyDoTra;
@@ -30,16 +30,16 @@ public class QLThongKeResponse {
     
     private String tongTien;
 
-    public QLThongKeResponse() {
+    public QLDoiTraThongKeResponse() {
     }
 
-    public QLThongKeResponse(HoaDon hoaDon, DoiTra doiTra) {
-        this.maND = hoaDon.getNguoiDung().getMaND();
+    public QLDoiTraThongKeResponse(DoiTra doiTra) {
+        this.maND = doiTra.getHoaDon().getNguoiDung().getMaND();
         this.lyDoTra = doiTra.getLyDoDT();
         this.ngayTra = doiTra.getNgayDT()+"";
-        this.maHD = hoaDon.getMaHD();
-        this.ngayTao = hoaDon.getNgayTao();
-        this.tongTien = hoaDon.getTongTien()+"";
+        this.maHD =doiTra.getHoaDon().getMaHD();
+        this.ngayTao = doiTra.getHoaDon().getNgayTao();
+        this.tongTien = doiTra.getHoaDon().getTongTien()+"";
     }
     
     

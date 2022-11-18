@@ -24,7 +24,7 @@ public class QLSanPhamResponse {
     
     private String tinhTrang, ngayTao, ngaySua;
     
-    private String maSp, idSP;
+    private String maSp;
 
     public QLSanPhamResponse() {
     }
@@ -42,7 +42,6 @@ public class QLSanPhamResponse {
         this.ngayTao = chiTietSP.getNgayTao()+"";
         this.ngaySua = chiTietSP.getNgaySua()+"";
         this.maSp = sanPham.getMaSP();
-        this.idSP = sanPham.getIdSP();
     }
     
     
