@@ -667,7 +667,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         HoaDon.setLayout(HoaDonLayout);
         HoaDonLayout.setHorizontalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         HoaDonLayout.setVerticalGroup(
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -723,15 +723,16 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         GioHangLayout.setVerticalGroup(
             GioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GioHangLayout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(GioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GioHangLayout.createSequentialGroup()
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton4)
-                        .addGap(35, 35, 35))))
+            .addGroup(GioHangLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jButton4)
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(GioHangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         GioHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnXoa, jButton4});
@@ -1010,11 +1011,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
             .addGroup(ThanhToanLayout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jButton2)
-                .addGap(48, 48, 48)
+                .addGap(26, 26, 26)
                 .addComponent(jButton3)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhToanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
