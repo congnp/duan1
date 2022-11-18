@@ -72,13 +72,9 @@ public class SanPhamRepository {
     }
     public static void main(String[] args) {
         List<SanPham> list = new SanPhamRepository().getAll();
-<<<<<<< HEAD
         for (SanPham sanpham : list){
             System.out.println(sanpham.toString());
-=======
-        for (SanPham loaisp : list){
-            System.out.println(loaisp.toString());
->>>>>>> 9505eb7978d0620d16b6c528d11542c7bbe54916
+
         }
     }
 }

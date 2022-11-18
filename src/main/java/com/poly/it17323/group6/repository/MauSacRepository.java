@@ -72,13 +72,8 @@ public class MauSacRepository {
     }
     public static void main(String[] args) {
         List<MauSac> list = new MauSacRepository().getAll();
-<<<<<<< HEAD
-        for (MauSac mausac : list){
-            System.out.println(mausac.toString());
-=======
         for (MauSac loaisp : list){
             System.out.println(loaisp.toString());
->>>>>>> 9505eb7978d0620d16b6c528d11542c7bbe54916
         }
     }
 }
