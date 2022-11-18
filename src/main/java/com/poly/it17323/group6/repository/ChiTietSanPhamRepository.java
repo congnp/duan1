@@ -27,7 +27,7 @@ public class ChiTietSanPhamRepository {
         return list;
     }
 
-    public ChiTietSanPham getOne(Integer id) {
+    public ChiTietSanPham getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChiTietSanPham.class);
         query.setParameter("id", id);

@@ -26,7 +26,7 @@ public class HoaDonChiTietRepository {
         return lists ;
     }
     
-    public HoaDonChiTiet getOne(Long id) {
+    public HoaDonChiTiet getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, HoaDonChiTiet.class);
         query.setParameter("id", id);

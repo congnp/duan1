@@ -26,7 +26,7 @@ public class DoiTraRepository {
         return list;
     }
 
-    public DoiTra getOne(Integer id) {
+    public DoiTra getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, DoiTra.class);
         query.setParameter("id", id);

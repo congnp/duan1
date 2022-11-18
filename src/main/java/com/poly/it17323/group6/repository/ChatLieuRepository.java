@@ -26,7 +26,7 @@ public class ChatLieuRepository {
         return list;
     }
 
-    public ChatLieu getOne(Integer id) {
+    public ChatLieu getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChatLieu.class);
         query.setParameter("id", id);

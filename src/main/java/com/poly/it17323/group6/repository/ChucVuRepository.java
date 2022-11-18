@@ -26,7 +26,7 @@ public class ChucVuRepository {
         return list;
     }
 
-    public ChucVu getOne(Integer id) {
+    public ChucVu getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChucVu.class);
         query.setParameter("id", id);

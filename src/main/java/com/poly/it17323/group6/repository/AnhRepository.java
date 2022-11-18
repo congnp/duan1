@@ -26,7 +26,7 @@ public class AnhRepository {
         return list;
     }
 
-    public Anh getOne(Integer id) {
+    public Anh getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, Anh.class);
         query.setParameter("id", id);
