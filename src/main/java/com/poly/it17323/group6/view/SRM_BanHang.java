@@ -466,11 +466,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         );
 
         jButton1.setText("Dang Xuat");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jPanel4.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -529,7 +524,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(73, 73, 73))
         );
@@ -615,7 +610,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addGroup(GioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         GioHangLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnXoa, jButton4});
@@ -658,11 +653,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(0, 255, 0));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setText("Tìm Kiem");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout SanPhamLayout = new javax.swing.GroupLayout(SanPham);
         SanPham.setLayout(SanPhamLayout);
@@ -921,7 +911,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         ThanhToanLayout.setVerticalGroup(
             ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhToanLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -977,7 +967,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1027,91 +1017,9 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jLabel64.setText("Chức vụ : ");
 
-        cbb_nd_ChucVu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbb_nd_ChucVuActionPerformed(evt);
-            }
-        });
-
-        txt_nd_TenTK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_TenTKActionPerformed(evt);
-            }
-        });
-
-        txt_nd_MaND.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_MaNDActionPerformed(evt);
-            }
-        });
-
-        txt_nd_MatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_MatKhauActionPerformed(evt);
-            }
-        });
-
-        txt_nd_HovaTen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_HovaTenActionPerformed(evt);
-            }
-        });
-
-        txt_nd_Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_EmailActionPerformed(evt);
-            }
-        });
-
-        txt_nd_Sdt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_SdtActionPerformed(evt);
-            }
-        });
-
-        rdo_nd_NgayTao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdo_nd_NgayTaoActionPerformed(evt);
-            }
-        });
-
-        txt_nd_NgaySinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_NgaySinhActionPerformed(evt);
-            }
-        });
-
-        txt_nd_NgaySua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_NgaySuaActionPerformed(evt);
-            }
-        });
-
-        txt_nd_CCCD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_CCCDActionPerformed(evt);
-            }
-        });
-
         rdo_nd_Nu.setText("Nữ");
-        rdo_nd_Nu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdo_nd_NuActionPerformed(evt);
-            }
-        });
 
         rdo_nd_Nam.setText("Nam");
-        rdo_nd_Nam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdo_nd_NamActionPerformed(evt);
-            }
-        });
-
-        txt_nd_DiaChi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nd_DiaChiActionPerformed(evt);
-            }
-        });
 
         rdo_nd_DangLam.setText("Đang làm");
 
@@ -1122,11 +1030,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         btn_nd_Sua.setText("Sửa");
 
         btn_nd_Xoa.setText("Xoá");
-        btn_nd_Xoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_nd_XoaActionPerformed(evt);
-            }
-        });
 
         btn_nd_Clear.setText("Clear");
 
@@ -1809,12 +1712,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel83.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel83.setText("Ngày Sửa : ");
 
-        cbb_ctsp_SanPham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbb_ctsp_SanPhamActionPerformed(evt);
-            }
-        });
-
         jPanel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lbl_sp_Anh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2064,12 +1961,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel33.setText("Tìm kiếm hoá đơn: ");
 
-        txt_hd_timKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_hd_timKiemActionPerformed(evt);
-            }
-        });
-
         jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -2171,12 +2062,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel49.setText("Tổng tiền: ");
-
-        txt_hd_TKTongTienKetThuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_hd_TKTongTienKetThucActionPerformed(evt);
-            }
-        });
 
         jLabel50.setText("--->");
 
@@ -2363,24 +2248,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel36.setText("Giảm giá :");
 
-        txt_km_Ma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_km_MaActionPerformed(evt);
-            }
-        });
-
-        txt_km_GiamGia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_km_GiamGiaActionPerformed(evt);
-            }
-        });
-
-        txt_km_Ten.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_km_TenActionPerformed(evt);
-            }
-        });
-
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel37.setText("%");
 
@@ -2388,18 +2255,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel38.setText("Tình trạng : ");
 
         rdo_km_ConKhuyenMai.setText("Còn khuyến mãi");
-        rdo_km_ConKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdo_km_ConKhuyenMaiActionPerformed(evt);
-            }
-        });
 
         rdo_km_DungKhuyenMai.setText("Dừng khuyến mãi");
-        rdo_km_DungKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdo_km_DungKhuyenMaiActionPerformed(evt);
-            }
-        });
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel39.setText("Ngày Bắt Đầu :");
@@ -2427,11 +2284,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         btn_km_Clear.setText("Clear");
 
         btn_km_Them.setText("Thêm");
-        btn_km_Them.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_km_ThemActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -2646,27 +2498,9 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jLabel29.setText("Ngày sinh :");
 
-        txtMaKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMaKHActionPerformed(evt);
-            }
-        });
-
-        txtNgaySinhKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgaySinhKHActionPerformed(evt);
-            }
-        });
-
         txtDiaChiKH.setColumns(20);
         txtDiaChiKH.setRows(5);
         jScrollPane6.setViewportView(txtDiaChiKH);
-
-        txtsdtKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsdtKHActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(rdoNamKH);
         rdoNamKH.setText("Nam");
@@ -2674,32 +2508,15 @@ public class SRM_BanHang extends javax.swing.JFrame {
         buttonGroup1.add(rdoNuKH);
         rdoNuKH.setText("Nữ");
 
-        txtNgaySuaKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgaySuaKHActionPerformed(evt);
-            }
-        });
-
         jLabel30.setText("Ngày sửa :");
 
         jLabel31.setText("Ngày Tạo :");
-
-        txtNTaoKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNTaoKHActionPerformed(evt);
-            }
-        });
 
         btnThemKH.setText("THÊM");
 
         btnSuaKH.setText("SỬA");
 
         btnLamMoiKH.setText("LÀM MỚI");
-        btnLamMoiKH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiKHActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout JPanel_ThongTinKHLayout = new javax.swing.GroupLayout(JPanel_ThongTinKH);
         JPanel_ThongTinKH.setLayout(JPanel_ThongTinKHLayout);
@@ -2815,12 +2632,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jLabel32.setText("Tìm kiếm ");
 
-        txtTimKiemKHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimKiemKHangActionPerformed(evt);
-            }
-        });
-
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2924,138 +2735,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaKHActionPerformed
-
-    private void txtsdtKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsdtKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsdtKHActionPerformed
-
-    private void txtNTaoKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNTaoKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNTaoKHActionPerformed
-
-    private void txtNgaySuaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySuaKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgaySuaKHActionPerformed
-
-    private void btnLamMoiKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLamMoiKHActionPerformed
-
-    private void txtTimKiemKHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemKHangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTimKiemKHangActionPerformed
-
-    private void txtNgaySinhKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhKHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgaySinhKHActionPerformed
-
-    private void txt_km_MaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_km_MaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_km_MaActionPerformed
-
-    private void txt_km_GiamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_km_GiamGiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_km_GiamGiaActionPerformed
-
-    private void txt_km_TenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_km_TenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_km_TenActionPerformed
-
-    private void rdo_km_ConKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_km_ConKhuyenMaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdo_km_ConKhuyenMaiActionPerformed
-
-    private void rdo_km_DungKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_km_DungKhuyenMaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdo_km_DungKhuyenMaiActionPerformed
-
-    private void btn_km_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_ThemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_km_ThemActionPerformed
-
-    private void txt_hd_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hd_timKiemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_hd_timKiemActionPerformed
-
-    private void txt_hd_TKTongTienKetThucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_hd_TKTongTienKetThucActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_hd_TKTongTienKetThucActionPerformed
-
-    private void cbb_nd_ChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_nd_ChucVuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbb_nd_ChucVuActionPerformed
-
-    private void txt_nd_TenTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_TenTKActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_TenTKActionPerformed
-
-    private void txt_nd_MaNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_MaNDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_MaNDActionPerformed
-
-    private void txt_nd_MatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_MatKhauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_MatKhauActionPerformed
-
-    private void txt_nd_HovaTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_HovaTenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_HovaTenActionPerformed
-
-    private void txt_nd_EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_EmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_EmailActionPerformed
-
-    private void txt_nd_SdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_SdtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_SdtActionPerformed
-
-    private void rdo_nd_NgayTaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_nd_NgayTaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdo_nd_NgayTaoActionPerformed
-
-    private void txt_nd_NgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_NgaySinhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_NgaySinhActionPerformed
-
-    private void txt_nd_NgaySuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_NgaySuaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_NgaySuaActionPerformed
-
-    private void txt_nd_CCCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_CCCDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_CCCDActionPerformed
-
-    private void rdo_nd_NuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_nd_NuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdo_nd_NuActionPerformed
-
-    private void rdo_nd_NamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_nd_NamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdo_nd_NamActionPerformed
-
-    private void txt_nd_DiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nd_DiaChiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nd_DiaChiActionPerformed
-
-    private void btn_nd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_XoaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_nd_XoaActionPerformed
-
-    private void cbb_ctsp_SanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_ctsp_SanPhamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbb_ctsp_SanPhamActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
