@@ -59,8 +59,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
         txtTimKiem = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        btnThem = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         DonHang = new javax.swing.JPanel();
         KhachHang = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -326,6 +325,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_BanHang.setBackground(new java.awt.Color(51, 204, 255));
         PN_BanHang.setPreferredSize(new java.awt.Dimension(207, 70));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ban Hang");
 
@@ -334,14 +334,14 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_BanHangLayout.setHorizontalGroup(
             PN_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_BanHangLayout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(77, 77, 77))
         );
         PN_BanHangLayout.setVerticalGroup(
             PN_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_BanHangLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(25, 25, 25))
         );
@@ -349,6 +349,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLNguoiDung.setBackground(new java.awt.Color(51, 204, 255));
         PN_QLNguoiDung.setPreferredSize(new java.awt.Dimension(207, 70));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Quan Ly Nhan Vien");
 
@@ -356,21 +357,22 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLNguoiDung.setLayout(PN_QLNguoiDungLayout);
         PN_QLNguoiDungLayout.setHorizontalGroup(
             PN_QLNguoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_QLNguoiDungLayout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+            .addGroup(PN_QLNguoiDungLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(jLabel2)
-                .addGap(51, 51, 51))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PN_QLNguoiDungLayout.setVerticalGroup(
             PN_QLNguoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_QLNguoiDungLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(22, 22, 22))
+                .addGap(23, 23, 23))
         );
 
         PN_QLThongKe.setBackground(new java.awt.Color(51, 204, 255));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Quan ly Thong Ke");
 
@@ -378,10 +380,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLThongKe.setLayout(PN_QLThongKeLayout);
         PN_QLThongKeLayout.setHorizontalGroup(
             PN_QLThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_QLThongKeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PN_QLThongKeLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addComponent(jLabel3)
-                .addGap(56, 56, 56))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PN_QLThongKeLayout.setVerticalGroup(
             PN_QLThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,6 +396,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLSanPham.setBackground(new java.awt.Color(51, 204, 255));
         PN_QLSanPham.setPreferredSize(new java.awt.Dimension(207, 70));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Quan ly San Pham");
 
@@ -402,21 +405,22 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLSanPhamLayout.setHorizontalGroup(
             PN_QLSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PN_QLSanPhamLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel4)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PN_QLSanPhamLayout.setVerticalGroup(
             PN_QLSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PN_QLSanPhamLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_QLSanPhamLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         PN_QLHoaDon.setBackground(new java.awt.Color(51, 204, 255));
         PN_QLHoaDon.setPreferredSize(new java.awt.Dimension(207, 70));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Quan ly Hoa Don");
 
@@ -432,7 +436,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_QLHoaDonLayout.setVerticalGroup(
             PN_QLHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_QLHoaDonLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(25, 25, 25))
         );
@@ -440,6 +444,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_KhuyenMai.setBackground(new java.awt.Color(51, 204, 255));
         PN_KhuyenMai.setPreferredSize(new java.awt.Dimension(207, 70));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Quan ly Khuyen Mai");
 
@@ -448,14 +453,14 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_KhuyenMaiLayout.setHorizontalGroup(
             PN_KhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PN_KhuyenMaiLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel6)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PN_KhuyenMaiLayout.setVerticalGroup(
             PN_KhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_KhuyenMaiLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(26, 26, 26))
         );
@@ -469,6 +474,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 204, 255));
 
+        jLabel85.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel85.setForeground(new java.awt.Color(255, 255, 255));
         jLabel85.setText("Quan ly Khach hang");
 
@@ -523,7 +529,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(73, 73, 73))
         );
@@ -589,12 +595,14 @@ public class SRM_BanHang extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblGioHang);
 
-        btnXoa.setBackground(new java.awt.Color(255, 255, 0));
+        btnXoa.setBackground(new java.awt.Color(255, 102, 102));
         btnXoa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnXoa.setText("Xóa ");
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setText("Xoa");
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 0));
+        jButton4.setBackground(new java.awt.Color(255, 102, 102));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Xoa Tat Ca");
 
         javax.swing.GroupLayout GioHangLayout = new javax.swing.GroupLayout(GioHang);
@@ -647,39 +655,35 @@ public class SRM_BanHang extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblSanPham);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Tìm kiếm");
-
-        btnThem.setBackground(new java.awt.Color(255, 255, 0));
-        btnThem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnThem.setText("Thêm ");
+        jButton7.setBackground(new java.awt.Color(0, 255, 0));
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton7.setText("Tìm Kiem");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SanPhamLayout = new javax.swing.GroupLayout(SanPham);
         SanPham.setLayout(SanPhamLayout);
         SanPhamLayout.setHorizontalGroup(
             SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SanPhamLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jLabel7)
-                .addGap(31, 31, 31)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(btnThem)
+                .addGap(18, 18, 18)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
         SanPhamLayout.setVerticalGroup(
             SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SanPhamLayout.createSequentialGroup()
-                .addGroup(SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnThem))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
-
-        SanPhamLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnThem, jLabel7, txtTimKiem});
 
         DonHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ĐƠN HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
         DonHang.setPreferredSize(new java.awt.Dimension(404, 758));
@@ -953,11 +957,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 191, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 177, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout QL_BanHangLayout = new javax.swing.GroupLayout(QL_BanHang);
@@ -3049,6 +3053,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3114,7 +3122,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JButton btnSuaKH;
     private javax.swing.JButton btnTaoHD;
     private javax.swing.JButton btnThanhToan;
-    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemKH;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btn_ctsp_Clear;
@@ -3152,6 +3159,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -3220,7 +3228,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
