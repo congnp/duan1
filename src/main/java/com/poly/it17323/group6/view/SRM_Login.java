@@ -121,7 +121,8 @@ public class SRM_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuenmkActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        // TODO add your handling code here:
+        new SRM_BanHang().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
