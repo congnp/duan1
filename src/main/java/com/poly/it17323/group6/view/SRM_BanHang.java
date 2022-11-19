@@ -14,6 +14,7 @@ import com.poly.it17323.group6.service.ipml.ChiTietSanPhamService;
 import com.poly.it17323.group6.service.ipml.HoaDonChiTietService;
 import com.poly.it17323.group6.service.ipml.HoaDonService;
 import java.awt.CardLayout;
+import java.math.BigDecimal;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -93,9 +94,9 @@ public class SRM_BanHang extends javax.swing.JFrame {
         DonHang = new javax.swing.JPanel();
         KhachHang = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        lblTenKH = new javax.swing.JLabel();
+        lblMaKH = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        lblSdt = new javax.swing.JLabel();
+        lblTenKH = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         ThongTin = new javax.swing.JPanel();
@@ -678,6 +679,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         GioHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GIỎ HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
+        tblGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblGioHangMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblGioHang);
 
         btnXoa.setBackground(new java.awt.Color(255, 102, 102));
@@ -757,12 +763,12 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Ma KH");
 
-        lblTenKH.setText("jLabel9");
+        lblMaKH.setText("jLabel9");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Ten KH");
 
-        lblSdt.setText("jLabel11");
+        lblTenKH.setText("jLabel11");
 
         jButton5.setBackground(new java.awt.Color(255, 255, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -783,8 +789,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(22, 22, 22)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton6)
@@ -800,17 +806,17 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTenKH)
+                    .addComponent(lblMaKH)
                     .addComponent(jButton5))
                 .addGap(27, 27, 27)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSdt)
+                    .addComponent(lblTenKH)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
                 .addContainerGap())
         );
 
-        KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel8, lblSdt, lblTenKH});
+        KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel8, lblMaKH, lblTenKH});
 
         KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton6});
 
@@ -2861,6 +2867,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
+        showDetailHDCT();
+    }//GEN-LAST:event_tblGioHangMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2894,6 +2904,22 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 new SRM_BanHang().setVisible(true);
             }
         });
+    }
+
+    private void showDetailHDCT() {
+        int index = tblGioHang.getSelectedRow();
+        HoaDonChiTiet h = iHDCT.getAll().get(index);
+        lblMaKH.setText(h.getHoaDon().getKhachHang().getMaKH());
+        lblTenKH.setText(h.getHoaDon().getKhachHang().getHoTen());
+        lblMaHD.setText(h.getHoaDon().getMaHD());
+        txtTenND.setText(h.getHoaDon().getNguoiDung().getHoTen());
+        BigDecimal tongTien = h.getHoaDon().getTongTien();
+        int tt = Integer.parseInt(String.valueOf(tongTien));
+        int KM = h.getKhuyenMai().getGiamGia();
+        txtTongTien.setText(tt + "");
+        txtGiamGia.setText(KM + " %");
+        txtThanhToan.setText(tt - (tt * (KM / 100)) + "");
+        cbb_hd_HinhThucTT.setSelectedItem(h.getHoaDon().getPttt());
     }
 
     private void loadDataSP() {
@@ -3142,7 +3168,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel lblHangHuy;
     private javax.swing.JLabel lblHoaDon;
     private javax.swing.JLabel lblMaHD;
-    private javax.swing.JLabel lblSdt;
+    private javax.swing.JLabel lblMaKH;
     private javax.swing.JLabel lblTenKH;
     private javax.swing.JLabel lbl_sp_Anh;
     private javax.swing.JRadioButton rdoNamKH;

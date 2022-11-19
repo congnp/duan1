@@ -192,6 +192,7 @@ GO
 
 INSERT INTO KhuyenMai(MaKM, TenKM, NgayBatDau, NgayKetThuc, MoTa, GiamGia, TinhTrang, NgayTao, NgaySua)
 VALUES('KM01','SALE 20-11','2022-11-19','2022-11-20', N'Tất cả sản phẩm đã rách sale 99%',99,1,'10-11-2022','11-11-2022')
+VALUES('KM02','SALE 20-10','2022-11-19','2022-11-20', N'Áo nữ sale 10%',10,1,'10-11-2022','11-11-2022')
 
 SELECT * FROM KhuyenMai
 
