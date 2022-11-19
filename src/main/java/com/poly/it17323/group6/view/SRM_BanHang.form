@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -616,7 +620,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DonHang" pref="403" max="32767" attributes="0"/>
+                          <Component id="DonHang" pref="398" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -703,7 +707,7 @@
                                   <Component id="jButton4" linkSize="13" max="32767" attributes="0"/>
                                   <Component id="btnXoa" linkSize="13" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -865,7 +869,7 @@
                               <Component id="ThongTin" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ThanhToan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1480,17 +1484,17 @@
                                                   <Component id="txt_nd_Sdt" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txt_nd_DiaChi" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txt_nd_CCCD" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="rdo_nd_NgayTao" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txt_nd_NgayTao" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txt_nd_NgaySua" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="611" pref="611" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="629" max="-2" attributes="0"/>
                                               <Component id="rdo_nd_DangLam" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                               <Component id="rdo_nd_NghiLam" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace pref="119" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1553,14 +1557,16 @@
                                                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="3" attributes="0">
                                                           <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="rdo_nd_NgayTao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_nd_NgayTao" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="rdo_nd_Nam" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="rdo_nd_Nu" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                                  <Component id="rdo_nd_DangLam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rdo_nd_NghiLam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                      <Component id="rdo_nd_NghiLam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="rdo_nd_DangLam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1679,7 +1685,7 @@
                             </Component>
                             <Component class="javax.swing.JTextField" name="txt_nd_Sdt">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="rdo_nd_NgayTao">
+                            <Component class="javax.swing.JTextField" name="txt_nd_NgayTao">
                             </Component>
                             <Component class="javax.swing.JTextField" name="txt_nd_NgaySinh">
                             </Component>
@@ -1689,11 +1695,17 @@
                             </Component>
                             <Component class="javax.swing.JRadioButton" name="rdo_nd_Nu">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="buttonGroup1"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JRadioButton" name="rdo_nd_Nam">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="buttonGroup1"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Nam"/>
                               </Properties>
                             </Component>
@@ -1701,11 +1713,17 @@
                             </Component>
                             <Component class="javax.swing.JRadioButton" name="rdo_nd_DangLam">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="buttonGroup2"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="&#x110;ang l&#xe0;m"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JRadioButton" name="rdo_nd_NghiLam">
                               <Properties>
+                                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                                  <ComponentRef name="buttonGroup2"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Ngh&#x1ec9; l&#xe0;m"/>
                               </Properties>
                             </Component>
@@ -1728,6 +1746,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="Clear"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nd_ClearActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1754,7 +1775,11 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane12" alignment="0" pref="1029" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane12" pref="967" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
@@ -1798,6 +1823,9 @@
                                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                         </Property>
                                       </Properties>
+                                      <Events>
+                                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_nd_DangLamMouseClicked"/>
+                                      </Events>
                                     </Component>
                                   </SubComponents>
                                 </Container>
@@ -1981,10 +2009,32 @@
                                     <Column editable="true" title="TenCV" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                  <TableColumnModel selectionModel="0">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                  </TableColumnModel>
+                                </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_cvMouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
