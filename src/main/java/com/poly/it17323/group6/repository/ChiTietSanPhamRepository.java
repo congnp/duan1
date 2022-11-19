@@ -22,7 +22,7 @@ public class ChiTietSanPhamRepository {
     private String fromTable = "From ChiTietSanPham";
 
     public List<ChiTietSanPham> getAll() {
-        Query query = session.createQuery(fromTable, ChatLieu.class);
+        Query query = session.createQuery(fromTable, ChiTietSanPham.class);
         List<ChiTietSanPham> list = query.getResultList();
         return list;
     }

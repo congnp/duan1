@@ -4,17 +4,31 @@
  */
 package com.poly.it17323.group6.view;
 
+import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
+import com.poly.it17323.group6.domainmodel.HoaDon;
+import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
+import com.poly.it17323.group6.service.IChiTietSanPhamService;
+import com.poly.it17323.group6.service.IHoaDonChiTietService;
+import com.poly.it17323.group6.service.IHoaDonService;
+import com.poly.it17323.group6.service.ipml.ChiTietSanPhamService;
+import com.poly.it17323.group6.service.ipml.HoaDonChiTietService;
+import com.poly.it17323.group6.service.ipml.HoaDonService;
 import java.awt.CardLayout;
-import java.awt.Image;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author pdanh
  */
 public class SRM_BanHang extends javax.swing.JFrame {
+
+    private IHoaDonService iHD = new HoaDonService();
+    private IHoaDonChiTietService iHDCT = new HoaDonChiTietService();
+    private IChiTietSanPhamService iCTSP = new ChiTietSanPhamService();
+    private DefaultTableModel modelSP;
+    private DefaultTableModel modelHD;
+    private DefaultTableModel modelCTHD;
 
     private CardLayout cardLayout;
 
@@ -25,7 +39,9 @@ public class SRM_BanHang extends javax.swing.JFrame {
         cardLayout = (CardLayout) PN_Main.getLayout();
         ImageIcon im1 = new ImageIcon("user.png");
         txtAnhNV.setIcon(im1);
-
+        loadDataSP();
+        loadDataHD();
+        loadHDCT();
     }
 
     /**
@@ -645,22 +661,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         HoaDon.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HÓA ĐƠN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Mã Hóa Đơn", "Mã ND", "Ngày tạo", "Tình Trạng"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jScrollPane1.setViewportView(tblHoaDon);
 
         javax.swing.GroupLayout HoaDonLayout = new javax.swing.GroupLayout(HoaDon);
@@ -678,22 +678,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         GioHang.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GIỎ HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Mã SP", "Tên SP", "Số lượng", "Đơn giá", "Giảm giá", "Tình trạng"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jScrollPane2.setViewportView(tblGioHang);
 
         btnXoa.setBackground(new java.awt.Color(255, 102, 102));
@@ -738,22 +722,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         SanPham.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SẢN PHẨM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Mã SP", "Tên SP", "Chất liệu", "Size", "Màu sắc", "Số lượng SP", "Đơn giá"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         jScrollPane3.setViewportView(tblSanPham);
 
         jButton7.setBackground(new java.awt.Color(0, 255, 0));
@@ -2926,6 +2894,39 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 new SRM_BanHang().setVisible(true);
             }
         });
+    }
+
+    private void loadDataSP() {
+        String Header[] = {"STT,Ma SP", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
+        modelSP = new DefaultTableModel(Header, 0);
+        modelSP.setRowCount(0);
+        tblSanPham.setModel(modelSP);
+        int stt = 1;
+        for (ChiTietSanPham x : iCTSP.getAll()) {
+            modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
+        }
+    }
+
+    private void loadDataHD() {
+        String Header[] = {"STT", "Ma HD", "Ma ND", "Ngay Tao", "Tinh Trang"};
+        modelHD = new DefaultTableModel(Header, 0);
+        modelHD.setRowCount(0);
+        tblHoaDon.setModel(modelHD);
+        int stt = 1;
+        for (HoaDon x : iHD.getAll()) {
+            modelHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getMaND(), x.getNgayTao(), x.getTinhTrang()});
+        }
+    }
+
+    private void loadHDCT() {
+        String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
+        modelCTHD = new DefaultTableModel(Header, 0);
+        modelCTHD.setRowCount(0);
+        tblGioHang.setModel(modelCTHD);
+        int stt = 1;
+        for (HoaDonChiTiet x : iHDCT.getAll()) {
+            modelCTHD.addRow(new Object[]{stt++, x.getChiTietSanPham().getSanPham().getMaSP(), x.getChiTietSanPham().getSanPham().getTenSP(), x.getSlMua(), x.getGia(), x.getKhuyenMai().getGiamGia()});
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
