@@ -16,6 +16,7 @@ import com.poly.it17323.group6.service.ipml.HoaDonService;
 import java.awt.CardLayout;
 import java.math.BigDecimal;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,25 +25,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SRM_BanHang extends javax.swing.JFrame {
 
-    private IHoaDonService iHD = new HoaDonService();
-    private IHoaDonChiTietService iHDCT = new HoaDonChiTietService();
-    private IChiTietSanPhamService iCTSP = new ChiTietSanPhamService();
+    private final IHoaDonService iHD = new HoaDonService();
+    private final IHoaDonChiTietService iHDCT = new HoaDonChiTietService();
+    private final IChiTietSanPhamService iCTSP = new ChiTietSanPhamService();
     private DefaultTableModel modelSP;
     private DefaultTableModel modelHD;
     private DefaultTableModel modelCTHD;
-
-    private CardLayout cardLayout;
+    private final CardLayout cardLayout;
 
     public SRM_BanHang() {
         initComponents();
         setLocationRelativeTo(null);
-//        setExtendedState(MAXIMIZED_BOTH);
         cardLayout = (CardLayout) PN_Main.getLayout();
         ImageIcon im1 = new ImageIcon("user.png");
         txtAnhNV.setIcon(im1);
         loadDataSP();
         loadDataHD();
         loadHDCT();
+        //    setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -2822,45 +2822,27 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PN_BanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_BanHangMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_BanHang);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_BanHang);
     }//GEN-LAST:event_PN_BanHangMouseClicked
 
     private void PN_QLNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLNguoiDungMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_NguoiDung);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_NguoiDung);
     }//GEN-LAST:event_PN_QLNguoiDungMouseClicked
 
     private void PN_KhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_KhuyenMaiMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_KhuyenMai);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_KhuyenMai);
     }//GEN-LAST:event_PN_KhuyenMaiMouseClicked
 
     private void PN_QLThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLThongKeMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_ThongKe);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_ThongKe);
     }//GEN-LAST:event_PN_QLThongKeMouseClicked
 
     private void PN_QLSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLSanPhamMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_SanPham);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_SanPham);
     }//GEN-LAST:event_PN_QLSanPhamMouseClicked
 
     private void PN_QLHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLHoaDonMouseClicked
-        PN_Main.removeAll();
-        PN_Main.add(QL_HoaDon);
-        PN_Main.repaint();
-        PN_Main.validate();
+        nextPN(QL_HoaDon);
     }//GEN-LAST:event_PN_QLHoaDonMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2953,6 +2935,13 @@ public class SRM_BanHang extends javax.swing.JFrame {
         for (HoaDonChiTiet x : iHDCT.getAll()) {
             modelCTHD.addRow(new Object[]{stt++, x.getChiTietSanPham().getSanPham().getMaSP(), x.getChiTietSanPham().getSanPham().getTenSP(), x.getSlMua(), x.getGia(), x.getKhuyenMai().getGiamGia()});
         }
+    }
+
+    private void nextPN(JPanel pn) {
+        PN_Main.removeAll();
+        PN_Main.add(pn);
+        PN_Main.repaint();
+        PN_Main.validate();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -21,5 +21,7 @@ public class HoaDonService implements IHoaDonService {
     public List<HoaDon> getAll() {
         return hdRepo.getAll();
     }
+    
+    
 
 }
