@@ -4,19 +4,22 @@
  */
 package com.poly.it17323.group6.view;
 
+import com.poly.it17323.group6.service.INguoiDungService;
+import com.poly.it17323.group6.service.ipml.NguoiDungService;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LE BAO NGOC
  */
 public class SRM_Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SRM_Login
-     */
+    private INguoiDungService iND = new NguoiDungService();
+
     public SRM_Login() {
         initComponents();
         setLocationRelativeTo(this);
-        
+
     }
 
     /**
@@ -112,7 +115,7 @@ public class SRM_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnQuenmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenmkActionPerformed
@@ -121,8 +124,14 @@ public class SRM_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuenmkActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        new SRM_BanHang().setVisible(true);
-        this.dispose();
+        if (iND.Login(txtUser.getText(), txtPass.getText(), "Nhân viên") == true) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành cônng");
+            new SRM_BanHang().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bạị");
+            return;
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
