@@ -2,6 +2,7 @@ package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,11 +31,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class HoaDonChiTiet implements Serializable {
-    
+
     @Id
-    @Column(name = "IdHDCT")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idHDCT;
+    @Column(columnDefinition = "uniqueidentifier")
+    @GeneratedValue
+    private UUID idHDCT;
 
     @Column(name = "Gia")
     private BigDecimal gia;

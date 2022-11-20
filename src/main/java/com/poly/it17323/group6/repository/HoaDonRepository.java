@@ -3,6 +3,7 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -22,7 +23,7 @@ public class HoaDonRepository {
         return list;
     }
 
-    public HoaDon getOne(String id) {
+    public HoaDon getOne(UUID id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, HoaDon.class);
         query.setParameter("id", id);

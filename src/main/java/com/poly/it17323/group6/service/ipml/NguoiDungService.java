@@ -34,22 +34,23 @@ public class NguoiDungService implements INguoiDungService {
 
     @Override
     public boolean add(NguoiDung ND) {
-       return ndRepo.add(ND);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean update(NguoiDung ND,String Id) {
-        return ndRepo.update(ND,Id);
+    public boolean update(NguoiDung ND) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public boolean delete(NguoiDung ND) {
-        return ndRepo.delete(ND);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public NguoiDung getObjById(String Id) {
-        return ndRepo.getOne(Id);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 
 }

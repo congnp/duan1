@@ -2,6 +2,7 @@ package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,11 +27,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class KhuyenMai implements Serializable {
-    
+
     @Id
-    @Column(name = "IdKM")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idKM;
+    @Column(columnDefinition = "uniqueidentifier")
+    @GeneratedValue
+    private UUID idKM;
 
     @Column(name = "MaKM")
     private String maKM;

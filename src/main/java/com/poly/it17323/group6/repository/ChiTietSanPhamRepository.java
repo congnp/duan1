@@ -8,6 +8,7 @@ import com.poly.it17323.group6.domainmodel.ChatLieu;
 import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,7 +28,7 @@ public class ChiTietSanPhamRepository {
         return list;
     }
 
-    public ChiTietSanPham getOne(String id) {
+    public ChiTietSanPham getOne(UUID id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChiTietSanPham.class);
         query.setParameter("id", id);

@@ -7,6 +7,7 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.ChatLieu;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import javax.transaction.Transaction;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class ChatLieuRepository {
         return list;
     }
 
-    public ChatLieu getOne(String id) {
+    public ChatLieu getOne(UUID id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChatLieu.class);
         query.setParameter("id", id);

@@ -3,6 +3,7 @@ package com.poly.it17323.group6.domainmodel;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,8 +34,8 @@ public class ChiTietSanPham implements Serializable {
 
     @Id
     @Column(name = "IdCTSP")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue
+    private UUID id;
 
     @Column(name = "SoLuongTon")
     private Integer slTon;

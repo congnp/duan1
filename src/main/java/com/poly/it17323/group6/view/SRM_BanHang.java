@@ -3014,7 +3014,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
      }
      nd.setNgayTao(ngayTao);
      nd.setNgaySua(ngaySua);
-     iND.update(nd, tbl_nd_DangLam.getValueAt(row, 0).toString());
+     iND.update(nd);
      loadND();
     }//GEN-LAST:event_btn_nd_SuaActionPerformed
 
