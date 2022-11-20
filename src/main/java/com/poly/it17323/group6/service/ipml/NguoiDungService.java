@@ -4,9 +4,13 @@
  */
 package com.poly.it17323.group6.service.ipml;
 
+import com.poly.it17323.group6.domainmodel.ChucVu;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
+import com.poly.it17323.group6.repository.ChucVuRepository;
 import com.poly.it17323.group6.repository.NguoiDungRepository;
+import com.poly.it17323.group6.response.NguoiDungReponse;
 import com.poly.it17323.group6.service.INguoiDungService;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -33,17 +37,29 @@ public class NguoiDungService implements INguoiDungService {
     }
 
     @Override
-    public boolean add(NguoiDung ND) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean add(NguoiDungReponse ND) {
+        ChucVuRepository reCV = new ChucVuRepository();
+        ChucVu cv = reCV.getAll().get(0);
+        Date ngaySinh = Date.valueOf(ND.getNgaySinh());
+        Date ngayTao = Date.valueOf(ND.getNgayTao());
+        Date ngaySua = Date.valueOf(ND.getNgaySua());
+        ndRepo.add(new NguoiDung(ND.getIdND(), ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, ND.getEmail(), ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cv));
+        return true;
     }
 
     @Override
-    public boolean update(NguoiDung ND) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean update(NguoiDungReponse ND) {
+        ChucVuRepository reCV = new ChucVuRepository();
+        ChucVu cv = reCV.getAll().get(0);
+        Date ngaySinh = Date.valueOf(ND.getNgaySinh());
+        Date ngayTao = Date.valueOf(ND.getNgayTao());
+        Date ngaySua = Date.valueOf(ND.getNgaySua());
+        ndRepo.update(new NguoiDung(ND.getIdND(), ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, ND.getEmail(), ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cv));
+        return true;
     }
 
     @Override
-    public boolean delete(NguoiDung ND) {
+    public boolean delete(NguoiDungReponse ND) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

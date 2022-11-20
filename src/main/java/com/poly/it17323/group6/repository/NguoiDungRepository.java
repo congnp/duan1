@@ -1,4 +1,4 @@
-/*
+             /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -53,7 +53,7 @@ public class NguoiDungRepository {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(nguoidung);
+            session.update(nguoidung);
             transaction.commit();
             return true;
         } catch (Exception e) {
