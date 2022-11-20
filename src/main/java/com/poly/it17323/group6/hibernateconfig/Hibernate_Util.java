@@ -47,15 +47,15 @@ public class Hibernate_Util {
         conf.addAnnotatedClass(MauSac.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(Size.class);
-//        conf.addAnnotatedClass(ChiTietSanPham.class);
-//        conf.addAnnotatedClass(Anh.class);
-//        conf.addAnnotatedClass(ChucVu.class);
-//        conf.addAnnotatedClass(NguoiDung.class);
-//        conf.addAnnotatedClass(KhuyenMai.class);
-//        conf.addAnnotatedClass(KhachHang.class);
-//        conf.addAnnotatedClass(HoaDon.class);
-//        conf.addAnnotatedClass(DoiTra.class);
-//        conf.addAnnotatedClass(HoaDonChiTiet.class);
+        conf.addAnnotatedClass(ChiTietSanPham.class);
+        conf.addAnnotatedClass(Anh.class);
+        conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(NguoiDung.class);
+        conf.addAnnotatedClass(KhuyenMai.class);
+        conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(DoiTra.class);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

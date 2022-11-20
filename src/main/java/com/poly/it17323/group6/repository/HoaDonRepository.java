@@ -1,9 +1,13 @@
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.HoaDon;
+import com.poly.it17323.group6.domainmodel.KhachHang;
+import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,7 +27,7 @@ public class HoaDonRepository {
         return list;
     }
 
-    public HoaDon getOne(UUID id) {
+    public HoaDon getOne(String id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, HoaDon.class);
         query.setParameter("id", id);
@@ -68,12 +72,5 @@ public class HoaDonRepository {
             e.printStackTrace(System.out);
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        List<HoaDon> list = new HoaDonRepository().getAll();
-        for (HoaDon hoaDon : list) {
-            System.out.println(hoaDon.toString());
-        }
     }
 }

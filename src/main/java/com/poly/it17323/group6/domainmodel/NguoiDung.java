@@ -32,7 +32,7 @@ import lombok.ToString;
 public class NguoiDung implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "Id")
     @GeneratedValue
     private UUID idND;
 

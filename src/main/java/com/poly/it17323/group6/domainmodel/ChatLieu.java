@@ -28,7 +28,7 @@ import lombok.ToString;
 public class ChatLieu implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "IdCL")
     @GeneratedValue
     private UUID idCL;
 

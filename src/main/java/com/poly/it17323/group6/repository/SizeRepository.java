@@ -7,7 +7,6 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.Size;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,16 +18,16 @@ import org.hibernate.Transaction;
 public class SizeRepository {
 
     private Session session = Hibernate_Util.getFACTORY().openSession();
-
+    
     private String fromTable = "From Size";
-
-    public List<Size> getAll() {
+    
+    public List<Size> getAll(){
         Query query = session.createQuery(fromTable, Size.class);
         List<Size> lists = query.getResultList();
-        return lists;
+        return lists ;
     }
 
-    public Size getOne(UUID id) {
+    public Size getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, Size.class);
         query.setParameter("id", id);
@@ -49,7 +48,7 @@ public class SizeRepository {
         return null;
     }
 
-    public Boolean update(Size size) {
+    public Boolean update(Size size, Long id) {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();

@@ -2,12 +2,12 @@ package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -33,7 +33,7 @@ import lombok.ToString;
 public class HoaDon implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "IdHD")
     @GeneratedValue
     private UUID idHD;
 
@@ -50,10 +50,10 @@ public class HoaDon implements Serializable {
     private Integer tinhTrang;
 
     @Column(name = "NgayTao")
-    private String ngayTao;
+    private Date ngayTao;
 
     @Column(name = "NgaySua")
-    private String ngaySua;
+    private Date ngaySua;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdND", referencedColumnName = "Id")
@@ -62,4 +62,5 @@ public class HoaDon implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdKH", referencedColumnName = "IdKH")
     private KhachHang khachHang;
+
 }

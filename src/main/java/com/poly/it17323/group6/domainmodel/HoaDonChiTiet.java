@@ -33,7 +33,7 @@ import lombok.ToString;
 public class HoaDonChiTiet implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "IdHDCT")
     @GeneratedValue
     private UUID idHDCT;
 

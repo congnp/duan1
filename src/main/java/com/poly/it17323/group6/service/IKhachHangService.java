@@ -4,14 +4,13 @@
  */
 package com.poly.it17323.group6.service;
 
-import com.poly.it17323.group6.domainmodel.ChucVu;
+import com.poly.it17323.group6.domainmodel.KhachHang;
 import java.util.List;
 
 /**
  *
- * @author ThanhNam
+ * @author pdanh
  */
-public interface IChucVuService {
-    List<ChucVu> getAll();
-
+public interface IKhachHangService {
+       List<KhachHang> getAll();
 }

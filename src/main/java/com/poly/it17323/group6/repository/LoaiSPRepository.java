@@ -7,7 +7,6 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.LoaiSP;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -27,7 +26,7 @@ public class LoaiSPRepository {
         return lists ;
     }
     
-    public LoaiSP getOne(UUID id) {
+    public LoaiSP getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, LoaiSP.class);
         query.setParameter("id", id);
@@ -46,7 +45,7 @@ public class LoaiSPRepository {
         }
         return null;
     }
-    public Boolean update(LoaiSP loaisp) {
+    public Boolean update(LoaiSP loaisp, Long id) {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();

@@ -28,7 +28,7 @@ import lombok.ToString;
 public class Size implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "IdSize")
     @GeneratedValue
     private UUID id;
 

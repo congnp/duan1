@@ -28,7 +28,7 @@ import lombok.ToString;
 public class SanPham implements Serializable {
 
     @Id
-    @Column(columnDefinition = "uniqueidentifier")
+    @Column(name = "IdSP")
     @GeneratedValue
     private UUID idSP;
 

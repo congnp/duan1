@@ -4,11 +4,9 @@
  */
 package com.poly.it17323.group6.repository;
 
-
 import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
-import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,23 +16,25 @@ import org.hibernate.Transaction;
  * @author Admin
  */
 public class KhachHangRepository {
+
     private Session session = Hibernate_Util.getFACTORY().openSession();
-    
+
     private String fromTable = "From KhachHang";
-    
-    public List<KhachHang> getAll(){
+
+    public List<KhachHang> getAll() {
         Query query = session.createQuery(fromTable, KhachHang.class);
         List<KhachHang> lists = query.getResultList();
-        return lists ;
+        return lists;
     }
-    
-    public KhachHang getOne(UUID id) {
+
+    public KhachHang getOne(String id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhachHang.class);
         query.setParameter("id", id);
         KhachHang khachhang = (KhachHang) query.getSingleResult();
         return khachhang;
     }
+
     public Boolean add(KhachHang khachhang) {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
@@ -47,7 +47,8 @@ public class KhachHangRepository {
         }
         return null;
     }
-    public Boolean update(KhachHang khachhang) {
+
+    public Boolean update(KhachHang khachhang, Long id) {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -72,10 +73,8 @@ public class KhachHangRepository {
         }
         return null;
     }
+
     public static void main(String[] args) {
-        List<KhachHang> list = new KhachHangRepository().getAll();
-        for (KhachHang khachhang : list){
-            System.out.println(khachhang.toString());
-        }
+        System.out.println(new KhachHangRepository().getOne("B8542ECD-3349-4684-8661-A5962E70E127"));
     }
 }
