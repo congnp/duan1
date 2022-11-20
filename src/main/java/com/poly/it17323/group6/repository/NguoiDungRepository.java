@@ -6,6 +6,7 @@ package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
+import java.sql.Date;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
@@ -45,7 +46,7 @@ public class NguoiDungRepository {
         }
         return null;
     }
-    public Boolean update(NguoiDung nguoidung, Long id) {
+    public Boolean update(NguoiDung nguoidung, String id) {
         Transaction transaction = null;
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();

@@ -21,8 +21,9 @@ import com.poly.it17323.group6.service.ipml.HoaDonService;
 import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import java.awt.CardLayout;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -1076,7 +1077,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1139,10 +1140,25 @@ public class SRM_BanHang extends javax.swing.JFrame {
         rdo_nd_NghiLam.setText("Nghỉ làm");
 
         btn_nd_Them.setText("Thêm");
+        btn_nd_Them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nd_ThemActionPerformed(evt);
+            }
+        });
 
         btn_nd_Sua.setText("Sửa");
+        btn_nd_Sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nd_SuaActionPerformed(evt);
+            }
+        });
 
         btn_nd_Xoa.setText("Xoá");
+        btn_nd_Xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nd_XoaActionPerformed(evt);
+            }
+        });
 
         btn_nd_Clear.setText("Clear");
         btn_nd_Clear.addActionListener(new java.awt.event.ActionListener() {
@@ -1211,7 +1227,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                         .addComponent(rdo_nd_DangLam)
                         .addGap(29, 29, 29)
                         .addComponent(rdo_nd_NghiLam)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_nd_Sua)
                     .addComponent(btn_nd_Them)
@@ -1293,9 +1309,17 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua"
+                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, true, true, true, true, true, false, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbl_nd_DangLam.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_nd_DangLamMouseClicked(evt);
@@ -1309,7 +1333,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -1431,7 +1455,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                             .addComponent(txt_cv_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                             .addComponent(txt_cv_Ma)
                             .addComponent(txt_cv_Ten))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81))
         );
@@ -1453,7 +1477,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel68)
                             .addComponent(txt_cv_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(510, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Chức vụ", jPanel22);
@@ -2929,6 +2953,71 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_nd_ClearActionPerformed
 
+    private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
+     NguoiDung nd = new NguoiDung();
+     java.sql.Date ngaySinh = java.sql.Date.valueOf(txt_nd_NgaySinh.getText());
+     java.sql.Date ngayTao = java.sql.Date.valueOf(txt_nd_NgayTao.getText());
+     java.sql.Date ngaySua = java.sql.Date.valueOf(txt_nd_NgaySua.getText());
+     nd.setMaND(txt_nd_MaND.getText());
+     nd.setTenTK(txt_nd_TenTK.getText());
+     nd.setMatKhau(txt_nd_MatKhau.getText());
+     nd.setHoTen(txt_nd_HovaTen.getText());
+     nd.setGioiTinh(buttonGroup1.getElements().toString());
+     nd.setNgaySinh(ngaySinh);
+     nd.setEmail(txt_nd_Email.getText());
+     nd.setSdt(txt_nd_Sdt.getText());
+     nd.setDiaChi(txt_nd_DiaChi.getText());
+     nd.setCccd(txt_nd_CCCD.getText());
+     if(rdo_nd_DangLam.isSelected()){
+         nd.setTinhTrang(1);
+     }else if(rdo_nd_NghiLam.isSelected()){
+         nd.setTinhTrang(0);
+     }else{
+         nd.setTinhTrang(null);
+     }
+     nd.setNgayTao(ngayTao);
+     nd.setNgaySua(ngaySua);
+     iND.add(nd);
+     loadND();
+      
+    }//GEN-LAST:event_btn_nd_ThemActionPerformed
+
+    private void btn_nd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_XoaActionPerformed
+     int row = tbl_nd_DangLam.getSelectedRow();
+     NguoiDung ND = iND.getObjById(tbl_nd_DangLam.getValueAt(row, 0).toString());
+     iND.delete(ND);
+     loadND();
+    }//GEN-LAST:event_btn_nd_XoaActionPerformed
+
+    private void btn_nd_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_SuaActionPerformed
+     int row = tbl_nd_DangLam.getSelectedRow();
+     NguoiDung nd = new NguoiDung();
+     java.sql.Date ngaySinh = java.sql.Date.valueOf(txt_nd_NgaySinh.getText());
+     java.sql.Date ngayTao = java.sql.Date.valueOf(txt_nd_NgayTao.getText());
+     java.sql.Date ngaySua = java.sql.Date.valueOf(txt_nd_NgaySua.getText());
+     nd.setMaND(txt_nd_MaND.getText());
+     nd.setTenTK(txt_nd_TenTK.getText());
+     nd.setMatKhau(txt_nd_MatKhau.getText());
+     nd.setHoTen(txt_nd_HovaTen.getText());
+     nd.setGioiTinh(buttonGroup1.getElements().toString());
+     nd.setNgaySinh(ngaySinh);
+     nd.setEmail(txt_nd_Email.getText());
+     nd.setSdt(txt_nd_Sdt.getText());
+     nd.setDiaChi(txt_nd_DiaChi.getText());
+     nd.setCccd(txt_nd_CCCD.getText());
+     if(rdo_nd_DangLam.isSelected()){
+         nd.setTinhTrang(1);
+     }else if(rdo_nd_NghiLam.isSelected()){
+         nd.setTinhTrang(0);
+     }else{
+         nd.setTinhTrang(null);
+     }
+     nd.setNgayTao(ngayTao);
+     nd.setNgaySua(ngaySua);
+     iND.update(nd, tbl_nd_DangLam.getValueAt(row, 0).toString());
+     loadND();
+    }//GEN-LAST:event_btn_nd_SuaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3000,6 +3089,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         }
         txt_nd_NgayTao.setText(tbl_nd_DangLam.getValueAt(row, 11).toString());
         txt_nd_NgaySua.setText(tbl_nd_DangLam.getValueAt(row, 12).toString());
+        cbb_nd_ChucVu.setSelectedItem(tbl_nd_DangLam.getValueAt(row, 13));
 
     }
 
@@ -3010,10 +3100,18 @@ public class SRM_BanHang extends javax.swing.JFrame {
             comboBoxND.addElement(cv.getTenCV());
         }
     }
+    
+//    private NguoiDung getFrom(){
+//        Date d = new Date();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        Date ngaySinh ;
+//        ngaySinh = java.sql.Date.valueOf(sdf.format(d));
+//        return new NguoiDung(null, maND, tenTK, matKhau, hoTen, gioiTinh, ngaySinh, email, sdt, diaChi, cccd, WIDTH, ngayTao, ngaySua, chucVu);
+//    }
 
     private void loadND() {
         String Header[] = {"MaND", "TenTK", "MatKhau", "HovaTen", "GioiTinh", "NgaySinh",
-            "Email", "SDT", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua"};
+            "Email", "SDT", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"};
         modelND = new DefaultTableModel(Header, 0);
         modelND.setRowCount(0);
         tbl_nd_DangLam.setModel(modelND);
@@ -3021,7 +3119,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             modelND.addRow(new Object[]{x.getMaND(), x.getTenTK(), x.getMatKhau(),
                  x.getHoTen(), x.getGioiTinh(), x.getNgaySinh(), x.getEmail(),
                  x.getSdt(), x.getDiaChi(), x.getCccd(), setTinhTrang(x.getTinhTrang()),
-                 x.getNgayTao(), x.getNgaySua()});
+                 x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
         }
     }
 
