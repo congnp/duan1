@@ -8,6 +8,7 @@ import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.repository.NguoiDungRepository;
 import com.poly.it17323.group6.service.INguoiDungService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -45,6 +46,11 @@ public class NguoiDungService implements INguoiDungService {
     @Override
     public boolean delete(NguoiDung ND) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public NguoiDung getOne(UUID id) {
+       return ndRepo.getOne(id);
     }
 
 }

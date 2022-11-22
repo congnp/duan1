@@ -4,15 +4,13 @@
  */
 package com.poly.it17323.group6.service;
 
-import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
+import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import java.util.List;
 
 /**
  *
  * @author pdanh
  */
-public interface IChiTietSanPhamService {
-
-    List<ChiTietSanPham> getAll();
-
+public interface IKhuyenMaiService {
+    List<KhuyenMai> getAll();
 }

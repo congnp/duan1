@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +26,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ChatLieu implements Serializable {
-    
+
     @Id
     @Column(name = "IdCL")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idCL;
+    @GeneratedValue
+    private UUID idCL;
 
     @Column(name = "MaCL")
     private String maCL;

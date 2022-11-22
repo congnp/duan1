@@ -2,10 +2,10 @@ package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -28,8 +28,9 @@ import lombok.ToString;
 public class KhachHang implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idKH;
+    @Column(name = "IdKH")
+    @GeneratedValue
+    private UUID idKH;
 
     @Column(name = "MaKH")
     private String maKH;

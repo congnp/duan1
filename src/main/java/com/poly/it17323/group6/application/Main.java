@@ -4,6 +4,7 @@
  */
 package com.poly.it17323.group6.application;
 
+import com.poly.it17323.group6.view.SRM_BanHang;
 import com.poly.it17323.group6.view.SRM_Login;
 
 /**
@@ -13,7 +14,7 @@ import com.poly.it17323.group6.view.SRM_Login;
 public class Main {
 
     public static void main(String[] args) {
-        new SRM_Login().setVisible(true);
+        new SRM_BanHang().setVisible(true);
     }
 
 }

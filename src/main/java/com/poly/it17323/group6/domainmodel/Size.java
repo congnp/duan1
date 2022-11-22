@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,8 @@ public class Size implements Serializable {
 
     @Id
     @Column(name = "IdSize")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue
+    private UUID id;
 
     @Column(name = "MaSize")
     private String ma;

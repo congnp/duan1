@@ -7,6 +7,7 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.Anh;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import javax.transaction.Transaction;
 import org.hibernate.Session;
@@ -26,7 +27,7 @@ public class AnhRepository {
         return list;
     }
 
-    public Anh getOne(String id) {
+    public Anh getOne(UUID id) {
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, Anh.class);
         query.setParameter("id", id);

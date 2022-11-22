@@ -6,11 +6,16 @@ package com.poly.it17323.group6.service;
 
 import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author pdanh
  */
 public interface IHoaDonChiTietService {
+
     List<HoaDonChiTiet> getAll();
+
+    List<HoaDonChiTiet> getAllByIDHD(UUID id);
+    
 }

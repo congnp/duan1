@@ -7,6 +7,7 @@ package com.poly.it17323.group6.repository;
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,7 +27,7 @@ public class KhuyenMaiRepository {
         return lists ;
     }
     
-    public KhuyenMai getOne(String id) {
+    public KhuyenMai getOne(UUID id) {
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhuyenMai.class);
         query.setParameter("id", id);

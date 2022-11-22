@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,8 +32,8 @@ public class Anh implements Serializable {
 
     @Id
     @Column(name = "IdAnh")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idAnh;
+    @GeneratedValue
+    private UUID idAnh;
 
     @Column(name = "MaAnh")
     private String maAnh;

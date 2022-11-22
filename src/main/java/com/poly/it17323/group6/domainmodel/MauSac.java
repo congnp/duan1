@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,8 @@ public class MauSac implements Serializable {
 
     @Id
     @Column(name = "IdMau")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idMS;
+    @GeneratedValue
+    private UUID idMS;
 
     @Column(name = "MaMau")
     private String maMS;

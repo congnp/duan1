@@ -8,6 +8,7 @@ import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
 import com.poly.it17323.group6.repository.HoaDonChiTietRepository;
 import com.poly.it17323.group6.service.IHoaDonChiTietService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -18,6 +19,11 @@ public class HoaDonChiTietService implements IHoaDonChiTietService{
     @Override
     public List<HoaDonChiTiet> getAll() {
         return hdctRepo.getAll();
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getAllByIDHD(UUID id) {
+        return hdctRepo.getAllByIDHD(id);
     }
     
 }
