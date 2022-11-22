@@ -15,9 +15,13 @@ import java.util.List;
 public interface IQLNguoiDungService {
     List<QLNguoiDungResponse> getAllNguoiDung();
     
-    String Login(QLNguoiDungResponse qlndr);
+    String login(QLNguoiDungResponse qlndr);
+    
+    String loginFailse(QLNguoiDungResponse qlndr);
     
     String checkMail(QLNguoiDungResponse nd);
+    
+    String emailFailse(QLNguoiDungResponse qlndr);
     
     boolean addQLND(QLNguoiDungResponse qlND);
     

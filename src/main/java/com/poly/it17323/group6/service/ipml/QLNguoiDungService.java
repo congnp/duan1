@@ -24,7 +24,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     private EmailSender es = new EmailSender();
     private final NguoiDungRepository repo = new NguoiDungRepository();
     private final String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
-    private final static int random_int = (int) Math.floor(Math.random() * (9000 - 1000 + 1));
+    private final static int random_int = (int) Math.floor(Math.random() * (99999999 - 1000000 + 1));
 
     @Override
     public List<QLNguoiDungResponse> getAllNguoiDung() {
@@ -38,33 +38,43 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     }
 
     @Override
-    public String Login(QLNguoiDungResponse response) {
-        if (response.getTenTK().trim().isBlank()) {
-            return "Không được để trống tên tài khoản";
-        } else if (response.getMatKhau().trim().isBlank()) {
-            return "Không được để trống mật khẩu";
-        }
+    public String login(QLNguoiDungResponse response) {
         for (NguoiDung NguoiDung : repo.getAll()) {
             if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau()) && NguoiDung.getChucVu().getTenCV().equalsIgnoreCase(response.getTenCV())) {
                 return "Đăng nhập thành công";
             }
         }
-        return "Đăng nhập thất bại";
+        return null;
+    }
+
+    @Override
+    public String loginFailse(QLNguoiDungResponse qlndr) {
+        if (qlndr.getTenTK().isBlank()) {
+            return "Không được để trống tên tài khoản";
+        } else if (qlndr.getMatKhau().isBlank()) {
+            return "Không được để trống mật khẩu";
+        }
+        return (checkMail(qlndr) == null) ? "Tên tài khoản hoặc mật khẩu không chính xác" : null;
     }
 
     @Override
     public String checkMail(QLNguoiDungResponse nd) {
-        for (QLNguoiDungResponse qLNguoiDungResponse : getAllNguoiDung()) {
+        for (NguoiDung qLNguoiDungResponse : repo.getAll()) {
             if (qLNguoiDungResponse.getEmail().equals(nd.getEmail())) {
                 try {
-                    es.guiMail(nd.getEmail(),"Mat khau moi cua ban la: "+random_int);
-                    return "Vui lòng kiểm tra Email để lấy Pass";
+                    es.guiMail(nd.getEmail(), "Mật khẩu mới của bạn là :" + random_int);
+                    return "Vui lòng lấy Pass ở Mail";
                 } catch (MessagingException ex) {
-                    Logger.getLogger(QLNguoiDungService.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             }
         }
         return null;
+    }
+
+    @Override
+    public String emailFailse(QLNguoiDungResponse qlndr) {
+        return (checkMail(qlndr) == null) ? "Email không tồn tại" : null;
     }
 
     @Override
@@ -74,20 +84,18 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public String updatePass(QLNguoiDungResponse qlND) {
-        if (qlND.getNewPass().isBlank()) {
+        if (qlND.getNewPass().trim().isBlank()) {
             return "Bạn chưa nhập Pass";
-        } else if (qlND.getConFirm().isBlank()) {
+        } else if (qlND.getConFirm().trim().isBlank()) {
             return "Bạn chưa nhập xác nhận Pass";
-        }
-        else if(!qlND.getNewPass().equals(String.valueOf(random_int))){
-            return "Mat khau khong dung voi mail";
-        }
-        else if (!qlND.getConFirm().matches(qlND.getNewPass())) {
+        } else if (!qlND.getNewPass().trim().equals(String.valueOf(random_int))) {
+            return "Mật khẩu không đúng với mail";
+        } else if (!qlND.getConFirm().trim().matches(qlND.getNewPass().trim())) {
             return "Confirm không đúng Pass";
         } else {
             NguoiDung nd = new NguoiDung();
-//            nd.setMatKhau(qlND.getMatKhau());
-//            nd.setEmail(qlND.getEmail());
+            nd.setMatKhau(qlND.getMatKhau().trim());
+            nd.setEmail(qlND.getEmail().trim());
             if (repo.update(nd)) {
                 return "Cập nhật Pass thành công";
             }

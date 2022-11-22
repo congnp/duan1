@@ -121,6 +121,7 @@ public class SRM_Quenmk extends javax.swing.JFrame {
             new SRM_ResetPass().setVisible(true);
             this.dispose();
         } else {
+            JOptionPane.showMessageDialog(this, iqlnds.emailFailse(nd));
             return;
         }
     }//GEN-LAST:event_btnCheckActionPerformed
