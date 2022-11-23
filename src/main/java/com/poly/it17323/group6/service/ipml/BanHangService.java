@@ -22,15 +22,15 @@ import java.text.SimpleDateFormat;
  * @author pdanh
  */
 public class BanHangService implements IBanHangService {
-    
+
     private final HoaDonRepository hdRepo = new HoaDonRepository();
     private final HoaDonChiTietRepository hdctRepo = new HoaDonChiTietRepository();
     private final ChiTietSanPhamRepository ctspRepo = new ChiTietSanPhamRepository();
     private KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
     private static int ma = 2;
-    
+
     @Override
-    public boolean addHD(BanhangReponse b) {
+    public boolean add_HD(BanhangReponse b) {
         java.util.Date currentDate = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date ngayTao;
@@ -38,39 +38,45 @@ public class BanHangService implements IBanHangService {
         hdRepo.add(new HoaDon(null, new BanHangService().getMaTang(), 0, BigDecimal.valueOf(0.0), 0, ngayTao, ngayTao, b.getNd(), b.getKh()));
         return true;
     }
-    
+
     @Override
-    public boolean addHDCT(BanhangReponse b) {
-        hdctRepo.add(new HoaDonChiTiet(null, b.getCtsp().getGia(), Integer.parseInt(b.getSlMua()), b.getCtsp().getGia(), b.getHd(), kmRepo.getAll().get(0), b.getCtsp()));
+    public boolean update_HD(BanhangReponse b) {
+        hdRepo.update(b.getHd().getIdHD(), b.getTongTien(), b.getTinhTrang(), b.getPttt());
         return true;
     }
-    
+
     @Override
-    public boolean updateHDCT(BanhangReponse b) {
-        hdctRepo.update(new HoaDonChiTiet(b.getHdct().getIdHDCT(), b.getCtsp().getGia(), Integer.parseInt(b.getSlMua()), b.getCtsp().getGia(), b.getHd(), kmRepo.getAll().get(0), b.getCtsp()));
+    public boolean add_HDCT(BanhangReponse b) {
+        hdctRepo.add(new HoaDonChiTiet(null, b.getCtsp().getGia(), Integer.parseInt(b.getSlMua()), new BigDecimal(1 - (b.getKm().getGiamGia() / 100.0)).multiply(b.getCtsp().getGia()), b.getHd(), b.getKm(), b.getCtsp()));
         return true;
     }
-    
+
     @Override
-    public boolean deleteHDCT(BanhangReponse b) {
-        hdctRepo.delete(new HoaDonChiTiet(b.getHdct().getIdHDCT(), b.getCtsp().getGia(), b.getHdct().getSlMua(), b.getCtsp().getGia(), b.getHd(), kmRepo.getAll().get(0), b.getCtsp()));
+    public boolean updateSL_HDCT(BanhangReponse b) {
+        hdctRepo.update(b.getHdct().getIdHDCT(), Integer.parseInt(b.getSlMua()));
         return true;
     }
-    
+
     @Override
-    public boolean updateCTSP(BanhangReponse b) {
+    public boolean delete_HDCT(BanhangReponse b) {
+        hdctRepo.delete(b.getHdct().getIdHDCT());
+        return true;
+    }
+
+    @Override
+    public boolean updateSL_CTSP(BanhangReponse b) {
         ctspRepo.update(b.getCtsp().getId(), Integer.parseInt(b.getSlMua()));
         return true;
     }
-    
+
     @Override
     public boolean checkTrung(BanhangReponse b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
     @Override
     public String getMaTang() {
         return "HD0" + (ma++);
     }
-    
+
 }

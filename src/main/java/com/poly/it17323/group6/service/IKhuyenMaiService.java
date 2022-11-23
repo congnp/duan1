@@ -6,11 +6,15 @@ package com.poly.it17323.group6.service;
 
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author pdanh
  */
 public interface IKhuyenMaiService {
+
     List<KhuyenMai> getAll();
+
+    KhuyenMai getOne(UUID id);
 }

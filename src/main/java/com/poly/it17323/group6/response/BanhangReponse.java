@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.response;
 
 import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
 import com.poly.it17323.group6.domainmodel.KhachHang;
+import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,37 +25,48 @@ public class BanhangReponse {
     private NguoiDung nd;
     private KhachHang kh;
 
-    private HoaDonChiTiet hdct;
     private HoaDon hd;
     private ChiTietSanPham ctsp;
     private String slMua;
+    private KhuyenMai km;
 
-    // INSERT HOA DON lúc dau
+    private BigDecimal tongTien;
+    private int tinhTrang;
+    private int pttt;
+
+    private HoaDonChiTiet hdct;
+
+    // INSERT HOA DON 
     public BanhangReponse(NguoiDung nd, KhachHang kh) {
         this.nd = nd;
         this.kh = kh;
     }
 
+    // UPDATE HOA DON
+    public BanhangReponse(HoaDon hd, BigDecimal tongTien, int tinhTrang, int pttt) {
+        this.hd = hd;
+        this.tongTien = tongTien;
+        this.tinhTrang = tinhTrang;
+        this.pttt = pttt;
+    }
+
     // INSERT HDCT
-    public BanhangReponse(HoaDon hd, ChiTietSanPham ctsp, String slMua) {
+    public BanhangReponse(HoaDon hd, ChiTietSanPham ctsp, String slMua, KhuyenMai km) {
         this.hd = hd;
         this.ctsp = ctsp;
         this.slMua = slMua;
+        this.km = km;
     }
 
     // UPDATE HDCT
-    public BanhangReponse(HoaDonChiTiet hdct, HoaDon hd, ChiTietSanPham ctsp, String slMua) {
+    public BanhangReponse(HoaDonChiTiet hdct, String slMua) {
         this.hdct = hdct;
-        this.hd = hd;
-        this.ctsp = ctsp;
         this.slMua = slMua;
     }
 
     // DELETE HDCT
-    public BanhangReponse(HoaDonChiTiet hdct, HoaDon hd, ChiTietSanPham ctsp) {
+    public BanhangReponse(HoaDonChiTiet hdct) {
         this.hdct = hdct;
-        this.hd = hd;
-        this.ctsp = ctsp;
     }
 
     // UPDATE CTSP
@@ -65,7 +74,5 @@ public class BanhangReponse {
         this.ctsp = ctsp;
         this.slMua = slMua;
     }
-    
-    
 
 }

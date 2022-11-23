@@ -19,22 +19,18 @@ import org.hibernate.Transaction;
  */
 public class HoaDonRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
     private String fromTable = "From HoaDon";
 
     public List<HoaDon> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable + " order by MaHD desc", HoaDon.class);
         List<HoaDon> list = query.getResultList();
         return list;
     }
-    
-    public static void main(String[] args) {
-        for (HoaDon hoaDon : new HoaDonRepository().getAll()) {
-            System.out.println(hoaDon);
-        }
-    }
 
     public HoaDon getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, HoaDon.class);
         query.setParameter("id", id);
@@ -44,8 +40,9 @@ public class HoaDonRepository {
 
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
-            transaction = (Transaction) session.beginTransaction();
+            transaction = session.beginTransaction();
             session.save(hoaDon);
             transaction.commit();
             return true;
@@ -57,8 +54,9 @@ public class HoaDonRepository {
 
     public Boolean update(HoaDon hoaDon) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
-            transaction = (Transaction) session.beginTransaction();
+            transaction = session.beginTransaction();
             session.saveOrUpdate(hoaDon);
             transaction.commit();
             return true;
@@ -70,9 +68,30 @@ public class HoaDonRepository {
 
     public Boolean delete(HoaDon hoaDon) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
-            transaction = (Transaction) session.beginTransaction();
+            transaction = session.beginTransaction();
             session.delete(hoaDon);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean update(UUID idHD, BigDecimal ttien, int tt, int pttt) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            String sql = "UPDATE HoaDon a SET a.tongTien = :ttien,a.tinhTrang = :tt,a.pttt = :pttt WHERE a.idHD = :idHD";
+            Query query = session.createQuery(sql);
+            query.setParameter("idHD", idHD);
+            query.setParameter("ttien", ttien);
+            query.setParameter("tt", tt);
+            query.setParameter("pttt", pttt);
+            query.executeUpdate();
             transaction.commit();
             return true;
         } catch (Exception e) {

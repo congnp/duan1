@@ -8,6 +8,7 @@ import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.repository.HoaDonRepository;
 import com.poly.it17323.group6.service.IHoaDonService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -20,6 +21,11 @@ public class HoaDonService implements IHoaDonService {
     @Override
     public List<HoaDon> getAll() {
         return hdRepo.getAll();
+    }
+
+    @Override
+    public HoaDon getOne(UUID id) {
+       return hdRepo.getOne(id);
     }
 
 }

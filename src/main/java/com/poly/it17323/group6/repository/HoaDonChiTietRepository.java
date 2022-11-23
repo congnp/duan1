@@ -71,12 +71,33 @@ public class HoaDonChiTietRepository {
         return null;
     }
 
-    public Boolean delete(HoaDonChiTiet hoadonchitiet) {
+    public Boolean delete(UUID idHDCT) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = session.beginTransaction();
-            session.delete(hoadonchitiet);
+            String sql = "DELETE FROM HoaDonChiTiet a WHERE a.idHDCT = :idHDCT";
+            Query query = session.createQuery(sql);
+            query.setParameter("idHDCT", idHDCT);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean update(UUID idHDCT, int sl) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            String sql = "UPDATE HoaDonChiTiet a SET a.slMua = :sl WHERE a.idHDCT = :idHDCT";
+            Query query = session.createQuery(sql);
+            query.setParameter("idHDCT", idHDCT);
+            query.setParameter("sl", sl);
+            query.executeUpdate();
             transaction.commit();
             return true;
         } catch (Exception e) {

@@ -12,15 +12,17 @@ import com.poly.it17323.group6.response.BanhangReponse;
  */
 public interface IBanHangService {
 
-    boolean addHD(BanhangReponse b);
+    boolean add_HD(BanhangReponse b);
 
-    boolean addHDCT(BanhangReponse b);
+    boolean update_HD(BanhangReponse b);
 
-    boolean updateHDCT(BanhangReponse b);
+    boolean add_HDCT(BanhangReponse b);
 
-    boolean updateCTSP(BanhangReponse b);
+    boolean updateSL_HDCT(BanhangReponse b);
 
-    boolean deleteHDCT(BanhangReponse b);
+    boolean updateSL_CTSP(BanhangReponse b);
+
+    boolean delete_HDCT(BanhangReponse b);
 
     boolean checkTrung(BanhangReponse b);
 

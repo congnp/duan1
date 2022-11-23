@@ -8,18 +8,24 @@ import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author pdanh
  */
-public class KhuyenMaiService implements IKhuyenMaiService{
-    
+public class KhuyenMaiService implements IKhuyenMaiService {
+
     private final KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
-    
+
     @Override
     public List<KhuyenMai> getAll() {
         return kmRepo.getAll();
     }
-    
+
+    @Override
+    public KhuyenMai getOne(UUID id) {
+        return kmRepo.getOne(id);
+    }
+
 }
