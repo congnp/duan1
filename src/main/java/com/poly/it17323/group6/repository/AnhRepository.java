@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.Anh;
@@ -18,16 +15,18 @@ import org.hibernate.Session;
  */
 public class AnhRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
     private String fromTable = "From Anh";
 
     public List<Anh> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, Anh.class);
         List<Anh> list = query.getResultList();
         return list;
     }
 
     public Anh getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, Anh.class);
         query.setParameter("id", id);
@@ -37,6 +36,7 @@ public class AnhRepository {
 
     public Boolean add(Anh anh) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.save(anh);
@@ -50,6 +50,7 @@ public class AnhRepository {
 
     public Boolean update(Anh anh) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.saveOrUpdate(anh);
@@ -63,6 +64,7 @@ public class AnhRepository {
 
     public Boolean delete(Anh anh) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.delete(anh);

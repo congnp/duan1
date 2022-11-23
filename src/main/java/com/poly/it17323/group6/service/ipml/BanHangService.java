@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.service.ipml;
 
-import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
 import com.poly.it17323.group6.repository.ChiTietSanPhamRepository;
@@ -27,7 +22,7 @@ public class BanHangService implements IBanHangService {
     private final HoaDonChiTietRepository hdctRepo = new HoaDonChiTietRepository();
     private final ChiTietSanPhamRepository ctspRepo = new ChiTietSanPhamRepository();
     private KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
-    private static int ma = 2;
+    private int ma = hdRepo.getAll().size() + 1;
 
     @Override
     public boolean add_HD(BanhangReponse b) {

@@ -1,12 +1,8 @@
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.HoaDon;
-import com.poly.it17323.group6.domainmodel.KhachHang;
-import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;

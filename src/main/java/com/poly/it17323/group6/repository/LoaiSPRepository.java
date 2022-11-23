@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.LoaiSP;
@@ -17,26 +14,31 @@ import org.hibernate.Transaction;
  * @author Admin
  */
 public class LoaiSPRepository {
-    private Session session = Hibernate_Util.getFACTORY().openSession();
-    
+
+    private Session session;
+
     private String fromTable = "From LoaiSP";
-    
-    public List<LoaiSP> getAll(){
+
+    public List<LoaiSP> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, LoaiSP.class);
         List<LoaiSP> lists = query.getResultList();
-        return lists ;
+        return lists;
     }
-    
+
     public LoaiSP getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, LoaiSP.class);
         query.setParameter("id", id);
         LoaiSP loaisp = (LoaiSP) query.getSingleResult();
         return loaisp;
     }
+
     public Boolean add(LoaiSP loaisp) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(loaisp);
             transaction.commit();
@@ -46,9 +48,11 @@ public class LoaiSPRepository {
         }
         return null;
     }
+
     public Boolean update(LoaiSP loaisp, Long id) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.saveOrUpdate(loaisp);
             transaction.commit();
@@ -61,7 +65,8 @@ public class LoaiSPRepository {
 
     public Boolean delete(LoaiSP loaisp) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.delete(loaisp);
             transaction.commit();
@@ -71,9 +76,10 @@ public class LoaiSPRepository {
         }
         return null;
     }
+
     public static void main(String[] args) {
         List<LoaiSP> list = new LoaiSPRepository().getAll();
-        for (LoaiSP loaisp : list){
+        for (LoaiSP loaisp : list) {
             System.out.println(loaisp.toString());
         }
     }

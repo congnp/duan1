@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.ChatLieu;
@@ -18,16 +14,18 @@ import org.hibernate.Session;
  */
 public class ChatLieuRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
     private String fromTable = "From ChatLieu";
 
     public List<ChatLieu> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, ChatLieu.class);
         List<ChatLieu> list = query.getResultList();
         return list;
     }
 
     public ChatLieu getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChatLieu.class);
         query.setParameter("id", id);
@@ -37,6 +35,7 @@ public class ChatLieuRepository {
 
     public Boolean add(ChatLieu chatLieu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.save(chatLieu);
@@ -50,6 +49,7 @@ public class ChatLieuRepository {
 
     public Boolean update(ChatLieu chatLieu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.saveOrUpdate(chatLieu);
@@ -63,6 +63,7 @@ public class ChatLieuRepository {
 
     public Boolean delete(ChatLieu chatLieu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.delete(chatLieu);
@@ -73,11 +74,5 @@ public class ChatLieuRepository {
         }
         return null;
     }
-    
-     public static void main(String[] args) {
-        List<ChatLieu> list = new ChatLieuRepository().getAll();
-        for (ChatLieu chatLieu : list) {
-            System.out.println(chatLieu.toString());
-        }
-    }
+
 }

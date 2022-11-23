@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.ChucVu;
@@ -18,16 +15,18 @@ import org.hibernate.Transaction;
  */
 public class ChucVuRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
     private String fromTable = "From ChucVu";
 
     public List<ChucVu> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, ChucVu.class);
         List<ChucVu> list = query.getResultList();
         return list;
     }
 
     public ChucVu getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, ChucVu.class);
         query.setParameter("id", id);
@@ -37,6 +36,7 @@ public class ChucVuRepository {
 
     public Boolean add(ChucVu chucVu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.save(chucVu);
@@ -50,6 +50,7 @@ public class ChucVuRepository {
 
     public Boolean update(ChucVu chucVu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.saveOrUpdate(chucVu);
@@ -63,6 +64,7 @@ public class ChucVuRepository {
 
     public Boolean delete(ChucVu chucVu) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.delete(chucVu);
@@ -73,10 +75,5 @@ public class ChucVuRepository {
         }
         return null;
     }
-     public static void main(String[] args) {
-        List<ChucVu> list = new ChucVuRepository().getAll();
-        for (ChucVu chucVu : list) {
-            System.out.println(chucVu.toString());
-        }
-    }
+
 }

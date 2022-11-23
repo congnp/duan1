@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.DoiTra;
@@ -18,16 +14,18 @@ import org.hibernate.Transaction;
  */
 public class DoiTraRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
     private String fromTable = "From DoiTra";
 
     public List<DoiTra> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, DoiTra.class);
         List<DoiTra> list = query.getResultList();
         return list;
     }
 
     public DoiTra getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
         Query query = session.createQuery(fromTable, DoiTra.class);
         query.setParameter("id", id);
@@ -37,6 +35,7 @@ public class DoiTraRepository {
 
     public Boolean add(DoiTra doiTra) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.save(doiTra);
@@ -50,6 +49,7 @@ public class DoiTraRepository {
 
     public Boolean update(DoiTra doiTra) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.saveOrUpdate(doiTra);
@@ -63,6 +63,7 @@ public class DoiTraRepository {
 
     public Boolean delete(DoiTra doiTra) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = (Transaction) session.beginTransaction();
             session.delete(doiTra);
@@ -73,11 +74,5 @@ public class DoiTraRepository {
         }
         return null;
     }
-    
-     public static void main(String[] args) {
-        List<DoiTra> list = new DoiTraRepository().getAll();
-        for (DoiTra doiTra : list) {
-            System.out.println(doiTra.toString());
-        }
-    }
+
 }

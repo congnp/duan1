@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.SanPham;
@@ -17,25 +13,30 @@ import org.hibernate.Transaction;
  * @author Admin
  */
 public class SanPhamRepository {
-    private Session session = Hibernate_Util.getFACTORY().openSession();
-    
-    private String fromTable = "From SanPham";
-    
-    public List<SanPham> getAll(){
+
+    private Session session;
+
+    private final String fromTable = "From SanPham";
+
+    public List<SanPham> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, SanPham.class);
         List<SanPham> lists = query.getResultList();
-        return lists ;
+        return lists;
     }
-    
+
     public SanPham getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, SanPham.class);
         query.setParameter("id", id);
         SanPham sanpham = (SanPham) query.getSingleResult();
         return sanpham;
     }
+
     public Boolean add(SanPham sanpham) {
         Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
         try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(sanpham);
@@ -46,9 +47,11 @@ public class SanPhamRepository {
         }
         return null;
     }
+
     public Boolean update(SanPham sanpham, Long id) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.saveOrUpdate(sanpham);
             transaction.commit();
@@ -61,7 +64,8 @@ public class SanPhamRepository {
 
     public Boolean delete(SanPham sanpham) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.delete(sanpham);
             transaction.commit();
@@ -71,11 +75,5 @@ public class SanPhamRepository {
         }
         return null;
     }
-    public static void main(String[] args) {
-        List<SanPham> list = new SanPhamRepository().getAll();
-        for (SanPham sanpham : list){
-            System.out.println(sanpham.toString());
 
-        }
-    }
 }

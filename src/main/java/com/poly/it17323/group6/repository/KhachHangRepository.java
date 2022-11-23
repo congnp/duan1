@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.KhachHang;
@@ -18,17 +14,19 @@ import org.hibernate.Transaction;
  */
 public class KhachHangRepository {
 
-    private Session session = Hibernate_Util.getFACTORY().openSession();
+    private Session session;
 
     private String fromTable = "From KhachHang";
 
     public List<KhachHang> getAll() {
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, KhachHang.class);
         List<KhachHang> lists = query.getResultList();
         return lists;
     }
 
     public KhachHang getOne(UUID id) {
+        session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhachHang.class);
         query.setParameter("id", id);
@@ -38,7 +36,8 @@ public class KhachHangRepository {
 
     public Boolean add(KhachHang khachhang) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.save(khachhang);
             transaction.commit();
@@ -51,7 +50,8 @@ public class KhachHangRepository {
 
     public Boolean update(KhachHang khachhang, Long id) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.saveOrUpdate(khachhang);
             transaction.commit();
@@ -64,7 +64,8 @@ public class KhachHangRepository {
 
     public Boolean delete(KhachHang khachhang) {
         Transaction transaction = null;
-        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
             transaction = session.beginTransaction();
             session.delete(khachhang);
             transaction.commit();
