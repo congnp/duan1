@@ -15,18 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class SRM_Login extends javax.swing.JFrame {
 
-    private final IQLNguoiDungService iqlnds;
+    private IQLNguoiDungService iND = new QLNguoiDungService();
 
-    /**
-     * Creates new form SRM_Login
-     */
     public SRM_Login() {
         initComponents();
         setLocationRelativeTo(this);
-        iqlnds = new QLNguoiDungService();
+
     }
 
-    QLNguoiDungResponse getFormData() {
+    public QLNguoiDungResponse getFormData() {
         return new QLNguoiDungResponse(txtUser.getText(), String.valueOf(psPass.getPassword()), "Nhân viên");
     }
 
@@ -50,6 +47,7 @@ public class SRM_Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         psPass = new javax.swing.JPasswordField();
+        cbShowpass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +56,6 @@ public class SRM_Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("LOGIN");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 14, -1, 54));
 
@@ -105,6 +102,15 @@ public class SRM_Login extends javax.swing.JFrame {
         psPass.setBorder(null);
         jPanel1.add(psPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 180, -1));
 
+        cbShowpass.setBackground(new java.awt.Color(255, 255, 255));
+        cbShowpass.setText("Show pass");
+        cbShowpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbShowpassActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbShowpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +130,7 @@ public class SRM_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void btnQuenmkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenmkActionPerformed
@@ -134,46 +140,68 @@ public class SRM_Login extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         QLNguoiDungResponse qlndr = getFormData();
-        if (iqlnds.login(qlndr) == null) {
-            JOptionPane.showMessageDialog(this, iqlnds.loginFailse(qlndr));
+        
+        //Gọi banhang sang day
+        if (iND.login(qlndr) == null) {
+            JOptionPane.showMessageDialog(this, iND.loginFailse(qlndr));
             return;
-//            JOptionPane.showMessageDialog(this, iqlnds.login(qlndr));
-//            new SRM_BanHang().setVisible(true);
-//            this.dispose();
+
         } else {
-            JOptionPane.showMessageDialog(this, iqlnds.login(qlndr));
-            new SRM_BanHang().setVisible(true);
+            JOptionPane.showMessageDialog(this, iND.login(qlndr));
+//          
+            new SRM_BanHang(getFormData()).setVisible(true);
             this.dispose();
         }
-
-//        if(txtUser.getText().trim().isBlank()){
-//            JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên tài khoản");
-//            return;
-//        }else if(String.valueOf(psPass.getText()).trim().isBlank()){
-//            JOptionPane.showMessageDialog(this, "Bạn chưa n-hập mật khẩu");
-//            return;
-//        }else
-//        if(iqlnds.Login(txtUser.getText(), String.valueOf(psPass.getText()), "Nhân viên") == true){
-//            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-//            new SRM_BanHang().setVisible(true);
-//            this.dispose();
-//        }else if(iqlnds.Login(txtUser.getText(), String.valueOf(psPass.getText()), "Quản lí") == true){
-//         
-//        }else{
-//            JOptionPane.showMessageDialog(this, "Đăng nhập thất bạị");
-//            return;
-//        }
-
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void cbShowpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowpassActionPerformed
+        if (cbShowpass.isSelected()) {
+            psPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbShowpassActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SRM_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SRM_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SRM_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SRM_Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SRM_Login().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnQuenmk;
+    private javax.swing.JCheckBox cbShowpass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

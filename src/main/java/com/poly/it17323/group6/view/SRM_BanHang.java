@@ -7,6 +7,7 @@ import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.response.BanhangReponse;
+import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IBanHangService;
 import com.poly.it17323.group6.service.IChiTietSanPhamService;
 import com.poly.it17323.group6.service.IHoaDonChiTietService;
@@ -14,6 +15,7 @@ import com.poly.it17323.group6.service.IHoaDonService;
 import com.poly.it17323.group6.service.IKhachHangService;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import com.poly.it17323.group6.service.INguoiDungService;
+import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.BanHangService;
 import com.poly.it17323.group6.service.ipml.ChiTietSanPhamService;
 import com.poly.it17323.group6.service.ipml.HoaDonChiTietService;
@@ -21,6 +23,7 @@ import com.poly.it17323.group6.service.ipml.HoaDonService;
 import com.poly.it17323.group6.service.ipml.KhachHangService;
 import com.poly.it17323.group6.service.ipml.KhuyenMaiService;
 import com.poly.it17323.group6.service.ipml.NguoiDungService;
+import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
 import java.awt.CardLayout;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private final INguoiDungService iND = new NguoiDungService();
     private final IKhachHangService iKH = new KhachHangService();
     private final IHoaDonChiTietService iHDCT = new HoaDonChiTietService();
+    private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
     private DefaultTableModel modelSP;
     private DefaultTableModel modelHD;
     private DefaultTableModel modelCTHD;
@@ -52,7 +56,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private double giamSum;
 //    private final CardLayout cardLayout;
 
-    public SRM_BanHang() {
+    public SRM_BanHang(QLNguoiDungResponse response) {
         initComponents();
         setLocationRelativeTo(null);
         ImageIcon im1 = new ImageIcon("user.png");
@@ -69,6 +73,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         }
 //        cardLayout = (CardLayout) PN_Main.getLayout();
 //        setExtendedState(MAXIMIZED_BOTH);
+        setTextND(response);
     }
 
     /**
@@ -3008,37 +3013,37 @@ public class SRM_BanHang extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SRM_BanHang().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SRM_BanHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SRM_BanHang().setVisible(true);
+//            }
+//        });
+//    }
 
     private BanhangReponse getFormDataHD() {
         return new BanhangReponse(iND.getAll().get(0), iKH.getAll().get(0));
@@ -3151,6 +3156,12 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_Main.repaint();
         PN_Main.validate();
     }
+    
+    public void setTextND(QLNguoiDungResponse nguoiDungResponse) {
+        QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
+        lblHoTenNV.setText(qlndr.getHoTen());
+    }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AnhNV;

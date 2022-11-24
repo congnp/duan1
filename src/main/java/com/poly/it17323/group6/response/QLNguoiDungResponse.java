@@ -22,27 +22,29 @@ import lombok.ToString;
 @NoArgsConstructor
 public class QLNguoiDungResponse {
 
-    private String tenTK, matKhau;
+    private String maND, hoTen, gioiTinh, tinhTrang, ngayTao;
+    
+    private String tenTK, matKhau, ngaySinh, ngaySua;
 
-    private String email;
+    private String email, sdt, diaChi, cmt_cccd;
 
-    private String tenCV, newPass, conFirm;
+    private String maCV, tenCV, newPass, conFirm;
 
     public QLNguoiDungResponse(NguoiDung nguoiDung) {
-//        this.maND = nguoiDung.getMaND();
+        this.maND = nguoiDung.getMaND();
         this.tenTK = nguoiDung.getTenTK();
         this.matKhau = nguoiDung.getMatKhau();
-//        this.hoTen = nguoiDung.getHoTen();
-//        this.gioiTinh = nguoiDung.getGioiTinh();
-//        this.ngaySinh = nguoiDung.getNgaySinh()+"";
+        this.hoTen = nguoiDung.getHoTen();
+        this.gioiTinh = nguoiDung.getGioiTinh();
+        this.ngaySinh = nguoiDung.getNgaySinh()+"";
         this.email = nguoiDung.getEmail();
-//        this.sdt = nguoiDung.getSdt();
-//        this.diaChi = nguoiDung.getDiaChi();
-//        this.cmt_cccd = nguoiDung.getCccd();
-//        this.tinhTrang = nguoiDung.getTinhTrang()+"";
-//        this.ngayTao = nguoiDung.getNgayTao()+"";
-//        this.ngaySua = nguoiDung.getNgaySua()+"";
-//        this.maCV = nguoiDung.getChucVu().getMaCV();
+        this.sdt = nguoiDung.getSdt();
+        this.diaChi = nguoiDung.getDiaChi();
+        this.cmt_cccd = nguoiDung.getCccd();
+        this.tinhTrang = nguoiDung.getTinhTrang()+"";
+        this.ngayTao = nguoiDung.getNgayTao()+"";
+        this.ngaySua = nguoiDung.getNgaySua()+"";
+        this.maCV = nguoiDung.getChucVu().getMaCV();
         this.tenCV = nguoiDung.getChucVu().getTenCV();
     }
 

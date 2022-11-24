@@ -21,7 +21,6 @@ import javax.mail.MessagingException;
  */
 public class QLNguoiDungService implements IQLNguoiDungService {
 
-//    private final IQLNguoiDungService qlnds = new QLNguoiDungService();
     private EmailSender es = new EmailSender();
     private final NguoiDungRepository repo = new NguoiDungRepository();
     private final String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
@@ -40,8 +39,10 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public String login(QLNguoiDungResponse response) {
-        for (NguoiDung NguoiDung : repo.getAll()) {
-            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau()) && NguoiDung.getChucVu().getTenCV().equalsIgnoreCase(response.getTenCV())) {
+//        List<QLNguoiDungResponse> qlndr = new ArrayList<>();
+        for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
+            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau()) && NguoiDung.getTenCV().equalsIgnoreCase(response.getTenCV())) {
+//                qlndr.add(NguoiDung);
                 return "Đăng nhập thành công";
             }
         }
@@ -49,37 +50,63 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     }
 
     @Override
+    public QLNguoiDungResponse getOneNv(QLNguoiDungResponse response) {
+//        QLNguoiDungResponse qlndr = new QLNguoiDungResponse();
+        for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
+            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau()) && NguoiDung.getTenCV().equalsIgnoreCase(response.getTenCV())) {
+//                qlndr.setCmt_cccd(NguoiDung.getCmt_cccd());
+//                qlndr.setConFirm(NguoiDung.getEmail());
+//                qlndr.setDiaChi(NguoiDung.getDiaChi());
+//                qlndr.setGioiTinh(NguoiDung.getGioiTinh());
+//                qlndr.setTenTK(NguoiDung.getTenTK());
+//                qlndr.setMatKhau(NguoiDung.getMatKhau());
+//                qlndr.setTenCV(qlndr.getTenCV());
+//                qlndr.setMaCV(NguoiDung.getMaCV());
+//                qlndr.setMaND(NguoiDung.getMaND());
+                return NguoiDung;
+            }
+        }
+        return null;
+    }
+
+//    public static void main(String[] args) {
+//        QLNguoiDungResponse qlndr1 = new QLNguoiDungResponse();
+//        qlndr1.setTenTK("vanne1312");
+//        qlndr1.setMatKhau("12345678");
+//        qlndr1.setTenCV("Nhân viên");
+//        QLNguoiDungResponse qlndr = new QLNguoiDungService().getOneNv(qlndr1);
+//        System.out.println(qlndr.toString());
+//
+//    }
+
+    @Override
     public String loginFailse(QLNguoiDungResponse qlndr) {
-        if (qlndr.getTenTK().trim().isBlank()) {
+        if (qlndr.getTenTK().isBlank()) {
             return "Không được để trống tên tài khoản";
-        } else if (qlndr.getMatKhau().trim().isBlank()) {
+        } else if (qlndr.getMatKhau().isBlank()) {
             return "Không được để trống mật khẩu";
         }
-        return (checkMail(qlndr) == null) ? "Tên tài khoản hoặc mật khẩu không chính xác" : "True";
+        return (checkMail(qlndr) == null) ? "Tên tài khoản hoặc mật khẩu không chính xác" : null;
     }
 
     @Override
     public String checkMail(QLNguoiDungResponse nd) {
-//        boolean check = false;
         for (NguoiDung qLNguoiDungResponse : repo.getAll()) {
             if (qLNguoiDungResponse.getEmail().equals(nd.getEmail())) {
                 try {
-                    es.guiMail(nd.getEmail(), "Mật khẩu mới của bạn là:" + random_int);
-//                    check = true;
-                    return "Vui lòng kiểm tra Mail để lấy Pass";
-
+                    es.guiMail(nd.getEmail(), "Mật khẩu mới của bạn là :" + random_int);
+                    return "Vui lòng lấy Pass ở Mail";
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
                 }
             }
         }
-//        check = false;
         return null;
     }
 
     @Override
     public String emailFailse(QLNguoiDungResponse qlndr) {
-        return (checkMail(qlndr) == null) ? "Email không tồn tại" : "True";
+        return (checkMail(qlndr) == null) ? "Email không tồn tại" : null;
     }
 
     @Override
@@ -89,13 +116,13 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public String updatePass(QLNguoiDungResponse qlND) {
-        if (qlND.getNewPass().isBlank()) {
+        if (qlND.getNewPass().trim().isBlank()) {
             return "Bạn chưa nhập Pass";
-        } else if (qlND.getConFirm().isBlank()) {
+        } else if (qlND.getConFirm().trim().isBlank()) {
             return "Bạn chưa nhập xác nhận Pass";
-        } else if (!qlND.getNewPass().equals(String.valueOf(random_int))) {
+        } else if (!qlND.getNewPass().trim().equals(String.valueOf(random_int))) {
             return "Mật khẩu không đúng với mail";
-        } else if (!qlND.getConFirm().matches(qlND.getNewPass())) {
+        } else if (!qlND.getConFirm().trim().matches(qlND.getNewPass().trim())) {
             return "Confirm không đúng Pass";
         } else {
             NguoiDung nd = new NguoiDung();
@@ -107,5 +134,12 @@ public class QLNguoiDungService implements IQLNguoiDungService {
         }
         return null;
     }
+
+//    public static void main(String[] args) {
+//        List<QLNguoiDungResponse> list = new QLNguoiDungService().getAllNguoiDung();
+//        for (QLNguoiDungResponse p : list) {
+//            System.out.println(p.toString());
+//        }
+//    }
 
 }

@@ -4,7 +4,6 @@
  */
 package com.poly.it17323.group6.view;
 
-import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
@@ -51,7 +50,6 @@ public class SRM_Quenmk extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
         jLabel1.setText("QUÊN MẬT KHẨU");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -124,13 +122,8 @@ public class SRM_Quenmk extends javax.swing.JFrame {
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, iqlnds.emailFailse(nd));
-////            new SRM_ResetPass().setVisible(false);
             return;
-
         }
-
-//        JOptionPane.showMessageDialog(this, iqlnds.checkMail(nd));
-
     }//GEN-LAST:event_btnCheckActionPerformed
 
     /**
