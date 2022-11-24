@@ -1,4 +1,3 @@
-
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.LoaiSP;
@@ -77,10 +76,4 @@ public class LoaiSPRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        List<LoaiSP> list = new LoaiSPRepository().getAll();
-        for (LoaiSP loaisp : list) {
-            System.out.println(loaisp.toString());
-        }
-    }
 }

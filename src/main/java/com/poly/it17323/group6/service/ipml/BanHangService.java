@@ -7,16 +7,16 @@ import com.poly.it17323.group6.repository.HoaDonChiTietRepository;
 import com.poly.it17323.group6.repository.HoaDonRepository;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.response.BanhangReponse;
-import com.poly.it17323.group6.service.IBanHangService;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import com.poly.it17323.group6.service.IQLBanHangService;
 
 /**
  *
  * @author pdanh
  */
-public class BanHangService implements IBanHangService {
+public class BanHangService implements IQLBanHangService {
 
     private final HoaDonRepository hdRepo = new HoaDonRepository();
     private final HoaDonChiTietRepository hdctRepo = new HoaDonChiTietRepository();
@@ -37,6 +37,12 @@ public class BanHangService implements IBanHangService {
     @Override
     public boolean update_HD(BanhangReponse b) {
         hdRepo.update(b.getHd().getIdHD(), b.getTongTien(), b.getTinhTrang(), b.getPttt());
+        return true;
+    }
+
+    @Override
+    public boolean update_HD_KH(BanhangReponse b) {
+        hdRepo.update(b.getHd().getIdHD(), b.getKh());
         return true;
     }
 
@@ -62,11 +68,6 @@ public class BanHangService implements IBanHangService {
     public boolean updateSL_CTSP(BanhangReponse b) {
         ctspRepo.update(b.getCtsp().getId(), Integer.parseInt(b.getSlMua()));
         return true;
-    }
-
-    @Override
-    public boolean checkTrung(BanhangReponse b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

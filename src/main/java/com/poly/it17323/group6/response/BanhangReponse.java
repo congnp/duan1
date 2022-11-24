@@ -50,6 +50,12 @@ public class BanhangReponse {
         this.pttt = pttt;
     }
 
+    // UPDATE HOA DON (KH)
+    public BanhangReponse(HoaDon hd, KhachHang kh) {
+        this.kh = kh;
+        this.hd = hd;
+    }
+
     // INSERT HDCT
     public BanhangReponse(HoaDon hd, ChiTietSanPham ctsp, String slMua, KhuyenMai km) {
         this.hd = hd;

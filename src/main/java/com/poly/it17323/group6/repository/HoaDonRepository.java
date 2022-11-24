@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.HoaDon;
+import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.math.BigDecimal;
 import java.util.List;
@@ -87,6 +88,24 @@ public class HoaDonRepository {
             query.setParameter("ttien", ttien);
             query.setParameter("tt", tt);
             query.setParameter("pttt", pttt);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean update(UUID idHD, KhachHang KH) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            String sql = "UPDATE HoaDon a SET a.khachHang = :KH WHERE a.idHD = :idHD";
+            Query query = session.createQuery(sql);
+            query.setParameter("idHD", idHD);
+            query.setParameter("KH", KH);
             query.executeUpdate();
             transaction.commit();
             return true;

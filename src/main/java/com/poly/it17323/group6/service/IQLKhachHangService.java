@@ -6,15 +6,16 @@ package com.poly.it17323.group6.service;
 
 import com.poly.it17323.group6.response.KhachHangResponse;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author Admin
  */
 public interface IQLKhachHangService {
-    List<KhachHangResponse> getAllKh();
+    List<KhachHangResponse> getAll();
     
-    KhachHangResponse getOne(String id);
+    KhachHangResponse getOne(UUID id);
     
     String addKh(KhachHangResponse kh);
     
