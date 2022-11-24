@@ -130,7 +130,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         lblMaKH = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lblTenKH = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnChon = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         ThongTin = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -811,7 +811,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jScrollPane3)
         );
         SanPhamLayout.setVerticalGroup(
             SanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -834,9 +834,14 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Ten KH");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 0));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton5.setText("Chon");
+        btnChon.setBackground(new java.awt.Color(255, 255, 0));
+        btnChon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnChon.setText("Chon");
+        btnChon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnChonMouseClicked(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(255, 255, 0));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -858,11 +863,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton6)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        KhachHangLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton6});
+        KhachHangLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnChon, jButton6});
 
         KhachHangLayout.setVerticalGroup(
             KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -871,7 +876,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMaKH)
-                    .addComponent(jButton5))
+                    .addComponent(btnChon))
                 .addGap(27, 27, 27)
                 .addGroup(KhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTenKH)
@@ -882,7 +887,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel10, jLabel8, lblMaKH, lblTenKH});
 
-        KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton6});
+        KhachHangLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnChon, jButton6});
 
         ThongTin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1104,7 +1109,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1124,7 +1129,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3002,6 +3007,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         loadDataSP();
         iBH.delete_HDCT(getFormDataHDCT_DL());
         loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+        tinhTien(HD);
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
@@ -3009,6 +3015,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
         loadDataHD();
         clearForm();
     }//GEN-LAST:event_btnThanhToanMouseClicked
+
+    private void btnChonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChonMouseClicked
+        nextPN(QL_KhachHang);
+    }//GEN-LAST:event_btnChonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3053,7 +3063,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }
 
     private BanhangReponse getFormDataHDCT(String ipSL) {
-        return new BanhangReponse(iHD.getAll().get(tblHoaDon.getSelectedRow()), iCTSP.getAll().get(tblSanPham.getSelectedRow()), ipSL, iKM.getAll().get(0));
+        return new BanhangReponse(iHD.getAll().get(tblHoaDon.getSelectedRow()), iCTSP.getAll().get(tblSanPham.getSelectedRow()), ipSL, iKM.getAll().get(cboKM.getSelectedIndex()));
     }
 
     private BanhangReponse getFormDataHDCT_UD(HoaDonChiTiet HDCT, String ipSL) {
@@ -3190,6 +3200,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JPanel SanPham;
     private javax.swing.JPanel ThanhToan;
     private javax.swing.JPanel ThongTin;
+    private javax.swing.JButton btnChon;
     private javax.swing.JButton btnExist;
     private javax.swing.JButton btnLamMoiKH;
     private javax.swing.JButton btnSuaKH;
@@ -3230,7 +3241,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;

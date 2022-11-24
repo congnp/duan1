@@ -616,7 +616,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DonHang" pref="402" max="32767" attributes="0"/>
+                          <Component id="DonHang" pref="405" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -943,7 +943,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jButton6" linkSize="18" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton5" linkSize="18" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="btnChon" linkSize="18" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="49" max="32767" attributes="0"/>
                               </Group>
@@ -956,7 +956,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel8" linkSize="2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="lblMaKH" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton5" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnChon" linkSize="17" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -990,7 +990,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblTenKH">
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton5">
+                        <Component class="javax.swing.JButton" name="btnChon">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -1000,6 +1000,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Chon"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnChonMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="jButton6">
                           <Properties>
