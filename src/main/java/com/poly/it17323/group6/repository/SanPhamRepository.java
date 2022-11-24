@@ -48,7 +48,7 @@ public class SanPhamRepository {
         return null;
     }
 
-    public Boolean update(SanPham sanpham, Long id) {
+    public Boolean update(SanPham sanpham) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {

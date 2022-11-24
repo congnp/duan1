@@ -48,7 +48,7 @@ public class SizeRepository {
         return null;
     }
 
-    public Boolean update(Size size, Long id) {
+    public Boolean update(Size size) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {

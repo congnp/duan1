@@ -48,7 +48,7 @@ public class KhuyenMaiRepository {
         return null;
     }
 
-    public Boolean update(KhuyenMai khuyenmai, Long id) {
+    public Boolean update(KhuyenMai khuyenmai) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {

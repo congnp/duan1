@@ -48,7 +48,7 @@ public class MauSacRepository {
         return null;
     }
 
-    public Boolean update(MauSac mausac, Long id) {
+    public Boolean update(MauSac mausac) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {

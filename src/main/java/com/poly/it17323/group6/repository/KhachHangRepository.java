@@ -1,7 +1,12 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -14,30 +19,37 @@ import org.hibernate.Transaction;
  */
 public class KhachHangRepository {
 
-    private Session session;
+    
 
     private String fromTable = "From KhachHang";
 
     public List<KhachHang> getAll() {
-        session = Hibernate_Util.getFACTORY().openSession();
+        Session session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, KhachHang.class);
         List<KhachHang> lists = query.getResultList();
         return lists;
     }
 
     public KhachHang getOne(UUID id) {
-        session = Hibernate_Util.getFACTORY().openSession();
+        Session session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
         Query query = session.createQuery(sql, KhachHang.class);
         query.setParameter("id", id);
         KhachHang khachhang = (KhachHang) query.getSingleResult();
         return khachhang;
     }
-
+//    public KhachHang getByMa(String ma){
+//        String sql = fromTable + " WHERE MaKH = :MaKH";
+//        Query query = session.createQuery(sql, KhachHang.class);
+//        query.setParameter("MaKH", ma);
+//        KhachHang khachhang = (KhachHang) query.getSingleResult();
+//        return khachhang;
+//    }
     public Boolean add(KhachHang khachhang) {
         Transaction transaction = null;
-        session = Hibernate_Util.getFACTORY().openSession();
-        try {
+        
+        try{
+            Session session = Hibernate_Util.getFACTORY().openSession();
             transaction = session.beginTransaction();
             session.save(khachhang);
             transaction.commit();
@@ -48,10 +60,11 @@ public class KhachHangRepository {
         return null;
     }
 
-    public Boolean update(KhachHang khachhang, Long id) {
+    public Boolean update(KhachHang khachhang) {
         Transaction transaction = null;
-        session = Hibernate_Util.getFACTORY().openSession();
-        try {
+        
+        try{
+            Session session = Hibernate_Util.getFACTORY().openSession();
             transaction = session.beginTransaction();
             session.saveOrUpdate(khachhang);
             transaction.commit();
@@ -64,8 +77,9 @@ public class KhachHangRepository {
 
     public Boolean delete(KhachHang khachhang) {
         Transaction transaction = null;
-        session = Hibernate_Util.getFACTORY().openSession();
+        
         try {
+            Session session = Hibernate_Util.getFACTORY().openSession();
             transaction = session.beginTransaction();
             session.delete(khachhang);
             transaction.commit();
@@ -74,5 +88,12 @@ public class KhachHangRepository {
             e.printStackTrace(System.out);
         }
         return null;
+    } 
+
+    public static void main(String[] args) {
+         KhachHangRepository kh = new KhachHangRepository();
+         KhachHang k = kh.getAll().get(0);
+         
+         kh.update(new KhachHang(k.getIdKH(), k.getMaKH(), "Bui Quynh A", k.getGioiTinh(), k.getDiaChi(), k.getSdt(),null, null, null));
     }
 }

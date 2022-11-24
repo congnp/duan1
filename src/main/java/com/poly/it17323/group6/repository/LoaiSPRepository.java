@@ -49,7 +49,7 @@ public class LoaiSPRepository {
         return null;
     }
 
-    public Boolean update(LoaiSP loaisp, Long id) {
+    public Boolean update(LoaiSP loaisp) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {
