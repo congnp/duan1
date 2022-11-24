@@ -51,7 +51,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private DefaultTableModel modelSP;
     private DefaultTableModel modelHD;
     private DefaultTableModel modelCTHD;
-    private DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
+    private final DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
     private double sum;
     private double giamSum;
 //    private final CardLayout cardLayout;
@@ -3044,7 +3044,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     private BanhangReponse getFormDataHD() {
         return new BanhangReponse(iND.getAll().get(0), iKH.getAll().get(0));
     }
@@ -3156,12 +3155,12 @@ public class SRM_BanHang extends javax.swing.JFrame {
         PN_Main.repaint();
         PN_Main.validate();
     }
-    
+
     public void setTextND(QLNguoiDungResponse nguoiDungResponse) {
         QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
         lblHoTenNV.setText(qlndr.getHoTen());
     }
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AnhNV;
