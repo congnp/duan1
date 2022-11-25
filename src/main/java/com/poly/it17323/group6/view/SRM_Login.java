@@ -7,6 +7,7 @@ package com.poly.it17323.group6.view;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,7 @@ public class SRM_Login extends javax.swing.JFrame {
     public SRM_Login() {
         initComponents();
         setLocationRelativeTo(this);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
 
     }
 
