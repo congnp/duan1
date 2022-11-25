@@ -91,12 +91,10 @@ public final class SRM_BanHang extends javax.swing.JFrame {
             loadDataGH_Rong();
         }
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
-//        cardLayout = (CardLayout) PN_Main.getLayout();
-//        setExtendedState(MAXIMIZED_BOTH);
         ndRP = getND(response);
         lblHoTenNV.setText(ndRP.getHoTen());
-//        setRole(response);
-
+//        cardLayout = (CardLayout) PN_Main.getLayout();
+//        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -372,7 +370,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         btn_km_TimKiem = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         tbl_km = new javax.swing.JTable();
-        jPanel25 = new javax.swing.JPanel();
+        QL_AnhHai = new javax.swing.JPanel();
+        lblAnhHai = new javax.swing.JLabel();
+        lblTym = new javax.swing.JLabel();
         QL_KhachHang = new javax.swing.JPanel();
         JPanel_ThongTinKH = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -2788,18 +2788,28 @@ public final class SRM_BanHang extends javax.swing.JFrame {
 
         PN_Main.add(QL_KhuyenMai, "card2");
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1047, Short.MAX_VALUE)
+        javax.swing.GroupLayout QL_AnhHaiLayout = new javax.swing.GroupLayout(QL_AnhHai);
+        QL_AnhHai.setLayout(QL_AnhHaiLayout);
+        QL_AnhHaiLayout.setHorizontalGroup(
+            QL_AnhHaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QL_AnhHaiLayout.createSequentialGroup()
+                .addComponent(lblAnhHai, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTym, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 783, Short.MAX_VALUE)
+        QL_AnhHaiLayout.setVerticalGroup(
+            QL_AnhHaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QL_AnhHaiLayout.createSequentialGroup()
+                .addComponent(lblAnhHai, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(QL_AnhHaiLayout.createSequentialGroup()
+                .addGap(244, 244, 244)
+                .addComponent(lblTym, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        PN_Main.add(jPanel25, "card5");
+        PN_Main.add(QL_AnhHai, "card5");
 
         JPanel_ThongTinKH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "THÔNG TIN KHÁCH HÀNG", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -3163,14 +3173,23 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_PN_BanHangMouseClicked
 
     private void PN_QLNguoiDungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLNguoiDungMouseClicked
+        if (!setRole()) {
+            return;
+        }
         nextPN(QL_NguoiDung);
     }//GEN-LAST:event_PN_QLNguoiDungMouseClicked
 
     private void PN_KhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_KhuyenMaiMouseClicked
+        if (!setRole()) {
+            return;
+        }
         nextPN(QL_KhuyenMai);
     }//GEN-LAST:event_PN_KhuyenMaiMouseClicked
 
     private void PN_QLThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLThongKeMouseClicked
+        if (!setRole()) {
+            return;
+        }
         nextPN(QL_ThongKe);
     }//GEN-LAST:event_PN_QLThongKeMouseClicked
 
@@ -3179,6 +3198,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_PN_QLSanPhamMouseClicked
 
     private void PN_QLHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_QLHoaDonMouseClicked
+        if (!setRole()) {
+            return;
+        }
         nextPN(QL_HoaDon);
     }//GEN-LAST:event_PN_QLHoaDonMouseClicked
 
@@ -3744,6 +3766,17 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         PN_Main.repaint();
         PN_Main.validate();
     }
+
+    private boolean setRole() {
+        if (ndRP.getCv().getTenCV().equalsIgnoreCase("Nhân Viên")) {
+            ImageIcon im2 = new ImageIcon("Co.JPG");
+            lblAnhHai.setIcon(im2);
+            nextPN(QL_AnhHai);
+            JOptionPane.showMessageDialog(this, "VAO DAY LAM GI !!!");
+            return false;
+        }
+        return true;
+    }
     // Danh
 
     // Mai
@@ -3820,6 +3853,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JPanel PN_QLNguoiDung;
     private javax.swing.JPanel PN_QLSanPham;
     private javax.swing.JPanel PN_QLThongKe;
+    private javax.swing.JPanel QL_AnhHai;
     private javax.swing.JPanel QL_BanHang;
     private javax.swing.JPanel QL_HoaDon;
     private javax.swing.JPanel QL_KhachHang;
@@ -3985,7 +4019,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
@@ -4020,6 +4053,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lbl;
+    private javax.swing.JLabel lblAnhHai;
     private javax.swing.JLabel lblDoanhThu;
     private javax.swing.JLabel lblHangHuy;
     private javax.swing.JLabel lblHoTenNV;
@@ -4028,6 +4062,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel lblMaKH;
     private javax.swing.JLabel lblTenKH;
     private javax.swing.JLabel lblTenND;
+    private javax.swing.JLabel lblTym;
     private javax.swing.JLabel lbl_sp_Anh;
     private javax.swing.JPanel pnDetailND;
     private javax.swing.JRadioButton rdo_kh_Nam;

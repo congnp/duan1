@@ -23,7 +23,6 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     public QLKhachHangService() {
         khRepo = new KhachHangRepository();
-
     }
 
     @Override

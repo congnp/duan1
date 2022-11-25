@@ -19,9 +19,15 @@ public class KhachHangRepository {
 
     public List<KhachHang> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, KhachHang.class);
+        Query query = session.createQuery(fromTable + " order by hoTen asc", KhachHang.class);
         List<KhachHang> lists = query.getResultList();
         return lists;
+    }
+
+    public static void main(String[] args) {
+        for (KhachHang khachHang : new KhachHangRepository().getAll()) {
+            System.out.println(khachHang);
+        }
     }
 
     public KhachHang getOne(UUID id) {
