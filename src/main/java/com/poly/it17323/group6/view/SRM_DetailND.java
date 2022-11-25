@@ -4,6 +4,8 @@
  */
 package com.poly.it17323.group6.view;
 
+import com.poly.it17323.group6.response.QLNguoiDungResponse;
+
 /**
  *
  * @author LE BAO NGOC
@@ -13,8 +15,20 @@ public class SRM_DetailND extends javax.swing.JFrame {
     /**
      * Creates new form SRM_DetailND
      */
-    public SRM_DetailND() {
+    public SRM_DetailND(QLNguoiDungResponse response) {
         initComponents();
+        setLocationRelativeTo(this);
+        setData(response);
+    }
+    
+    QLNguoiDungResponse setData(QLNguoiDungResponse response){
+        txtDiachi.setText(response.getDiaChi());
+        txtGioiTinh.setText(response.getGioiTinh());
+        txtHoten.setText(response.getHoTen());
+        txtSDT.setText(response.getSdt());
+        txtTenCV.setText(response.getTenCV());
+        txtTenTk.setText(response.getTenTK());
+        return response;
     }
 
     /**
@@ -34,6 +48,12 @@ public class SRM_DetailND extends javax.swing.JFrame {
         txtHoten = new javax.swing.JTextField();
         txtGioiTinh = new javax.swing.JTextField();
         txtDiachi = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtSDT = new javax.swing.JTextField();
+        txtTenTk = new javax.swing.JTextField();
+        txtTenCV = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,13 +67,25 @@ public class SRM_DetailND extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         jLabel3.setText("Giới tính:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel4.setText("Địa chỉ:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
         jPanel1.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 210, -1));
-        jPanel1.add(txtGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 210, -1));
-        jPanel1.add(txtDiachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 210, -1));
+        jPanel1.add(txtGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 210, -1));
+        jPanel1.add(txtDiachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 210, -1));
+
+        jLabel5.setText("SDT");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jLabel6.setText("Tên TK:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jLabel7.setText("Tên CV:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 210, -1));
+        jPanel1.add(txtTenTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 210, -1));
+        jPanel1.add(txtTenCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,7 +95,7 @@ public class SRM_DetailND extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
         );
 
         pack();
@@ -72,46 +104,52 @@ public class SRM_DetailND extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SRM_DetailND().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SRM_DetailND.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SRM_DetailND().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtDiachi;
     private javax.swing.JTextField txtGioiTinh;
     private javax.swing.JTextField txtHoten;
+    private javax.swing.JTextField txtSDT;
+    private javax.swing.JTextField txtTenCV;
+    private javax.swing.JTextField txtTenTk;
     // End of variables declaration//GEN-END:variables
 }

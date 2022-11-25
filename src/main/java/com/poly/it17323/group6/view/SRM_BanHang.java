@@ -95,6 +95,8 @@ public final class SRM_BanHang extends javax.swing.JFrame {
 //        setExtendedState(MAXIMIZED_BOTH);
         ndRP = getND(response);
         lblHoTenNV.setText(ndRP.getHoTen());
+//        setRole(response);
+
     }
 
     /**
@@ -126,7 +128,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         PN_KhachHang = new javax.swing.JPanel();
         jLabel85 = new javax.swing.JLabel();
         btnExist = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        pnDetailND = new javax.swing.JPanel();
         lblHoTenNV = new javax.swing.JLabel();
         AnhNV = new javax.swing.JPanel();
         txtAnhNV = new javax.swing.JLabel();
@@ -624,7 +626,12 @@ public final class SRM_BanHang extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhan Vien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        pnDetailND.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhan Vien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        pnDetailND.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnDetailNDMouseClicked(evt);
+            }
+        });
 
         lblHoTenNV.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         lblHoTenNV.setText("Ho va Ten NV");
@@ -646,23 +653,23 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnDetailNDLayout = new javax.swing.GroupLayout(pnDetailND);
+        pnDetailND.setLayout(pnDetailNDLayout);
+        pnDetailNDLayout.setHorizontalGroup(
+            pnDetailNDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDetailNDLayout.createSequentialGroup()
+                .addGroup(pnDetailNDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnDetailNDLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(AnhNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGroup(pnDetailNDLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(lblHoTenNV)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        pnDetailNDLayout.setVerticalGroup(
+            pnDetailNDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDetailNDLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblHoTenNV)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -690,7 +697,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                         .addComponent(PN_BanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(ChucNangLayout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnDetailND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ChucNangLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -700,7 +707,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         ChucNangLayout.setVerticalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ChucNangLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnDetailND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(PN_BanHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1135,7 +1142,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(ThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ma QR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -1164,7 +1171,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1456,7 +1463,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2193,7 +2200,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+                            .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, Short.MAX_VALUE)
                             .addComponent(jScrollPane16)))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2752,11 +2759,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 "STT", "Ma", "TenKM", "GiamGia", "MoTa", "NgayBatDau", "NgayKetThuc", "TinhTrang", "NgayTao", "NgaySua"
             }
         ));
-        tbl_km.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_kmMouseClicked(evt);
-            }
-        });
         jScrollPane9.setViewportView(tbl_km);
 
         javax.swing.GroupLayout QL_KhuyenMaiLayout = new javax.swing.GroupLayout(QL_KhuyenMai);
@@ -3073,7 +3075,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(jLabel32)
                 .addGap(47, 47, 47)
                 .addComponent(txtTimKiemKHang, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(536, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanel_DanhSachKHLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane7)
@@ -3477,24 +3479,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txt_cv_Ten.setText(tbl_cv.getValueAt(row, 2).toString());
     }//GEN-LAST:event_tbl_cvMouseClicked
 
-    private void tbl_kmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kmMouseClicked
-        int row = tbl_km.getSelectedRow();
-        txt_km_Ma.setText(tbl_km.getValueAt(row, 1).toString());
-        txt_km_Ten.setText(tbl_km.getValueAt(row, 2).toString());
-        txt_km_GiamGia.setText(tbl_km.getValueAt(row, 3).toString());
-        txt_km_MoTa.setText(tbl_km.getValueAt(row, 4).toString());
-        String check = tbl_km.getValueAt(row, 7).toString();
-        if (check.equalsIgnoreCase("Còn Khuyến Mãi")) {
-            rdo_km_ConKhuyenMai.setSelected(true);
-
-        } else {
-            rdo_km_DungKhuyenMai.setSelected(true);
-        }
-        txt_km_NgayBatDau.setText(tbl_km.getValueAt(row, 5).toString());
-        txt_km_NgayKetThuc.setText(tbl_km.getValueAt(row, 6).toString());
-        txt_km_NgayTao.setText(tbl_km.getValueAt(row, 8).toString());
-        txt_km_NgaySua.setText(tbl_km.getValueAt(row, 9).toString());
-    }//GEN-LAST:event_tbl_kmMouseClicked
+    private void pnDetailNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnDetailNDMouseClicked
+        new SRM_DetailND(ndRP).setVisible(true);
+    }//GEN-LAST:event_pnDetailNDMouseClicked
 
     // Công
     private void loadND() {
@@ -3809,7 +3796,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txt_kh_HoTenKH.setText("");
         txt_kh_sdt.setText("");
         buttonGroup1.clearSelection();
+
     }
+    
     // Mai
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4003,7 +3992,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -4040,6 +4028,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel lblTenKH;
     private javax.swing.JLabel lblTenND;
     private javax.swing.JLabel lbl_sp_Anh;
+    private javax.swing.JPanel pnDetailND;
     private javax.swing.JRadioButton rdo_kh_Nam;
     private javax.swing.JRadioButton rdo_kh_Nu;
     private javax.swing.JRadioButton rdo_km_ConKhuyenMai;
