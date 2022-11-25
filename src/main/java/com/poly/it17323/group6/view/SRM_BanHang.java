@@ -9,21 +9,9 @@ import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.response.BanhangReponse;
 import com.poly.it17323.group6.response.KhachHangResponse;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
-import com.poly.it17323.group6.service.IChiTietSanPhamService;
-import com.poly.it17323.group6.service.IHoaDonChiTietService;
-import com.poly.it17323.group6.service.IHoaDonService;
-import com.poly.it17323.group6.service.IKhachHangService;
-import com.poly.it17323.group6.service.IKhuyenMaiService;
-import com.poly.it17323.group6.service.INguoiDungService;
 import com.poly.it17323.group6.service.IQLKhachHangService;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.BanHangService;
-import com.poly.it17323.group6.service.ipml.ChiTietSanPhamService;
-import com.poly.it17323.group6.service.ipml.HoaDonChiTietService;
-import com.poly.it17323.group6.service.ipml.HoaDonService;
-import com.poly.it17323.group6.service.ipml.KhachHangService;
-import com.poly.it17323.group6.service.ipml.KhuyenMaiService;
-import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLKhachHangService;
 import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
 import java.awt.CardLayout;
@@ -44,12 +32,6 @@ import com.poly.it17323.group6.service.IQLBanHangService;
 public class SRM_BanHang extends javax.swing.JFrame {
 
     private final IQLBanHangService iBH = new BanHangService();
-    private final IHoaDonService iHD = new HoaDonService();
-    private final IChiTietSanPhamService iCTSP = new ChiTietSanPhamService();
-    private final IKhuyenMaiService iKM = new KhuyenMaiService();
-    private final INguoiDungService iND = new NguoiDungService();
-    private final IKhachHangService iKH = new KhachHangService();
-    private final IHoaDonChiTietService iHDCT = new HoaDonChiTietService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
     private final IQLKhachHangService iQlKH = new QLKhachHangService();
     private DefaultTableModel model = new DefaultTableModel();
@@ -71,12 +53,12 @@ public class SRM_BanHang extends javax.swing.JFrame {
         loadDataHD();
         loadDataKM();
         loadKhachHang();
-        if (!iHD.getAll().isEmpty()) {
+        if (!iBH.getAll_HD().isEmpty()) {
             tblHoaDon.setRowSelectionInterval(0, 0);
             int index = tblHoaDon.getSelectedRow();
-            HoaDon HD = iHD.getAll().get(index);
+            HoaDon HD = iBH.getAll_HD().get(index);
             showDetailHD(HD);
-            loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+            loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
         } else {
             loadDataGH_Rong();
         }
@@ -3081,24 +3063,25 @@ public class SRM_BanHang extends javax.swing.JFrame {
         tblHoaDon.setRowSelectionInterval(0, 0);
         tblHoaDon.setRowSelectionAllowed(true);
         int index = tblHoaDon.getSelectedRow();
-        HoaDon HD = iHD.getAll().get(index);
+        HoaDon HD = iBH.getAll_HD().get(index);
         showDetailHD(HD);
-        loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+        loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
     }//GEN-LAST:event_btnTaoHDMouseClicked
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         int index = tblHoaDon.getSelectedRow();
-        HoaDon HD = iHD.getAll().get(index);
+        HoaDon HD = iBH.getAll_HD().get(index);
         showDetailHD(HD);
-        loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+        loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
+        tblHoaDon.setRowSelectionAllowed(true);
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-        HoaDon HD = iHD.getAll().get(tblHoaDon.getSelectedRow());
-        ChiTietSanPham CTSP = iCTSP.getAll().get(tblSanPham.getSelectedRow());
+        HoaDon HD = iBH.getAll_HD().get(tblHoaDon.getSelectedRow());
+        ChiTietSanPham CTSP = iBH.getAll_CTSP().get(tblSanPham.getSelectedRow());
         String ipSL = JOptionPane.showInputDialog(this, "Moi nhap so luong");
         int check = 0;
-        for (HoaDonChiTiet HDCT : iHDCT.getAll()) {
+        for (HoaDonChiTiet HDCT : iBH.getAll_HDCT()) {
             if (HDCT.getHoaDon().getIdHD().equals(HD.getIdHD()) && HDCT.getChiTietSanPham().getId().equals(CTSP.getId())) {
                 int slMua = Integer.parseInt(ipSL) + HDCT.getSlMua();
                 iBH.updateSL_HDCT(getFormDataHDCT_UD(HDCT, String.valueOf(slMua)));
@@ -3111,21 +3094,21 @@ public class SRM_BanHang extends javax.swing.JFrame {
         int slTon = CTSP.getSlTon() - Integer.parseInt(ipSL);
         iBH.updateSL_CTSP(getFormDataCTSP_UD(String.valueOf(slTon)));
         loadDataSP();
-        loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+        loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
         tinhTien(HD);
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
         int index = tblHoaDon.getSelectedRow();
-        HoaDon HD = iHD.getAll().get(index);
+        HoaDon HD = iBH.getAll_HD().get(index);
         int indexGH = tblGioHang.getSelectedRow();
         int sl = Integer.parseInt(tblGioHang.getValueAt(indexGH, 3).toString());
-        ChiTietSanPham CTSP = iHDCT.getAllByIDHD(HD.getIdHD()).get(indexGH).getChiTietSanPham();
+        ChiTietSanPham CTSP = iBH.getAll_HDCTByIDHD(HD.getIdHD()).get(indexGH).getChiTietSanPham();
         int slUP = sl + CTSP.getSlTon();
         iBH.updateSL_CTSP(new BanhangReponse(CTSP, String.valueOf(slUP)));
         loadDataSP();
         iBH.delete_HDCT(getFormDataHDCT_DL());
-        loadDataGH(iHDCT.getAllByIDHD(HD.getIdHD()));
+        loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
         tinhTien(HD);
     }//GEN-LAST:event_btnXoaMouseClicked
 
@@ -3199,25 +3182,25 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
     private void btnThayDoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThayDoiMouseClicked
         iBH.update_HD_KH(getFormDataHD_UD_KH());
-        showDetailHD(iHD.getAll().get(tblHoaDon.getSelectedRow()));
+        showDetailHD(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()));
         tblKhachHang.setRowSelectionAllowed(false);
     }//GEN-LAST:event_btnThayDoiMouseClicked
 
     // Danh
     private BanhangReponse getFormDataHD_UD_KH() {
-        return new BanhangReponse(iHD.getAll().get(tblHoaDon.getSelectedRow()), iKH.getAll().get(tblKhachHang.getSelectedRow()));
+        return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), iBH.getAll_KH().get(tblKhachHang.getSelectedRow()));
     }
 
     private BanhangReponse getFormDataHD() {
-        return new BanhangReponse(iND.getAll().get(0), iKH.getAll().get(0));
+        return new BanhangReponse(iBH.getAll_ND().get(0), iBH.getAll_KH().get(0));
     }
 
     private BanhangReponse getFormDataHD_UD() {
-        return new BanhangReponse(iHD.getAll().get(tblHoaDon.getSelectedRow()), BigDecimal.valueOf(Double.parseDouble(txtThanhToan.getText())), 1, cboPthuctt.getSelectedIndex() == 0 ? 1 : 0);
+        return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), BigDecimal.valueOf(Double.parseDouble(txtThanhToan.getText())), 1, cboPthuctt.getSelectedIndex() == 0 ? 1 : 0);
     }
 
     private BanhangReponse getFormDataHDCT(String ipSL) {
-        return new BanhangReponse(iHD.getAll().get(tblHoaDon.getSelectedRow()), iCTSP.getAll().get(tblSanPham.getSelectedRow()), ipSL, iKM.getAll().get(cboKM.getSelectedIndex()));
+        return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), iBH.getAll_CTSP().get(tblSanPham.getSelectedRow()), ipSL, iBH.getAll_KM().get(cboKM.getSelectedIndex()));
     }
 
     private BanhangReponse getFormDataHDCT_UD(HoaDonChiTiet HDCT, String ipSL) {
@@ -3225,11 +3208,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }
 
     private BanhangReponse getFormDataCTSP_UD(String sl) {
-        return new BanhangReponse(iCTSP.getAll().get(tblSanPham.getSelectedRow()), sl);
+        return new BanhangReponse(iBH.getAll_CTSP().get(tblSanPham.getSelectedRow()), sl);
     }
 
     private BanhangReponse getFormDataHDCT_DL() {
-        return new BanhangReponse(iHDCT.getAllByIDHD(iHD.getAll().get(tblHoaDon.getSelectedRow()).getIdHD()).get(tblGioHang.getSelectedRow()));
+        return new BanhangReponse(iBH.getAll_HDCTByIDHD(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()).getIdHD()).get(tblGioHang.getSelectedRow()));
     }
 
     private void clearForm() {
@@ -3241,8 +3224,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }
 
     private void showDetailHD(HoaDon hd) {
-        KhachHang kh = iKH.getOne(hd.getKhachHang().getIdKH());
-        NguoiDung nd = iND.getOne(hd.getNguoiDung().getIdND());
+        KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
+        NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
         lblMaKH.setText(kh.getMaKH());
         lblTenKH.setText(kh.getHoTen());
         lblMaHD.setText(hd.getMaHD());
@@ -3252,7 +3235,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
     private void tinhTien(HoaDon hd) {
         List<BigDecimal> lstGia = new ArrayList<>();
-        for (HoaDonChiTiet x : iHDCT.getAllByIDHD(hd.getIdHD())) {
+        for (HoaDonChiTiet x : iBH.getAll_HDCTByIDHD(hd.getIdHD())) {
             lstGia.add(x.getGia().multiply(BigDecimal.valueOf(x.getSlMua())));
         }
         sum = 0.0;
@@ -3261,7 +3244,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         }
         txtTongTien.setText(String.valueOf(sum));
         List<BigDecimal> lstGiamGia = new ArrayList<>();
-        for (HoaDonChiTiet x : iHDCT.getAllByIDHD(hd.getIdHD())) {
+        for (HoaDonChiTiet x : iBH.getAll_HDCTByIDHD(hd.getIdHD())) {
             lstGiamGia.add(x.getGiaKM().multiply(BigDecimal.valueOf(x.getSlMua())));
         }
         giamSum = 0.0;
@@ -3278,7 +3261,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         modelSP.setRowCount(0);
         tblSanPham.setModel(modelSP);
         int stt = 1;
-        for (ChiTietSanPham x : iCTSP.getAll()) {
+        for (ChiTietSanPham x : iBH.getAll_CTSP()) {
             modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
         }
     }
@@ -3289,7 +3272,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         modelHD.setRowCount(0);
         tblHoaDon.setModel(modelHD);
         int stt = 1;
-        for (HoaDon x : iHD.getAll()) {
+        for (HoaDon x : iBH.getAll_HD()) {
             String trangThai = x.getTinhTrang() == 0 ? "Cho thanh toan" : "Da thanh toan";
             modelHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getMaND(), x.getNgayTao(), trangThai});
         }
@@ -3314,7 +3297,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }
 
     private void loadDataKM() {
-        for (KhuyenMai x : iKM.getAll()) {
+        for (KhuyenMai x : iBH.getAll_KM()) {
             boxKM.addElement(x.getGiamGia());
         }
         cboKM.setModel(boxKM);

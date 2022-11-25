@@ -1,16 +1,24 @@
 package com.poly.it17323.group6.service.ipml;
 
+import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
+import com.poly.it17323.group6.domainmodel.KhachHang;
+import com.poly.it17323.group6.domainmodel.KhuyenMai;
+import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.repository.ChiTietSanPhamRepository;
 import com.poly.it17323.group6.repository.HoaDonChiTietRepository;
 import com.poly.it17323.group6.repository.HoaDonRepository;
+import com.poly.it17323.group6.repository.KhachHangRepository;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
+import com.poly.it17323.group6.repository.NguoiDungRepository;
 import com.poly.it17323.group6.response.BanhangReponse;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import com.poly.it17323.group6.service.IQLBanHangService;
+import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -21,7 +29,9 @@ public class BanHangService implements IQLBanHangService {
     private final HoaDonRepository hdRepo = new HoaDonRepository();
     private final HoaDonChiTietRepository hdctRepo = new HoaDonChiTietRepository();
     private final ChiTietSanPhamRepository ctspRepo = new ChiTietSanPhamRepository();
-    private KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
+    private final KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
+    private final KhachHangRepository khRepo = new KhachHangRepository();
+    private final NguoiDungRepository ndRepo = new NguoiDungRepository();
     private int ma = hdRepo.getAll().size() + 1;
 
     @Override
@@ -74,5 +84,53 @@ public class BanHangService implements IQLBanHangService {
     public String getMaTang() {
         return "HD0" + (ma++);
     }
+
+    @Override
+    public List<ChiTietSanPham> getAll_CTSP() {
+        return ctspRepo.getAll();
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getAll_HDCT() {
+        return hdctRepo.getAll();
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getAll_HDCTByIDHD(UUID id) {
+        return hdctRepo.getAllByIDHD(id);
+    }
+
+    @Override
+    public List<HoaDon> getAll_HD() {
+        return hdRepo.getAll();
+    }
+
+    @Override
+    public List<KhachHang> getAll_KH() {
+       return khRepo.getAll();
+    }
+
+    @Override
+    public KhachHang getOne_KH(UUID id) {
+        return khRepo.getOne(id);
+    }
+
+    @Override
+    public List<KhuyenMai> getAll_KM() {
+        return kmRepo.getAll();
+    }
+
+    @Override
+    public NguoiDung getOne_ND(UUID id) {
+        return ndRepo.getOne(id);
+    }
+
+    @Override
+    public List<NguoiDung> getAll_ND() {
+        return ndRepo.getAll();
+    }
+
+
+ 
 
 }

@@ -5,6 +5,7 @@
 package com.poly.it17323.group6.response;
 
 import com.poly.it17323.group6.domainmodel.NguoiDung;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +23,10 @@ import lombok.ToString;
 @NoArgsConstructor
 public class QLNguoiDungResponse {
 
+    private UUID idND;
+
     private String maND, hoTen, gioiTinh, tinhTrang, ngayTao;
-    
+
     private String tenTK, matKhau, ngaySinh, ngaySua;
 
     private String email, sdt, diaChi, cmt_cccd;
@@ -36,14 +39,14 @@ public class QLNguoiDungResponse {
         this.matKhau = nguoiDung.getMatKhau();
         this.hoTen = nguoiDung.getHoTen();
         this.gioiTinh = nguoiDung.getGioiTinh();
-        this.ngaySinh = nguoiDung.getNgaySinh()+"";
+        this.ngaySinh = nguoiDung.getNgaySinh() + "";
         this.email = nguoiDung.getEmail();
         this.sdt = nguoiDung.getSdt();
         this.diaChi = nguoiDung.getDiaChi();
         this.cmt_cccd = nguoiDung.getCccd();
-        this.tinhTrang = nguoiDung.getTinhTrang()+"";
-        this.ngayTao = nguoiDung.getNgayTao()+"";
-        this.ngaySua = nguoiDung.getNgaySua()+"";
+        this.tinhTrang = nguoiDung.getTinhTrang() + "";
+        this.ngayTao = nguoiDung.getNgayTao() + "";
+        this.ngaySua = nguoiDung.getNgaySua() + "";
         this.maCV = nguoiDung.getChucVu().getMaCV();
         this.tenCV = nguoiDung.getChucVu().getTenCV();
     }
