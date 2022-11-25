@@ -8,7 +8,9 @@ import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.response.BanhangReponse;
 import com.poly.it17323.group6.response.KhachHangResponse;
+import com.poly.it17323.group6.response.KhuyenMaiReponse;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
+import com.poly.it17323.group6.service.IKhuyenMaiService;
 import com.poly.it17323.group6.service.IQLKhachHangService;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.BanHangService;
@@ -24,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import com.poly.it17323.group6.service.IQLBanHangService;
+import com.poly.it17323.group6.service.ipml.KhuyenMaiService;
 
 /**
  *
@@ -34,12 +37,15 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private final IQLBanHangService iBH = new BanHangService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
     private final IQLKhachHangService iQlKH = new QLKhachHangService();
+    private final IKhuyenMaiService iKM = new KhuyenMaiService();
     private DefaultTableModel model = new DefaultTableModel();
     List<KhachHangResponse> lstKh = new ArrayList<>();
     private DefaultTableModel modelSP;
     private DefaultTableModel modelHD;
     private DefaultTableModel modelCTHD;
+    private DefaultTableModel modelKM;
     private final DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
+    List<KhuyenMai> listKM;
     private double sum;
     private double giamSum;
 //    private final CardLayout cardLayout;
@@ -47,6 +53,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
     public SRM_BanHang(QLNguoiDungResponse response) {
         initComponents();
         setLocationRelativeTo(null);
+        listKM = iKM.getAll();
         ImageIcon im1 = new ImageIcon("user.png");
         txtAnhNV.setIcon(im1);
         loadDataSP();
@@ -77,6 +84,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         Jpanel = new javax.swing.JPanel();
         ChucNang = new javax.swing.JPanel();
         PN_BanHang = new javax.swing.JPanel();
@@ -330,11 +339,11 @@ public class SRM_BanHang extends javax.swing.JFrame {
         btn_km_Clear = new javax.swing.JButton();
         btn_km_Them = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        tbl_km = new javax.swing.JTable();
         jLabel46 = new javax.swing.JLabel();
         txt_km_TimKiem = new javax.swing.JTextField();
         btn_km_TimKiem = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tbl_km = new javax.swing.JTable();
         jPanel25 = new javax.swing.JPanel();
         QL_KhachHang = new javax.swing.JPanel();
         JPanel_ThongTinKH = new javax.swing.JPanel();
@@ -2083,7 +2092,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, Short.MAX_VALUE)
+                            .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
                             .addComponent(jScrollPane16)))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2438,8 +2447,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel38.setText("Tình trạng : ");
 
+        buttonGroup1.add(rdo_km_ConKhuyenMai);
         rdo_km_ConKhuyenMai.setText("Còn khuyến mãi");
 
+        buttonGroup1.add(rdo_km_DungKhuyenMai);
         rdo_km_DungKhuyenMai.setText("Dừng khuyến mãi");
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -2462,12 +2473,32 @@ public class SRM_BanHang extends javax.swing.JFrame {
         jLabel45.setText("Ngày sửa :");
 
         btn_km_Sua.setText("Sửa");
+        btn_km_Sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_km_SuaActionPerformed(evt);
+            }
+        });
 
         btn_km_Xoa.setText("Xoá");
+        btn_km_Xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_km_XoaActionPerformed(evt);
+            }
+        });
 
         btn_km_Clear.setText("Clear");
+        btn_km_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_km_ClearActionPerformed(evt);
+            }
+        });
 
         btn_km_Them.setText("Thêm");
+        btn_km_Them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_km_ThemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -2581,16 +2612,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khuyến mãi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        tbl_km.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Ma", "TenKM", "GiamGia", "MoTa", "NgayBatDau", "NgayKetThuc", "TinhTrang", "NgayTao", "NgaySua"
-            }
-        ));
-        jScrollPane9.setViewportView(tbl_km);
-
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel46.setText("Tìm kiếm :");
 
@@ -2609,11 +2630,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addComponent(btn_km_TimKiem)
                 .addContainerGap(123, Short.MAX_VALUE))
-            .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel28Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2624,13 +2640,18 @@ public class SRM_BanHang extends javax.swing.JFrame {
                     .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_km_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel46)))
-                .addContainerGap(252, Short.MAX_VALUE))
-            .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
-                    .addContainerGap(53, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        tbl_km.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Ma", "TenKM", "GiamGia", "MoTa", "NgayBatDau", "NgayKetThuc", "TinhTrang", "NgayTao", "NgaySua"
+            }
+        ));
+        jScrollPane9.setViewportView(tbl_km);
 
         javax.swing.GroupLayout QL_KhuyenMaiLayout = new javax.swing.GroupLayout(QL_KhuyenMai);
         QL_KhuyenMai.setLayout(QL_KhuyenMaiLayout);
@@ -2640,7 +2661,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(QL_KhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE))
                 .addContainerGap())
         );
         QL_KhuyenMaiLayout.setVerticalGroup(
@@ -2650,6 +2672,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -3186,6 +3210,97 @@ public class SRM_BanHang extends javax.swing.JFrame {
         tblKhachHang.setRowSelectionAllowed(false);
     }//GEN-LAST:event_btnThayDoiMouseClicked
 
+    private void btn_km_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_ClearActionPerformed
+        txt_km_Ma.setText("");
+        txt_km_MoTa.setText("");
+        txt_km_Ten.setText("");
+        txt_km_NgayBatDau.setText("");
+        txt_km_NgayKetThuc.setText("");
+        buttonGroup1.clearSelection();
+        txt_km_NgayTao.setText("");
+        txt_km_NgaySua.setText("");
+        txt_km_GiamGia.setText("");
+    }//GEN-LAST:event_btn_km_ClearActionPerformed
+
+    private void btn_km_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_XoaActionPerformed
+        int row = tbl_km.getSelectedRow();
+        int s = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa không?");
+        if (s != JOptionPane.YES_OPTION) {
+            return;
+        }
+        KhuyenMaiReponse km = getKM();
+        km.setIdKM(iKM.getAll().get(row).getIdKM());
+        iKM.delete(km);
+        listKM = iKM.getAll();
+        loadKM();
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+    }//GEN-LAST:event_btn_km_XoaActionPerformed
+
+    private void btn_km_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_SuaActionPerformed
+        try {
+            int row = tbl_km.getSelectedRow();
+            KhuyenMaiReponse km = getKM();
+            km.setIdKM(iKM.getAll().get(row).getIdKM());
+            iKM.update(km);
+            listKM = iKM.getAll();
+            loadKM();
+            JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(this, "SỬA THẤT BẠI!!!");
+        }
+    }//GEN-LAST:event_btn_km_SuaActionPerformed
+
+    private void btn_km_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_ThemActionPerformed
+        try {
+            iKM.add(getKM());
+            listKM = iKM.getAll();
+            loadKM();
+            JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
+        }
+    }//GEN-LAST:event_btn_km_ThemActionPerformed
+
+    // Đạt
+    private void loadKM() {
+        modelKM = (DefaultTableModel) tbl_km.getModel();
+        modelKM.setRowCount(0);
+        listKM = iKM.getAll();
+        int stt = 1;
+        for (KhuyenMai x : listKM) {
+            modelKM.addRow(new Object[]{stt++, x.getMaKM(),
+                x.getTenKM(), x.getGiamGia(), x.getMoTa(), x.getNgayBD(), x.getNgayKT(),
+                setTinhTrangKM(x.getTinhTrang()), x.getNgayTao(), x.getNgaySua()});
+        }
+    }
+
+    private KhuyenMaiReponse getKM() {
+        KhuyenMaiReponse km = new KhuyenMaiReponse();
+        km.setMaKM(txt_km_Ma.getText().trim());
+        km.setTenKM(txt_km_Ten.getText().trim());
+        km.setGiamGia(Integer.parseInt(txt_km_GiamGia.getText()));
+        km.setTinhTrang(rdo_km_ConKhuyenMai.isSelected() ? 1 : 0);
+        km.setMoTa(txt_km_MoTa.getText().trim());
+        km.setNgayBD(txt_km_NgayBatDau.getText().trim());
+        km.setNgayKT(txt_km_NgayKetThuc.getText().trim());
+        km.setNgayTao(txt_km_NgayTao.getText().trim());
+        km.setNgaySua(txt_km_NgaySua.getText().trim());
+        return km;
+    }
+
+    public String setTinhTrangKM(int i) {
+        if (i == 1) {
+            return "Còn Khuyến Mãi";
+        } else if (i == 0) {
+            return "Dừng Khuyến Mãi";
+        } else {
+            return null;
+        }
+    }
+    // Đạt
+
     // Danh
     private BanhangReponse getFormDataHD_UD_KH() {
         return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), iBH.getAll_KH().get(tblKhachHang.getSelectedRow()));
@@ -3430,6 +3545,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JButton btn_nd_Xoa;
     private javax.swing.JButton btnrefresh;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JComboBox<String> cbb_ctsp_ChatLieu;
     private javax.swing.JComboBox<String> cbb_ctsp_LoaiSP;
     private javax.swing.JComboBox<String> cbb_ctsp_Mau;
