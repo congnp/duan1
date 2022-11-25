@@ -18,6 +18,7 @@ public class SRM_DetailND extends javax.swing.JFrame {
     public SRM_DetailND(QLNguoiDungResponse response) {
         initComponents();
         setLocationRelativeTo(this);
+        setDefaultCloseOperation(SRM_Login.DISPOSE_ON_CLOSE);
         setData(response);
     }
     
