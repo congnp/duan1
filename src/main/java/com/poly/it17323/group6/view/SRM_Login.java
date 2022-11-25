@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.poly.it17323.group6.view;
 
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
@@ -22,7 +18,6 @@ public class SRM_Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
-
     }
 
     public QLNguoiDungResponse getFormData() {
@@ -143,7 +138,6 @@ public class SRM_Login extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         QLNguoiDungResponse qlndr = getFormData();
-
         //Gọi banhang sang day
         if (iND.login(qlndr) == null) {
             JOptionPane.showMessageDialog(this, iND.loginFailse(qlndr));
@@ -151,7 +145,6 @@ public class SRM_Login extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(this, iND.login(qlndr));
-//          
             new SRM_BanHang(getFormData()).setVisible(true);
             this.dispose();
         }

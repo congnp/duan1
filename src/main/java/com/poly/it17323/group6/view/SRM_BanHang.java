@@ -39,8 +39,8 @@ import java.awt.Toolkit;
  *
  * @author pdanh
  */
-public class SRM_BanHang extends javax.swing.JFrame {
-
+public final class SRM_BanHang extends javax.swing.JFrame {
+    
     private final IQLBanHangService iBH = new BanHangService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
     private final IQLKhachHangService iQlKH = new QLKhachHangService();
@@ -57,11 +57,12 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private DefaultTableModel modelCV;
     private DefaultComboBoxModel comboBoxND;
     private final DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
-    List<KhuyenMai> listKM;
-    List<NguoiDung> listND;
-    List<ChucVu> listCV;
+    private List<KhuyenMai> listKM;
+    private List<NguoiDung> listND;
+    private List<ChucVu> listCV;
     private double sum;
     private double giamSum;
+    private QLNguoiDungResponse ndRP;
 //    private final CardLayout cardLayout;
 
     public SRM_BanHang(QLNguoiDungResponse response) {
@@ -90,10 +91,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
             loadDataGH_Rong();
         }
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
-
 //        cardLayout = (CardLayout) PN_Main.getLayout();
 //        setExtendedState(MAXIMIZED_BOTH);
-        setTextND(response);
+        ndRP = getND(response);
+        lblHoTenNV.setText(ndRP.getHoTen());
     }
 
     /**
@@ -3144,6 +3145,10 @@ public class SRM_BanHang extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   public QLNguoiDungResponse getND(QLNguoiDungResponse nguoiDungResponse) {
+        QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
+        return qlndr;
+    }
 
     private void PN_BanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PN_BanHangMouseClicked
         nextPN(QL_BanHang);
@@ -3170,7 +3175,8 @@ public class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_PN_QLHoaDonMouseClicked
 
     private void btnExistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExistActionPerformed
-        System.exit(0);
+        new SRM_Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnExistActionPerformed
 
     private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
@@ -3252,7 +3258,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         try {
             JOptionPane.showMessageDialog(this, iQlKH.addKh(getFormKh()));
             loadKhachHang();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3480,7 +3486,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
         }
     }
-
+    
     public String setTinhTrang(int item) {
         if (item == 1) {
             return "Đang Làm";
@@ -3490,7 +3496,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             return null;
         }
     }
-
+    
     private void showND() {
         int row = tbl_nd_DangLam.getSelectedRow();
         txt_nd_MaND.setText(tbl_nd_DangLam.getValueAt(row, 0).toString());
@@ -3517,9 +3523,9 @@ public class SRM_BanHang extends javax.swing.JFrame {
         rdo_nd_NgayTao.setText(tbl_nd_DangLam.getValueAt(row, 11).toString());
         txt_nd_NgaySua.setText(tbl_nd_DangLam.getValueAt(row, 12).toString());
         cbb_nd_ChucVu.setSelectedItem(tbl_nd_DangLam.getValueAt(row, 13));
-
+        
     }
-
+    
     private NguoiDungReponse getFrom() {
         NguoiDungReponse ndr = new NguoiDungReponse();
         ndr.setMaND(txt_nd_MaND.getText().trim());
@@ -3538,7 +3544,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         ndr.setNgaySua(txt_nd_NgaySua.getText());
         return ndr;
     }
-
+    
     private void loadComboBoxNd() {
         comboBoxND = new DefaultComboBoxModel();
         cbb_nd_ChucVu.setModel(comboBoxND);
@@ -3546,7 +3552,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             comboBoxND.addElement(cv.getTenCV());
         }
     }
-
+    
     private void loadCV() {
         String Header[] = {"Id", "MaCV", "TenCV"};
         modelCV = new DefaultTableModel(Header, 0);
@@ -3556,7 +3562,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             modelCV.addRow(new Object[]{cv.getIdCV(), cv.getMaCV(), cv.getTenCV()});
         }
     }
-
+    
     private ChucVu getFromTbale() {
         ChucVu cv = new ChucVu();
         cv.setMaCV(txt_cv_Ma.getText());
@@ -3577,7 +3583,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
                 setTinhTrangKM(x.getTinhTrang()), x.getNgayTao(), x.getNgaySua()});
         }
     }
-
+    
     private KhuyenMaiReponse getKM() {
         KhuyenMaiReponse km = new KhuyenMaiReponse();
         km.setMaKM(txt_km_Ma.getText().trim());
@@ -3591,7 +3597,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         km.setNgaySua(txt_km_NgaySua.getText().trim());
         return km;
     }
-
+    
     public String setTinhTrangKM(int i) {
         if (i == 1) {
             return "Còn Khuyến Mãi";
@@ -3607,31 +3613,31 @@ public class SRM_BanHang extends javax.swing.JFrame {
     private BanhangReponse getFormDataHD_UD_KH() {
         return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), iBH.getAll_KH().get(tblKhachHang.getSelectedRow()));
     }
-
+    
     private BanhangReponse getFormDataHD() {
-        return new BanhangReponse(iBH.getAll_ND().get(0), iBH.getAll_KH().get(0));
+        return new BanhangReponse(iBH.getOne_ND(ndRP.getIdND()), iBH.getAll_KH().get(0));
     }
-
+    
     private BanhangReponse getFormDataHD_UD() {
         return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), BigDecimal.valueOf(Double.parseDouble(txtThanhToan.getText())), 1, cboPthuctt.getSelectedIndex() == 0 ? 1 : 0);
     }
-
+    
     private BanhangReponse getFormDataHDCT(String ipSL) {
         return new BanhangReponse(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()), iBH.getAll_CTSP().get(tblSanPham.getSelectedRow()), ipSL, iBH.getAll_KM().get(cboKM.getSelectedIndex()));
     }
-
+    
     private BanhangReponse getFormDataHDCT_UD(HoaDonChiTiet HDCT, String ipSL) {
         return new BanhangReponse(HDCT, ipSL);
     }
-
+    
     private BanhangReponse getFormDataCTSP_UD(String sl) {
         return new BanhangReponse(iBH.getAll_CTSP().get(tblSanPham.getSelectedRow()), sl);
     }
-
+    
     private BanhangReponse getFormDataHDCT_DL() {
         return new BanhangReponse(iBH.getAll_HDCTByIDHD(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()).getIdHD()).get(tblGioHang.getSelectedRow()));
     }
-
+    
     private void clearForm() {
         tblHoaDon.setRowSelectionAllowed(false);
         txtTongTien.setText("");
@@ -3639,7 +3645,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         txtThanhToan.setText("");
         lblMaHD.setText("");
     }
-
+    
     private void showDetailHD(HoaDon hd) {
         KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
         NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
@@ -3649,7 +3655,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         lblTenND.setText(nd.getHoTen());
         tinhTien(hd);
     }
-
+    
     private void tinhTien(HoaDon hd) {
         List<BigDecimal> lstGia = new ArrayList<>();
         for (HoaDonChiTiet x : iBH.getAll_HDCTByIDHD(hd.getIdHD())) {
@@ -3671,7 +3677,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         txtGiamGia.setText("-" + String.valueOf(sum - giamSum));
         txtThanhToan.setText(String.valueOf(giamSum));
     }
-
+    
     private void loadDataSP() {
         String Header[] = {"STT", "Ma SP", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
         modelSP = new DefaultTableModel(Header, 0);
@@ -3682,7 +3688,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
         }
     }
-
+    
     private void loadDataHD() {
         String Header[] = {"STT", "Ma HD", "Ma ND", "Ngay Tao", "Tinh Trang"};
         modelHD = new DefaultTableModel(Header, 0);
@@ -3694,7 +3700,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             modelHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getMaND(), x.getNgayTao(), trangThai});
         }
     }
-
+    
     private void loadDataGH(List<HoaDonChiTiet> lstHDCT) {
         String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
         modelCTHD = new DefaultTableModel(Header, 0);
@@ -3705,21 +3711,21 @@ public class SRM_BanHang extends javax.swing.JFrame {
             modelCTHD.addRow(new Object[]{stt++, x.getChiTietSanPham().getSanPham().getMaSP(), x.getChiTietSanPham().getSanPham().getTenSP(), x.getSlMua(), x.getGia(), x.getKhuyenMai().getGiamGia() + " %"});
         }
     }
-
+    
     private void loadDataGH_Rong() {
         String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
         modelCTHD = new DefaultTableModel(Header, 0);
         modelCTHD.setRowCount(0);
         tblGioHang.setModel(modelCTHD);
     }
-
+    
     private void loadDataKM() {
         for (KhuyenMai x : iBH.getAll_KM()) {
             boxKM.addElement(x.getGiamGia());
         }
         cboKM.setModel(boxKM);
     }
-
+    
     private void nextPN(JPanel pn) {
         PN_Main.removeAll();
         PN_Main.add(pn);
@@ -3746,7 +3752,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         txt_kh_NgaySua.setText(kh.getNgaySua());
         tblKhachHang.setRowSelectionInterval(index, index);
     }
-
+    
     private void loadKhachHang() {
         model = (DefaultTableModel) tblKhachHang.getModel();
         model.setRowCount(0);
@@ -3756,7 +3762,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
             model.addRow(new Object[]{s++, x.getMaKh(), x.getHoTen(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getNgaySinh(), x.getNgayTao(), x.getNgaySua()});
         }
     }
-
+    
     private KhachHangResponse getFormKh() {
         KhachHangResponse kh = new KhachHangResponse();
         kh.setMaKh(txt_kh_MaKh.getText().trim());
@@ -3769,7 +3775,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         kh.setNgaySua(txt_kh_NgaySua.getText().trim());
         return kh;
     }
-
+    
     private void clearKH() {
         txt_kh_MaKh.setText("");
         txt_kh_DiaChi.setText("");
@@ -3781,11 +3787,6 @@ public class SRM_BanHang extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
     }
     // Mai
-
-    public void setTextND(QLNguoiDungResponse nguoiDungResponse) {
-        QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
-        lblHoTenNV.setText(qlndr.getHoTen());
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AnhNV;
