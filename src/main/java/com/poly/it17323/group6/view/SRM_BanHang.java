@@ -3668,7 +3668,7 @@ public class SRM_BanHang extends javax.swing.JFrame {
         for (BigDecimal bigDecimal : lstGiamGia) {
             giamSum += Double.parseDouble(bigDecimal.toString());
         }
-        txtGiamGia.setText(String.valueOf(sum - giamSum));
+        txtGiamGia.setText("-" + String.valueOf(sum - giamSum));
         txtThanhToan.setText(String.valueOf(giamSum));
     }
 
