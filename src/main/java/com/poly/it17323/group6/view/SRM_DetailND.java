@@ -18,6 +18,7 @@ public class SRM_DetailND extends javax.swing.JFrame {
     public SRM_DetailND(QLNguoiDungResponse response) {
         initComponents();
         setLocationRelativeTo(this);
+        setDefaultCloseOperation(SRM_Login.DISPOSE_ON_CLOSE);
         setData(response);
     }
     
@@ -71,8 +72,14 @@ public class SRM_DetailND extends javax.swing.JFrame {
 
         jLabel4.setText("Địa chỉ:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        txtHoten.setEnabled(false);
         jPanel1.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 210, -1));
+
+        txtGioiTinh.setEnabled(false);
         jPanel1.add(txtGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 210, -1));
+
+        txtDiachi.setEnabled(false);
         jPanel1.add(txtDiachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 210, -1));
 
         jLabel5.setText("SDT");
@@ -83,8 +90,14 @@ public class SRM_DetailND extends javax.swing.JFrame {
 
         jLabel7.setText("Tên CV:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        txtSDT.setEnabled(false);
         jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 210, -1));
+
+        txtTenTk.setEnabled(false);
         jPanel1.add(txtTenTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 210, -1));
+
+        txtTenCV.setEnabled(false);
         jPanel1.add(txtTenCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

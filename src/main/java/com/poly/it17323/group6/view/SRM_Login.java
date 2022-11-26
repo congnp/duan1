@@ -141,11 +141,9 @@ public class SRM_Login extends javax.swing.JFrame {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         QLNguoiDungResponse qlndr = getFormData();
-        //Gọi banhang sang day
         if (iND.login(qlndr) == null) {
             JOptionPane.showMessageDialog(this, iND.loginFailse(qlndr));
             return;
-
         } else {
             JOptionPane.showMessageDialog(this, iND.login(qlndr));
             try {

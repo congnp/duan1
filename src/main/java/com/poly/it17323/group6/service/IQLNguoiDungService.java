@@ -25,6 +25,8 @@ public interface IQLNguoiDungService {
     
     String emailFailse(QLNguoiDungResponse qlndr);
     
+    String checkMa(String maXn);
+    
     boolean addQLND(QLNguoiDungResponse qlND);
     
     String updatePass(QLNguoiDungResponse qlND);

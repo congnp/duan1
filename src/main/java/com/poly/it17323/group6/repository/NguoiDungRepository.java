@@ -48,18 +48,23 @@ public class NguoiDungRepository {
         return null;
     }
 
-    public Boolean update(NguoiDung nguoidung) {
+    public Boolean update(NguoiDung nd) {
         Transaction transaction = null;
-        session = Hibernate_Util.getFACTORY().openSession();
-        try {
+        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(nguoidung);
+            Query q = session.createQuery("UPDATE NguoiDung SET MatKhau = :mk WHERE Email = :email");
+            q.setParameter("mk", nd.getMatKhau());
+            q.setParameter("email", nd.getEmail());
+            q.executeUpdate();
             transaction.commit();
+
             return true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
+            transaction.rollback();
+            return null;
         }
-        return null;
+        
     }
 
     public Boolean delete(NguoiDung nguoidung) {

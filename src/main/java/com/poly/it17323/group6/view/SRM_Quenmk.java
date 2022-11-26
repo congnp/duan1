@@ -25,11 +25,6 @@ public class SRM_Quenmk extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         iqlnds = new QLNguoiDungService();
     }
-
-    QLNguoiDungResponse getFormData() {
-        return new QLNguoiDungResponse(txtEmail.getText());
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,10 +110,11 @@ public class SRM_Quenmk extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
-        QLNguoiDungResponse nd = getFormData();
+        QLNguoiDungResponse nd = new QLNguoiDungResponse();
+        nd.setEmail(txtEmail.getText());
         if (iqlnds.checkMail(nd) != null) {
             JOptionPane.showMessageDialog(this, iqlnds.checkMail(nd));
-            new SRM_ResetPass().setVisible(true);
+            new SRM_ExceptToken().setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, iqlnds.emailFailse(nd));

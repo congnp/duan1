@@ -30,9 +30,9 @@ public class QLNguoiDungResponse {
 
     private String tenTK, matKhau, ngaySinh, ngaySua;
 
-    private String email, sdt, diaChi, cmt_cccd;
+    private static String email;
 
-    private String maCV, tenCV, newPass, conFirm;
+    private String maCV, tenCV, newPass, conFirm, sdt, diaChi, cmt_cccd;
 
     private ChucVu cv;
 
@@ -64,6 +64,14 @@ public class QLNguoiDungResponse {
         this.tenTK = tenTK;
         this.matKhau = matKhau;
         this.tenCV = tenCV;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        QLNguoiDungResponse.email = email;
     }
 
 }
