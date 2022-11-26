@@ -2760,6 +2760,11 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 "STT", "Ma", "TenKM", "GiamGia", "MoTa", "NgayBatDau", "NgayKetThuc", "TinhTrang", "NgayTao", "NgaySua"
             }
         ));
+        tbl_km.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_kmMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(tbl_km);
 
         javax.swing.GroupLayout QL_KhuyenMaiLayout = new javax.swing.GroupLayout(QL_KhuyenMai);
@@ -3505,6 +3510,25 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private void pnDetailNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnDetailNDMouseClicked
         new SRM_DetailND(ndRP).setVisible(true);
     }//GEN-LAST:event_pnDetailNDMouseClicked
+
+    private void tbl_kmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_kmMouseClicked
+        int row = tbl_km.getSelectedRow();
+        txt_km_Ma.setText(tbl_km.getValueAt(row, 1).toString());
+        txt_km_Ten.setText(tbl_km.getValueAt(row, 2).toString());
+        txt_km_GiamGia.setText(tbl_km.getValueAt(row, 3).toString());
+        txt_km_MoTa.setText(tbl_km.getValueAt(row, 4).toString());
+        String check = tbl_km.getValueAt(row, 7).toString();
+        if (check.equalsIgnoreCase("Còn Khuyến Mãi")) {
+            rdo_km_ConKhuyenMai.setSelected(true);
+
+        } else {
+            rdo_km_DungKhuyenMai.setSelected(true);
+        }
+        txt_km_NgayBatDau.setText(tbl_km.getValueAt(row, 5).toString());
+        txt_km_NgayKetThuc.setText(tbl_km.getValueAt(row, 6).toString());
+        txt_km_NgayTao.setText(tbl_km.getValueAt(row, 8).toString());
+        txt_km_NgaySua.setText(tbl_km.getValueAt(row, 9).toString());
+    }//GEN-LAST:event_tbl_kmMouseClicked
 
     // Công
     private void loadND() {
