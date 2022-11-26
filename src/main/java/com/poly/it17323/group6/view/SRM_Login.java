@@ -4,6 +4,9 @@ import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +24,7 @@ public class SRM_Login extends javax.swing.JFrame {
     }
 
     public QLNguoiDungResponse getFormData() {
-        return new QLNguoiDungResponse(txtUser.getText(), String.valueOf(psPass.getPassword()), "Nhân viên");
+        return new QLNguoiDungResponse(txtUser.getText(), String.valueOf(psPass.getPassword()));
     }
 
     /**
@@ -145,7 +148,11 @@ public class SRM_Login extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(this, iND.login(qlndr));
-            new SRM_BanHang(getFormData()).setVisible(true);
+            try {
+                new SRM_BanHang(getFormData()).setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(SRM_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed

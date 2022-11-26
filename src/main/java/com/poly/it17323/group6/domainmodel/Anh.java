@@ -41,7 +41,7 @@ public class Anh implements Serializable {
     private String tenAnh;
 
     @Column(name = "DuongDanAnh")
-    private Byte[] linkAnh;
+    private byte[] linkAnh;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IDCTSP", referencedColumnName = "IdCTSP")

@@ -3,6 +3,7 @@ package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.Anh;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -32,6 +33,14 @@ public class AnhRepository {
         query.setParameter("id", id);
         Anh anh = (Anh) query.getSingleResult();
         return anh;
+    }
+    public List<Anh> getAllByIDCTSP(UUID IdCTSP) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        List<Anh> list = new ArrayList<>();
+        Query query = session.createQuery("SELECT h FROM Anh h WHERE h.chiTietSanPham.id = :id");
+        query.setParameter("id", IdCTSP);
+        list = query.getResultList();
+        return list;
     }
 
     public Boolean add(Anh anh) {

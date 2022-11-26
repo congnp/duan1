@@ -60,7 +60,7 @@ public class QLNguoiDungResponse {
         this.email = email;
     }
 
-    public QLNguoiDungResponse(String tenTK, String matKhau, String tenCV) {
+    public QLNguoiDungResponse(String tenTK, String matKhau) {
         this.tenTK = tenTK;
         this.matKhau = matKhau;
         this.tenCV = tenCV;
