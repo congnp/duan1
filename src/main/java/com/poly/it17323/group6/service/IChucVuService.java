@@ -12,5 +12,12 @@ import java.util.List;
  * @author ThanhNam
  */
 public interface IChucVuService {
+
     List<ChucVu> getAll();
+
+    boolean add(ChucVu CV);
+
+    boolean update(ChucVu CV);
+
+    boolean delete(ChucVu CV);
 }

@@ -20,5 +20,25 @@ public class ChucVuService implements IChucVuService{
     public List<ChucVu> getAll() {
         return cvr.getAll();
     }
+
+    @Override
+    public boolean add(ChucVu CV) {
+        cvr.add(new ChucVu(CV.getIdCV(), CV.getMaCV(), CV.getTenCV()));
+        return true;
+    }
+
+    @Override
+    public boolean update(ChucVu CV) {
+      cvr.update(new ChucVu(CV.getIdCV(), CV.getMaCV(), CV.getTenCV()));
+      return true;  
+    }
+
+    @Override
+    public boolean delete(ChucVu CV) {
+       ChucVu cv = new ChucVu();
+       cv.setIdCV(CV.getIdCV());
+       cvr.delete(cv);
+       return true;
+    }
     
 }

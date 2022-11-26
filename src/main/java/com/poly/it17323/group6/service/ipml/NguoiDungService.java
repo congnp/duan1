@@ -12,6 +12,7 @@ import com.poly.it17323.group6.response.NguoiDungReponse;
 import com.poly.it17323.group6.service.INguoiDungService;
 import java.sql.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -54,13 +55,21 @@ public class NguoiDungService implements INguoiDungService {
         Date ngaySinh = Date.valueOf(ND.getNgaySinh());
         Date ngayTao = Date.valueOf(ND.getNgayTao());
         Date ngaySua = Date.valueOf(ND.getNgaySua());
-        ndRepo.update(new NguoiDung(ND.getIdND(), ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, ND.getEmail(), ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cv));
+        ndRepo.update_nd(new NguoiDung(ND.getIdND(), ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, ND.getEmail(), ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cv));
         return true;
     }
 
     @Override
     public boolean delete(NguoiDungReponse ND) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        NguoiDung nd = new NguoiDung();
+        nd.setIdND(ND.getIdND());
+        ndRepo.delete(nd);
+        return true;
+    }
+
+    @Override
+    public NguoiDung getOne(UUID id) {
+        return ndRepo.getOne(id);
     }
 
 }
