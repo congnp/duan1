@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -42,7 +41,7 @@ public class Anh implements Serializable {
     private String tenAnh;
 
     @Column(name = "DuongDanAnh")
-    private String linkAnh;
+    private byte[] linkAnh;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IDCTSP", referencedColumnName = "IdCTSP")
