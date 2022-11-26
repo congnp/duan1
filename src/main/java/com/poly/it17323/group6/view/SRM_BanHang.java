@@ -3793,9 +3793,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
 
     private boolean setRole() {
         if (ndRP.getCv().getTenCV().equalsIgnoreCase("Nhân Viên")) {
-            ImageIcon im2 = new ImageIcon("Co.JPG");
-            lblAnhHai.setIcon(im2);
-            nextPN(QL_AnhHai);
             JOptionPane.showMessageDialog(this, "VAO DAY LAM GI !!!");
             return false;
         }

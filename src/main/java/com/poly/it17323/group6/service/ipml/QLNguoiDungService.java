@@ -78,7 +78,6 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 //        System.out.println(qlndr.toString());
 //
 //    }
-
     @Override
     public String loginFailse(QLNguoiDungResponse qlndr) {
         if (qlndr.getTenTK().isBlank()) {
@@ -141,5 +140,4 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 //            System.out.println(p.toString());
 //        }
 //    }
-
 }
