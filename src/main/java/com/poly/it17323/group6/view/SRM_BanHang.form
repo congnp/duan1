@@ -623,7 +623,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DonHang" max="32767" attributes="0"/>
+                          <Component id="DonHang" pref="398" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -713,7 +713,7 @@
                                   <Component id="jButton4" linkSize="13" max="32767" attributes="0"/>
                                   <Component id="btnXoa" linkSize="13" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -881,7 +881,7 @@
                               <Component id="ThongTin" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ThanhToan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="15" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2930,7 +2930,7 @@
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="10" rowCount="0">
                                 <Column editable="true" title="STT" type="java.lang.Object"/>
-                                <Column editable="true" title="MaNV" type="java.lang.Object"/>
+                                <Column editable="true" title="MaHD" type="java.lang.Object"/>
                                 <Column editable="true" title="TenNV" type="java.lang.Object"/>
                                 <Column editable="true" title="MaKH" type="java.lang.Object"/>
                                 <Column editable="true" title="TenKH" type="java.lang.Object"/>
@@ -2952,6 +2952,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hd_XoaActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btn_hd_Sua">
                       <Properties>
@@ -4434,7 +4437,7 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jScrollPane17" min="-2" pref="249" max="-2" attributes="0"/>
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">

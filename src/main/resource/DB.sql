@@ -103,6 +103,8 @@ GO
 
 INSERT INTO ChucVu(MaCV,TenCV)
 VALUES('CV01',N'Nhân Viên')
+INSERT INTO ChucVu(MaCV,TenCV)
+VALUES('CV00',N'Quản lý')
 
 SELECT * FROM ChucVu
 
@@ -128,7 +130,7 @@ CREATE TABLE NguoiDung
 GO
 
 INSERT INTO NguoiDung(IdCV,MaND,TenTK,MatKhau, HoVaTen, GioiTinh, NgaySinh, Email, Sdt, DiaChi, [CCCD/CMT], TinhTrang, NgayTao, NgaySua)
-VALUES('4634FF2C-3C35-4BE6-AECE-ED2ECED2B7B8',N'ND01','nv1',123,N'Phan Ngọc Danh',N'Nam',
+VALUES('B8797BCB-5A79-4123-9F9E-A376058548E9',N'ND01','nv1',123,N'Phan Ngọc Danh',N'Nam',
 '1-12-2003','danhpnph26382@fpt.edu.vn','0932343783',N'Hồ Tùng Mậu','001304656874',1,'10-11-2022','11-11-2022')
 
 SELECT*FROM NguoiDung

@@ -24,12 +24,6 @@ public class KhachHangRepository {
         return lists;
     }
 
-    public static void main(String[] args) {
-        for (KhachHang khachHang : new KhachHangRepository().getAll()) {
-            System.out.println(khachHang);
-        }
-    }
-
     public KhachHang getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
@@ -69,7 +63,6 @@ public class KhachHangRepository {
 
     public Boolean delete(KhachHang khachhang) {
         Transaction transaction = null;
-
         try {
             session = Hibernate_Util.getFACTORY().openSession();
             transaction = session.beginTransaction();

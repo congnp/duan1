@@ -47,7 +47,7 @@ public class QLChatLieuService implements IQLChatLieuService {
     public boolean deleteQLCL(QLSanPhamResponse qlCL) {
         ChatLieu sp = new ChatLieu();
         sp.setIdCL(qlCL.getIdChatLieu());
-       return repo.delete(sp);
+        return repo.delete(sp);
     }
 
 }
