@@ -81,11 +81,6 @@ public class BanHangService implements IQLBanHangService {
     }
 
     @Override
-    public String getMaTang() {
-        return "HD0" + (ma++);
-    }
-
-    @Override
     public List<ChiTietSanPham> getAll_CTSP() {
         return ctspRepo.getAll();
     }
@@ -107,7 +102,7 @@ public class BanHangService implements IQLBanHangService {
 
     @Override
     public List<KhachHang> getAll_KH() {
-       return khRepo.getAll();
+        return khRepo.getAll();
     }
 
     @Override
@@ -130,7 +125,9 @@ public class BanHangService implements IQLBanHangService {
         return ndRepo.getAll();
     }
 
-
- 
+    @Override
+    public String getMaTang() {
+        return "HD0" + (ma++);
+    }
 
 }

@@ -16,14 +16,14 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class AnhService implements IAnhService{
-    private AnhRepository repo;
+public class AnhService implements IAnhService {
+
+    private final AnhRepository repo;
 
     public AnhService() {
         repo = new AnhRepository();
     }
-    
-    
+
     @Override
     public List<Anh> getAllQLAnh() {
         return repo.getAll();
@@ -53,17 +53,5 @@ public class AnhService implements IAnhService{
     public boolean deleteQLCL(Anh qlAmh) {
         return repo.delete(qlAmh);
     }
-    
-    public static void main(String[] args) {
-        ISanPhamChiTietService re= new QLCTSPService();
-        List<QLSanPhamResponse> l  = re.getAllQLChiTietSP();
-        
-        List<Anh> lists = new AnhService().getAllByIdCTSP(l.get(0).getId());
-        for (Anh p : lists) {
-            System.out.println(p.toString());
-        }
-    }
 
-    
-    
 }

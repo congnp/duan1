@@ -1,4 +1,3 @@
-
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.Anh;
@@ -34,6 +33,7 @@ public class AnhRepository {
         Anh anh = (Anh) query.getSingleResult();
         return anh;
     }
+
     public List<Anh> getAllByIDCTSP(UUID IdCTSP) {
         session = Hibernate_Util.getFACTORY().openSession();
         List<Anh> list = new ArrayList<>();

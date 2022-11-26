@@ -550,7 +550,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         PN_BanHangLayout.setHorizontalGroup(
             PN_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_BanHangLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(56, 56, 56))
         );
@@ -694,7 +694,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         PN_KhuyenMaiLayout.setHorizontalGroup(
             PN_KhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_KhuyenMaiLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(53, 53, 53))
         );
@@ -1271,7 +1271,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1626,6 +1626,11 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txt_cv_Id.setEnabled(false);
 
         bt_cvThem.setText("Them");
+        bt_cvThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cvThemActionPerformed(evt);
+            }
+        });
 
         bt_cv_Sua.setText("Sửa");
         bt_cv_Sua.addActionListener(new java.awt.event.ActionListener() {
@@ -3467,7 +3472,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, 1029, Short.MAX_VALUE)
+                    .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
                     .addComponent(jScrollPane16)
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4298,6 +4303,18 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txt_ctsp_NgayTao.setText("");
     }//GEN-LAST:event_btn_ctsp_ClearActionPerformed
 
+    private void bt_cvThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cvThemActionPerformed
+        try {
+            icvs.add(getFromTbale());
+            listCV = icvs.getAll();
+            loadCV();
+            JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
+        }
+    }//GEN-LAST:event_bt_cvThemActionPerformed
+
     // Công
     private void loadND() {
         String Header[] = {"MaND", "TenTK", "MatKhau", "HovaTen", "GioiTinh", "NgaySinh",
@@ -4966,7 +4983,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private Anh getFormAnh() {
         Anh a = new Anh();
         QLSanPhamResponse ql = iChiTietSP.getAllQLChiTietSP().get(indextblAnhctsp);
-
         ChiTietSanPham sp = new ChiTietSanPham();
         sp.setId(ql.getId());
         if (tbl_a.getRowCount() > 0) {

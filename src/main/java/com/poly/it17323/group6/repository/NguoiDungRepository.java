@@ -1,7 +1,9 @@
 package com.poly.it17323.group6.repository;
 
+import com.poly.it17323.group6.domainmodel.MauSac;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
+import com.poly.it17323.group6.response.NguoiDungReponse;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -57,14 +59,27 @@ public class NguoiDungRepository {
             q.setParameter("email", nd.getEmail());
             q.executeUpdate();
             transaction.commit();
-
             return true;
         } catch (Exception e) {
             e.printStackTrace(System.out);
             transaction.rollback();
             return null;
         }
-        
+
+    }
+
+    public Boolean update_nd(NguoiDung nguoidung) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(nguoidung);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 
     public Boolean delete(NguoiDung nguoidung) {
