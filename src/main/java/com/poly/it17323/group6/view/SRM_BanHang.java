@@ -22,7 +22,7 @@ import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.response.QLSanPhamResponse;
 import com.poly.it17323.group6.service.IAnhService;
 import com.poly.it17323.group6.service.IChucVuService;
-//import com.poly.it17323.group6.service.IHoaDonService;
+import com.poly.it17323.group6.service.IHoaDonService;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import com.poly.it17323.group6.service.INguoiDungService;
 import com.poly.it17323.group6.service.IQLKhachHangService;
@@ -48,7 +48,7 @@ import com.poly.it17323.group6.service.IQLSizeService;
 import com.poly.it17323.group6.service.ISanPhamChiTietService;
 import com.poly.it17323.group6.service.ipml.AnhService;
 import com.poly.it17323.group6.service.ipml.ChucVuService;
-//import com.poly.it17323.group6.service.ipml.HoaDonService;
+import com.poly.it17323.group6.service.ipml.HoaDonService;
 import com.poly.it17323.group6.service.ipml.KhuyenMaiService;
 import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLCTSPService;
@@ -78,7 +78,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private final IKhuyenMaiService iKM = new KhuyenMaiService();
     private final IChucVuService icvs = new ChucVuService();
     private final INguoiDungService inds = new NguoiDungService();
-//    private final IHoaDonService ihd = new HoaDonService();
+    private final IHoaDonService ihd = new HoaDonService();
     private DefaultTableModel model = new DefaultTableModel();
     private DefaultTableModel mdHD = new DefaultTableModel();
     List<KhachHangResponse> lstKh = new ArrayList<>();
@@ -127,7 +127,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txtAnhNV.setIcon(im1);
         loadDataSP();
         loadDataHD();
-//        loadHoaDon();
+        loadHoaDon();
         loadDataKM();
         loadKhachHang();
         loadCV();
@@ -4332,10 +4332,10 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cvThemActionPerformed
 
     private void btn_hd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hd_XoaActionPerformed
-//        int row = tbl_HoaDon.getSelectedRow();
-//        HoaDon hoadon = ihd.getAll().get(row);
-//        ihd.delete(hoadon.getIdHD());
-//        loadHoaDon();
+        int row = tbl_HoaDon.getSelectedRow();
+        HoaDon hoadon = ihd.getAll().get(row);
+        ihd.delete(hoadon.getIdHD());
+        loadHoaDon();
     }//GEN-LAST:event_btn_hd_XoaActionPerformed
 
     private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
@@ -4972,15 +4972,15 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     //Van QL SP
 
     // Quyền
-//    private void loadHoaDon() {
-//        mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
-//        mdHD.setRowCount(0);
-//        List<HoaDon> listHD = ihd.getAll();
-//        int stt = 1;
-//        for (HoaDon x : listHD) {
-//            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt(), x.getTongTien(), x.getTinhTrang(), x.getNgayTao(), x.getNgaySua()});
-//        }
-//    }
+    private void loadHoaDon() {
+        mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
+        mdHD.setRowCount(0);
+        List<HoaDon> listHD = ihd.getAll();
+        int stt = 1;
+        for (HoaDon x : listHD) {
+            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt(), x.getTongTien(), x.getTinhTrang(), x.getNgayTao(), x.getNgaySua()});
+        }
+    }
     // Quyền
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
