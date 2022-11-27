@@ -22,7 +22,7 @@ import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.response.QLSanPhamResponse;
 import com.poly.it17323.group6.service.IAnhService;
 import com.poly.it17323.group6.service.IChucVuService;
-import com.poly.it17323.group6.service.IHoaDonService;
+//import com.poly.it17323.group6.service.IHoaDonService;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import com.poly.it17323.group6.service.INguoiDungService;
 import com.poly.it17323.group6.service.IQLKhachHangService;
@@ -48,7 +48,7 @@ import com.poly.it17323.group6.service.IQLSizeService;
 import com.poly.it17323.group6.service.ISanPhamChiTietService;
 import com.poly.it17323.group6.service.ipml.AnhService;
 import com.poly.it17323.group6.service.ipml.ChucVuService;
-import com.poly.it17323.group6.service.ipml.HoaDonService;
+//import com.poly.it17323.group6.service.ipml.HoaDonService;
 import com.poly.it17323.group6.service.ipml.KhuyenMaiService;
 import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLCTSPService;
@@ -78,7 +78,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private final IKhuyenMaiService iKM = new KhuyenMaiService();
     private final IChucVuService icvs = new ChucVuService();
     private final INguoiDungService inds = new NguoiDungService();
-    private final IHoaDonService ihd = new HoaDonService();
+//    private final IHoaDonService ihd = new HoaDonService();
     private DefaultTableModel model = new DefaultTableModel();
     private DefaultTableModel mdHD = new DefaultTableModel();
     List<KhachHangResponse> lstKh = new ArrayList<>();
@@ -127,7 +127,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         txtAnhNV.setIcon(im1);
         loadDataSP();
         loadDataHD();
-        loadHoaDon();
+//        loadHoaDon();
         loadDataKM();
         loadKhachHang();
         loadCV();
@@ -1247,7 +1247,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 .addComponent(ThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ma QR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -1276,7 +1276,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2132,6 +2132,11 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 "STT", "MaHD", "TenNV", "MaKH", "TenKH", "PhuongThucTT", "TongTien", "TrangThai", "NgayTao", "NgaySua"
             }
         ));
+        tbl_HoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_HoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(tbl_HoaDon);
 
         btn_hd_Xoa.setText("Xoá");
@@ -4327,11 +4332,15 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_cvThemActionPerformed
 
     private void btn_hd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hd_XoaActionPerformed
-        int row = tbl_HoaDon.getSelectedRow();
-        HoaDon hoadon = ihd.getAll().get(row);
-        ihd.delete(hoadon.getIdHD());
-        loadHoaDon();
+//        int row = tbl_HoaDon.getSelectedRow();
+//        HoaDon hoadon = ihd.getAll().get(row);
+//        ihd.delete(hoadon.getIdHD());
+//        loadHoaDon();
     }//GEN-LAST:event_btn_hd_XoaActionPerformed
+
+    private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
     // Công
     private void loadND() {
@@ -4658,62 +4667,6 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }
 
     // Mai
-//    //Vân
-//    private void showDetailHDCT() {
-//        int index = tblGioHang.getSelectedRow();
-//        HoaDonChiTiet h = iHDCT.getAll().get(index);
-//        lblMaKH.setText(h.getHoaDon().getKhachHang().getMaKH());
-//        lblTenKH.setText(h.getHoaDon().getKhachHang().getHoTen());
-//        lblMaHD.setText(h.getHoaDon().getMaHD());
-//        txtTenND.setText(h.getHoaDon().getNguoiDung().getHoTen());
-//        BigDecimal tongTien = h.getHoaDon().getTongTien();
-//        int tt = Integer.parseInt(String.valueOf(tongTien));
-//        int KM = h.getKhuyenMai().getGiamGia();
-//        txtTongTien.setText(tt + "");
-//        txtGiamGia.setText(KM + " %");
-//        txtThanhToan.setText(tt - (tt * (KM / 100)) + "");
-//        cbb_hd_HinhThucTT.setSelectedItem(h.getHoaDon().getPttt());
-//    }
-//
-//    private void loadDataSP() {
-//        String Header[] = {"STT,Ma SP", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
-//        modelSP = new DefaultTableModel(Header, 0);
-//        modelSP.setRowCount(0);
-//        tblSanPham.setModel(modelSP);
-//        int stt = 1;
-//        for (ChiTietSanPham x : iCTSP.getAll()) {
-//            modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
-//        }
-//    }
-//
-//    private void loadDataHD() {
-//        String Header[] = {"STT", "Ma HD", "Ma ND", "Ngay Tao", "Tinh Trang"};
-//        modelHD = new DefaultTableModel(Header, 0);
-//        modelHD.setRowCount(0);
-//        tblHoaDon.setModel(modelHD);
-//        int stt = 1;
-//        for (HoaDon x : iHD.getAll()) {
-//            modelHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getMaND(), x.getNgayTao(), x.getTinhTrang()});
-//        }
-//    }
-//
-//    private void loadHDCT() {
-//        String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
-//        modelCTHD = new DefaultTableModel(Header, 0);
-//        modelCTHD.setRowCount(0);
-//        tblGioHang.setModel(modelCTHD);
-//        int stt = 1;
-//        for (HoaDonChiTiet x : iHDCT.getAll()) {
-//            modelCTHD.addRow(new Object[]{stt++, x.getChiTietSanPham().getSanPham().getMaSP(), x.getChiTietSanPham().getSanPham().getTenSP(), x.getSlMua(), x.getGia(), x.getKhuyenMai().getGiamGia()});
-//        }
-//    }
-//
-//    private void nextPN(JPanel pn) {
-//        PN_Main.removeAll();
-//        PN_Main.add(pn);
-//        PN_Main.repaint();
-//        PN_Main.validate();
-//    }
     //Van QLSP
     private void loadQLThuocTinh() {
         if (indexcbbThuocTinhSP == 0) {
@@ -5019,16 +4972,15 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     //Van QL SP
 
     // Quyền
-    private void loadHoaDon() {
-        mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
-        mdHD.setRowCount(0);
-        List<HoaDon> listHD = ihd.getAll();
-        int stt = 1;
-        for (HoaDon x : listHD) {
-            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt(), x.getTongTien(), x.getTinhTrang(), x.getNgayTao(), x.getNgaySua()});
-        }
-    }
-
+//    private void loadHoaDon() {
+//        mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
+//        mdHD.setRowCount(0);
+//        List<HoaDon> listHD = ihd.getAll();
+//        int stt = 1;
+//        for (HoaDon x : listHD) {
+//            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt(), x.getTongTien(), x.getTinhTrang(), x.getNgayTao(), x.getNgaySua()});
+//        }
+//    }
     // Quyền
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
