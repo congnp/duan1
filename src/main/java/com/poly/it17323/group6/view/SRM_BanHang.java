@@ -95,19 +95,19 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private List<ChucVu> listCV;
     private double sum;
     private double giamSum;
-    private QLNguoiDungResponse ndRP;
+    private final QLNguoiDungResponse ndRP;
     //Van
     private byte[] personalImage;
     int indexcbbThuocTinhSP;
     int indextblCTSP;
     private DefaultComboBoxModel cbbModel;
     private final IQLSanPhamService iSP = new QLSanPhamService();
-    private IQLLoaiSPService iLoaiSP = new QLLoaiSPService();
-    private IQLChatLieuService iCL = new QLChatLieuService();
-    private IQLMauSacService iMS = new QLMauSacService();
-    private IQLSizeService iSize = new QLSizeService();
-    private ISanPhamChiTietService iChiTietSP = new QLCTSPService();
-    private IAnhService iAnh = new AnhService();
+    private final IQLLoaiSPService iLoaiSP = new QLLoaiSPService();
+    private final IQLChatLieuService iCL = new QLChatLieuService();
+    private final IQLMauSacService iMS = new QLMauSacService();
+    private final IQLSizeService iSize = new QLSizeService();
+    private final ISanPhamChiTietService iChiTietSP = new QLCTSPService();
+    private final IAnhService iAnh = new AnhService();
     int indextblAnh;
     int indextblAnhctsp;
     int indextblThuocTinh;
@@ -2139,14 +2139,14 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         });
         jScrollPane10.setViewportView(tbl_HoaDon);
 
-        btn_hd_Xoa.setText("Xoá");
+        btn_hd_Xoa.setText("Xoá Hóa Ðon");
         btn_hd_Xoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_hd_XoaActionPerformed(evt);
             }
         });
 
-        btn_hd_Sua.setText("Sửa");
+        btn_hd_Sua.setText("Xóa CTHÐ");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -4339,7 +4339,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_hd_XoaActionPerformed
 
     private void tbl_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_HoaDonMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tbl_HoaDonMouseClicked
 
     // Công

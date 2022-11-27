@@ -623,7 +623,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DonHang" pref="398" max="32767" attributes="0"/>
+                          <Component id="DonHang" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -881,7 +881,7 @@
                               <Component id="ThongTin" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ThanhToan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2953,7 +2953,7 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btn_hd_Xoa">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
+                        <Property name="text" type="java.lang.String" value="Xo&#xe1; H&#xf3;a &#xd0;on"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hd_XoaActionPerformed"/>
@@ -2961,7 +2961,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btn_hd_Sua">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
+                        <Property name="text" type="java.lang.String" value="X&#xf3;a CTH&#xd0;"/>
                       </Properties>
                     </Component>
                   </SubComponents>
