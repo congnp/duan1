@@ -38,7 +38,7 @@ public class Hibernate_Util {
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6_PMBANQUANAO");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
-        properties.put(Environment.SHOW_SQL, "true");
+        properties.put(Environment.SHOW_SQL, "false");
 
         conf.setProperties(properties);
 
