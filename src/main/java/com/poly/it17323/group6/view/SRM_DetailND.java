@@ -23,6 +23,12 @@ public class SRM_DetailND extends javax.swing.JFrame {
     }
     
     QLNguoiDungResponse setData(QLNguoiDungResponse response){
+        txtDiachi.setEditable(false);
+        txtGioiTinh.setEditable(false);
+        txtHoten.setEditable(false);
+        txtSDT.setEditable(false);
+        txtTenCV.setEditable(false);
+        txtTenTk.setEditable(false);
         txtDiachi.setText(response.getDiaChi());
         txtGioiTinh.setText(response.getGioiTinh());
         txtHoten.setText(response.getHoTen());
@@ -58,11 +64,13 @@ public class SRM_DetailND extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
         jLabel1.setText("THÔNG TIN NHÂN VIÊN");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 280, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 280, 30));
 
         jLabel2.setText("Họ tên:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
