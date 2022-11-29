@@ -34,7 +34,17 @@ public class HoaDonRepository {
         HoaDon hoaDon = (HoaDon) query.getSingleResult();
         return hoaDon;
     }
-
+    
+    public List<HoaDon> DoanhThu() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String hql = "select SUM(tongTien) FROM HoaDon where tinhTrang = 1";
+        Query query = session.createQuery(hql);
+        List<HoaDon> result = query.getResultList();
+        return result;
+    }
+    public static void main(String[] args) {
+        System.out.println(new HoaDonRepository().DoanhThu());
+    }
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
