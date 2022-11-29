@@ -26,6 +26,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     private EmailSender es = new EmailSender();
     private final NguoiDungRepository repo = new NguoiDungRepository();
     private final String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private final String valiPass = "^[a-z0-9-]{8,16}$";
     private final static int random_int = (int) Math.floor(Math.random() * (999999 - 10000 + 1));
 
     @Override
@@ -53,36 +54,35 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public QLNguoiDungResponse getOneNv(QLNguoiDungResponse response) {
-//        QLNguoiDungResponse qlndr = new QLNguoiDungResponse();
-        for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
-            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
-//                qlndr.setCmt_cccd(NguoiDung.getCmt_cccd());
-//                qlndr.setConFirm(NguoiDung.getEmail());
-//                qlndr.setDiaChi(NguoiDung.getDiaChi());
-//                qlndr.setGioiTinh(NguoiDung.getGioiTinh());
-//                qlndr.setTenTK(NguoiDung.getTenTK());
-//                qlndr.setMatKhau(NguoiDung.getMatKhau());
-//                qlndr.setTenCV(qlndr.getTenCV());
-//                qlndr.setMaCV(NguoiDung.getMaCV());
-//                qlndr.setMaND(NguoiDung.getMaND());
-                return NguoiDung;
-            }
-        }
-        return null;
-    }
+        NguoiDung nd = new NguoiDung();
+        nd.setTenTK(response.getTenTK());
+        nd.setMatKhau(response.getMatKhau());
+        repo.getOneND(nd);
+        QLNguoiDungResponse qlndr = new QLNguoiDungResponse(repo.getOneND(nd));
+        return qlndr;
 
-//    public static void main(String[] args) {
-//        List<QLNguoiDungResponse> list = new QLNguoiDungService().getAllNguoiDung();
-//        for (QLNguoiDungResponse p : list) {
-//            System.out.println(p.toString());
+//        for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
+//            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
+////                qlndr.setCmt_cccd(NguoiDung.getCmt_cccd());
+////                qlndr.setConFirm(NguoiDung.getEmail());
+////                qlndr.setDiaChi(NguoiDung.getDiaChi());
+////                qlndr.setGioiTinh(NguoiDung.getGioiTinh());
+////                qlndr.setTenTK(NguoiDung.getTenTK());
+////                qlndr.setMatKhau(NguoiDung.getMatKhau());
+////                qlndr.setTenCV(qlndr.getTenCV());
+////                qlndr.setMaCV(NguoiDung.getMaCV());
+////                qlndr.setMaND(NguoiDung.getMaND());
+//                return NguoiDung;
+//            }
 //        }
-//    }
+//        return null;
+    }
 
 //    public static void main(String[] args) {
 //        QLNguoiDungResponse qlndr1 = new QLNguoiDungResponse();
 //        qlndr1.setTenTK("vanne1312");
-//        qlndr1.setMatKhau("12345678");
-//        qlndr1.setTenCV("Nhân viên");
+//        qlndr1.setMatKhau("87654321");
+////        qlndr1.setTenCV("Nhân viên");
 //        QLNguoiDungResponse qlndr = new QLNguoiDungService().getOneNv(qlndr1);
 //        System.out.println(qlndr.toString());
 //
@@ -93,9 +93,9 @@ public class QLNguoiDungService implements IQLNguoiDungService {
             return "Không được để trống tên tài khoản";
         } else if (qlndr.getMatKhau().isBlank()) {
             return "Không được để trống mật khẩu";
-        } else if(login(qlndr) == null){
+        } else if (login(qlndr) == null) {
             return "Tên tài khoản hoặc mật khẩu không chính xác";
-        } 
+        }
         return null;
     }
 
@@ -116,7 +116,14 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public String emailFailse(QLNguoiDungResponse qlndr) {
-        return (checkMail(qlndr) == null) ? "Email không tồn tại" : null;
+        if (qlndr.getEmail().isBlank()) {
+            return "Vui lòng nhập email";
+        } else if (!qlndr.getEmail().trim().matches(email)) {
+            return "Email không đúng định dạng";
+        } else if (checkMail(qlndr) == null) {
+            return "Email không tồn tại trong hệ thống";
+        }
+        return null;
     }
 
     @Override
@@ -138,6 +145,8 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     public String updatePass(QLNguoiDungResponse qlND) {
         if (qlND.getNewPass().isBlank()) {
             return "Bạn chưa nhập Pass";
+        } else if (!qlND.getNewPass().trim().matches(valiPass)) {
+            return "Mật khẩu không được chứa kí tự đặc biệt,viết hoa và từ 8-16 kí tự";
         } else if (qlND.getConFirm().isBlank()) {
             return "Bạn chưa nhập xác nhận Pass";
         } else if (!qlND.getConFirm().trim().matches(qlND.getNewPass().trim())) {
