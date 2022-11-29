@@ -19,7 +19,14 @@ import java.util.UUID;
 public class QLChatLieuService implements IQLChatLieuService {
 
     private ChatLieuRepository repo = new ChatLieuRepository();
+    
+    private int ma = repo.getAll().size() + 1;
 
+    @Override
+    public String getMaTang() {
+        return "CL0" + (ma++);
+    }
+    
     @Override
     public List<QLSanPhamResponse> getAllQLCL() {
         List<ChatLieu> list = repo.getAll();
@@ -33,7 +40,7 @@ public class QLChatLieuService implements IQLChatLieuService {
 
     @Override
     public boolean addQLCL(QLSanPhamResponse qlCL) {
-        var cl = repo.add(new ChatLieu(null, qlCL.getMaChatLieu(), qlCL.getTenChatLieu()));
+        var cl = repo.add(new ChatLieu(null,new QLChatLieuService().getMaTang(), qlCL.getTenChatLieu()));
         return cl;
     }
 

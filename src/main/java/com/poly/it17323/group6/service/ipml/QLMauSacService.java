@@ -19,7 +19,14 @@ import java.util.UUID;
 public class QLMauSacService implements IQLMauSacService {
 
     private MauSacRepository repo = new MauSacRepository();
+    
+    private int ma = repo.getAll().size() + 1;
 
+    @Override
+    public String getMaTang() {
+        return "M0" + (ma++);
+    } 
+    
     @Override
     public List<QLSanPhamResponse> getAllQLMauSac() {
         List<MauSac> list = repo.getAll();
@@ -44,7 +51,7 @@ public class QLMauSacService implements IQLMauSacService {
     @Override
     public boolean addQLMauSac(QLSanPhamResponse qlMauSac) {
         qlMauSac.setIdMauSac(null);
-        var ms = repo.add(new MauSac(null, qlMauSac.getMaMauSac(), qlMauSac.getTenMauSac()));
+        var ms = repo.add(new MauSac(null, new QLMauSacService().getMaTang(), qlMauSac.getTenMauSac()));
         return ms;
     }
 

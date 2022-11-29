@@ -19,7 +19,14 @@ import java.util.UUID;
 public class QLSanPhamService implements IQLSanPhamService{
 
     private SanPhamRepository repo = new SanPhamRepository();
+    
+    private int ma = repo.getAll().size() + 1;
 
+    @Override
+    public String getMaTang() {
+        return "SP0" + (ma++);
+    } 
+    
     @Override
     public List<QLSanPhamResponse> getAllQLSP() {
         List<SanPham> list = repo.getAll();
@@ -43,7 +50,7 @@ public class QLSanPhamService implements IQLSanPhamService{
 
     @Override
     public boolean addQLSP(QLSanPhamResponse qlSP) {
-        return repo.add(new SanPham(null,qlSP.getMaSP(), qlSP.getTenSP(),null));
+        return repo.add(new SanPham(null,new QLSanPhamService().getMaTang(), qlSP.getTenSP(),null));
     }
 
     @Override

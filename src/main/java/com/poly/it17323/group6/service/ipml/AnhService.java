@@ -18,12 +18,15 @@ import java.util.UUID;
  */
 public class AnhService implements IAnhService {
 
-    private final AnhRepository repo;
+    private final AnhRepository repo = new AnhRepository();
+    
+    private int ma = repo.getAll().size() + 1;
 
-    public AnhService() {
-        repo = new AnhRepository();
+    @Override
+    public String getMaTang() {
+        return "A0" + (ma++);
     }
-
+    
     @Override
     public List<Anh> getAllQLAnh() {
         return repo.getAll();
@@ -41,6 +44,7 @@ public class AnhService implements IAnhService {
 
     @Override
     public boolean addQLAnh(Anh qlAnh) {
+        qlAnh.setMaAnh(new AnhService().getMaTang());
         return repo.add(qlAnh);
     }
 

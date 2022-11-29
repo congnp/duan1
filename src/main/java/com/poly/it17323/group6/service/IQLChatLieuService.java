@@ -21,4 +21,6 @@ public interface IQLChatLieuService {
     boolean updateQLCL(QLSanPhamResponse qlCL);
 
     boolean deleteQLCL(QLSanPhamResponse qlCL);
+     
+    String getMaTang();
 }

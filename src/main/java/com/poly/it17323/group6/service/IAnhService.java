@@ -24,4 +24,6 @@ public interface IAnhService {
     boolean updateQLCL(Anh qlAnh);
     
     boolean deleteQLCL(Anh qlAmh );
+    
+    String getMaTang();
 }

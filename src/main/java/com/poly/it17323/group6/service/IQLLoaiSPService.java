@@ -22,4 +22,6 @@ public interface IQLLoaiSPService {
     boolean updateQLLoaiSP(QLSanPhamResponse qlLoaiSP);
     
     boolean deleteQLLoaiSP(QLSanPhamResponse qlLoaiSP);
+    
+    String getMaTang();
 }

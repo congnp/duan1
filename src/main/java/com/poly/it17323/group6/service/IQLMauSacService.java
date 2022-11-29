@@ -22,4 +22,6 @@ public interface IQLMauSacService {
     boolean updateQLMauSac(QLSanPhamResponse qlMauSac);
     
     boolean deleteQLMauSac(QLSanPhamResponse qlMauSac);
+    
+    String getMaTang();
 }

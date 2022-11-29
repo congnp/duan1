@@ -20,6 +20,13 @@ public class QLSizeService implements IQLSizeService{
 
     private SizeRepository repo = new SizeRepository();
 
+    private int ma = repo.getAll().size() + 1;
+
+    @Override
+    public String getMaTang() {
+        return "SZ0" + (ma++);
+    }
+    
     @Override
     public List<QLSanPhamResponse> getAllQLSize() {
         List<Size> list = repo.getAll();
@@ -43,7 +50,7 @@ public class QLSizeService implements IQLSizeService{
 
     @Override
     public boolean addQLSize(QLSanPhamResponse qlSize) {
-        var sp = repo.add(new Size(null,qlSize.getMaSize(),qlSize.getTenSize()));
+        var sp = repo.add(new Size(null,new QLSizeService().getMaTang(),qlSize.getTenSize()));
         return sp;
     }
 

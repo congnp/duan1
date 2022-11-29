@@ -19,7 +19,13 @@ import java.util.UUID;
 public class QLLoaiSPService implements IQLLoaiSPService {
 
     private LoaiSPRepository repo = new LoaiSPRepository();
+    
+    private int ma = repo.getAll().size() + 1;
 
+    @Override
+    public String getMaTang() {
+        return "L0" + (ma++);
+    }
     @Override
     public List<QLSanPhamResponse> getAllQLLoaiSP() {
         List<LoaiSP> list = repo.getAll();
@@ -44,7 +50,7 @@ public class QLLoaiSPService implements IQLLoaiSPService {
     @Override
     public boolean addQLLoaiSP(QLSanPhamResponse qlLoaiSP) {
         qlLoaiSP.setIdLoaiSP(null);
-        var cl = repo.add(new LoaiSP(null, qlLoaiSP.getMaLoaiSP(), qlLoaiSP.getTenLoaiSP(), null));
+        var cl = repo.add(new LoaiSP(null,new QLLoaiSPService().getMaTang(), qlLoaiSP.getTenLoaiSP(), null));
         return cl;
     }
 

@@ -22,4 +22,6 @@ public interface IQLSanPhamService {
     boolean updateQLSP(QLSanPhamResponse qlSP);
     
     boolean deleteQLSP(QLSanPhamResponse qlSP);
+    
+    String getMaTang();
 }

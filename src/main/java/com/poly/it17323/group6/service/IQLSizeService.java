@@ -22,4 +22,6 @@ public interface IQLSizeService {
     boolean updateQLSize(QLSanPhamResponse qlSize);
     
     boolean deleteQLSize(QLSanPhamResponse qlSize);
+    
+    String getMaTang();
 }

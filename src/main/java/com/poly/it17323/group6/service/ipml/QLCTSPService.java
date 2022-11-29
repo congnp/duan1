@@ -18,6 +18,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,13 +54,42 @@ public class QLCTSPService implements ISanPhamChiTietService {
     public boolean addQLChiTietSP(QLSanPhamResponse qlCTSP) {
         Date ngayTao = Date.valueOf(qlCTSP.getNgayTao().trim());
         Date ngaySua = Date.valueOf(qlCTSP.getNgaySua().trim());
-        SanPham sp = new SanPham(qlCTSP.getIdSP(), qlCTSP.getMaSP(), qlCTSP.getTenSP(), null); //Integer.parseInt(qlCTSP.getTinhTrangSP()));
-        LoaiSP loaisp = new LoaiSP(qlCTSP.getIdLoaiSP(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP(), null); //Integer.parseInt(qlCTSP.getTinhTrangLoaiSP()));
+        SanPham sp = new SanPham(qlCTSP.getIdSP(), qlCTSP.getMaSP(), qlCTSP.getTenSP(), null);
+        LoaiSP loaisp = new LoaiSP(qlCTSP.getIdLoaiSP(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP(), null);
         ChatLieu cl = new ChatLieu(qlCTSP.getIdChatLieu(), qlCTSP.getMaChatLieu(), qlCTSP.getTenChatLieu());
         MauSac ms = new MauSac(qlCTSP.getIdMauSac(), qlCTSP.getMaMauSac(), qlCTSP.getTenMauSac());
         Size s = new Size(qlCTSP.getIdSize(), qlCTSP.getMaSize(), qlCTSP.getTenSize());
-        return repo.add(new ChiTietSanPham(null, Integer.parseInt(qlCTSP.getSLTon()),
-                BigDecimal.valueOf(Double.parseDouble(qlCTSP.getGia())),
+        if (qlCTSP.getSLTon().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống số lượng !!");
+            return false;
+        }
+        if (qlCTSP.getGia().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống giá!!");
+            return false;
+        }
+        int sl;
+        try {
+            sl = Integer.parseInt(qlCTSP.getSLTon());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Số lượng tồn phải là số");
+            return false;
+        }
+        if (sl <= 0) {
+            JOptionPane.showMessageDialog(null, "Số lượng tồn lớn hơn 0");
+            return false;
+        }
+        BigDecimal gia;
+        try {
+            gia = BigDecimal.valueOf(Double.parseDouble(qlCTSP.getGia()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Giá phải là số");
+            return false;
+        }
+        if (gia.compareTo(BigDecimal.ZERO) == -1) {
+            JOptionPane.showMessageDialog(null, "Giá bán phải là số nguyên dương");
+            return false;
+        }
+        return repo.add(new ChiTietSanPham(null, sl, gia,
                 qlCTSP.getMoTa(), Integer.parseInt(qlCTSP.getTinhTrang()),
                 ngayTao, ngaySua, sp, loaisp, cl, s, ms));
     }
@@ -68,44 +98,59 @@ public class QLCTSPService implements ISanPhamChiTietService {
     public boolean updateQLChiTietSP(QLSanPhamResponse qlCTSP) {
         Date ngayTao = Date.valueOf(qlCTSP.getNgayTao().trim());
         Date ngaySua = Date.valueOf(qlCTSP.getNgaySua().trim());
-        SanPham sp = new SanPham(qlCTSP.getIdSP(), qlCTSP.getMaSP(), qlCTSP.getTenSP(), null);//Integer.parseInt(qlCTSP.getTinhTrangSP()));
-        LoaiSP loaisp = new LoaiSP(qlCTSP.getIdLoaiSP(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP(),null);// Integer.parseInt(qlCTSP.getTinhTrangLoaiSP()));
+        SanPham sp = new SanPham(qlCTSP.getIdSP(), qlCTSP.getMaSP(), qlCTSP.getTenSP(), null);
+        LoaiSP loaisp = new LoaiSP(qlCTSP.getIdLoaiSP(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP(), null);
         ChatLieu cl = new ChatLieu(qlCTSP.getIdChatLieu(), qlCTSP.getMaChatLieu(), qlCTSP.getTenChatLieu());
         MauSac ms = new MauSac(qlCTSP.getIdMauSac(), qlCTSP.getMaMauSac(), qlCTSP.getTenMauSac());
         Size s = new Size(qlCTSP.getIdSize(), qlCTSP.getMaSize(), qlCTSP.getTenSize());
-        return repo.update(new ChiTietSanPham(qlCTSP.getId(),
-                Integer.parseInt(qlCTSP.getSLTon()), 
-                BigDecimal.valueOf(Double.parseDouble(qlCTSP.getGia())), 
+        if (qlCTSP.getSLTon().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống số lượng !!");
+            return false;
+        }
+        if (qlCTSP.getGia().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống giá!!");
+            return false;
+        }
+        if (qlCTSP.getSLTon().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống số lượng !!");
+            return false;
+        }
+        if (qlCTSP.getGia().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống giá!!");
+            return false;
+        }
+        int sl;
+        try {
+            sl = Integer.parseInt(qlCTSP.getSLTon());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Số lượng tồn phải là số");
+            return false;
+        }
+        if (sl <= 0) {
+            JOptionPane.showMessageDialog(null, "Số lượng tồn lớn hơn 0");
+            return false;
+        }
+        BigDecimal gia;
+        try {
+            gia = BigDecimal.valueOf(Double.parseDouble(qlCTSP.getGia()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Giá phải là số");
+            return false;
+        }
+        if (gia.compareTo(BigDecimal.ZERO) == -1) {
+            JOptionPane.showMessageDialog(null, "Giá bán phải là số nguyên dương");
+            return false;
+        }
+        return repo.update(new ChiTietSanPham(qlCTSP.getId(), sl, gia,
                 qlCTSP.getMoTa(), Integer.parseInt(qlCTSP.getTinhTrang()),
                 ngayTao, ngaySua, sp, loaisp, cl, s, ms));
     }
 
     @Override
     public boolean deleteQLChiTietSP(QLSanPhamResponse qlCTSP) {
-//        Date ngayTao = Date.valueOf(qlCTSP.getNgayTao());
-//        Date ngaySua = Date.valueOf(qlCTSP.getNgaySua());
-//        SanPham sp = new SanPham(qlCTSP.getIdSP(), qlCTSP.getMaSP(), qlCTSP.getTenSP(), Integer.parseInt(qlCTSP.getTinhTrangSP()));
-//        LoaiSP loaisp = new LoaiSP(qlCTSP.getIdLoaiSP(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP(), Integer.parseInt(qlCTSP.getTinhTrangLoaiSP()));
-//        ChatLieu cl = new ChatLieu(qlCTSP.getIdChatLieu(), qlCTSP.getMaLoaiSP(), qlCTSP.getTenLoaiSP());
-//        MauSac ms = new MauSac(qlCTSP.getIdMauSac(), qlCTSP.getMaMauSac(), qlCTSP.getTenMauSac());
-//        Size s = new Size(qlCTSP.getIdSize(), qlCTSP.getMaSize(), qlCTSP.getTenSize());
-//        return repo.delete(new ChiTietSanPham(qlCTSP.getId(), Integer.parseInt(qlCTSP.getSLTon()), BigDecimal.valueOf(Double.parseDouble(qlCTSP.getGia())), qlCTSP.getMoTa(),
-//                Integer.parseInt(qlCTSP.getTinhTrang()), ngayTao, ngaySua, sp, loaisp, cl, s, ms));
         ChiTietSanPham sp = new ChiTietSanPham();
         sp.setId(qlCTSP.getId());
         return repo.delete(sp);
-    }
-    public static void main(String[] args) {
-        List<QLSanPhamResponse> lists = new QLCTSPService().getAllQLChiTietSP();
-        for (QLSanPhamResponse p : lists) {
-            System.out.println(p.toString());
-        }
-//        SanPham sp1 = new SanPham('E0E52C45-832D-43C5-998D-49227B97FE11','SP01','Áo',null);
-//        LoaiSP loaisp = new LoaiSP();
-//        ChatLieu cl = new ChatLieu();
-//        MauSac ms = new MauSac();
-//        Size s = new Size();
-//        ChiTietSanPham sp = new ChiTietSanPham(null,, BigDecimal.ONE, moTa, Integer.MIN_VALUE, ngayTao, ngaySua, sanPham, loaiSP, chatLieu, size, mauSac);
     }
 
 }
