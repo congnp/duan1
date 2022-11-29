@@ -35,6 +35,16 @@ public class NguoiDungRepository {
         NguoiDung nguoidung = (NguoiDung) query.getSingleResult();
         return nguoidung;
     }
+    
+    public NguoiDung getOneND(NguoiDung nd) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE TenTK = :tk AND MatKhau = :mk";
+        Query query = session.createQuery(sql, NguoiDung.class);
+        query.setParameter("tk", nd.getTenTK());
+        query.setParameter("mk", nd.getMatKhau());
+        NguoiDung nguoidung = (NguoiDung) query.getSingleResult();
+        return nguoidung;
+    }
 
     public Boolean add(NguoiDung nguoidung) {
         Transaction transaction = null;
