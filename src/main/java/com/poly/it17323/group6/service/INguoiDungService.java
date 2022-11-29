@@ -19,8 +19,6 @@ public interface INguoiDungService {
 
     NguoiDung getOne(UUID id);
 
-    boolean Login(String tenTk, String pass, String role);
-
     boolean add(NguoiDungReponse ND);
 
     boolean update(NguoiDungReponse ND);

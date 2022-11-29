@@ -5,6 +5,7 @@
 package com.poly.it17323.group6.service;
 
 import com.poly.it17323.group6.domainmodel.ChucVu;
+import com.poly.it17323.group6.response.NguoiDungReponse;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ public interface IChucVuService {
 
     List<ChucVu> getAll();
 
-    boolean add(ChucVu CV);
+    boolean add(NguoiDungReponse CV);
 
-    boolean update(ChucVu CV);
+    boolean update(NguoiDungReponse CV);
 
-    boolean delete(ChucVu CV);
+    boolean delete(NguoiDungReponse CV);
 }

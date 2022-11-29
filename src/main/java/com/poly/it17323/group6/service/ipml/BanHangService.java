@@ -35,6 +35,11 @@ public class BanHangService implements IQLBanHangService {
     private int ma = hdRepo.getAll().size() + 1;
 
     @Override
+    public String getMaTang() {
+        return "HD0" + (ma++);
+    }
+
+    @Override
     public boolean add_HD(BanhangReponse b) {
         java.util.Date currentDate = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -123,11 +128,6 @@ public class BanHangService implements IQLBanHangService {
     @Override
     public List<NguoiDung> getAll_ND() {
         return ndRepo.getAll();
-    }
-
-    @Override
-    public String getMaTang() {
-        return "HD0" + (ma++);
     }
 
 }

@@ -4,8 +4,6 @@
  */
 package com.poly.it17323.group6.response;
 
-import com.poly.it17323.group6.domainmodel.ChucVu;
-import com.poly.it17323.group6.domainmodel.NguoiDung;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,47 +17,50 @@ import lombok.ToString;
 @Setter
 @ToString
 public class NguoiDungReponse {
-  private UUID idND;
-  private String idCV;
-  private String maND;
-  private String tenTK;
-  private String matKhau;
-  private String hoVaTen;
-  private String gioiTinh;
-  private String ngaySinh;
-  private String email;
-  private String sdt;
-  private String diaChi;
-  private String cccd;
-  private Integer tinhTrang;
-  private String ngayTao;
-  private String ngaySua;
-  
+
+    private UUID idCV;
+    private String maCV;
+    private String tenCV;
+    private UUID idND;
+    private String maND;
+    private String tenTK;
+    private String matKhau;
+    private String hoVaTen;
+    private String gioiTinh;
+    private String ngaySinh;
+    private String email;
+    private String sdt;
+    private String diaChi;
+    private String cccd;
+    private Integer tinhTrang;
+    private String ngayTao;
+    private String ngaySua;
 
     public NguoiDungReponse() {
     }
 
-    public NguoiDungReponse(NguoiDung nd) {
-        this.idND = nd.getIdND();
-        this.idCV = nd.getChucVu().getTenCV();
-        this.maND = nd.getMaND();
-        this.tenTK = nd.getTenTK();
-        this.matKhau = nd.getMatKhau();
-        this.hoVaTen = nd.getHoTen();
-        this.gioiTinh = nd.getGioiTinh();
-        this.ngaySinh = nd.getNgaySinh()+"";
-        this.email = nd.getEmail();
-        this.sdt = nd.getSdt();
-        this.diaChi = nd.getDiaChi();
-        this.cccd = nd.getCccd();
-        this.tinhTrang = nd.getTinhTrang();
-        this.ngayTao = nd.getNgayTao()+"";
-        this.ngaySua = nd.getNgaySua()+"";
+    public NguoiDungReponse(UUID idCV, String maCV, String tenCV) {
+        this.idCV = idCV;
+        this.maCV = maCV;
+        this.tenCV = tenCV;
     }
 
-    public String getCV(ChucVu cv){
-        return idCV + cv;
+    public NguoiDungReponse(UUID idND, String maND, String tenTK, String matKhau, String hoVaTen, String gioiTinh, String ngaySinh, String email, String sdt, String diaChi, String cccd, Integer tinhTrang, String ngayTao, String ngaySua, UUID idCV) {
+        this.idND = idND;
+        this.maND = maND;
+        this.tenTK = tenTK;
+        this.matKhau = matKhau;
+        this.hoVaTen = hoVaTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.email = email;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.cccd = cccd;
+        this.tinhTrang = tinhTrang;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.idCV = idCV;
     }
-  
+
 }
-

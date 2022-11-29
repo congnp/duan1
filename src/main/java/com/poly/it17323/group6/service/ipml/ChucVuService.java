@@ -6,6 +6,7 @@ package com.poly.it17323.group6.service.ipml;
 
 import com.poly.it17323.group6.domainmodel.ChucVu;
 import com.poly.it17323.group6.repository.ChucVuRepository;
+import com.poly.it17323.group6.response.NguoiDungReponse;
 import com.poly.it17323.group6.service.IChucVuService;
 import java.util.List;
 
@@ -13,32 +14,31 @@ import java.util.List;
  *
  * @author ThanhNam
  */
-public class ChucVuService implements IChucVuService{
+public class ChucVuService implements IChucVuService {
 
     private ChucVuRepository cvr = new ChucVuRepository();
+
     @Override
     public List<ChucVu> getAll() {
         return cvr.getAll();
     }
 
     @Override
-    public boolean add(ChucVu CV) {
-        cvr.add(new ChucVu(CV.getIdCV(), CV.getMaCV(), CV.getTenCV()));
+    public boolean add(NguoiDungReponse nd) {
+        cvr.add(new ChucVu(null, nd.getMaCV(), nd.getTenCV()));
         return true;
     }
 
     @Override
-    public boolean update(ChucVu CV) {
-      cvr.update(new ChucVu(CV.getIdCV(), CV.getMaCV(), CV.getTenCV()));
-      return true;  
+    public boolean update(NguoiDungReponse nd) {
+        cvr.update(new ChucVu(nd.getIdCV(), nd.getMaCV(), nd.getTenCV()));
+        return true;
     }
 
     @Override
-    public boolean delete(ChucVu CV) {
-       ChucVu cv = new ChucVu();
-       cv.setIdCV(CV.getIdCV());
-       cvr.delete(cv);
-       return true;
+    public boolean delete(NguoiDungReponse nd) {
+        cvr.delete(new ChucVu(nd.getIdCV(), nd.getMaCV(), nd.getTenCV()));
+        return true;
     }
-    
+
 }
