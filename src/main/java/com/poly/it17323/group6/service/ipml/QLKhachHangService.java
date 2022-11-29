@@ -20,9 +20,11 @@ import java.util.UUID;
 public class QLKhachHangService implements IQLKhachHangService {
 
     private KhachHangRepository khRepo;
+    private int ma;
 
     public QLKhachHangService() {
         khRepo = new KhachHangRepository();
+        ma = khRepo.getAll().size()+1;
     }
 
     @Override
@@ -44,19 +46,27 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     @Override
     public String addKh(KhachHangResponse kh) {
-        if (kh.getMaKh().isEmpty() || kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
-                || kh.getNgaySua().isEmpty() || kh.getNgayTao().isEmpty() || kh.getSdt().isEmpty()) {
+        if (kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
+                ||kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
-
+        } 
+        if(kh.getSdt().length() < 10){
+           return "Số điện thoại phải nhập đủ 10 số";
         }
-//        KhachHangResponse kHang = khRepo.getByMa(kh.getMaKh());
-//        if(kHang!=null){
-//           return "Mã không được trùng!";
+        int sdt;
+        try {
+            sdt = Integer.parseInt(kh.getSdt());
+        } catch (Exception e) {
+            return "Số điện thoại phải là số!";
+        }
+        
+//        if(kh.getHoTen().matches("[a-zA-Z][a-zA-Z ]+")){
+//          return "Họ tên chỉ chứa alphabet và ký tự trắng";
 //        }
         Date ngaySinh = Date.valueOf(kh.getNgaySinh());
         Date ngayTao = Date.valueOf(kh.getNgayTao());
         Date ngaySua = Date.valueOf(kh.getNgaySua());
-        khRepo.add(new KhachHang(null, kh.getMaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
+        khRepo.add(new KhachHang(null, new QLKhachHangService().MaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
         if (kh == null) {
             return "THÊM THẤT BẠI!!!";
         } else {
@@ -67,15 +77,23 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     @Override
     public String updateKh(KhachHangResponse kh) {
-        if (kh.getMaKh().isEmpty() || kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
-                || kh.getNgaySua().isEmpty() || kh.getNgayTao().isEmpty() || kh.getSdt().isEmpty()) {
+        if (kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
+                ||kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
-
+        }
+        if(kh.getSdt().length() < 10){
+           return "Số điện thoại phải nhập đủ 10 số";
+        }
+        int sdt;
+        try {
+            sdt = Integer.parseInt(kh.getSdt());
+        } catch (Exception e) {
+            return "Số điện thoại phải là số!";
         }
         Date ngaySinh = Date.valueOf(kh.getNgaySinh());
         Date ngayTao = Date.valueOf(kh.getNgayTao());
         Date ngaySua = Date.valueOf(kh.getNgaySua());
-        khRepo.update(new KhachHang(kh.getIdKh(), kh.getMaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
+        khRepo.update(new KhachHang(kh.getIdKh(),kh.getMaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
         if (kh == null) {
             return "SỬA THẤT BẠI!!!";
         } else {
@@ -94,5 +112,11 @@ public class QLKhachHangService implements IQLKhachHangService {
         } else {
             return "XÓA THẤT BẠI!";
         }
+    }
+
+    @Override
+    public String MaKh() {
+        return "KH0" + (ma++);       
+// throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

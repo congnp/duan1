@@ -22,4 +22,6 @@ public interface IQLKhachHangService {
     String updateKh(KhachHangResponse kh);
     
     String deleteKh(KhachHangResponse kh);
+    
+    String MaKh();
 }

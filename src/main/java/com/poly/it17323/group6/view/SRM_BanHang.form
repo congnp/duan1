@@ -108,9 +108,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -121,8 +121,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -635,7 +635,7 @@
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DonHang" pref="405" max="32767" attributes="0"/>
+                          <Component id="DonHang" pref="400" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1332,7 +1332,7 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnThanhToan" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                                  <EmptySpace pref="19" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2571,13 +2571,14 @@
                         <Component class="javax.swing.JTable" name="tblDonHangHuy">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="6" rowCount="0">
+                              <Table columnCount="7" rowCount="0">
                                 <Column editable="false" title="STT" type="java.lang.Object"/>
                                 <Column editable="false" title="M&#xe3; H&#x110;" type="java.lang.Object"/>
                                 <Column editable="false" title="M&#xe3; ND" type="java.lang.Object"/>
                                 <Column editable="false" title="Ng&#xe0;y &#x111;&#x1eb7;t" type="java.lang.Object"/>
+                                <Column editable="false" title="Ng&#xe0;y tr&#x1ea3;" type="java.lang.Object"/>
                                 <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n" type="java.lang.Object"/>
-                                <Column editable="false" title="L&#xfd; do tr&#x1ea3;" type="java.lang.Object"/>
+                                <Column editable="false" title="L&#xfd; do &#x111;&#x1ed5;i tr&#x1ea3;" type="java.lang.Object"/>
                               </Table>
                             </Property>
                           </Properties>
@@ -4033,6 +4034,7 @@
                           </Properties>
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnChonKHMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonKHActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnSuaKH">
@@ -4975,7 +4977,6 @@
                                                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                                                               <Component id="jScrollPane19" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace max="-2" attributes="0"/>
                                                           </Group>
@@ -5400,7 +5401,7 @@
                                           <Component id="txt_ctsp_ThemSL" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                           <Component id="btn_ctsp_Sua2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
