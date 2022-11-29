@@ -37,6 +37,8 @@ public class SRM_ResetPass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -47,6 +49,12 @@ public class SRM_ResetPass extends javax.swing.JFrame {
         psConfirmPass = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+
+        jCheckBox2.setText("jCheckBox2");
+
+        jCheckBox3.setText("jCheckBox3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,7 +93,25 @@ public class SRM_ResetPass extends javax.swing.JFrame {
         psConfirmPass.setBorder(null);
         jPanel1.add(psConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 220, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 220, 10));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 220, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 220, 10));
+
+        jCheckBox4.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setText("ShowPass");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, 20));
+
+        jCheckBox5.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox5.setText("ShowPass");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,6 +139,22 @@ public class SRM_ResetPass extends javax.swing.JFrame {
         qlndr.setConFirm(String.valueOf(psConfirmPass.getPassword()));
         JOptionPane.showMessageDialog(this, iqlnds.updatePass(qlndr));
     }//GEN-LAST:event_btnResetActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        if (jCheckBox4.isSelected()) {
+            psNewPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psNewPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        if (jCheckBox5.isSelected()) {
+            psConfirmPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psConfirmPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +195,10 @@ public class SRM_ResetPass extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnReset;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
