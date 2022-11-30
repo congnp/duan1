@@ -69,12 +69,33 @@ import java.sql.Date;
 import java.util.UUID;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  *
  * @author pdanh
  */
-public final class SRM_BanHang extends javax.swing.JFrame {
+public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, ThreadFactory {
+
+    private WebcamPanel panel = null;
+    private Webcam webcam = null;
+
+    private static final long serialVersionUID = 6441489157408381878L;
+    private Executor executor = Executors.newSingleThreadExecutor(this);
 
     private final IQLBanHangService iBH = new BanHangService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
@@ -124,7 +145,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
 //    private final CardLayout cardLayout;
 
     public SRM_BanHang(QLNguoiDungResponse response) throws IOException {
+
         initComponents();
+        initWebcam();
         setLocationRelativeTo(null);
         thaydoi.setEnabled(false);
         xoa.setEnabled(false);
@@ -346,6 +369,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         lammoi = new javax.swing.JButton();
         inhoadon = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        PN_QR = new javax.swing.JPanel();
         QL_NguoiDung = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
@@ -894,9 +918,9 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         ChucNangLayout.setHorizontalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PN_KhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
             .addComponent(PN_QLThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(ChucNangLayout.createSequentialGroup()
                 .addComponent(pnDetailND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -905,8 +929,8 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnExist, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
-            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
         ChucNangLayout.setVerticalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -962,7 +986,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
             HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HoaDonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         GioHang.setBackground(new java.awt.Color(232, 211, 227));
@@ -1209,7 +1233,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                     .addGroup(ThongTinLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(60, 60, 60)
-                        .addComponent(lblMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                        .addComponent(lblMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                         .addGap(63, 63, 63)
                         .addComponent(btnTaoHD)
                         .addGap(49, 49, 49))
@@ -1336,7 +1360,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                     .addComponent(inhoadon))
                 .addGap(18, 18, 18)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout DonHangLayout = new javax.swing.GroupLayout(DonHang);
@@ -1358,18 +1382,11 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ma QR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 177, Short.MAX_VALUE)
-        );
+        PN_QR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.add(PN_QR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 210));
 
         javax.swing.GroupLayout QL_BanHangLayout = new javax.swing.GroupLayout(QL_BanHang);
         QL_BanHang.setLayout(QL_BanHangLayout);
@@ -1382,9 +1399,10 @@ public final class SRM_BanHang extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, QL_BanHangLayout.createSequentialGroup()
                         .addComponent(HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5230,6 +5248,7 @@ public final class SRM_BanHang extends javax.swing.JFrame {
     private javax.swing.JPanel PN_QLNguoiDung;
     private javax.swing.JPanel PN_QLSanPham;
     private javax.swing.JPanel PN_QLThongKe;
+    private javax.swing.JPanel PN_QR;
     private javax.swing.JPanel QL_AnhHai;
     private javax.swing.JPanel QL_BanHang;
     private javax.swing.JPanel QL_HoaDon;
@@ -5710,5 +5729,65 @@ public final class SRM_BanHang extends javax.swing.JFrame {
         pn6.setBackground(new Color(210, 166, 199));
         setTitle(title);
     }
-    // Danh
+    
+
+    private void initWebcam() {
+        int index;
+        Dimension size = WebcamResolution.QVGA.getSize();
+        webcam = Webcam.getWebcams().get(0);
+        
+        webcam.setViewSize(size);
+
+        panel = new WebcamPanel(webcam);
+        panel.setPreferredSize(size);
+        panel.setFPSDisplayed(true);
+
+        PN_QR.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 210));
+
+        executor.execute(this);
+    }
+
+    @Override
+    public void run() {
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Result result = null;
+            BufferedImage image = null;
+            
+            if (webcam.isOpen()) {
+                
+                if ((image = webcam.getImage()) == null) {
+                    
+                    continue;
+                }
+            }
+
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));//Lấy source
+            
+            try {
+                result = new MultiFormatReader().decode(bitmap);
+            } catch (NotFoundException e) {
+                //No result...
+            }
+
+            if (result != null) {
+//                result_field.setText(result.getText());
+                
+            }
+        } while (true);
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "My Thread");
+        t.setDaemon(true);
+        return t;
+    }
 }
