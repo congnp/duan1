@@ -91,6 +91,11 @@ public class BanHangService implements IQLBanHangService {
     }
 
     @Override
+    public List<ChiTietSanPham> getAll_ByName(String name) {
+        return ctspRepo.getAll_ByName(name);
+    }
+
+    @Override
     public List<HoaDonChiTiet> getAll_HDCT() {
         return hdctRepo.getAll();
     }

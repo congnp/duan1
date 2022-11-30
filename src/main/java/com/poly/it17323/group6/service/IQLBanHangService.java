@@ -38,6 +38,8 @@ public interface IQLBanHangService {
 
     List<ChiTietSanPham> getAll_CTSP();
 
+    List<ChiTietSanPham> getAll_ByName(String name);
+
     List<HoaDonChiTiet> getAll_HDCT();
 
     List<HoaDonChiTiet> getAll_HDCTByIDHD(UUID id);

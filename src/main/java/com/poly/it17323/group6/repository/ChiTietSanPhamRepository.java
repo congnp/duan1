@@ -1,4 +1,3 @@
-
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
@@ -21,6 +20,14 @@ public class ChiTietSanPhamRepository {
     public List<ChiTietSanPham> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, ChiTietSanPham.class);
+        List<ChiTietSanPham> list = query.getResultList();
+        return list;
+    }
+
+    public List<ChiTietSanPham> getAll_ByName(String name) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.sanPham.tenSP LIKE :name", ChiTietSanPham.class);
+        query.setParameter("name", name);
         List<ChiTietSanPham> list = query.getResultList();
         return list;
     }
