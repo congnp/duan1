@@ -61,6 +61,7 @@ public class SRM_DetailND extends javax.swing.JFrame {
         txtSDT = new javax.swing.JTextField();
         txtTenTk = new javax.swing.JTextField();
         txtTenCV = new javax.swing.JTextField();
+        btnResetPass = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,21 +74,15 @@ public class SRM_DetailND extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 280, 30));
 
         jLabel2.setText("Họ tên:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel3.setText("Giới tính:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel4.setText("Địa chỉ:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-
-        txtHoten.setEnabled(false);
-        jPanel1.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 210, -1));
-
-        txtGioiTinh.setEnabled(false);
+        jPanel1.add(txtHoten, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 210, -1));
         jPanel1.add(txtGioiTinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 210, -1));
-
-        txtDiachi.setEnabled(false);
         jPanel1.add(txtDiachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 210, -1));
 
         jLabel5.setText("SDT");
@@ -98,15 +93,17 @@ public class SRM_DetailND extends javax.swing.JFrame {
 
         jLabel7.setText("Tên CV:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-
-        txtSDT.setEnabled(false);
         jPanel1.add(txtSDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 210, -1));
-
-        txtTenTk.setEnabled(false);
         jPanel1.add(txtTenTk, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 210, -1));
-
-        txtTenCV.setEnabled(false);
         jPanel1.add(txtTenCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 210, -1));
+
+        btnResetPass.setText("Đổi mật khẩu");
+        btnResetPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetPassActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnResetPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,11 +113,16 @@ public class SRM_DetailND extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnResetPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPassActionPerformed
+        new SRM_Doimk().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnResetPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +160,7 @@ public class SRM_DetailND extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnResetPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

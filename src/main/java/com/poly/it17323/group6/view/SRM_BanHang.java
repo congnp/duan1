@@ -3843,6 +3843,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
     private void btnExistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExistActionPerformed
         new SRM_Login().setVisible(true);
+        webcam.close();
         this.dispose();
     }//GEN-LAST:event_btnExistActionPerformed
 

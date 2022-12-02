@@ -25,9 +25,11 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     private EmailSender es = new EmailSender();
     private final NguoiDungRepository repo = new NguoiDungRepository();
-    private final String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
+    private String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private final String valiPass = "^[a-z0-9-]{8,16}$";
     private final static int random_int = (int) Math.floor(Math.random() * (999999 - 10000 + 1));
+    private String mk;
+    private String emailCheck;
 
     @Override
     public List<QLNguoiDungResponse> getAllNguoiDung() {
@@ -42,10 +44,10 @@ public class QLNguoiDungService implements IQLNguoiDungService {
 
     @Override
     public String login(QLNguoiDungResponse response) {
-//        List<QLNguoiDungResponse> qlndr = new ArrayList<>();
         for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
             if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
-//                qlndr.add(NguoiDung);
+                mk = NguoiDung.getMatKhau();
+//                System.out.println(mk);
                 return "Đăng nhập thành công";
             }
         }
@@ -60,22 +62,6 @@ public class QLNguoiDungService implements IQLNguoiDungService {
         repo.getOneND(nd);
         QLNguoiDungResponse qlndr = new QLNguoiDungResponse(repo.getOneND(nd));
         return qlndr;
-
-//        for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
-//            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
-////                qlndr.setCmt_cccd(NguoiDung.getCmt_cccd());
-////                qlndr.setConFirm(NguoiDung.getEmail());
-////                qlndr.setDiaChi(NguoiDung.getDiaChi());
-////                qlndr.setGioiTinh(NguoiDung.getGioiTinh());
-////                qlndr.setTenTK(NguoiDung.getTenTK());
-////                qlndr.setMatKhau(NguoiDung.getMatKhau());
-////                qlndr.setTenCV(qlndr.getTenCV());
-////                qlndr.setMaCV(NguoiDung.getMaCV());
-////                qlndr.setMaND(NguoiDung.getMaND());
-//                return NguoiDung;
-//            }
-//        }
-//        return null;
     }
 
 //    public static void main(String[] args) {
@@ -103,6 +89,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     public String checkMail(QLNguoiDungResponse nd) {
         for (NguoiDung qLNguoiDungResponse : repo.getAll()) {
             if (qLNguoiDungResponse.getEmail().equalsIgnoreCase(nd.getEmail())) {
+                emailCheck = qLNguoiDungResponse.getEmail();
                 try {
                     es.guiMail(nd.getEmail(), "Mã xác nhận của bạn là :" + random_int);
                     return "Vui lòng lấy mã xác nhận ở Mail";
@@ -142,7 +129,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     }
 
     @Override
-    public String updatePass(QLNguoiDungResponse qlND) {
+    public String update(QLNguoiDungResponse qlND) {
         if (qlND.getNewPass().isBlank()) {
             return "Bạn chưa nhập Pass";
         } else if (!qlND.getNewPass().trim().matches(valiPass)) {
@@ -154,12 +141,35 @@ public class QLNguoiDungService implements IQLNguoiDungService {
         } else {
             NguoiDung nd = new NguoiDung();
             nd.setMatKhau(qlND.getNewPass());
-            nd.setEmail(qlND.getEmail());
-            System.out.println(nd.toString());
+            nd.setEmail(emailCheck);
+//            System.out.println(nd.toString());
             if (repo.update(nd) == true) {
-                return "Cập nhật Pass thành công";
+                return "Cập nhật mật khẩu thành công";
             } else {
-                return "Cập nhật Pass thất bại";
+                return "Cập nhật mật khẩu thất bại";
+            }
+        }
+    }
+
+    @Override
+    public String updatePass(QLNguoiDungResponse qlndr) {
+        if (qlndr.getMatKhau().isBlank()) {
+            return "Không được để trống mật khẩu";
+        } else if (qlndr.getNewPass().isBlank()) {
+            return "Bạn chưa nhập Pass";
+        } else if (!qlndr.getNewPass().trim().matches(valiPass)) {
+            return "Mật khẩu không được chứa kí tự đặc biệt,viết hoa và từ 8-16 kí tự";
+        } else if (qlndr.getConFirm().isBlank()) {
+            return "Bạn chưa nhập xác nhận Pass";
+        } else if (!qlndr.getConFirm().trim().matches(qlndr.getNewPass().trim())) {
+            return "Confirm không đúng Pass";
+        } else if (!qlndr.getMatKhau().equals(mk)) {
+            return "Mật khẩu không chính xác";
+        } else {
+            if (repo.updatePass(qlndr) == true) {
+                return "Cập nhật mật khẩu thành công";
+            } else {
+                return "Cập nhật mật khẩu thất bại";
             }
         }
     }
