@@ -46,7 +46,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     public String login(QLNguoiDungResponse response) {
         for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
             if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
-                mk = NguoiDung.getMatKhau();
+                mk = response.getMatKhau();
 //                System.out.println(mk);
                 return "Đăng nhập thành công";
             }
@@ -89,7 +89,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     public String checkMail(QLNguoiDungResponse nd) {
         for (NguoiDung qLNguoiDungResponse : repo.getAll()) {
             if (qLNguoiDungResponse.getEmail().equalsIgnoreCase(nd.getEmail())) {
-                emailCheck = qLNguoiDungResponse.getEmail();
+                emailCheck = nd.getEmail();
                 try {
                     es.guiMail(nd.getEmail(), "Mã xác nhận của bạn là :" + random_int);
                     return "Vui lòng lấy mã xác nhận ở Mail";
