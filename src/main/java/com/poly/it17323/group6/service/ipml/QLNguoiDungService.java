@@ -28,8 +28,8 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     private String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private final String valiPass = "^[a-z0-9-]{8,16}$";
     private final static int random_int = (int) Math.floor(Math.random() * (999999 - 10000 + 1));
-    private String mk;
-    private String emailCheck;
+    private static String mk;
+    private static String emailCheck;
 
     @Override
     public List<QLNguoiDungResponse> getAllNguoiDung() {
