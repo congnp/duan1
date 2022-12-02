@@ -24,4 +24,5 @@ public interface INguoiDungService {
     boolean update(NguoiDungReponse ND);
 
     boolean delete(NguoiDungReponse ND);
+    List<NguoiDung> getByName(String name);
 }

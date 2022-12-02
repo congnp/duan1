@@ -159,7 +159,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         tblGioHang.setEnabled(false);
         effectNav(PN_BanHang, PN_KhachHang, PN_KhuyenMai, PN_QLHoaDon, PN_QLNguoiDung, PN_QLSanPham, PN_QLThongKe, "Bán Hàng");
         listKM = iKM.getAll();
-        listND = inds.getAll();
         listCV = icvs.getAll();
         setIcon();
         setIconTK();
@@ -170,7 +169,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadKhachHang();
         loadCV();
         loadComboBoxNd();
-        loadND();
+        loadND(inds.getAll());
         loadKM();
         loadThongKe();
         loadHuy();
@@ -1648,6 +1647,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
         });
         jScrollPane12.setViewportView(tbl_nd_DangLam);
+
+        txt_nd_TimKiem.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txt_nd_TimKiemCaretUpdate(evt);
+            }
+        });
 
         jLabel65.setText("Tìm kiếm : ");
 
@@ -4116,7 +4121,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
         try {
             inds.add(getFrom(null));
-            loadND();
+            loadND(inds.getAll());
             JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -4133,7 +4138,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         NguoiDung nd = inds.getAll().get(row);
         inds.delete(getFrom(nd.getIdND()));
         JOptionPane.showMessageDialog(this, "Xóa thành công");
-        loadND();
+        loadND(inds.getAll());
     }//GEN-LAST:event_btn_nd_XoaActionPerformed
 
     private void btn_nd_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_SuaActionPerformed
@@ -4142,7 +4147,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             NguoiDung nd = inds.getAll().get(row);
             System.out.println(nd);
             inds.update(getFrom(nd.getIdND()));
-            loadND();
+            loadND(inds.getAll());
             JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -4696,14 +4701,18 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtTienThua.setText(tienThua + "");
     }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
 
+    private void txt_nd_TimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txt_nd_TimKiemCaretUpdate
+      loadND(inds.getByName("%" + txt_nd_TimKiem.getText() + "%"));
+    }//GEN-LAST:event_txt_nd_TimKiemCaretUpdate
+
     // Công
-    private void loadND() {
+    private void loadND(List<NguoiDung> listND) {
         String Header[] = {"MaND", "TenTK", "MatKhau", "HovaTen", "GioiTinh", "NgaySinh",
             "Email", "SDT", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"};
         modelND = new DefaultTableModel(Header, 0);
         modelND.setRowCount(0);
         tbl_nd_DangLam.setModel(modelND);
-        for (NguoiDung x : inds.getAll()) {
+        for (NguoiDung x : listND) {
             modelND.addRow(new Object[]{x.getMaND(), x.getTenTK(), x.getMatKhau(),
                 x.getHoTen(), x.getGioiTinh(), x.getNgaySinh(), x.getEmail(),
                 x.getSdt(), x.getDiaChi(), x.getCccd(), setTinhTrang(x.getTinhTrang()),

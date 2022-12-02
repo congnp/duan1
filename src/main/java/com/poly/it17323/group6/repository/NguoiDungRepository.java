@@ -106,4 +106,11 @@ public class NguoiDungRepository {
         return null;
     }
 
+    public List<NguoiDung> getByName(String name) {
+         session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " where HoVaTen like : name", NguoiDung.class);
+        query.setParameter("name", name);
+        List<NguoiDung> list = query.getResultList();
+        return list;
+    }
 }

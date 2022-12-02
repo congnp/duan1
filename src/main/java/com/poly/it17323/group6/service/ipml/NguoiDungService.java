@@ -55,4 +55,9 @@ public class NguoiDungService implements INguoiDungService {
         return ndRepo.getOne(id);
     }
 
+    @Override
+    public List<NguoiDung> getByName(String name) {
+       return ndRepo.getByName(name);
+    }
+
 }
