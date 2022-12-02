@@ -135,10 +135,9 @@ public class SRM_ResetPass extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         QLNguoiDungResponse qlndr = new QLNguoiDungResponse();
-        qlndr.getEmail();
         qlndr.setNewPass(String.valueOf(psNewPass.getPassword()));
         qlndr.setConFirm(String.valueOf(psConfirmPass.getPassword()));
-        JOptionPane.showMessageDialog(this, iqlnds.updatePass(qlndr));
+        JOptionPane.showMessageDialog(this, iqlnds.update(qlndr));
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed

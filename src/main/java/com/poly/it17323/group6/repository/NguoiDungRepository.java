@@ -4,6 +4,7 @@ import com.poly.it17323.group6.domainmodel.MauSac;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import com.poly.it17323.group6.response.NguoiDungReponse;
+import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -25,6 +26,11 @@ public class NguoiDungRepository {
         Query query = session.createQuery(fromTable, NguoiDung.class);
         List<NguoiDung> lists = query.getResultList();
         return lists;
+    }
+    
+    public static void main(String[] args) {
+        List<NguoiDung> list = new NguoiDungRepository().getAll();
+        list.forEach(p -> System.out.println(p.toString()));
     }
 
     public NguoiDung getOne(UUID id) {
@@ -73,9 +79,27 @@ public class NguoiDungRepository {
         } catch (Exception e) {
             e.printStackTrace(System.out);
             transaction.rollback();
-            return null;
+            
         }
-
+        return false;
+    }
+    
+    public Boolean updatePass(QLNguoiDungResponse nd){
+        Transaction transaction = null;
+        try ( Session session = Hibernate_Util.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query q = session.createQuery("UPDATE NguoiDung SET MatKhau = :mk WHERE MatKhau = :mk1");
+            q.setParameter("mk", nd.getNewPass());
+            q.setParameter("mk1", nd.getMatKhau());
+            q.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            transaction.rollback();
+            
+        }
+        return false;
     }
 
     public Boolean update_nd(NguoiDung nguoidung) {
@@ -89,7 +113,7 @@ public class NguoiDungRepository {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(NguoiDung nguoidung) {

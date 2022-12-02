@@ -4,6 +4,7 @@
  */
 package com.poly.it17323.group6.service;
 
+import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import java.util.List;
 
@@ -29,6 +30,8 @@ public interface IQLNguoiDungService {
 
     boolean addQLND(QLNguoiDungResponse qlND);
 
-    String updatePass(QLNguoiDungResponse qlND);
+    String update(QLNguoiDungResponse qlND);
+    
+    String updatePass(QLNguoiDungResponse qlndr);
 
 }

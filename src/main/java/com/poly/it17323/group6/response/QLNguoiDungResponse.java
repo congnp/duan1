@@ -30,7 +30,7 @@ public class QLNguoiDungResponse {
 
     private String tenTK, matKhau, ngaySinh, ngaySua;
 
-    private static String email;
+    private String email;
 
     private String maCV, tenCV, newPass, conFirm, sdt, diaChi, cmt_cccd;
 
@@ -63,15 +63,31 @@ public class QLNguoiDungResponse {
     public QLNguoiDungResponse(String tenTK, String matKhau) {
         this.tenTK = tenTK;
         this.matKhau = matKhau;
-        this.tenCV = tenCV;
+
     }
 
-    public static String getEmail() {
-        return email;
+    public QLNguoiDungResponse(String matKhau, String newPass, String conFirm) {
+        this.matKhau = matKhau;
+        this.newPass = newPass;
+        this.conFirm = conFirm;
     }
 
-    public static void setEmail(String email) {
-        QLNguoiDungResponse.email = email;
-    }
+//    public static String getEmail() {
+//        return email;
+//    }
+//
+//    public static void setEmail(String email) {
+//        QLNguoiDungResponse.email = email;
+//    }
+
+//    public static String getMatKhau() {
+//        return matKhau;
+//    }
+//
+//    public static void setMatKhau(String matKhau) {
+//        QLNguoiDungResponse.matKhau = matKhau;
+//    }
+    
+    
 
 }
