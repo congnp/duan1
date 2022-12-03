@@ -4182,6 +4182,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ChucVu cv = listCV.get(row);
             icvs.update(getFromTbale(cv.getIdCV()));
             loadCV();
+            loadComboBoxNd();
             JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -4195,6 +4196,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ChucVu cv = listCV.get(row);
             icvs.delete(getFromTbale(cv.getIdCV()));
             loadCV();
+            loadComboBoxNd();
             JOptionPane.showMessageDialog(this, "XÓA THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -4627,6 +4629,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         try {
             icvs.add(getFromTbale(null));
             loadCV();
+            loadComboBoxNd();
             JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -4708,9 +4711,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
     // Công
     private void loadND(List<NguoiDung> listND) {
-        String Header[] = {"MaND", "TenTK", "MatKhau", "HovaTen", "GioiTinh", "NgaySinh",
-            "Email", "SDT", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"};
-        modelND = new DefaultTableModel(Header, 0);
+        modelND = (DefaultTableModel) tbl_nd_DangLam.getModel();
         modelND.setRowCount(0);
         tbl_nd_DangLam.setModel(modelND);
         for (NguoiDung x : listND) {
