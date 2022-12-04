@@ -17,6 +17,8 @@ public interface IQLKhachHangService {
     
     KhachHangResponse getOne(UUID id);
     
+    KhachHangResponse getOneByMa(String ma);
+    
     String addKh(KhachHangResponse kh);
     
     String updateKh(KhachHangResponse kh);

@@ -24,7 +24,7 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     public QLKhachHangService() {
         khRepo = new KhachHangRepository();
-        ma = khRepo.getAll().size()+1;
+        ma = khRepo.getAll().size() + 1;
     }
 
     @Override
@@ -47,11 +47,11 @@ public class QLKhachHangService implements IQLKhachHangService {
     @Override
     public String addKh(KhachHangResponse kh) {
         if (kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
-                ||kh.getSdt().isEmpty()) {
+                || kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
-        } 
-        if(kh.getSdt().length() < 10){
-           return "Số điện thoại phải nhập đủ 10 số";
+        }
+        if (kh.getSdt().length() < 10) {
+            return "Số điện thoại phải nhập đủ 10 số";
         }
         int sdt;
         try {
@@ -59,7 +59,7 @@ public class QLKhachHangService implements IQLKhachHangService {
         } catch (Exception e) {
             return "Số điện thoại phải là số!";
         }
-        
+
 //        if(kh.getHoTen().matches("[a-zA-Z][a-zA-Z ]+")){
 //          return "Họ tên chỉ chứa alphabet và ký tự trắng";
 //        }
@@ -78,11 +78,11 @@ public class QLKhachHangService implements IQLKhachHangService {
     @Override
     public String updateKh(KhachHangResponse kh) {
         if (kh.getHoTen().isEmpty() || kh.getGioiTinh().isEmpty() || kh.getDiaChi().isEmpty()
-                ||kh.getSdt().isEmpty()) {
+                || kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
         }
-        if(kh.getSdt().length() < 10){
-           return "Số điện thoại phải nhập đủ 10 số";
+        if (kh.getSdt().length() < 10) {
+            return "Số điện thoại phải nhập đủ 10 số";
         }
         int sdt;
         try {
@@ -93,7 +93,7 @@ public class QLKhachHangService implements IQLKhachHangService {
         Date ngaySinh = Date.valueOf(kh.getNgaySinh());
         Date ngayTao = Date.valueOf(kh.getNgayTao());
         Date ngaySua = Date.valueOf(kh.getNgaySua());
-        khRepo.update(new KhachHang(kh.getIdKh(),kh.getMaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
+        khRepo.update(new KhachHang(kh.getIdKh(), kh.getMaKh(), kh.getHoTen(), kh.getGioiTinh(), kh.getDiaChi(), kh.getSdt(), ngaySinh, ngayTao, ngaySua));
         if (kh == null) {
             return "SỬA THẤT BẠI!!!";
         } else {
@@ -116,7 +116,12 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     @Override
     public String MaKh() {
-        return "KH0" + (ma++);       
+        return "KH0" + (ma++);
 // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public KhachHangResponse getOneByMa(String ma) {
+        return new KhachHangResponse(khRepo.getOneByMa(ma));
     }
 }

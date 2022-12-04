@@ -32,6 +32,15 @@ public class KhachHangRepository {
         KhachHang khachhang = (KhachHang) query.getSingleResult();
         return khachhang;
     }
+    
+    public KhachHang getOneByMa(String ma) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE maKH = :ma";
+        Query query = session.createQuery(sql, KhachHang.class);
+        query.setParameter("ma", ma);
+        KhachHang khachhang = (KhachHang) query.getSingleResult();
+        return khachhang;
+    }
 
     public Boolean add(KhachHang khachhang) {
         Transaction transaction = null;
