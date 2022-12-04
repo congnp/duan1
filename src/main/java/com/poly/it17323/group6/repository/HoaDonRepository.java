@@ -26,6 +26,14 @@ public class HoaDonRepository {
         return list;
     }
 
+    public List<HoaDon> getAll_ByTT(int tt) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.tinhTrang = :tt ", HoaDon.class);
+        query.setParameter("tt", tt);
+        List<HoaDon> list = query.getResultList();
+        return list;
+    }
+
     public HoaDon getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
@@ -34,7 +42,15 @@ public class HoaDonRepository {
         HoaDon hoaDon = (HoaDon) query.getSingleResult();
         return hoaDon;
     }
-    
+
+    public HoaDon getOne_ByMa(String ma) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.maHD LIKE :ma", HoaDon.class);
+        query.setParameter("ma", ma);
+        HoaDon hoaDon = (HoaDon) query.getSingleResult();
+        return hoaDon;
+    }
+
     public List<HoaDon> DoanhThu() {
         session = Hibernate_Util.getFACTORY().openSession();
         String hql = "select SUM(tongTien) FROM HoaDon where tinhTrang = 1";
@@ -42,9 +58,7 @@ public class HoaDonRepository {
         List<HoaDon> result = query.getResultList();
         return result;
     }
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepository().DoanhThu());
-    }
+
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();

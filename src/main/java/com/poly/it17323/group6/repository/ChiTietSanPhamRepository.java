@@ -26,16 +26,24 @@ public class ChiTietSanPhamRepository {
 
     public List<ChiTietSanPham> getAll_ByName(String name) {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable + " a where a.sanPham.tenSP LIKE :name", ChiTietSanPham.class);
+        Query query = session.createQuery(fromTable + " a where a.sanPham.tenSP LIKE CONCAT('%',:name,'%')", ChiTietSanPham.class);
         query.setParameter("name", name);
         List<ChiTietSanPham> list = query.getResultList();
         return list;
     }
 
+    public ChiTietSanPham getOne_ByMa(String ma) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.sanPham.maSP LIKE :ma", ChiTietSanPham.class);
+        query.setParameter("ma", ma);
+        ChiTietSanPham chiTietSanPham = (ChiTietSanPham) query.getSingleResult();
+        return chiTietSanPham;
+    }
+
     public ChiTietSanPham getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
-        Query query = session.createQuery(fromTable, ChiTietSanPham.class);
+        Query query = session.createQuery(sql, ChiTietSanPham.class);
         query.setParameter("id", id);
         ChiTietSanPham chiTietSanPham = (ChiTietSanPham) query.getSingleResult();
         return chiTietSanPham;
