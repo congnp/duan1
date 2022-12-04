@@ -1,6 +1,7 @@
 package com.poly.it17323.group6.service.ipml;
 
 import com.poly.it17323.group6.domainmodel.NguoiDung;
+import com.poly.it17323.group6.hibernateconfig.EmailXacNhanThem;
 import com.poly.it17323.group6.repository.ChucVuRepository;
 import com.poly.it17323.group6.repository.NguoiDungRepository;
 import com.poly.it17323.group6.response.NguoiDungReponse;
@@ -8,15 +9,20 @@ import com.poly.it17323.group6.service.INguoiDungService;
 import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
+import javax.mail.MessagingException;
 
 /**
  *
  * @author Admin
  */
 public class NguoiDungService implements INguoiDungService {
-
+    
     private final NguoiDungRepository ndRepo = new NguoiDungRepository();
     private final ChucVuRepository cvRepo = new ChucVuRepository();
+    private static String emailCheck;
+    private final static int random_int = (int) Math.floor(Math.random() * (999999 - 10000 + 1));
+    private  EmailXacNhanThem esss = new EmailXacNhanThem();
+    private final String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
 
     @Override
     public List<NguoiDung> getAll() {
@@ -58,6 +64,39 @@ public class NguoiDungService implements INguoiDungService {
     @Override
     public List<NguoiDung> getByName(String name) {
        return ndRepo.getByName(name);
+    }
+
+    @Override
+    public String checkEmailXacNhan(NguoiDungReponse ND) {
+        for (NguoiDung qLNguoiDungResponse : ndRepo.getAll()) {
+            if (qLNguoiDungResponse.getEmail().equalsIgnoreCase(ND.getEmail())) {
+                emailCheck = ND.getEmail();
+               try {
+                    esss.guiMaXacNhan(ND.getEmail(), "Mã xác nhận của bạn là :" + random_int);   
+                } catch (MessagingException ex) {
+                    ex.printStackTrace();
+                }
+               return "Vui lòng lấy mã xác nhận ở Mail";
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String emaiFals(NguoiDungReponse ndr) {
+        if (ndr.getEmail().isBlank()) {
+            return "Vui lòng nhập email";
+        } else if (!ndr.getEmail().trim().matches(email)) {
+            return "Email không đúng định dạng";
+        } else if (checkEmailXacNhan(ndr) == null) {
+            return "Email không tồn tại trong hệ thống";
+        }
+        return null;
+    }
+
+    @Override
+    public String checkMa(String maXn) {
+         return maXn.equals(String.valueOf(random_int)) ? "Xác nhận thành công" : "Mã xác nhận sai";
     }
 
 }

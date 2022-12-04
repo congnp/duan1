@@ -24,5 +24,12 @@ public interface INguoiDungService {
     boolean update(NguoiDungReponse ND);
 
     boolean delete(NguoiDungReponse ND);
+
     List<NguoiDung> getByName(String name);
+
+    String checkEmailXacNhan(NguoiDungReponse ND);
+
+    String emaiFals(NguoiDungReponse ndr);
+
+    String checkMa(String maXn);
 }
