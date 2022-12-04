@@ -114,12 +114,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private DefaultTableModel modelCTHD;
     private DefaultTableModel modelKM;
     private DefaultTableModel modelND;
-    private DefaultTableModel modelCV;
     private DefaultComboBoxModel comboBoxND;
     private final DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
     private List<KhuyenMai> listKM;
     private List<NguoiDung> listND;
-    private List<ChucVu> listCV;
     private double sum;
     private double giamSum;
     private final QLNguoiDungResponse ndRP;
@@ -159,7 +157,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         tblGioHang.setEnabled(false);
         effectNav(PN_BanHang, PN_KhachHang, PN_KhuyenMai, PN_QLHoaDon, PN_QLNguoiDung, PN_QLSanPham, PN_QLThongKe, "Bán Hàng");
         listKM = iKM.getAll();
-        listCV = icvs.getAll();
         setIcon();
         setIconTK();
         loadDataSP(iBH.getAll_CTSP());
@@ -167,7 +164,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadHoaDon();
         loadDataKM();
         loadKhachHang();
-        loadCV();
         loadComboBoxNd();
         loadND(inds.getAll());
         loadKM();
@@ -416,17 +412,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jPanel18 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
         txtNghiLam = new javax.swing.JTable();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        tbl_cv = new javax.swing.JTable();
-        txt_cv_Ten = new javax.swing.JTextField();
-        txt_cv_Ma = new javax.swing.JTextField();
-        bt_cvThem = new javax.swing.JButton();
-        bt_cv_Sua = new javax.swing.JButton();
-        bt_cv_Xoa = new javax.swing.JButton();
-        bt_cv_clear = new javax.swing.JButton();
         QL_ThongKe = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -1638,7 +1623,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
             },
             new String [] {
-                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua"
+                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"
             }
         ));
         tbl_nd_DangLam.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1665,7 +1650,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addComponent(jLabel65)
                 .addGap(27, 27, 27)
                 .addComponent(txt_nd_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(652, Short.MAX_VALUE))
+                .addContainerGap(641, Short.MAX_VALUE))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(jScrollPane12)
                 .addContainerGap())
@@ -1678,7 +1663,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     .addComponent(txt_nd_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel65))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1740,114 +1725,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         );
 
         jTabbedPane1.addTab("Người dùng", jPanel15);
-
-        jPanel22.setBackground(new java.awt.Color(232, 211, 227));
-
-        jLabel67.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel67.setText("Mã Chức Vụ: ");
-
-        jLabel68.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel68.setText("Tên chức vụ: ");
-
-        tbl_cv.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "MaCV", "TenCV"
-            }
-        ));
-        tbl_cv.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_cvMouseClicked(evt);
-            }
-        });
-        jScrollPane14.setViewportView(tbl_cv);
-
-        bt_cvThem.setText("Them");
-        bt_cvThem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cvThemActionPerformed(evt);
-            }
-        });
-
-        bt_cv_Sua.setText("Sửa");
-        bt_cv_Sua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cv_SuaActionPerformed(evt);
-            }
-        });
-
-        bt_cv_Xoa.setText("Xóa");
-        bt_cv_Xoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cv_XoaActionPerformed(evt);
-            }
-        });
-
-        bt_cv_clear.setText("Clear");
-        bt_cv_clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cv_clearActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
-                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel68)
-                                .addGroup(jPanel22Layout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
-                                    .addComponent(bt_cvThem)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                            .addComponent(bt_cv_Sua)
-                            .addGap(35, 35, 35)
-                            .addComponent(bt_cv_Xoa)
-                            .addGap(40, 40, 40)
-                            .addComponent(bt_cv_clear))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel22Layout.createSequentialGroup()
-                            .addComponent(jLabel67)
-                            .addGap(28, 28, 28)
-                            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_cv_Ma, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                                .addComponent(txt_cv_Ten)))))
-                .addContainerGap(537, Short.MAX_VALUE))
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel67)
-                    .addComponent(txt_cv_Ma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68)
-                    .addComponent(txt_cv_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_cvThem)
-                    .addComponent(bt_cv_Sua)
-                    .addComponent(bt_cv_Xoa)
-                    .addComponent(bt_cv_clear))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-
-        jPanel22Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txt_cv_Ma, txt_cv_Ten});
-
-        jTabbedPane1.addTab("Chức vụ", jPanel22);
 
         javax.swing.GroupLayout QL_NguoiDungLayout = new javax.swing.GroupLayout(QL_NguoiDung);
         QL_NguoiDung.setLayout(QL_NguoiDungLayout);
@@ -4119,103 +3996,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
     }//GEN-LAST:event_btn_km_ThemActionPerformed
 
-    private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
-        try {
-            inds.add(getFrom(null));
-            loadND(inds.getAll());
-            JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
-        }
-    }//GEN-LAST:event_btn_nd_ThemActionPerformed
-
-    private void btn_nd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_XoaActionPerformed
-        int s = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa không?");
-        if (s != JOptionPane.YES_OPTION) {
-            return;
-        }
-        int row = tbl_nd_DangLam.getSelectedRow();
-        NguoiDung nd = inds.getAll().get(row);
-        inds.delete(getFrom(nd.getIdND()));
-        JOptionPane.showMessageDialog(this, "Xóa thành công");
-        loadND(inds.getAll());
-    }//GEN-LAST:event_btn_nd_XoaActionPerformed
-
-    private void btn_nd_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_SuaActionPerformed
-        try {
-            int row = tbl_nd_DangLam.getSelectedRow();
-            NguoiDung nd = inds.getAll().get(row);
-            System.out.println(nd);
-            inds.update(getFrom(nd.getIdND()));
-            loadND(inds.getAll());
-            JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            JOptionPane.showMessageDialog(this, "SỬA THẤT BẠI!!!");
-        }
-    }//GEN-LAST:event_btn_nd_SuaActionPerformed
-
-    private void btn_nd_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ClearActionPerformed
-        txt_nd_MaND.setText("");
-        txt_nd_TenTK.setText("");
-        txt_nd_MatKhau.setText("");
-        txt_nd_HovaTen.setText("");
-        buttonGroup1.clearSelection();
-        txt_nd_NgaySinh.setText("");
-        txt_nd_Email.setText("");
-        txt_nd_Sdt.setText("");
-        txt_nd_DiaChi.setText("");
-        txt_nd_CCCD.setText("");
-        buttonGroup2.clearSelection();
-        rdo_nd_NgayTao.setText("");
-        txt_nd_NgaySua.setText("");
-    }//GEN-LAST:event_btn_nd_ClearActionPerformed
-
-    private void tbl_nd_DangLamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_nd_DangLamMouseClicked
-        showND();
-    }//GEN-LAST:event_tbl_nd_DangLamMouseClicked
-
-    private void bt_cv_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cv_SuaActionPerformed
-        try {
-            int row = tbl_cv.getSelectedRow();
-            ChucVu cv = listCV.get(row);
-            icvs.update(getFromTbale(cv.getIdCV()));
-            loadCV();
-            loadComboBoxNd();
-            JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            JOptionPane.showMessageDialog(this, "SỬA THẤT BẠI!!!");
-        }
-    }//GEN-LAST:event_bt_cv_SuaActionPerformed
-
-    private void bt_cv_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cv_XoaActionPerformed
-        try {
-            int row = tbl_cv.getSelectedRow();
-            ChucVu cv = listCV.get(row);
-            icvs.delete(getFromTbale(cv.getIdCV()));
-            loadCV();
-            loadComboBoxNd();
-            JOptionPane.showMessageDialog(this, "XÓA THÀNH CÔNG!");
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            JOptionPane.showMessageDialog(this, "XÓA THẤT BẠI!!!");
-        }
-    }//GEN-LAST:event_bt_cv_XoaActionPerformed
-
-    private void bt_cv_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cv_clearActionPerformed
-        txt_cv_Ma.setText("");
-        txt_cv_Ten.setText("");
-    }//GEN-LAST:event_bt_cv_clearActionPerformed
-
-    private void tbl_cvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cvMouseClicked
-        int row = tbl_cv.getSelectedRow();
-        ChucVu cv = icvs.getAll().get(row);
-        txt_cv_Ma.setText(cv.getMaCV());
-        txt_cv_Ten.setText(cv.getTenCV());
-    }//GEN-LAST:event_tbl_cvMouseClicked
-
     private void pnDetailNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnDetailNDMouseClicked
         new SRM_DetailND(ndRP).setVisible(true);
     }//GEN-LAST:event_pnDetailNDMouseClicked
@@ -4625,18 +4405,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txt_ctsp_NgayTao.setText("");
     }//GEN-LAST:event_btn_ctsp_ClearActionPerformed
 
-    private void bt_cvThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cvThemActionPerformed
-        try {
-            icvs.add(getFromTbale(null));
-            loadCV();
-            loadComboBoxNd();
-            JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-            JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
-        }
-    }//GEN-LAST:event_bt_cvThemActionPerformed
-
     private void btn_hd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hd_XoaActionPerformed
         int row = tbl_HoaDon.getSelectedRow();
         HoaDon hoadon = ihd.getAll().get(row);
@@ -4706,8 +4474,65 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
 
     private void txt_nd_TimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txt_nd_TimKiemCaretUpdate
-      loadND(inds.getByName("%" + txt_nd_TimKiem.getText() + "%"));
+        loadND(inds.getByName("%" + txt_nd_TimKiem.getText() + "%"));
     }//GEN-LAST:event_txt_nd_TimKiemCaretUpdate
+
+    private void tbl_nd_DangLamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_nd_DangLamMouseClicked
+        showND();
+    }//GEN-LAST:event_tbl_nd_DangLamMouseClicked
+
+    private void btn_nd_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ClearActionPerformed
+        txt_nd_MaND.setText("");
+        txt_nd_TenTK.setText("");
+        txt_nd_MatKhau.setText("");
+        txt_nd_HovaTen.setText("");
+        buttonGroup1.clearSelection();
+        txt_nd_NgaySinh.setText("");
+        txt_nd_Email.setText("");
+        txt_nd_Sdt.setText("");
+        txt_nd_DiaChi.setText("");
+        txt_nd_CCCD.setText("");
+        buttonGroup2.clearSelection();
+        rdo_nd_NgayTao.setText("");
+        txt_nd_NgaySua.setText("");
+    }//GEN-LAST:event_btn_nd_ClearActionPerformed
+
+    private void btn_nd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_XoaActionPerformed
+        int s = JOptionPane.showConfirmDialog(this, "Bạn có chắc muốn xóa không?");
+        if (s != JOptionPane.YES_OPTION) {
+            return;
+        }
+        int row = tbl_nd_DangLam.getSelectedRow();
+        NguoiDung nd = inds.getAll().get(row);
+        inds.delete(getFrom(nd.getIdND()));
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+        loadND(inds.getAll());
+    }//GEN-LAST:event_btn_nd_XoaActionPerformed
+
+    private void btn_nd_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_SuaActionPerformed
+        try {
+            int row = tbl_nd_DangLam.getSelectedRow();
+            NguoiDung nd = inds.getAll().get(row);
+            System.out.println(nd);
+            inds.update(getFrom(nd.getIdND()));
+            loadND(inds.getAll());
+            JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(this, "SỬA THẤT BẠI!!!");
+        }
+    }//GEN-LAST:event_btn_nd_SuaActionPerformed
+
+    private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
+        try {
+            inds.add(getFrom(null));
+            loadND(inds.getAll());
+            JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
+        }
+    }//GEN-LAST:event_btn_nd_ThemActionPerformed
 
     // Công
     private void loadND(List<NguoiDung> listND) {
@@ -4791,18 +4616,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
     }
 
-    private void loadCV() {
-        modelCV = new DefaultTableModel();
-        modelCV = (DefaultTableModel) tbl_cv.getModel();
-        modelCV.setRowCount(0);
-        for (ChucVu cv : icvs.getAll()) {
-            modelCV.addRow(new Object[]{cv.getMaCV(), cv.getTenCV()});
-        }
-    }
+    
 
-    private NguoiDungReponse getFromTbale(UUID idCV) {
-        return new NguoiDungReponse(idCV, txt_cv_Ma.getText(), txt_cv_Ten.getText());
-    }
+    
 
     // Công
     // Đạt
@@ -5272,10 +5088,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JPanel ThanhToan;
     private javax.swing.JPanel ThongTin;
     private javax.swing.JLabel banhang;
-    private javax.swing.JButton bt_cvThem;
-    private javax.swing.JButton bt_cv_Sua;
-    private javax.swing.JButton bt_cv_Xoa;
-    private javax.swing.JButton bt_cv_clear;
     private javax.swing.JButton btnChonAnh;
     private javax.swing.JButton btnChonKH;
     private javax.swing.JButton btnCuoi;
@@ -5397,8 +5209,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
@@ -5438,7 +5248,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel26;
@@ -5459,7 +5268,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
@@ -5518,7 +5326,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JTable tbl_a;
     private javax.swing.JTable tbl_a_ctsp;
     private javax.swing.JTable tbl_ctsp;
-    private javax.swing.JTable tbl_cv;
     private javax.swing.JTable tbl_km;
     private javax.swing.JTable tbl_nd_DangLam;
     private javax.swing.JTabbedPane tbl_nd_NghiLam;
@@ -5543,8 +5350,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JTextField txt_ctsp_SLTon;
     private javax.swing.JTextField txt_ctsp_ThemSL;
     private javax.swing.JTextField txt_ctsp_TimKiem;
-    private javax.swing.JTextField txt_cv_Ma;
-    private javax.swing.JTextField txt_cv_Ten;
     private javax.swing.JTextField txt_hd_NgayBatDau;
     private javax.swing.JTextField txt_hd_NgayKetThuc;
     private javax.swing.JTextField txt_hd_TKTongTienBatDau;
