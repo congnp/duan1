@@ -7,6 +7,7 @@ package com.poly.it17323.group6.service;
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.response.KhuyenMaiReponse;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -15,10 +16,18 @@ import java.util.List;
 public interface IKhuyenMaiService {
 
     List<KhuyenMai> getAll();
+    
+    KhuyenMaiReponse getOne(UUID id);
 
-    boolean add(KhuyenMaiReponse km);
+    String add(KhuyenMaiReponse km);
 
-    boolean update(KhuyenMaiReponse km);
+    String update(KhuyenMaiReponse km);
 
-    boolean delete(KhuyenMaiReponse km);
+    String delete(KhuyenMaiReponse km);
+    
+    String MaKm();
+    
+    List<KhuyenMai> get_By_Name(String name);
+
+    
 }

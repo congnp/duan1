@@ -75,4 +75,11 @@ public class KhuyenMaiRepository {
         }
         return null;
     }
+    public List<KhuyenMai> get_By_Name(String name) {
+         session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " where TenKM like : name", KhuyenMai.class);
+        query.setParameter("name", name);
+        List<KhuyenMai> list = query.getResultList();
+        return list;
+    }
 }
