@@ -124,4 +124,15 @@ public class QLKhachHangService implements IQLKhachHangService {
     public KhachHangResponse getOneByMa(String ma) {
         return new KhachHangResponse(khRepo.getOneByMa(ma));
     }
+
+    @Override
+    public List<KhachHangResponse> getByName(String name) {
+        List<KhachHang> list = khRepo.getByName(name);
+        List<KhachHangResponse> respon = new ArrayList<>();
+        for(KhachHang kh :list){
+           KhachHangResponse khang = new KhachHangResponse(kh);
+           respon.add(khang);
+        }
+        return respon;
+    }
 }

@@ -21,7 +21,7 @@ public class QLThongKeService implements IQLThongKeService {
 
     @Override
     public List<QLThongKeResponse> getThongKe() {
-        List<HoaDon> list = hdRepo.getAll();
+        List<HoaDon> list = hdRepo.getAll2();
         List<QLThongKeResponse> respon = new ArrayList<>();
         for (HoaDon hdon : list) {
             QLThongKeResponse tke = new QLThongKeResponse(hdon);
@@ -41,5 +41,10 @@ public class QLThongKeService implements IQLThongKeService {
     public List<HoaDon> getDoanhThu() {
         return hdRepo.DoanhThu();
 
+    }
+
+    @Override
+    public List<QLThongKeResponse> getDoanhThuChart() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -25,7 +25,12 @@ public class HoaDonRepository {
         List<HoaDon> list = query.getResultList();
         return list;
     }
-    
+    public List<HoaDon> getAll2() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.tinhTrang = 1 order by MaHD desc", HoaDon.class);
+        List<HoaDon> list = query.getResultList();
+        return list;
+    }
     public static void main(String[] args) {
         HoaDonRepository hd = new HoaDonRepository();
         for (HoaDon hoaDon : hd.getAll()) {

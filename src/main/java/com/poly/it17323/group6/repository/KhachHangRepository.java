@@ -32,7 +32,7 @@ public class KhachHangRepository {
         KhachHang khachhang = (KhachHang) query.getSingleResult();
         return khachhang;
     }
-    
+
     public KhachHang getOneByMa(String ma) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE maKH = :ma";
@@ -40,6 +40,14 @@ public class KhachHangRepository {
         query.setParameter("ma", ma);
         KhachHang khachhang = (KhachHang) query.getSingleResult();
         return khachhang;
+    }
+
+    public List<KhachHang> getByName(String name) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.hoTen LIKE CONCAT('%',:name,'%')", KhachHang.class);
+        query.setParameter("name", name);
+        List<KhachHang> list = query.getResultList();
+        return list;
     }
 
     public Boolean add(KhachHang khachhang) {

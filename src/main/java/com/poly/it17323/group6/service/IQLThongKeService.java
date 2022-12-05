@@ -15,6 +15,8 @@ import java.util.List;
 public interface IQLThongKeService {
 
     List<QLThongKeResponse> getThongKe();
-
+    
     List<HoaDon> getDoanhThu();
+    
+    List<QLThongKeResponse> getDoanhThuChart();
 }

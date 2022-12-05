@@ -26,4 +26,6 @@ public interface IQLKhachHangService {
     String deleteKh(KhachHangResponse kh);
     
     String MaKh();
+    
+    List<KhachHangResponse> getByName(String name);
 }
