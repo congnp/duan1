@@ -4,11 +4,15 @@ import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.sql.JoinType;
 
 /**
  *
@@ -25,7 +29,12 @@ public class HoaDonRepository {
         List<HoaDon> list = query.getResultList();
         return list;
     }
-
+    public List<HoaDon> getAll2() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.tinhTrang = 1 order by MaHD asc", HoaDon.class);
+        List<HoaDon> list = query.getResultList();
+        return list;
+    }
     public HoaDon getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
@@ -42,8 +51,16 @@ public class HoaDonRepository {
         List<HoaDon> result = query.getResultList();
         return result;
     }
+    public List<HoaDon> DoanhThuChart() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String hql = "SELECT SUM(a.tongTien) AS TongDoanhThu,a.ngayTao FROM HoaDon a where a.tinhTrang = 1  group by a.ngayTao";
+        Query query = session.createQuery(hql);
+        List<HoaDon> result = query.getResultList();
+        return result;
+    }
+    
     public static void main(String[] args) {
-        System.out.println(new HoaDonRepository().DoanhThu());
+        System.out.println(new HoaDonRepository().DoanhThuChart());
     }
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;

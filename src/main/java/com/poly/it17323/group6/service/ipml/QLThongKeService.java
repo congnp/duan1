@@ -23,7 +23,7 @@ public class QLThongKeService implements IQLThongKeService{
     
     @Override
     public List<QLThongKeResponse> getThongKe() {
-        List<HoaDon> list = hdRepo.getAll();
+        List<HoaDon> list = hdRepo.getAll2();
         List<QLThongKeResponse> respon = new ArrayList<>();
         for (HoaDon hdon : list) {
             QLThongKeResponse tke = new QLThongKeResponse(hdon);
@@ -56,4 +56,15 @@ public class QLThongKeService implements IQLThongKeService{
         return hdRepo.DoanhThu();
         
         }
+
+    @Override
+    public List<QLThongKeResponse> getDoanhThuChart() {
+        List<HoaDon> list = hdRepo.DoanhThuChart();
+        List<QLThongKeResponse> respon = new ArrayList<>();
+        for (HoaDon hdon : list) {
+            QLThongKeResponse tke = new QLThongKeResponse(hdon);
+            respon.add(tke);
+        }
+        return respon;
+    }
 }

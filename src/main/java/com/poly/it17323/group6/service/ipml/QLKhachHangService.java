@@ -119,4 +119,15 @@ public class QLKhachHangService implements IQLKhachHangService {
         return "KH0" + (ma++);       
 // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<KhachHangResponse> getByName(String name) {
+        List<KhachHang> list = khRepo.getByName(name);
+        List<KhachHangResponse> respon = new ArrayList<>();
+        for(KhachHang kh :list){
+           KhachHangResponse khang = new KhachHangResponse(kh);
+           respon.add(khang);
+        }
+        return respon;
+    }
 }

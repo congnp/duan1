@@ -33,6 +33,14 @@ public class KhachHangRepository {
         return khachhang;
     }
 
+    public List<KhachHang> getByName(String name) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.hoTen LIKE CONCAT('%',:name,'%')", KhachHang.class);
+        query.setParameter("name", name);
+        List<KhachHang> list = query.getResultList();
+        return list;
+    }
+
     public Boolean add(KhachHang khachhang) {
         Transaction transaction = null;
         try {

@@ -16,4 +16,5 @@ public interface IQLThongKeService {
     List<QLThongKeResponse> getThongKe();
     List<QLThongKeResponse> getHuy();
     List<HoaDon> getDoanhThu();
+    List<QLThongKeResponse> getDoanhThuChart();
 }

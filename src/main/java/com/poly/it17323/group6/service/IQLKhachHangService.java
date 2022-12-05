@@ -4,6 +4,7 @@
  */
 package com.poly.it17323.group6.service;
 
+import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.response.KhachHangResponse;
 import java.util.List;
 import java.util.UUID;
@@ -24,4 +25,6 @@ public interface IQLKhachHangService {
     String deleteKh(KhachHangResponse kh);
     
     String MaKh();
+    
+    List<KhachHangResponse> getByName(String name);
 }
