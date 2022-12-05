@@ -104,9 +104,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     private Executor ex = Executors.newSingleThreadExecutor(this);
-    
+
     Double bHeight = 0.0;
-    
+
     ArrayList<String> itemName = new ArrayList<>();
     ArrayList<String> soLuong = new ArrayList<>();
     ArrayList<String> itemPrice = new ArrayList<>();
@@ -3792,7 +3792,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         int index = tblHoaDon.getSelectedRow();
-        HoaDon HD = iBH.getAll_HD().get(index);
+        HoaDon HD = iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(index, 1).toString());
         showDetailHD(HD);
         tblHoaDon.setRowSelectionAllowed(true);
         loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
@@ -4538,7 +4538,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 loadND(inds.getAll());
                 JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
             } catch (Exception ex) {
-                 ex.printStackTrace(System.out);
+                ex.printStackTrace(System.out);
             }
         } else {
             JOptionPane.showMessageDialog(this, inds.emaiFals(nd));
@@ -4655,7 +4655,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString(" Địa chỉ:              " + khr.getDiaChi(), 10, y);
                     y += yShift;
-                    g2d.drawString(" Nhân viên:           " + lblTenND.getText(), 10, y);
+                    g2d.drawString(" Nhân viên:            " + lblTenND.getText(), 10, y);
                     y += yShift;
                     g2d.drawString("              ", 12, y);
                     y += yShift;
@@ -4667,7 +4667,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     g2d.drawString("-------------------------------------------", 12, y);
                     y += headerRectHeight;
 
-                    
                     for (int s = 0; s < lstHDCT.size(); s++) {
                         Double gia = Double.parseDouble(soLuong.get(s)) * Double.parseDouble(itemPrice.get(s));
                         g2d.drawString(itemName.get(s) + "                 " + soLuong.get(s) + "       " + gia, 12, y);
@@ -4725,8 +4724,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
         }
     }
-    
-    
+
     // Công
     private void loadND(List<NguoiDung> listND) {
         modelND = (DefaultTableModel) tbl_nd_DangLam.getModel();
@@ -4823,7 +4821,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 setTinhTrangKM(x.getTinhTrang()), x.getNgayTao(), x.getNgaySua()});
         }
     }
-
 
     private KhuyenMaiReponse getKM() {
         KhuyenMaiReponse km = new KhuyenMaiReponse();
@@ -5787,10 +5784,61 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             if (result != null) {
                 kq = result.getText().substring(7, result.getText().length());
                 ketqua.setText(kq);
-                for (int i = 0; i <= iBH.getAll_CTSP().size(); i++) {
+                int checkQR = 0;
+                for (int i = 0; i < iBH.getAll_CTSP().size(); i++) {
                     if (kq.equalsIgnoreCase(iBH.getAll_CTSP().get(i).getSanPham().getMaSP())) {
+                        checkQR = 1;
                         tblSanPham.setRowSelectionInterval(i, i);
+                        tblGioHang.setRowSelectionAllowed(false);
+                        tblSanPham.setRowSelectionAllowed(true);
+                        HoaDon HD = iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString());
+                        ChiTietSanPham CTSP = iBH.getAll_CTSP_ByName(txtTimKiem.getText()).get(tblSanPham.getSelectedRow());
+                        String ipSL = JOptionPane.showInputDialog(this, "Moi nhap so luong");
+                        if (ipSL.isEmpty()) {
+                            JOptionPane.showMessageDialog(this, "Khong duoc de trong");
+                            return;
+                        }
+                        int sl;
+                        try {
+                            sl = Integer.parseInt(ipSL);
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, "So luong phai la so !");
+                            return;
+                        }
+                        if (sl < 0) {
+                            JOptionPane.showMessageDialog(this, "So luong phai la so duong");
+                            return;
+                        }
+                        if (sl > Integer.parseInt(tblSanPham.getValueAt(tblSanPham.getSelectedRow(), 6).toString())) {
+                            JOptionPane.showMessageDialog(this, "So luong trong kho khong du");
+                            return;
+                        }
+                        int check = 0;
+                        for (HoaDonChiTiet HDCT : iBH.getAll_HDCT()) {
+                            if (HDCT.getHoaDon().getIdHD().equals(HD.getIdHD()) && HDCT.getChiTietSanPham().getId().equals(CTSP.getId())) {
+                                int slMua = Integer.parseInt(ipSL) + HDCT.getSlMua();
+                                iBH.updateSL_HDCT(getFormDataHDCT_UD(HDCT, String.valueOf(slMua)));
+                                check = 1;
+                            }
+                        }
+                        if (check == 0) {
+                            iBH.add_HDCT(getFormDataHDCT(ipSL));
+                        }
+                        int slTon = CTSP.getSlTon() - Integer.parseInt(ipSL);
+                        iBH.updateSL_CTSP(getFormDataCTSP_UD(String.valueOf(slTon)));
+                        loadDataSP();
+                        loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
+                        tinhTien(HD);
+                        txtTimKiem.setText("");
+                        BigDecimal tienThua = (txtTienKhachDua.getText().isEmpty() ? BigDecimal.valueOf(0.0) : BigDecimal.valueOf(Double.valueOf(txtTienKhachDua.getText()))).subtract(BigDecimal.valueOf(ttoan));
+                        DecimalFormat dftt = new DecimalFormat("#,###");
+                        txtTienThua.setText(dftt.format(tienThua) + " VND");
+                        ketqua.setText("");
                     }
+                }
+                if (checkQR == 0) {
+                    JOptionPane.showMessageDialog(this, "SP khong co trong gio hang");
+                    ketqua.setText("");
                 }
             }
         } while (true);
