@@ -108,5 +108,11 @@ public class ChiTietSanPhamRepository {
         }
         return null;
     }
+    
+    public static void main(String[] args) {
+        for (ChiTietSanPham chiTietSanPham : new ChiTietSanPhamRepository().getAll()) {
+            System.out.println(chiTietSanPham);
+        }
+    }
 
 }

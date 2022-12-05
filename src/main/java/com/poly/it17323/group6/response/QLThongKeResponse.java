@@ -4,7 +4,6 @@
  */
 package com.poly.it17323.group6.response;
 
-import com.poly.it17323.group6.domainmodel.DoiTra;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import java.util.UUID;
 import lombok.Getter;
@@ -21,38 +20,24 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class QLThongKeResponse {
+
     private UUID idHoaDon, idDoiTra;
-    
-    private String maHDDThu,maNDDThu;
-    
-    private String maHDDTra,maNDDTra;
-    
-    private String ngayTaoDThu, ngayTaoDTra, tongTienDThu,tongTienDTra;
-    
+
+    private String maHDDThu, maNDDThu;
+
+    private String maHDDTra, maNDDTra;
+
+    private String ngayTaoDThu, ngayTaoDTra, tongTienDThu, tongTienDTra;
+
     private String lyDoTra, ngayTra;
 
-    public QLThongKeResponse(DoiTra d) {
-        this.idDoiTra = d.getIdDT();
-        this.lyDoTra = d.getLyDoDT();
-        this.maHDDTra = d.getHoaDon().getMaHD();
-        this.maNDDTra = d.getHoaDon().getNguoiDung().getMaND();
-        this.ngayTaoDTra = d.getHoaDon().getNgayTao()+"";
-        this.ngayTra = d.getNgayDT()+"";
-        this.tongTienDTra = d.getHoaDon().getTongTien()+"";
-    }
-
-    public QLThongKeResponse(HoaDon h ) {
+    public QLThongKeResponse(HoaDon h) {
         this.idHoaDon = h.getIdHD();
         this.maHDDThu = h.getMaHD();
         this.maNDDThu = h.getNguoiDung().getMaND();
-        this.ngayTaoDThu = h.getNgayTao()+"";
-        this.tongTienDThu = h.getTongTien()+"";
-        
+        this.ngayTaoDThu = h.getNgayTao() + "";
+        this.tongTienDThu = h.getTongTien() + "";
+
     }
-    
 
-    
-
-    
-    
 }

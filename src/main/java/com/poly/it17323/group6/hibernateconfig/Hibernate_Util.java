@@ -4,7 +4,6 @@ import com.poly.it17323.group6.domainmodel.Anh;
 import com.poly.it17323.group6.domainmodel.ChatLieu;
 import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.domainmodel.ChucVu;
-import com.poly.it17323.group6.domainmodel.DoiTra;
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.HoaDonChiTiet;
 import com.poly.it17323.group6.domainmodel.KhachHang;
@@ -54,7 +53,6 @@ public class Hibernate_Util {
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(HoaDon.class);
-        conf.addAnnotatedClass(DoiTra.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

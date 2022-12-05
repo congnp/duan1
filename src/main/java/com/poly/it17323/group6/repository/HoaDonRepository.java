@@ -25,6 +25,13 @@ public class HoaDonRepository {
         List<HoaDon> list = query.getResultList();
         return list;
     }
+    
+    public static void main(String[] args) {
+        HoaDonRepository hd = new HoaDonRepository();
+        for (HoaDon hoaDon : hd.getAll()) {
+            System.out.println(hoaDon);
+        }
+    }
 
     public List<HoaDon> getAll_ByTT(int tt) {
         session = Hibernate_Util.getFACTORY().openSession();
@@ -104,17 +111,18 @@ public class HoaDonRepository {
         return null;
     }
 
-    public Boolean update(UUID idHD, BigDecimal ttien, int tt, int pttt) {
+    public Boolean update(UUID idHD, BigDecimal ttien, int tt, int pttt, BigDecimal tship) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = session.beginTransaction();
-            String sql = "UPDATE HoaDon a SET a.tongTien = :ttien,a.tinhTrang = :tt,a.pttt = :pttt WHERE a.idHD = :idHD";
+            String sql = "UPDATE HoaDon a SET a.tongTien = :ttien,a.tinhTrang = :tt,a.pttt = :pttt,a.tienShip = :tship WHERE a.idHD = :idHD";
             Query query = session.createQuery(sql);
             query.setParameter("idHD", idHD);
             query.setParameter("ttien", ttien);
             query.setParameter("tt", tt);
             query.setParameter("pttt", pttt);
+            query.setParameter("tship", tship);
             query.executeUpdate();
             transaction.commit();
             return true;

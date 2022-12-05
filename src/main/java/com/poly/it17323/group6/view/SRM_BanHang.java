@@ -51,7 +51,6 @@ import com.poly.it17323.group6.service.ISanPhamChiTietService;
 import com.poly.it17323.group6.service.ipml.AnhService;
 import com.poly.it17323.group6.service.ipml.ChucVuService;
 import com.poly.it17323.group6.service.ipml.HoaDonService;
-import com.poly.it17323.group6.service.ipml.QLKhuyenMaiService;
 import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLCTSPService;
 import com.poly.it17323.group6.service.ipml.QLChatLieuService;
@@ -100,17 +99,17 @@ import java.util.concurrent.ThreadFactory;
  * @author pdanh
  */
 public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, ThreadFactory {
-
+    
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     private Executor ex = Executors.newSingleThreadExecutor(this);
-
+    
     Double bHeight = 0.0;
-
+    
     ArrayList<String> itemName = new ArrayList<>();
     ArrayList<String> soLuong = new ArrayList<>();
     ArrayList<String> itemPrice = new ArrayList<>();
-
+    
     private final IQLBanHangService iBH = new BanHangService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
     private final IQLKhachHangService iQlKH = new QLKhachHangService();
@@ -159,7 +158,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 //    private final CardLayout cardLayout;
 
     public SRM_BanHang(QLNguoiDungResponse response) throws IOException {
-
+        
         initComponents();
         initWebCam();
         setLocationRelativeTo(null);
@@ -176,7 +175,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadND(inds.getAll());
         loadKM(iKM.getAll());
         loadThongKe();
-        loadHuy();
         soHoaDon();
         soHangHuy();
         getdoanhThu();
@@ -201,7 +199,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         btnCuoi.setIcon(a4);
         //Van
     }
-
+    
     private void loadAll() throws IOException {
         loadQLThuocTinh();
         if (tbl_ttsp.getRowCount() > 0) {
@@ -228,7 +226,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
         }
     }
-
+    
     private boolean setRole() {
         if (ndRP.getCv().getTenCV().equalsIgnoreCase("Nhân Viên")) {
             JOptionPane.showMessageDialog(this, "VAO DAY LAM GI !!!");
@@ -247,27 +245,17 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{s++, x.getMaNDDThu(), x.getMaHDDThu(), x.getNgayTaoDThu(), x.getTongTienDThu()});
         }
     }
-
-    private void loadHuy() {
-        model = (DefaultTableModel) tblDonHangHuy.getModel();
-        model.setRowCount(0);
-        lst = tkeSer.getHuy();
-        int s = 1;
-        for (QLThongKeResponse x : lst) {
-            model.addRow(new Object[]{s++, x.getMaHDDTra(), x.getMaNDDTra(), x.getNgayTaoDTra(), x.getNgayTra(), x.getTongTienDTra(), x.getLyDoTra()});
-        }
-    }
-
+    
     private void soHoaDon() {
         lblHoaDon.setText("");
         lblHoaDon.setText(tblDoanhThu.getRowCount() + "");
     }
-
+    
     private void soHangHuy() {
         lblHangHuy.setText("");
         lblHangHuy.setText(tblDonHangHuy.getRowCount() + "");
     }
-
+    
     private void getdoanhThu() {
         lblDoanhThu.setText("");
         lblDoanhThu.setText(tkeSer.getDoanhThu() + " VNĐ");
@@ -361,6 +349,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtTongTien = new javax.swing.JLabel();
         txtGiamGia = new javax.swing.JLabel();
         txtThanhToan = new javax.swing.JLabel();
+        txtTienShip = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
         ThanhToan = new javax.swing.JPanel();
         btnThanhToan = new javax.swing.JButton();
         lammoi = new javax.swing.JButton();
@@ -1236,6 +1226,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
         });
 
+        jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel66.setText("Tiền ship :");
+
         javax.swing.GroupLayout ThongTinLayout = new javax.swing.GroupLayout(ThongTin);
         ThongTin.setLayout(ThongTinLayout);
         ThongTinLayout.setHorizontalGroup(
@@ -1253,20 +1246,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(ThongTinLayout.createSequentialGroup()
                             .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel16)
-                                .addComponent(jLabel17)
-                                .addComponent(jLabel18))
-                            .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(ThongTinLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(cboPthuctt, 0, 244, Short.MAX_VALUE))
-                                .addGroup(ThongTinLayout.createSequentialGroup()
-                                    .addGap(13, 13, 13)
-                                    .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtTienThua)
-                                        .addComponent(txtTienKhachDua, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))))
-                        .addGroup(ThongTinLayout.createSequentialGroup()
-                            .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel13)
                                 .addComponent(jLabel14)
                                 .addComponent(jLabel15)
@@ -1276,9 +1255,24 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                                 .addComponent(txtTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtGiamGia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblTenND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblTenND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(ThongTinLayout.createSequentialGroup()
+                            .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel17)
+                                .addComponent(jLabel18)
+                                .addComponent(jLabel66))
+                            .addGap(13, 13, 13)
+                            .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtTienShip)
+                                .addComponent(txtTienThua)
+                                .addComponent(txtTienKhachDua, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                                .addComponent(cboPthuctt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
+
+        ThongTinLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtThanhToan, txtTienKhachDua});
+
         ThongTinLayout.setVerticalGroup(
             ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ThongTinLayout.createSequentialGroup()
@@ -1308,7 +1302,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
                     .addComponent(txtThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel16)
                     .addGroup(ThongTinLayout.createSequentialGroup()
@@ -1320,17 +1314,20 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     .addGroup(ThongTinLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(txtTienThua, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ThongTinLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThongTinLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(cboPthuctt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboPthuctt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(ThongTinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTienShip, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel66))
+                .addContainerGap())
         );
 
         ThongTinLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel13, jLabel14, jLabel15, jLabel16, jLabel17, jLabel9, lbl, lblTenND});
+
+        ThongTinLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cboPthuctt, txtTienShip});
 
         ThanhToan.setBackground(new java.awt.Color(232, 211, 227));
         ThanhToan.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1358,27 +1355,27 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ThanhToan.setLayout(ThanhToanLayout);
         ThanhToanLayout.setHorizontalGroup(
             ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThanhToanLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(lammoi)
-                .addGap(26, 26, 26)
-                .addComponent(inhoadon)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhToanLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
+            .addGroup(ThanhToanLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(lammoi)
+                .addGap(27, 27, 27)
+                .addComponent(inhoadon)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ThanhToanLayout.setVerticalGroup(
             ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ThanhToanLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(ThanhToanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lammoi)
                     .addComponent(inhoadon))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout DonHangLayout = new javax.swing.GroupLayout(DonHang);
@@ -1394,9 +1391,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             .addGroup(DonHangLayout.createSequentialGroup()
                 .addComponent(KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -1429,7 +1426,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         .addComponent(HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 1, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))
         );
@@ -2211,7 +2208,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
             },
             new String [] {
-                "STT", "MaHD", "TenNV", "MaKH", "TenKH", "PhuongThucTT", "TongTien", "TrangThai", "NgayTao", "NgaySua"
+                "STT", "MaHD", "TenNV", "MaKH", "TenKH", "PhuongThucTT", "TongTien", "TrangThai", "NgayTao", "NgaySua", "Tien Ship"
             }
         ));
         tbl_HoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3867,7 +3864,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadHoaDon();
         loadDataGH_Rong();
         loadThongKe();
-        loadHuy();
         soHoaDon();
         soHangHuy();
         getdoanhThu();
@@ -3888,7 +3884,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             String add = iQlKH.addKh(kh);;
             JOptionPane.showMessageDialog(this, add);
             loadKhachHang();
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3947,6 +3943,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         showDetailHD(iBH.getAll_HD().get(tblHoaDon.getSelectedRow()));
         tblKhachHang.setRowSelectionAllowed(false);
         thaydoi.setEnabled(false);
+        if (!lblMaKH.getText().equalsIgnoreCase("KH00")) {
+            txtTongTien.setText("");
+        }
     }//GEN-LAST:event_thaydoiMouseClicked
 
     private void btn_km_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_ClearActionPerformed
@@ -4015,7 +4014,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         String check = tbl_km.getValueAt(row, 7).toString();
         if (check.equalsIgnoreCase("Còn Khuyến Mãi")) {
             rdo_km_ConKhuyenMai.setSelected(true);
-
+            
         } else {
             rdo_km_DungKhuyenMai.setSelected(true);
         }
@@ -4227,7 +4226,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     return f.getName().toLowerCase().endsWith(".jpg");
                 }
             }
-
+            
             @Override
             public String getDescription() {
                 return "Image File(*.jpg)";
@@ -4565,22 +4564,22 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         //JOptionPane.showMessageDialog(rootPane, bHeight);
 
         PrinterJob pj = PrinterJob.getPrinterJob();
-
+        
         pj.setPrintable(new BillPrintable(), getPageFormat(pj));
-
+        
         try {
             pj.print();
-
+            
         } catch (PrinterException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_inhoadonActionPerformed
-
+    
     public PageFormat getPageFormat(PrinterJob pj) {
-
+        
         PageFormat pf = pj.defaultPage();
         Paper paper = pf.getPaper();
-
+        
         double bodyHeight = bHeight;
         double headerHeight = 5.0;
         double footerHeight = 5.0;
@@ -4588,26 +4587,26 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
         paper.setSize(width, height);
         paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
-
+        
         pf.setOrientation(PageFormat.PORTRAIT);
         pf.setPaper(paper);
-
+        
         return pf;
     }
-
+    
     protected static double cm_to_pp(double cm) {
         return toPPI(cm * 0.393600787);
     }
-
+    
     protected static double toPPI(double inch) {
         return inch * 72d;
     }
-
+    
     public class BillPrintable implements Printable {
-
+        
         public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
                 throws PrinterException {
-
+            
             int row = tblGioHang.getSelectedRow();
             HoaDon hd = iBH.getAll_HD().get(tblHoaDon.getSelectedRow());
             List<HoaDonChiTiet> lstHDCT = iBH.getAll_HDCTByIDHD(hd.getIdHD());
@@ -4622,7 +4621,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ImageIcon icon = new ImageIcon("C:\\Users\\LE BAO NGOC\\Pictures\\Saved Pictures\\Logo.png");
             int result = NO_SUCH_PAGE;
             if (pageIndex == 0) {
-
+                
                 Graphics2D g2d = (Graphics2D) graphics;
                 double width = pageFormat.getImageableWidth();
                 g2d.translate((int) pageFormat.getImageableX(), (int) pageFormat.getImageableY());
@@ -4655,12 +4654,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString("-------------------------------------", 12, y);
                     y += headerRectHeight;
-
+                    
                     g2d.drawString("Tên sản phẩm       Số lượng     Giá", 12, y);
                     y += yShift;
                     g2d.drawString("-------------------------------------------", 12, y);
                     y += headerRectHeight;
-
+                    
                     for (int s = 0; s < lstHDCT.size(); s++) {
                         Double gia = Double.parseDouble(soLuong.get(s)) * Double.parseDouble(itemPrice.get(s));
                         g2d.drawString(itemName.get(s) + "                 " + soLuong.get(s) + "       " + gia, 12, y);
@@ -4697,7 +4696,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+                
                 result = PAGE_EXISTS;
             }
             return result;
@@ -4731,7 +4730,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
         }
     }
-
+    
     public String setTinhTrang(int item) {
         if (item == 1) {
             return "Đang Làm";
@@ -4741,7 +4740,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             return null;
         }
     }
-
+    
     private void showND() {
         int row = tbl_nd_DangLam.getSelectedRow();
         NguoiDung nd = inds.getAll().get(row);
@@ -4769,9 +4768,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txt_nd_NgayTao.setText(nd.getNgayTao() + "");
         txt_nd_NgaySua.setText(nd.getNgaySua() + "");
         cbb_nd_ChucVu.setSelectedItem(nd.getChucVu().getTenCV());
-
+        
     }
-
+    
     private NguoiDungReponse getFromMoi(UUID idND) {
         NguoiDungReponse ndr = new NguoiDungReponse();
         ndr.setIdND(idND);
@@ -4791,9 +4790,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ChucVu cv = icvs.getAll().get(cbb_nd_ChucVu.getSelectedIndex());
         ndr.setIdCV(cv.getIdCV());
         return ndr;
-
+        
     }
-
+    
     private void loadComboBoxNd() {
         comboBoxND = new DefaultComboBoxModel();
         cbb_nd_ChucVu.setModel(comboBoxND);
@@ -4815,7 +4814,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 setTinhTrangKM(x.getTinhTrang()), x.getNgayTao(), x.getNgaySua()});
         }
     }
-
+    
     private KhuyenMaiReponse getKM() {
         KhuyenMaiReponse km = new KhuyenMaiReponse();
         km.setMaKM(txt_km_Ma.getText().trim());
@@ -4829,7 +4828,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         km.setNgaySua(txt_km_NgaySua.getText().trim());
         return km;
     }
-
+    
     public String setTinhTrangKM(int i) {
         if (i == 1) {
             return "Còn Khuyến Mãi";
@@ -4859,7 +4858,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txt_kh_NgaySua.setText(tblKhachHang.getValueAt(index, 8).toString());
         tblKhachHang.setRowSelectionInterval(index, index);
     }
-
+    
     private void loadKhachHang() {
         model = (DefaultTableModel) tblKhachHang.getModel();
         model.setRowCount(0);
@@ -4868,7 +4867,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{tblKhachHang.getRowCount() + 1, x.getMaKh(), x.getHoTen(), x.getGioiTinh(), x.getDiaChi(), x.getSdt(), x.getNgaySinh(), x.getNgayTao(), x.getNgaySua()});
         }
     }
-
+    
     private KhachHangResponse getFormKh() {
         KhachHangResponse kh = new KhachHangResponse();
         kh.setMaKh(txt_kh_MaKh.getText().trim());
@@ -4881,7 +4880,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 //        kh.setNgaySua(txt_kh_NgaySua.getText().trim());
         return kh;
     }
-
+    
     private void clearKH() {
         txt_kh_MaKh.setText("");
         txt_kh_DiaChi.setText("");
@@ -4891,9 +4890,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txt_kh_HoTenKH.setText("");
         txt_kh_sdt.setText("");
         buttonGroup1.clearSelection();
-
+        
     }
-
+    
     private void setIconTK() {
         jLabel23.setIcon(new ImageIcon("bill.png"));
         jLabel21.setIcon(new ImageIcon("money1.png"));
@@ -4917,7 +4916,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             loadSanPham();
         }
     }
-
+    
     private void loadSanPham() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ttsp.getModel();
@@ -4926,7 +4925,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{sp.getIdSP(), sp.getMaSP(), sp.getTenSP()});
         }
     }
-
+    
     private void loadLoaiSP() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ttsp.getModel();
@@ -4935,7 +4934,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{sp.getIdLoaiSP(), sp.getMaLoaiSP(), sp.getTenLoaiSP()});
         }
     }
-
+    
     private void loadChatLieu() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ttsp.getModel();
@@ -4944,7 +4943,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{sp.getIdChatLieu(), sp.getMaChatLieu(), sp.getTenChatLieu()});
         }
     }
-
+    
     private void loadMauSac() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ttsp.getModel();
@@ -4953,7 +4952,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{sp.getIdMauSac(), sp.getMaMauSac(), sp.getTenMauSac()});
         }
     }
-
+    
     private void loadSize() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ttsp.getModel();
@@ -4962,14 +4961,14 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{sp.getIdSize(), sp.getMaSize(), sp.getTenSize()});
         }
     }
-
+    
     private void showDetailThuocTinh() {
         txt_tt_ID.setText(tbl_ttsp.getValueAt(indextblThuocTinh, 0).toString());
         txt_tt_Ma.setText(tbl_ttsp.getValueAt(indextblThuocTinh, 1).toString());
         txt_tt_Ten.setText(tbl_ttsp.getValueAt(indextblThuocTinh, 2).toString());
         tbl_ttsp.setRowSelectionInterval(indextblThuocTinh, indextblThuocTinh);
     }
-
+    
     private QLSanPhamResponse getFormThuocTinh() {
         String ma = txt_tt_Ma.getText().trim();
         String ten = txt_tt_Ten.getText().trim();
@@ -4992,7 +4991,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
         return q;
     }
-
+    
     private void loadcbbSP() {
         cbbModel = new DefaultComboBoxModel();
         cbbModel = (DefaultComboBoxModel) cbb_ctsp_SanPham.getModel();
@@ -5001,7 +5000,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             cbbModel.addElement(x.getTenSP());
         }
     }
-
+    
     private void loadcbbLoaiSP() {
         cbbModel = new DefaultComboBoxModel();
         cbbModel = (DefaultComboBoxModel) cbb_ctsp_LoaiSP.getModel();
@@ -5010,7 +5009,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             cbbModel.addElement(x.getTenLoaiSP());
         }
     }
-
+    
     private void loadcbbChatLieu() {
         cbbModel = new DefaultComboBoxModel();
         cbbModel = (DefaultComboBoxModel) cbb_ctsp_ChatLieu.getModel();
@@ -5019,7 +5018,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             cbbModel.addElement(x.getTenChatLieu());
         }
     }
-
+    
     private void loadcbbMauSac() {
         cbbModel = new DefaultComboBoxModel();
         cbbModel = (DefaultComboBoxModel) cbb_ctsp_Mau.getModel();
@@ -5028,7 +5027,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             cbbModel.addElement(x.getTenMauSac());
         }
     }
-
+    
     private void loadcbbSize() {
         cbbModel = new DefaultComboBoxModel();
         cbbModel = (DefaultComboBoxModel) cbb_ctsp_Size.getModel();
@@ -5037,7 +5036,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             cbbModel.addElement(x.getTenSize());
         }
     }
-
+    
     private void loadQLCTSP() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_ctsp.getModel();
@@ -5048,7 +5047,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 x.getSLTon(), x.getGia(), x.getMoTa(), x.getTinhTrang(), x.getNgaySua(), x.getNgayTao()});
         }
     }
-
+    
     private void loadtblAnhctsp() {
         model = new DefaultTableModel();
         model = (DefaultTableModel) tbl_a_ctsp.getModel();
@@ -5058,7 +5057,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{i++, x.getTenSP(), x.getTenLoaiSP(), x.getTenChatLieu(), x.getTenSize(), x.getTenMauSac(), x.getMoTa()});
         }
     }
-
+    
     private void loadtblAnh() {
         UUID id = iChiTietSP.getAllQLChiTietSP().get(indextblAnhctsp).getId();
         model = new DefaultTableModel();
@@ -5069,7 +5068,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             model.addRow(new Object[]{i++, x.getMaAnh(), x.getTenAnh(), x.getLinkAnh()});
         }
     }
-
+    
     private void showDetailChiTietSP() throws IOException {
         QLSanPhamResponse x = iChiTietSP.getAllQLChiTietSP().get(indextblCTSP);
         cbb_ctsp_SanPham.setSelectedItem(x.getTenSP());
@@ -5099,63 +5098,63 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
         tbl_ctsp.setRowSelectionInterval(indextblCTSP, indextblCTSP);
     }
-
+    
     private QLSanPhamResponse getFormChiTietSP() {
         int index;
-
+        
         index = cbb_ctsp_SanPham.getSelectedIndex();
         QLSanPhamResponse sp = iSP.getAllQLSP().get(index);
-
+        
         index = cbb_ctsp_LoaiSP.getSelectedIndex();
         QLSanPhamResponse loaiSP = iLoaiSP.getAllQLLoaiSP().get(index);
-
+        
         index = cbb_ctsp_ChatLieu.getSelectedIndex();
         QLSanPhamResponse cl = iCL.getAllQLCL().get(index);
-
+        
         index = cbb_ctsp_Mau.getSelectedIndex();
         QLSanPhamResponse m = iMS.getAllQLMauSac().get(index);
-
+        
         index = cbb_ctsp_Size.getSelectedIndex();
         QLSanPhamResponse s = iSize.getAllQLSize().get(index);
-
+        
         QLSanPhamResponse q = new QLSanPhamResponse();
         q.setSLTon(txt_ctsp_SLTon.getText().trim());
         q.setGia(txt_ctsp_Gia.getText().trim());
         q.setMoTa(txt_ctsp_MoTa.getText().trim());
         q.setTinhTrang(rdo_ctsp_DungKinhDoanh.isSelected() ? "0" : "1");
-
+        
         q.setIdSP(sp.getIdSP());
         q.setMaSP(sp.getMaSP());
         q.setTenSP(sp.getTenSP());
-
+        
         q.setIdLoaiSP(loaiSP.getIdLoaiSP());
         q.setMaLoaiSP(loaiSP.getMaLoaiSP());
         q.setTenLoaiSP(loaiSP.getTenLoaiSP());
-
+        
         q.setIdChatLieu(cl.getIdChatLieu());
         q.setMaChatLieu(cl.getMaChatLieu());
         q.setTenChatLieu(cl.getTenChatLieu());
-
+        
         q.setIdMauSac(m.getIdMauSac());
         q.setMaMauSac(m.getMaMauSac());
         q.setTenMauSac(m.getTenMauSac());
-
+        
         q.setIdSize(s.getIdSize());
         q.setMaSize(s.getMaSize());
         q.setTenSize(s.getTenSize());
         return q;
     }
-
+    
     private void showDetailAnh() throws IOException {
         if (tbl_a.getRowCount() > 0) {
             try {
                 UUID id = iChiTietSP.getAllQLChiTietSP().get(indextblAnhctsp).getId();
-
+                
                 Anh a = iAnh.getAllByIdCTSP(id).get(indextblAnh);
-
+                
                 txt_a_Ma.setText(a.getMaAnh());
                 txt_a_Ten.setText(a.getTenAnh());
-
+                
                 if (a.getLinkAnh() != null) {
                     lbl_a_Anh.setText("");
                     Image img = ImageHelper.createImageFromByteArrayList(a.getLinkAnh(), "jpg");
@@ -5175,9 +5174,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             lbl_a_Anh.setIcon(null);
             lbl_a_Anh.setText("Ảnh");
         }
-
+        
     }
-
+    
     private void showAnhCTSP() throws IOException {
         UUID id = iChiTietSP.getAllQLChiTietSP().get(indextblCTSP).getId();
         List<Anh> a = iAnh.getAllByIdCTSP(id);
@@ -5194,9 +5193,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 lbl_sp_Anh.setText("Ảnh");
             }
         }
-
+        
     }
-
+    
     private Anh getFormAnh() {
         Anh a = new Anh();
         QLSanPhamResponse ql = iChiTietSP.getAllQLChiTietSP().get(indextblAnhctsp);
@@ -5224,10 +5223,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         List<HoaDon> listHD = ihd.getAll();
         int stt = 1;
         for (HoaDon x : listHD) {
-            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt() == 0 ? "Chuyen khoan" : "Tien mat", x.getTongTien(), x.getTinhTrang() == 1 ? "Da thanh toan" : "Cho thanh toan", x.getNgayTao(), x.getNgaySua()});
+            mdHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getHoTen(), x.getKhachHang().getMaKH(), x.getKhachHang().getHoTen(), x.getPttt() == 0 ? "Chuyen khoan" : "Tien mat", x.getTongTien(), x.getTinhTrang() == 1 ? "Da thanh toan" : "Cho thanh toan", x.getNgayTao(), x.getNgaySua(), x.getTienShip()});
         }
     }
-
+    
     private void loadHoaDonChiTiet(List<HoaDonChiTiet> lstHDCT) {
         String Header[] = {"STT", "Ma SP", "Ten SP", "Chat Lieu", "Mau sac", "SIZE", "SL Mua", "Don Gia", "Giam Gia"};
         modelCTHD = new DefaultTableModel(Header, 0);
@@ -5392,6 +5391,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
@@ -5523,6 +5523,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JTable txtNghiLam;
     private javax.swing.JLabel txtThanhToan;
     private javax.swing.JTextField txtTienKhachDua;
+    private javax.swing.JTextField txtTienShip;
     private javax.swing.JTextField txtTienThua;
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JTextField txtTimKiemKHang;
@@ -5596,35 +5597,35 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ImageIcon imhd = new ImageIcon("hoadon.png");
         hoadon.setIcon(imhd);
     }
-
+    
     private BanhangReponse getFormDataHD() {
         return new BanhangReponse(iBH.getOne_ND(ndRP.getIdND()), iBH.getAll_KH().get(0));
     }
-
+    
     private BanhangReponse getFormDataHD_UD_KH() {
         return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), iBH.getAll_KH().get(tblKhachHang.getSelectedRow()));
     }
-
+    
     private BanhangReponse getFormDataHD_UD() {
-        return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), BigDecimal.valueOf(ttoan), 1, cboPthuctt.getSelectedIndex() == 0 ? 1 : 0);
+        return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), BigDecimal.valueOf(ttoan), 1, cboPthuctt.getSelectedIndex() == 0 ? 1 : 0, BigDecimal.valueOf(txtTienShip.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienShip.getText())));
     }
-
+    
     private BanhangReponse getFormDataHDCT(String ipSL) {
         return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), iBH.getAll_CTSP_ByName(txtTimKiem.getText()).get(tblSanPham.getSelectedRow()), ipSL, iBH.getAll_KM().get(cboKM.getSelectedIndex()));
     }
-
+    
     private BanhangReponse getFormDataHDCT_UD(HoaDonChiTiet HDCT, String ipSL) {
         return new BanhangReponse(HDCT, ipSL);
     }
-
+    
     private BanhangReponse getFormDataHDCT_DL() {
         return new BanhangReponse(iBH.getAll_HDCTByIDHD(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()).getIdHD()).get(tblGioHang.getSelectedRow()));
     }
-
+    
     private BanhangReponse getFormDataCTSP_UD(String sl) {
         return new BanhangReponse(iBH.getAll_CTSP_ByName(txtTimKiem.getText()).get(tblSanPham.getSelectedRow()), sl);
     }
-
+    
     private void clearForm() {
         tblHoaDon.setRowSelectionAllowed(false);
         txtTongTien.setText("");
@@ -5637,7 +5638,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtTienKhachDua.setText("");
         txtTienThua.setText("");
     }
-
+    
     private void showDetailHD(HoaDon hd) {
         KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
         NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
@@ -5647,7 +5648,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         lblTenND.setText(nd.getHoTen());
         tinhTien(hd);
     }
-
+    
     private void tinhTien(HoaDon hd) {
         List<BigDecimal> lstGia = new ArrayList<>();
         for (HoaDonChiTiet x : iBH.getAll_HDCTByIDHD(hd.getIdHD())) {
@@ -5673,7 +5674,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtThanhToan.setText(dfttoan.format(giamSum) + " VND");
         ttoan = giamSum;
     }
-
+    
     private void loadDataSP() {
         String Header[] = {"STT", "Ma SP", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
         modelSP = new DefaultTableModel(Header, 0);
@@ -5684,7 +5685,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
         }
     }
-
+    
     private void loadDataHD(List<HoaDon> lstHD) {
         String Header[] = {"STT", "Ma HD", "Ma NV", "Ngay Tao", "Tinh Trang"};
         modelHD = new DefaultTableModel(Header, 0);
@@ -5696,7 +5697,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             modelHD.addRow(new Object[]{stt++, x.getMaHD(), x.getNguoiDung().getMaND(), x.getNgayTao(), trangThai});
         }
     }
-
+    
     private void loadDataGH(List<HoaDonChiTiet> lstHDCT) {
         String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
         modelCTHD = new DefaultTableModel(Header, 0);
@@ -5707,28 +5708,28 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             modelCTHD.addRow(new Object[]{stt++, x.getChiTietSanPham().getSanPham().getMaSP(), x.getChiTietSanPham().getSanPham().getTenSP(), x.getSlMua(), x.getGia(), x.getKhuyenMai().getGiamGia() + " %"});
         }
     }
-
+    
     private void loadDataGH_Rong() {
         String Header[] = {"STT", "Ma SP", "Ten SP", "SL Mua", "Don Gia", "Giam Gia"};
         modelCTHD = new DefaultTableModel(Header, 0);
         modelCTHD.setRowCount(0);
         tblGioHang.setModel(modelCTHD);
     }
-
+    
     private void loadDataKM() {
         for (KhuyenMai x : iBH.getAll_KM()) {
             boxKM.addElement(x.getGiamGia());
         }
         cboKM.setModel(boxKM);
     }
-
+    
     private void nextPN(JPanel pn) {
         PN_Main.removeAll();
         PN_Main.add(pn);
         PN_Main.repaint();
         PN_Main.validate();
     }
-
+    
     private void effectNav(JPanel pn_goc, JPanel pn1, JPanel pn2, JPanel pn3, JPanel pn4, JPanel pn5, JPanel pn6, String title) {
         pn_goc.setBackground(Color.white);
         pn1.setBackground(new Color(210, 166, 199));
@@ -5739,7 +5740,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         pn6.setBackground(new Color(210, 166, 199));
         setTitle(title);
     }
-
+    
     public void initWebCam() {
         Dimension size = WebcamResolution.QVGA.getSize();
         webcam = Webcam.getWebcams().get(0);
@@ -5750,7 +5751,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         panelQR.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 25, 191, 110));
         ex.execute(this);
     }
-
+    
     @Override
     public void run() {
         do {
@@ -5759,10 +5760,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             } catch (Exception e) {
                 System.out.println(e);
             }
-
+            
             Result result = null;
             BufferedImage image = null;
-
+            
             if (webcam.isOpen()) {
                 if ((image = webcam.getImage()) == null) {
                     continue;
@@ -5770,7 +5771,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
             LuminanceSource source = new BufferedImageLuminanceSource(image);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
+            
             try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (Exception e) {
@@ -5780,7 +5781,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 ketqua.setText(kq);
                 int checkQR = 0;
                 for (int i = 0; i < iBH.getAll_CTSP().size(); i++) {
-                    if (kq.equalsIgnoreCase(iBH.getAll_CTSP().get(i).getSanPham().getMaSP())) {
+                    if (kq.equalsIgnoreCase(String.valueOf(iBH.getAll_CTSP().get(i).getId()))) {
                         checkQR = 1;
                         tblSanPham.setRowSelectionInterval(i, i);
                         tblGioHang.setRowSelectionAllowed(false);
@@ -5837,7 +5838,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
         } while (true);
     }
-
+    
     @Override
     public Thread newThread(Runnable r) {
         Thread t = new Thread(r, "My Thread");

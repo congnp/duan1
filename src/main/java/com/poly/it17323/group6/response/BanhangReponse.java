@@ -33,6 +33,7 @@ public class BanhangReponse {
     private BigDecimal tongTien;
     private int tinhTrang;
     private int pttt;
+    private BigDecimal tienShip;
 
     private HoaDonChiTiet hdct;
 
@@ -43,11 +44,12 @@ public class BanhangReponse {
     }
 
     // UPDATE HOA DON
-    public BanhangReponse(HoaDon hd, BigDecimal tongTien, int tinhTrang, int pttt) {
+    public BanhangReponse(HoaDon hd, BigDecimal tongTien, int tinhTrang, int pttt, BigDecimal tienShip) {
         this.hd = hd;
         this.tongTien = tongTien;
         this.tinhTrang = tinhTrang;
         this.pttt = pttt;
+        this.tienShip = tienShip;
     }
 
     // UPDATE HOA DON (KH)

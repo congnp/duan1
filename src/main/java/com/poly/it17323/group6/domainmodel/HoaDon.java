@@ -55,6 +55,9 @@ public class HoaDon implements Serializable {
     @Column(name = "NgaySua")
     private Date ngaySua;
 
+    @Column(name = "TienShip")
+    private BigDecimal tienShip;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdND", referencedColumnName = "Id")
     private NguoiDung nguoiDung;
