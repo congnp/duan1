@@ -102,12 +102,11 @@ public class NguoiDungService implements INguoiDungService {
     }
 
     @Override
-    public String guiTkMk(NguoiDungReponse ndr) {
+    public void guiTkMk(NguoiDungReponse ndr) {
         try {
             es.guiMail("Ten TK và MK", emailCheck, "Tên TK:"+ndr.getTenTK() +"/n"+"Mật khẩu:"+ndr.getMatKhau());
         } catch (MessagingException ex) {
             
         }
-        return null;
     }
 }

@@ -33,5 +33,5 @@ public interface INguoiDungService {
 
     String checkMa(String maXn);
     
-    String guiTkMk(NguoiDungReponse ndr);
+    void guiTkMk(NguoiDungReponse ndr);
 }
