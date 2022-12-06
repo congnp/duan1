@@ -45,9 +45,9 @@ public class SRM_ThemND extends javax.swing.JFrame {
         ndr.setTinhTrang(1);
         ndr.setNgayTao(txt_nd_NgayTao.getText());
         ndr.setNgaySua(txt_nd_NgaySua.getText());
-        ChucVu cv = icvs.getAll().get(0);
-        //getId
-        ndr.setIdCV(cv.getIdCV());
+//        ChucVu cv = icvs.getAll().get(0);
+//        //getId
+//        ndr.setIdCV(cv.getIdCV());
         return ndr;
         
     }

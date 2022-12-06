@@ -1,5 +1,6 @@
 package com.poly.it17323.group6.service.ipml;
 
+import com.poly.it17323.group6.domainmodel.ChucVu;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import com.poly.it17323.group6.hibernateconfig.EmailSender;
 import com.poly.it17323.group6.repository.ChucVuRepository;
@@ -40,7 +41,8 @@ public class NguoiDungService implements INguoiDungService {
         Date ngaySinh = Date.valueOf(ND.getNgaySinh());
         Date ngayTao = Date.valueOf(ND.getNgayTao());
         Date ngaySua = Date.valueOf(ND.getNgaySua());
-        ndRepo.add(new NguoiDung(null, ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, emailCheck, ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cvRepo.getOne(ND.getIdCV())));
+        ChucVu cv = cvRepo.getOneND("Nhân viên");
+        ndRepo.add(new NguoiDung(null, ND.getMaND(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, emailCheck, ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cvRepo.getOne(cv.getIdCV())));
         return true;
     }
 
