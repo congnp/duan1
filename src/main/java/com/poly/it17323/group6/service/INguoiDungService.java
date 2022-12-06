@@ -32,6 +32,4 @@ public interface INguoiDungService {
     String emaiFals(NguoiDungReponse ndr);
 
     String checkMa(String maXn);
-    
-    void guiTkMk(NguoiDungReponse ndr);
 }

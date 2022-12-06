@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.poly.it17323.group6.hibernateconfig;
 
 import java.util.Properties;
@@ -20,15 +17,16 @@ import javax.mail.internet.MimeMultipart;
 
 /**
  *
- * @author LE BAO NGOC
+ * @author ThanhNam
  */
-public class EmailSender {
+public class EmailXacNhanThem {
 
-    private final static String emailGui = "ngoctkc2003@gmail.com";
-    private final static String matKhau = "aputkfxvzrwzokld";
+    private final static String guiMail = "congngopham.test@gmail.com";
+    private final static String mathau = "shxnfmipkemptwxj";
     private final static int random_int = (int) Math.floor(Math.random() * (9000 - 1000 + 1) );
-
-    public static void guiMail(String emailNhan,String nd)throws AddressException, MessagingException {
+     public static void guiMaXacNhan(String emailNhan, 
+                          String noiDung) 
+            throws AddressException, MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
@@ -36,25 +34,25 @@ public class EmailSender {
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
         prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-
+        
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(emailGui, matKhau);
+                return new PasswordAuthentication(guiMail, mathau);
             }
         });
-
+        
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(emailGui));
+        message.setFrom(new InternetAddress(guiMail));
         message.setRecipients(
-                Message.RecipientType.TO, InternetAddress.parse(emailNhan));
-
+          Message.RecipientType.TO, InternetAddress.parse(emailNhan));
+        
         // Tiêu đề
-        message.setSubject("Mật khẩu mới");
+        message.setSubject("Mã xác nhận");
 
         // Nội dung
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setContent(nd, "text/html; charset=utf-8");
+        mimeBodyPart.setContent(noiDung, "text/html; charset=utf-8");
 
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(mimeBodyPart);
@@ -63,17 +61,9 @@ public class EmailSender {
 
         Transport.send(message);
     }
-
+    
     // Hàm để test
 //    public static void main(String[] args) throws MessagingException {
-//        int min = 1000;
-//        int max = 9999;
-//
-//        //Generate random int value from 50 to 100 
-////        System.out.println("Random value in int from " + min + " to " + max + ":");
-//        int random_int = (int) Math.floor(Math.random() * (9000 - 1000 + 1) );
-//        System.out.println(random_int);
-//    }
-//        EmailSender.guiMail("danhpnph26382@fpt.edu.vn");
+//        EmailSender.guiMail("congnpph26510@fpt.edu.vn", "ABC", "Thành công");
 //    }
 }

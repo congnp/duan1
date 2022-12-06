@@ -24,7 +24,9 @@ public interface IQLBanHangService {
 
     boolean add_HD(BanhangReponse b);
 
-    boolean update_HD(BanhangReponse b);
+    boolean update_HD_TQ(BanhangReponse b);
+    
+     boolean update_HD_DH(BanhangReponse b);
 
     boolean update_HD_KH(BanhangReponse b);
 

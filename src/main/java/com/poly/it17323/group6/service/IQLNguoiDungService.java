@@ -18,7 +18,7 @@ public interface IQLNguoiDungService {
 
     String login(QLNguoiDungResponse qlndr);
 
-    QLNguoiDungResponse getOneNv();
+    QLNguoiDungResponse getOneNv(QLNguoiDungResponse qlndr);
 
     String loginFailse(QLNguoiDungResponse qlndr);
 

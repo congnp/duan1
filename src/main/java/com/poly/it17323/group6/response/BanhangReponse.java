@@ -7,6 +7,7 @@ import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.domainmodel.NguoiDung;
 import java.math.BigDecimal;
+import java.sql.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,9 +31,15 @@ public class BanhangReponse {
     private String slMua;
     private KhuyenMai km;
 
-    private BigDecimal tongTien;
-    private int tinhTrang;
     private int pttt;
+    private BigDecimal tongTienMat;
+    private BigDecimal tongTienCK;
+    private int tinhTrang;
+    private Date ngayTT;
+    private int tttt;
+    private Date ngayMuonNhan;
+    private Date ngayGui;
+    private Date ngayNhan;
     private BigDecimal tienShip;
 
     private HoaDonChiTiet hdct;
@@ -43,12 +50,27 @@ public class BanhangReponse {
         this.kh = kh;
     }
 
-    // UPDATE HOA DON
-    public BanhangReponse(HoaDon hd, BigDecimal tongTien, int tinhTrang, int pttt, BigDecimal tienShip) {
+    // UPDATE HOA DON TAI QUAY
+    public BanhangReponse(HoaDon hd, int pttt, BigDecimal tienMat, BigDecimal tienCK, int tinhTrang) {
         this.hd = hd;
-        this.tongTien = tongTien;
+        this.tongTienMat = tienMat;
+        this.tongTienCK = tienCK;
         this.tinhTrang = tinhTrang;
         this.pttt = pttt;
+    }
+
+    // UPDATE HOA DON DAT HANG
+    public BanhangReponse(HoaDon hd, int pttt, BigDecimal tongTienMat, BigDecimal tongTienCK, int tinhTrang, Date ngayTT, int tttt, Date ngayMuonNhan, Date ngayGui, Date ngayNhan, BigDecimal tienShip) {
+        this.hd = hd;
+        this.pttt = pttt;
+        this.tongTienMat = tongTienMat;
+        this.tongTienCK = tongTienCK;
+        this.tinhTrang = tinhTrang;
+        this.ngayTT = ngayTT;
+        this.tttt = tttt;
+        this.ngayMuonNhan = ngayMuonNhan;
+        this.ngayGui = ngayGui;
+        this.ngayNhan = ngayNhan;
         this.tienShip = tienShip;
     }
 

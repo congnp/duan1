@@ -1,6 +1,5 @@
 package com.poly.it17323.group6.hibernateconfig;
 
-import com.poly.it17323.group6.domainmodel.Anh;
 import com.poly.it17323.group6.domainmodel.ChatLieu;
 import com.poly.it17323.group6.domainmodel.ChiTietSanPham;
 import com.poly.it17323.group6.domainmodel.ChucVu;
@@ -36,7 +35,7 @@ public class Hibernate_Util {
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DUAN1_NHOM6_PMBANQUANAO");
         properties.put(Environment.USER, "sa");
-        properties.put(Environment.PASS, "11");
+        properties.put(Environment.PASS, "123456");
 //        properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
@@ -47,7 +46,6 @@ public class Hibernate_Util {
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(Size.class);
         conf.addAnnotatedClass(ChiTietSanPham.class);
-        conf.addAnnotatedClass(Anh.class);
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(NguoiDung.class);
         conf.addAnnotatedClass(KhuyenMai.class);

@@ -147,7 +147,7 @@ public class SRM_Login extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, iND.login(qlndr));
             try {
-                new SRM_BanHang().setVisible(true);
+                new SRM_BanHang(getFormData()).setVisible(true);
             } catch (IOException ex) {
                 Logger.getLogger(SRM_Login.class.getName()).log(Level.SEVERE, null, ex);
             }

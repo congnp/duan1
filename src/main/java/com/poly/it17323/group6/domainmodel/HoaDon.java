@@ -43,8 +43,11 @@ public class HoaDon implements Serializable {
     @Column(name = "PhuongThucTT")
     private Integer pttt;
 
-    @Column(name = "TongTien")
-    private BigDecimal tongTien;
+    @Column(name = "TongTienMat")
+    private BigDecimal tongTienMat;
+
+    @Column(name = "TongTienCk")
+    private BigDecimal tongTienCK;
 
     @Column(name = "TinhTrang")
     private Integer tinhTrang;
@@ -52,8 +55,20 @@ public class HoaDon implements Serializable {
     @Column(name = "NgayTao")
     private Date ngayTao;
 
-    @Column(name = "NgaySua")
-    private Date ngaySua;
+    @Column(name = "NgayThanhToan")
+    private Date ngayTT;
+
+    @Column(name = "TTTT")
+    private Integer tttt;
+
+    @Column(name = "NgayMuonNhan")
+    private Date ngayMuonNhan;
+
+    @Column(name = "NgayGui")
+    private Date ngayGui;
+
+    @Column(name = "NgayNhan")
+    private Date ngayNhan;
 
     @Column(name = "TienShip")
     private BigDecimal tienShip;

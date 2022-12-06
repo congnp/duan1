@@ -4,6 +4,8 @@ import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -25,17 +27,12 @@ public class HoaDonRepository {
         List<HoaDon> list = query.getResultList();
         return list;
     }
+
     public List<HoaDon> getAll2() {
         session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable + " a where a.tinhTrang = 1 order by MaHD desc", HoaDon.class);
         List<HoaDon> list = query.getResultList();
         return list;
-    }
-    public static void main(String[] args) {
-        HoaDonRepository hd = new HoaDonRepository();
-        for (HoaDon hoaDon : hd.getAll()) {
-            System.out.println(hoaDon);
-        }
     }
 
     public List<HoaDon> getAll_ByTT(int tt) {
@@ -116,18 +113,51 @@ public class HoaDonRepository {
         return null;
     }
 
-    public Boolean update(UUID idHD, BigDecimal ttien, int tt, int pttt, BigDecimal tship) {
+    public Boolean update(UUID idHD, int pttt, BigDecimal ttienMat, BigDecimal ttienCk, int tt) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
         try {
             transaction = session.beginTransaction();
-            String sql = "UPDATE HoaDon a SET a.tongTien = :ttien,a.tinhTrang = :tt,a.pttt = :pttt,a.tienShip = :tship WHERE a.idHD = :idHD";
+            String sql = "UPDATE HoaDon a "
+                    + "SET a.pttt = :pttt,a.tongTienMat = :ttienMat,a.tongTienCK = :ttienCk,a.tinhTrang = :tt"
+                    + " WHERE a.idHD = :idHD";
             Query query = session.createQuery(sql);
             query.setParameter("idHD", idHD);
-            query.setParameter("ttien", ttien);
+            query.setParameter("ttienMat", ttienMat);
+            query.setParameter("ttienCk", ttienCk);
             query.setParameter("tt", tt);
             query.setParameter("pttt", pttt);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    public Boolean update(UUID idHD, int pttt, BigDecimal ttienMat, BigDecimal ttienCK, int tt, Date ngayTT, int tttt, Date ngayMuonNhan, Date ngayGui, Date ngayNhan, BigDecimal tship) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            String sql = "UPDATE HoaDon a "
+                    + "SET a.pttt = :pttt,a.tongTienMat = :ttienMat,a.tongTienCK = :ttienCK,a.tinhTrang = :tt,"
+                    + "a.ngayTT = :ngayTT, a.tttt = :tttt,a.ngayMuonNhan = :ngayMuonNhan,"
+                    + "a.ngayGui = :ngayGui,a.ngayNhan = :ngayNhan,a.tienShip = :tship "
+                    + " WHERE a.idHD = :idHD";
+            Query query = session.createQuery(sql);
+            query.setParameter("pttt", pttt);
+            query.setParameter("ttienMat", ttienMat);
+            query.setParameter("ttienCK", ttienCK);
+            query.setParameter("tt", tt);
+            query.setParameter("ngayTT", ngayTT);
+            query.setParameter("tttt", tttt);
+            query.setParameter("ngayMuonNhan", ngayMuonNhan);
+            query.setParameter("ngayGui", ngayGui);
+            query.setParameter("ngayNhan", ngayNhan);
             query.setParameter("tship", tship);
+            query.setParameter("idHD", idHD);
             query.executeUpdate();
             transaction.commit();
             return true;
