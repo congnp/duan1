@@ -90,7 +90,9 @@ import static java.awt.print.Printable.NO_SUCH_PAGE;
 import static java.awt.print.Printable.PAGE_EXISTS;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.sql.Date;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -386,9 +388,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txt_nd_HovaTen = new javax.swing.JTextField();
         txt_nd_Email = new javax.swing.JTextField();
         txt_nd_Sdt = new javax.swing.JTextField();
-        txt_nd_NgayTao = new javax.swing.JTextField();
-        txt_nd_NgaySinh = new javax.swing.JTextField();
-        txt_nd_NgaySua = new javax.swing.JTextField();
         txt_nd_CCCD = new javax.swing.JTextField();
         rdo_nd_Nu = new javax.swing.JRadioButton();
         rdo_nd_Nam = new javax.swing.JRadioButton();
@@ -399,6 +398,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         btn_nd_Sua = new javax.swing.JButton();
         btn_nd_Xoa = new javax.swing.JButton();
         btn_nd_Clear = new javax.swing.JButton();
+        Jdate_nd_ngaySinh = new com.toedter.calendar.JDateChooser();
+        Jdate_nd_ngayTao = new com.toedter.calendar.JDateChooser();
+        Jdate_nd_ngaySua = new com.toedter.calendar.JDateChooser();
         tbl_nd_NghiLam = new javax.swing.JTabbedPane();
         jPanel17 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
@@ -1513,6 +1515,27 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
         });
 
+        Jdate_nd_ngaySinh.setDateFormatString("yyyy-MM-dd");
+        Jdate_nd_ngaySinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Jdate_nd_ngaySinhMouseClicked(evt);
+            }
+        });
+
+        Jdate_nd_ngayTao.setDateFormatString("yyyy-MM-dd");
+        Jdate_nd_ngayTao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Jdate_nd_ngayTaoMouseClicked(evt);
+            }
+        });
+
+        Jdate_nd_ngaySua.setDateFormatString("yyyy-MM-dd");
+        Jdate_nd_ngaySua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Jdate_nd_ngaySuaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1533,13 +1556,14 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_nd_MatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                                    .addComponent(txt_nd_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_nd_MaND, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbb_nd_ChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_nd_TenTK)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(txt_nd_HovaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Jdate_nd_ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_nd_HovaTen, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel55)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
@@ -1565,12 +1589,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         .addGap(18, 18, 18)
                         .addComponent(rdo_nd_NghiLam))
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_nd_Email)
+                        .addComponent(txt_nd_Email, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                         .addComponent(txt_nd_Sdt)
                         .addComponent(txt_nd_DiaChi)
-                        .addComponent(txt_nd_CCCD)
-                        .addComponent(txt_nd_NgayTao)
-                        .addComponent(txt_nd_NgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_nd_CCCD))
+                    .addComponent(Jdate_nd_ngayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Jdate_nd_ngaySua, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_nd_Xoa)
@@ -1623,18 +1647,21 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                                 .addComponent(rdo_nd_DangLam)
                                 .addComponent(jLabel61)))
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel62)
-                            .addComponent(txt_nd_NgayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel55)
-                            .addComponent(rdo_nd_Nam)
-                            .addComponent(rdo_nd_Nu))
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel62)
+                                .addComponent(jLabel55)
+                                .addComponent(rdo_nd_Nam)
+                                .addComponent(rdo_nd_Nu))
+                            .addComponent(Jdate_nd_ngayTao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel56)
-                            .addComponent(txt_nd_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel63)
-                            .addComponent(txt_nd_NgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Jdate_nd_ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Jdate_nd_ngaySua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel56)
+                                    .addComponent(jLabel63))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(btn_nd_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4402,19 +4429,19 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_tbl_nd_DangLamMouseClicked
 
     private void btn_nd_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ClearActionPerformed
-        txt_nd_MaND.setText("");
+       txt_nd_MaND.setText("");
         txt_nd_TenTK.setText("");
         txt_nd_MatKhau.setText("");
         txt_nd_HovaTen.setText("");
         buttonGroup1.clearSelection();
-        txt_nd_NgaySinh.setText("");
+        Jdate_nd_ngaySinh.setDateFormatString("");
         txt_nd_Email.setText("");
         txt_nd_Sdt.setText("");
         txt_nd_DiaChi.setText("");
         txt_nd_CCCD.setText("");
         buttonGroup2.clearSelection();
-        txt_nd_NgayTao.setText("");
-        txt_nd_NgaySua.setText("");
+        Jdate_nd_ngayTao.setDateFormatString("");
+        Jdate_nd_ngaySua.setDateFormatString("");
     }//GEN-LAST:event_btn_nd_ClearActionPerformed
 
     private void btn_nd_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_XoaActionPerformed
@@ -4508,6 +4535,18 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         // TODO add your handling code here:
         loadKhachHang();
     }//GEN-LAST:event_txtTimKiemKHangCaretUpdate
+
+    private void Jdate_nd_ngaySinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Jdate_nd_ngaySinhMouseClicked
+
+    }//GEN-LAST:event_Jdate_nd_ngaySinhMouseClicked
+
+    private void Jdate_nd_ngayTaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Jdate_nd_ngayTaoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Jdate_nd_ngayTaoMouseClicked
+
+    private void Jdate_nd_ngaySuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Jdate_nd_ngaySuaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Jdate_nd_ngaySuaMouseClicked
 
     public PageFormat getPageFormat(PrinterJob pj) {
 
@@ -4690,7 +4729,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         } else {
             rdo_nd_Nu.setSelected(true);
         }
-        txt_nd_NgaySinh.setText(nd.getNgaySinh() + "");
+        Date ngaySinh = Date.valueOf(tbl_nd_DangLam.getValueAt(row, 5).toString());
+        Jdate_nd_ngaySinh.setDate(ngaySinh);
         txt_nd_Email.setText(nd.getEmail());
         txt_nd_Sdt.setText(nd.getSdt());
         txt_nd_DiaChi.setText(nd.getDiaChi());
@@ -4701,8 +4741,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         } else {
             rdo_nd_NghiLam.setSelected(true);
         }
-        txt_nd_NgayTao.setText(nd.getNgayTao() + "");
-        txt_nd_NgaySua.setText(nd.getNgaySua() + "");
+        Date ngayTao = Date.valueOf(tbl_nd_DangLam.getValueAt(row, 11).toString());
+        Jdate_nd_ngayTao.setDate(ngayTao);
+        Date ngaySua = Date.valueOf(tbl_nd_DangLam.getValueAt(row, 12).toString());
+        Jdate_nd_ngaySua.setDate(ngaySua);
         cbb_nd_ChucVu.setSelectedItem(nd.getChucVu().getTenCV());
 
     }
@@ -4715,14 +4757,18 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ndr.setMatKhau(txt_nd_MatKhau.getText().trim());
         ndr.setHoVaTen(txt_nd_HovaTen.getText().trim());
         ndr.setGioiTinh(rdo_nd_Nam.isSelected() ? "Nam" : "Nữ");
-        ndr.setNgaySinh(txt_nd_NgaySinh.getText());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String ngay = sdf.format(Jdate_nd_ngaySinh.getDate());
+        ndr.setNgaySinh(ngay);
         ndr.setEmail(txt_nd_Email.getText());
         ndr.setSdt(txt_nd_Sdt.getText());
         ndr.setDiaChi(txt_nd_DiaChi.getText());
         ndr.setCccd(txt_nd_CCCD.getText());
         ndr.setTinhTrang(rdo_nd_DangLam.isSelected() ? 1 : 0);
-        ndr.setNgayTao(txt_nd_NgayTao.getText());
-        ndr.setNgaySua(txt_nd_NgaySua.getText());
+        String ngayTao = sdf.format(Jdate_nd_ngayTao.getDate());
+        ndr.setNgayTao(ngayTao);
+        String ngaySua = sdf.format(Jdate_nd_ngaySua.getDate());
+        ndr.setNgaySua(ngaySua);
         ChucVu cv = icvs.getAll().get(cbb_nd_ChucVu.getSelectedIndex());
         ndr.setIdCV(cv.getIdCV());
         return ndr;
@@ -5183,6 +5229,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JPanel HoaDon;
     private javax.swing.JPanel JPanel_DanhSachKH;
     private javax.swing.JPanel JPanel_ThongTinKH;
+    private com.toedter.calendar.JDateChooser Jdate_nd_ngaySinh;
+    private com.toedter.calendar.JDateChooser Jdate_nd_ngaySua;
+    private com.toedter.calendar.JDateChooser Jdate_nd_ngayTao;
     private javax.swing.JPanel Jpanel;
     private javax.swing.JPanel KhachHang;
     private javax.swing.JPanel PN_BanHang;
@@ -5493,9 +5542,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JTextField txt_nd_HovaTen;
     private javax.swing.JTextField txt_nd_MaND;
     private javax.swing.JTextField txt_nd_MatKhau;
-    private javax.swing.JTextField txt_nd_NgaySinh;
-    private javax.swing.JTextField txt_nd_NgaySua;
-    private javax.swing.JTextField txt_nd_NgayTao;
     private javax.swing.JTextField txt_nd_Sdt;
     private javax.swing.JTextField txt_nd_TenTK;
     private javax.swing.JTextField txt_nd_TimKiem;
