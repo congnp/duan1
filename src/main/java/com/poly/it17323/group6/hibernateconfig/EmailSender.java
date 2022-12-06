@@ -28,7 +28,7 @@ public class EmailSender {
     private final static String matKhau = "aputkfxvzrwzokld";
     private final static int random_int = (int) Math.floor(Math.random() * (9000 - 1000 + 1) );
 
-    public static void guiMail(String emailNhan,String nd)throws AddressException, MessagingException {
+    public static void guiMail(String noiDung,String emailNhan,String nd)throws AddressException, MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
@@ -50,7 +50,7 @@ public class EmailSender {
                 Message.RecipientType.TO, InternetAddress.parse(emailNhan));
 
         // Tiêu đề
-        message.setSubject("Mật khẩu mới");
+        message.setSubject(noiDung);
 
         // Nội dung
         MimeBodyPart mimeBodyPart = new MimeBodyPart();

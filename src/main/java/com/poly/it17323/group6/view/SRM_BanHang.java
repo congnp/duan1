@@ -94,6 +94,8 @@ import java.text.DecimalFormat;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -158,10 +160,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     //Van
 //    private final CardLayout cardLayout;
 
-    public SRM_BanHang(QLNguoiDungResponse response) throws IOException {
+    public SRM_BanHang() throws IOException {
 
         initComponents();
         initWebCam();
+//        dongHo();
+//        thread.start();
         setLocationRelativeTo(null);
         effectNav(PN_BanHang, PN_KhachHang, PN_KhuyenMai, PN_QLHoaDon, PN_QLNguoiDung, PN_QLSanPham, PN_QLThongKe, "Bán Hàng");
         listKM = iKM.getAll();
@@ -173,7 +177,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadDataKM();
         loadKhachHang();
         loadComboBoxNd();
-        loadND(inds.getAll());
+        loadND();
         loadKM(iKM.getAll());
         loadThongKe();
         soHoaDon();
@@ -181,7 +185,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         BieuDoThongKe test = new BieuDoThongKe();
         test.Char1(BieuDoTKeDThu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
-        ndRP = getND(response);
+        ndRP = getND();
         lblHoTenNV.setText(ndRP.getHoTen());
 //        cardLayout = (CardLayout) PN_Main.getLayout();
 //        setExtendedState(MAXIMIZED_BOTH);
@@ -252,7 +256,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         lblHoaDon.setText("");
         lblHoaDon.setText(tblDoanhThu.getRowCount() + "");
     }
-
 
     private void getdoanhThu() {
         lblDoanhThu.setText("");
@@ -786,9 +789,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_KhuyenMaiLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(khuyenmai, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(47, 47, 47))
+                .addGap(58, 58, 58))
             .addGroup(PN_KhuyenMaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PN_KhuyenMaiLayout.createSequentialGroup()
                     .addGap(86, 86, 86)
@@ -1030,7 +1033,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addGroup(GioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(xoatatca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(xoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         GioHangLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {xoa, xoatatca});
@@ -1417,7 +1420,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
+                .addComponent(DonHang, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
         );
         QL_BanHangLayout.setVerticalGroup(
             QL_BanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3628,8 +3631,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   public QLNguoiDungResponse getND(QLNguoiDungResponse nguoiDungResponse) {
-        QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
+   public QLNguoiDungResponse getND() {
+        QLNguoiDungResponse qlndr = iqlnds.getOneNv();
         return qlndr;
     }
 
@@ -3789,6 +3792,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         soHoaDon();
         getdoanhThu();
         JOptionPane.showMessageDialog(this, "Thanh toan thanh cong !");
+        BieuDoThongKe test = new BieuDoThongKe();
+        test.Char1(BieuDoTKeDThu);
         clearForm();
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
@@ -4439,25 +4444,28 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_btn_nd_SuaActionPerformed
 
     private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
-        NguoiDungReponse nd = new NguoiDungReponse();
-        String email = JOptionPane.showInputDialog("Nhập email để xác nhận thêm");
-        nd.setEmail(email);
-        if (inds.checkEmailXacNhan(nd) != null) {
-            JOptionPane.showMessageDialog(this, inds.checkEmailXacNhan(nd));
-            try {
-                String ma = JOptionPane.showInputDialog("Nhập mã xác nhận");
-                JOptionPane.showMessageDialog(this, inds.checkMa(ma));
-                inds.add(getFromMoi(null));
-                listND = inds.getAll();
-                loadND(inds.getAll());
-                JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
-            } catch (Exception ex) {
-                ex.printStackTrace(System.out);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, inds.emaiFals(nd));
-            return;
-        }
+
+        new SRM_NDMail().setVisible(true);
+        this.dispose();
+        webcam.close();
+//        String email = JOptionPane.showInputDialog("Nhập email để xác nhận thêm");
+//        nd.setEmail(email);
+//        if (inds.checkEmailXacNhan(nd) != null) {
+//            JOptionPane.showMessageDialog(this, inds.checkEmailXacNhan(nd));
+//            try {
+//                String ma = JOptionPane.showInputDialog("Nhập mã xác nhận");
+//                JOptionPane.showMessageDialog(this, inds.checkMa(ma));
+//                inds.add(getFromMoi(null));
+//                listND = inds.getAll();
+//                loadND(inds.getAll());
+//                JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
+//            } catch (Exception ex) {
+//                ex.printStackTrace(System.out);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, inds.emaiFals(nd));
+//            return;
+//        }
     }//GEN-LAST:event_btn_nd_ThemActionPerformed
 
     private void tatcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatcaActionPerformed
@@ -4593,7 +4601,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         g2d.drawString(itemName.get(s) + "               ", 10, y);
                         y += yShift;
                         g2d.drawString("                      " + soLuong.get(s), 10, y);
-                        g2d.drawString(" "+gia, 160, y);
+                        g2d.drawString(" " + gia, 160, y);
                         y += yShift;
 
                     }
@@ -4824,7 +4832,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private void setIconTK() {
         jLabel23.setIcon(new ImageIcon("bill.png"));
         jLabel21.setIcon(new ImageIcon("money1.png"));
-        
+
     }
 
     // Mai
@@ -5765,4 +5773,18 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         t.setDaemon(true);
         return t;
     }
+
+    Thread thread = new Thread() {
+        public void run() {
+            while (true) { 
+                try {
+                    Thread.sleep(2000);
+                    loadND();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SRM_BanHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
+    };
 }

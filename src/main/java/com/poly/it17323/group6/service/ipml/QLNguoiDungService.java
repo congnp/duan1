@@ -28,6 +28,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     private String email = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$";
     private final String valiPass = "^[a-z0-9-]{8,16}$";
     private final static int random_int = (int) Math.floor(Math.random() * (999999 - 10000 + 1));
+    private static String tenTk;
     private static String mk;
     private static String emailCheck;
 
@@ -47,6 +48,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
         for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
             if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
                 mk = response.getMatKhau();
+                tenTk = response.getTenTK();
 //                System.out.println(mk);
                 return "Đăng nhập thành công";
             }
@@ -55,10 +57,10 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     }
 
     @Override
-    public QLNguoiDungResponse getOneNv(QLNguoiDungResponse response) {
+    public QLNguoiDungResponse getOneNv() {
         NguoiDung nd = new NguoiDung();
-        nd.setTenTK(response.getTenTK());
-        nd.setMatKhau(response.getMatKhau());
+        nd.setTenTK(tenTk);
+        nd.setMatKhau(mk);
         repo.getOneND(nd);
         QLNguoiDungResponse qlndr = new QLNguoiDungResponse(repo.getOneND(nd));
         return qlndr;
@@ -91,7 +93,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
             if (qLNguoiDungResponse.getEmail().equalsIgnoreCase(nd.getEmail())) {
                 emailCheck = nd.getEmail();
                 try {
-                    es.guiMail(nd.getEmail(), "Mã xác nhận của bạn là :" + random_int);
+                    es.guiMail("Ma xac nhan", nd.getEmail(), "Mã xác nhận của bạn là :" + random_int);
                     return "Vui lòng lấy mã xác nhận ở Mail";
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
