@@ -47,4 +47,16 @@ public class QLThongKeService implements IQLThongKeService {
     public List<QLThongKeResponse> getDoanhThuChart() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<QLThongKeResponse> getThongKeNV() {
+        List<HoaDon> list = hdRepo.getAll2();
+        List<QLThongKeResponse> respon = new ArrayList<>();
+        for (HoaDon hdon : list) {
+            QLThongKeResponse tke = new QLThongKeResponse(hdon);
+            respon.add(tke);
+        }
+
+        return respon;
+    }
 }

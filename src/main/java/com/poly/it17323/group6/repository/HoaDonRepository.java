@@ -62,12 +62,30 @@ public class HoaDonRepository {
 
     public List<HoaDon> DoanhThu() {
         session = Hibernate_Util.getFACTORY().openSession();
-        String hql = "select SUM(tongTien) FROM HoaDon where tinhTrang = 1";
+        String hql = "SELECT SUM(tongTienMat)+SUM(tongTienCK) AS TongDoanhThu FROM HoaDon WHERE tinhTrang = 1";
         Query query = session.createQuery(hql);
         List<HoaDon> result = query.getResultList();
         return result;
     }
-
+    public List<HoaDon> DoanhThuChart() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String hql = "SELECT ngayTao, SUM(tongTienMat) AS TongDoanhThu "
+                + "FROM HoaDon where tinhTrang = 1  group by ngayTao";
+        Query query = session.createQuery(hql);
+        List<HoaDon> result = query.getResultList();
+        return result;
+    }
+    public List<HoaDon> thongKeNVien() {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String hql = "SELECT nguoiDung.hoTen,a.maHD,a.ngayTao, SUM(a.tongTienMat) AS TongDoanhThu "
+                + "FROM HoaDon a where a.tinhTrang = 1 group by a.ngayTao,nguoiDung.hoTen,a.maHD";
+        Query query = session.createQuery(hql);
+        List<HoaDon> result = query.getResultList();
+        return result;
+    }
+    public static void main(String[] args) {
+        System.out.println(new HoaDonRepository().thongKeNVien());
+    }
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();

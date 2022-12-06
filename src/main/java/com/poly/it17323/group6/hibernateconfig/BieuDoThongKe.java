@@ -35,7 +35,7 @@ public class BieuDoThongKe {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if (lst != null) {
             for (HoaDon hd : lst) {
-                dataset.addValue(hd.getTongTien(), "Doanh Thu", hd.getNgayTao());
+                dataset.addValue(hd.getTongTienMat(), "Doanh Thu", hd.getNgayTao());
             }
         }
         JFreeChart barChart = ChartFactory.createBarChart(
