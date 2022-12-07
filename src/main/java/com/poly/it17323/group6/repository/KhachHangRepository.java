@@ -24,6 +24,12 @@ public class KhachHangRepository {
         return lists;
     }
 
+    public static void main(String[] args) {
+        for (KhachHang khachHang : new KhachHangRepository().getAll()) {
+            System.out.println(khachHang);
+        }
+    }
+
     public KhachHang getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
@@ -44,7 +50,7 @@ public class KhachHangRepository {
 
     public List<KhachHang> getByName(String name) {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable + " a where a.hoTen LIKE CONCAT('%',:name,'%')", KhachHang.class);
+        Query query = session.createQuery(fromTable + " a where a.hoTen LIKE CONCAT('%',:name,'%') order by MaKH asc", KhachHang.class);
         query.setParameter("name", name);
         List<KhachHang> list = query.getResultList();
         return list;

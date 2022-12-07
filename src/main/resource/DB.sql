@@ -155,7 +155,7 @@ CREATE TABLE KhachHang
 )
 GO
 INSERT INTO KhachHang(MaKH, HoVaTen, GioiTinh, DiaChi, Sdt, NgaySinh, NgayTao, NgaySua)
-VALUES ('KH00',N'NKhách bán lẻ',N'null',N'null','null','03-12-2003','10-11-2022','11-11-2022')
+VALUES ('KH00',N'Khách bán lẻ',N'null',N'null','null','03-12-2003','10-11-2022','11-11-2022')
 INSERT INTO KhachHang(MaKH, HoVaTen, GioiTinh, DiaChi, Sdt, NgaySinh, NgayTao, NgaySua)
 VALUES ('KH01',N'Lê Thị Nguyệt Mai',N'Nữ',N'Hà Nội','0866127018','03-12-2003','10-11-2022','11-11-2022')
 

@@ -8,7 +8,8 @@ import com.poly.it17323.group6.view.SRM_Login;
  * @author pdanh
  */
 public class Main {
-    static{
+
+    static {
         new Thread(new UpdateKhuyenMaiThread()).start();
     }
 
