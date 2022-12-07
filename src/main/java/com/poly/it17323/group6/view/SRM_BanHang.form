@@ -110,9 +110,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -123,8 +123,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -968,7 +968,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane4" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane4" alignment="0" pref="381" max="32767" attributes="0"/>
                           <Component id="KhachHang" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -977,7 +977,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="KhachHang" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTabbedPane4" max="32767" attributes="0"/>
+                              <Component id="jTabbedPane4" pref="619" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3479,7 +3479,7 @@
                               <Component id="jPanel28" alignment="0" max="32767" attributes="0"/>
                               <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                          <EmptySpace pref="40" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3558,11 +3558,15 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txt_km_NgaySua" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayKetThuc" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayBatDau" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                                           <Component id="jScrollPane8" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayTao" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="txt_km_NgayKetThuc" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txt_km_NgayBatDau" alignment="0" pref="206" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="txt_km_NgaySua" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txt_km_NgayTao" alignment="0" pref="207" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="93" max="32767" attributes="0"/>
                                   </Group>
@@ -3622,33 +3626,35 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayBatDau" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel39" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_km_NgayBatDau" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayKetThuc" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane8" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jScrollPane8" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                                                  <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="txt_km_NgayKetThuc" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgayTao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_km_NgayTao" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_km_NgaySua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txt_km_NgaySua" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="29" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboKM" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3744,10 +3750,6 @@
                         <Property name="text" type="java.lang.String" value="Ng&#xe0;y k&#x1ebf;t th&#xfa;c :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txt_km_NgayKetThuc">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txt_km_NgayBatDau">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel41">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -3786,10 +3788,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ng&#xe0;y s&#x1eed;a :"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txt_km_NgaySua">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="txt_km_NgayTao">
                     </Component>
                     <Component class="javax.swing.JButton" name="btn_km_Sua">
                       <Properties>
@@ -3845,6 +3843,26 @@
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="txt_km_NgayBatDau">
+                      <Properties>
+                        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="txt_km_NgayKetThuc">
+                      <Properties>
+                        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="txt_km_NgayTao">
+                      <Properties>
+                        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                      </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="txt_km_NgaySua">
+                      <Properties>
+                        <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
