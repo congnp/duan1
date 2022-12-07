@@ -17,6 +17,8 @@ public interface IQLSanPhamService {
     
     QLSanPhamResponse getOneQLSP(UUID id);
     
+    QLSanPhamResponse getOneByTenSP(String ten);
+    
     boolean addQLSP(QLSanPhamResponse qlSP);
     
     boolean updateQLSP(QLSanPhamResponse qlSP);

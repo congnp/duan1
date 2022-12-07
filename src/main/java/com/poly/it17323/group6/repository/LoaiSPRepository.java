@@ -33,6 +33,15 @@ public class LoaiSPRepository {
         LoaiSP loaisp = (LoaiSP) query.getSingleResult();
         return loaisp;
     }
+    
+        public LoaiSP getOneByTen(String ten) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE ten like :ten";
+        Query query = session.createQuery(sql, LoaiSP.class);
+        query.setParameter("ten", ten);
+        LoaiSP loaisp = (LoaiSP) query.getSingleResult();
+        return loaisp;
+    }
 
     public Boolean add(LoaiSP loaisp) {
         Transaction transaction = null;

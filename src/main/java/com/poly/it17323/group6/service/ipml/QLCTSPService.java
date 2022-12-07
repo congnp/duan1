@@ -152,5 +152,16 @@ public class QLCTSPService implements ISanPhamChiTietService {
         sp.setId(qlCTSP.getId());
         return repo.delete(sp);
     }
+    
+        @Override
+    public List<QLSanPhamResponse> getAll_ByName(String ten) {
+        List<ChiTietSanPham> list = repo.getAll_ByName(ten);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (ChiTietSanPham ctsp : list) {
+            QLSanPhamResponse chiTietSP = new QLSanPhamResponse(ctsp);
+            respon.add(chiTietSP);
+        }
+        return respon;
+    }
 
 }

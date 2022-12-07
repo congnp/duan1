@@ -17,6 +17,8 @@ public interface IQLMauSacService {
     
     QLSanPhamResponse getOneQLMauSac(UUID id);
     
+    QLSanPhamResponse getOneByTenMS(String ten);
+    
     boolean addQLMauSac(QLSanPhamResponse qlMauSac);
     
     boolean updateQLMauSac(QLSanPhamResponse qlMauSac);

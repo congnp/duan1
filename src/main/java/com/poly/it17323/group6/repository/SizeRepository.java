@@ -33,6 +33,14 @@ public class SizeRepository {
         Size size = (Size) query.getSingleResult();
         return size;
     }
+        public Size getOneByTen(String ten) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE ten = :ten";
+        Query query = session.createQuery(sql, Size.class);
+        query.setParameter("ten", ten);
+        Size size = (Size) query.getSingleResult();
+        return size;
+    }
 
     public Boolean add(Size size) {
         Transaction transaction = null;

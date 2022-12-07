@@ -66,5 +66,15 @@ public class QLSizeService implements IQLSizeService{
         sp.setId(qlSize.getIdSize());
        return repo.delete(sp);
     }
+    
+        @Override
+    public QLSanPhamResponse getOneByTenSize(String ten) {
+        Size s = repo.getOneByTen(ten);
+        if (s == null) {
+            return null;
+        } else {
+            return new QLSanPhamResponse(s);
+        }
+    }
 
 }

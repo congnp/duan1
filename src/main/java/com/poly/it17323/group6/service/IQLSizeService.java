@@ -17,6 +17,8 @@ public interface IQLSizeService {
     
     QLSanPhamResponse getOneQLSize(UUID id);
     
+    QLSanPhamResponse getOneByTenSize(String ten);
+    
     boolean addQLSize(QLSanPhamResponse qlSize);
     
     boolean updateQLSize(QLSanPhamResponse qlSize);

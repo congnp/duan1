@@ -17,6 +17,8 @@ public interface IQLLoaiSPService {
     
     QLSanPhamResponse getOneQLLoaiSP(UUID id);
     
+    QLSanPhamResponse getOneByLoai(String ten);
+    
     boolean addQLLoaiSP(QLSanPhamResponse qlLoaiSP);
     
     boolean updateQLLoaiSP(QLSanPhamResponse qlLoaiSP);

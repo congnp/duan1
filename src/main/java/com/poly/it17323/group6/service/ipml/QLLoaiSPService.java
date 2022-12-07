@@ -65,5 +65,15 @@ public class QLLoaiSPService implements IQLLoaiSPService {
         sp.setId(qlLoaiSP.getIdLoaiSP());
         return repo.delete(sp);
     }
+    
+        @Override
+    public QLSanPhamResponse getOneByLoai(String ten) {
+        LoaiSP cl = repo.getOneByTen(ten);
+        if (cl == null) {
+            return null;
+        } else {
+            return new QLSanPhamResponse(cl);
+        }
+    }
 
 }

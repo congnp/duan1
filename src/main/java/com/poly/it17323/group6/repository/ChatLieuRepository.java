@@ -23,6 +23,16 @@ public class ChatLieuRepository {
         List<ChatLieu> list = query.getResultList();
         return list;
     }
+    
+        public ChatLieu getOneByTen(String tenCL) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " Where tenCL like :tenCL";
+        Query query = session.createQuery(sql, ChatLieu.class);
+        query.setParameter("tenCL", tenCL);
+        ChatLieu chatLieu = (ChatLieu) query.getSingleResult();
+        return chatLieu;
+    }
+
 
     public ChatLieu getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();

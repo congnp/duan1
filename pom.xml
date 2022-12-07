@@ -12,6 +12,11 @@
         <exec.mainClass>com.poly.it17323.group6.duan1_nhom6.DuAn1_Nhom6</exec.mainClass>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>

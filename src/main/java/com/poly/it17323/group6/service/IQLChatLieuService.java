@@ -15,6 +15,8 @@ import java.util.UUID;
 public interface IQLChatLieuService {
 
     List<QLSanPhamResponse> getAllQLCL();
+    
+    QLSanPhamResponse getOneByTenCL(String ten);
 
     boolean addQLCL(QLSanPhamResponse qlCL);
 

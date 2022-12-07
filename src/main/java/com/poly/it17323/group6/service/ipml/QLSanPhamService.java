@@ -72,5 +72,15 @@ public class QLSanPhamService implements IQLSanPhamService{
             System.out.println(p.toString());
         }
     }
+    
+    @Override
+    public QLSanPhamResponse getOneByTenSP(String ten) {
+        SanPham sp = repo.getOneByTen(ten);
+        if (sp == null) {
+            return null;
+        } else {
+            return new QLSanPhamResponse(sp);
+        }
+    }
 
 }

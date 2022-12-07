@@ -67,5 +67,15 @@ public class QLMauSacService implements IQLMauSacService {
         sp.setIdMS(qlMauSac.getIdMauSac());
        return repo.delete(sp);
     }
+    
+        @Override
+    public QLSanPhamResponse getOneByTenMS(String ten) {
+        MauSac ms = repo.getOneByTen(ten);
+        if (ms == null) {
+            return null;
+        } else {
+            return new QLSanPhamResponse(ms);
+        }
+    }
 
 }

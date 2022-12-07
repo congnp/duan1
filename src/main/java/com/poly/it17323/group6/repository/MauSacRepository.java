@@ -33,6 +33,14 @@ public class MauSacRepository {
         MauSac mausac = (MauSac) query.getSingleResult();
         return mausac;
     }
+    
+        public MauSac getOneByTen(String ten) {
+        String sql = fromTable + " WHERE tenMS like :ten";
+        Query query = session.createQuery(sql, MauSac.class);
+        query.setParameter("ten", ten);
+        MauSac mausac = (MauSac) query.getSingleResult();
+        return mausac;
+    }
 
     public Boolean add(MauSac mausac) {
         Transaction transaction = null;

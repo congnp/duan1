@@ -56,5 +56,15 @@ public class QLChatLieuService implements IQLChatLieuService {
         sp.setIdCL(qlCL.getIdChatLieu());
         return repo.delete(sp);
     }
+    
+        @Override
+    public QLSanPhamResponse getOneByTenCL(String ten) {
+        ChatLieu cl = repo.getOneByTen(ten);
+        if (cl == null) {
+            return null;
+        } else {
+            return new QLSanPhamResponse(cl);
+        }
+    }
 
 }
