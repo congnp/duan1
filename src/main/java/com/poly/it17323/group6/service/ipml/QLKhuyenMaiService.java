@@ -9,7 +9,6 @@ import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.response.KhuyenMaiReponse;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

@@ -9,12 +9,8 @@ import com.poly.it17323.group6.hibernateconfig.EmailSender;
 import com.poly.it17323.group6.repository.NguoiDungRepository;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
-import com.poly.it17323.group6.view.SRM_ExceptToken;
-import com.poly.it17323.group6.view.SRM_ResetPass;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.MessagingException;
 
 /**

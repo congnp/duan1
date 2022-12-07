@@ -16,17 +16,17 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class QLSanPhamService implements IQLSanPhamService{
+public class QLSanPhamService implements IQLSanPhamService {
 
     private SanPhamRepository repo = new SanPhamRepository();
-    
+
     private int ma = repo.getAll().size() + 1;
 
     @Override
     public String getMaTang() {
         return "SP0" + (ma++);
-    } 
-    
+    }
+
     @Override
     public List<QLSanPhamResponse> getAllQLSP() {
         List<SanPham> list = repo.getAll();
@@ -50,29 +50,23 @@ public class QLSanPhamService implements IQLSanPhamService{
 
     @Override
     public boolean addQLSP(QLSanPhamResponse qlSP) {
-        return repo.add(new SanPham(null,new QLSanPhamService().getMaTang(), qlSP.getTenSP(),null));
+        return repo.add(new SanPham(null, new QLSanPhamService().getMaTang(), qlSP.getTenSP(), null));
     }
 
     @Override
     public boolean updateQLSP(QLSanPhamResponse qlSP) {
-        return repo.update(new SanPham(qlSP.getIdSP(), qlSP.getMaSP(), qlSP.getTenSP(),null));
-        
+        return repo.update(new SanPham(qlSP.getIdSP(), qlSP.getMaSP(), qlSP.getTenSP(), null));
+
     }
 
     @Override
     public boolean deleteQLSP(QLSanPhamResponse qlSP) {
         SanPham sp = new SanPham();
         sp.setIdSP(qlSP.getIdSP());
-       return repo.delete(sp);
-        
+        return repo.delete(sp);
+
     }
-    public static void main(String[] args) {
-        List<QLSanPhamResponse> lists = new QLSanPhamService().getAllQLSP();
-        for (QLSanPhamResponse p : lists) {
-            System.out.println(p.toString());
-        }
-    }
-    
+
     @Override
     public QLSanPhamResponse getOneByTenSP(String ten) {
         SanPham sp = repo.getOneByTen(ten);
