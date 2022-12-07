@@ -45,7 +45,7 @@ public class QLNguoiDungService implements IQLNguoiDungService {
     @Override
     public String login(QLNguoiDungResponse response) {
         for (QLNguoiDungResponse NguoiDung : getAllNguoiDung()) {
-            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau())) {
+            if (NguoiDung.getTenTK().equalsIgnoreCase(response.getTenTK()) && NguoiDung.getMatKhau().equalsIgnoreCase(response.getMatKhau()) && NguoiDung.getTinhTrang().equals("1")) {
                 mk = response.getMatKhau();
 //                System.out.println(mk);
                 return "Đăng nhập thành công";
