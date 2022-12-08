@@ -35,5 +35,5 @@ public interface INguoiDungService {
 
     String checkMa(String maXn);
      
-    String checkEmail(String email);
+    boolean checkEmail(String email);
 }

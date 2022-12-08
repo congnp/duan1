@@ -588,11 +588,11 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
 
                 int f = chuoi.indexOf(nganCach, e + 1);// lấy ra vị trí
                 String ngaySinh = chuoi.substring(e + 1, f);
-                SimpleDateFormat simDate = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat simDate = new SimpleDateFormat("yyyy-MM-dd");
                 String catNgaySinh = ngaySinh.substring(0, 2);
                 String catThangSinh = ngaySinh.substring(2, 4);
                 String catNamSinh = ngaySinh.substring(4, 8);
-                String gepNgaySing = catNgaySinh + "-" + catThangSinh + "-" + catNamSinh;
+                String gepNgaySing = catNamSinh + "-" + catThangSinh + "-" + catNgaySinh;
 
 //                System.out.println(catNgaySinh);
 //                System.out.println(catThangSinh);

@@ -137,6 +137,8 @@ public class SRM_NDMail extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập email");
         } else if (!ndr.getEmail().trim().matches(email)) {
             JOptionPane.showMessageDialog(this, "Email không đúng định dạng");
+        } else if(inds.checkEmail(txtMail.getText()) == false){
+            JOptionPane.showMessageDialog(this, "email đã tồn tại!! không được nhập trùng email");
         } else {
             JOptionPane.showMessageDialog(this, inds.checkEmailXacNhan(ndr));
             

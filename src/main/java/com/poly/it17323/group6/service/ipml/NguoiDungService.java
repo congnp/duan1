@@ -115,14 +115,14 @@ public class NguoiDungService implements INguoiDungService {
     }
 
     @Override
-    public String checkEmail(String email) {
-       
-        for (NguoiDung nguoiDung : ndRepo.getAll()) {
-            if(nguoiDung.getEmail().equalsIgnoreCase(email)){
-               return "trùng email";
+    public boolean checkEmail(String email) {
+        List<NguoiDung> list = ndRepo.getAll();
+        for (NguoiDung nguoiDung : list) {
+            if(nguoiDung.getEmail().equals(email)){
+                return false;
             }
         }
-        return null;
+        return true;
     }
 
 
