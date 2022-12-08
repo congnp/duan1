@@ -34,6 +34,15 @@ public class ChucVuRepository {
         ChucVu cv = (ChucVu) query.getSingleResult();
         return cv;
     }
+    
+    public ChucVu getOneND(String tenCv) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE tenCV = :cv";
+        Query query = session.createQuery(sql, ChucVu.class);
+        query.setParameter("cv", tenCv);
+        ChucVu nguoidung = (ChucVu) query.getSingleResult();
+        return nguoidung;
+    }
 
     public Boolean add(ChucVu cv) {
         Transaction transaction = null;

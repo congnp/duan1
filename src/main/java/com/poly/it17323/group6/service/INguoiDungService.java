@@ -15,7 +15,7 @@ import java.util.UUID;
  */
 public interface INguoiDungService {
 
-    List<NguoiDung> getAll();
+   List<NguoiDung> getAll();
 
     NguoiDung getOne(UUID id);
 
@@ -28,6 +28,8 @@ public interface INguoiDungService {
     List<NguoiDung> getByName(String name);
 
     String checkEmailXacNhan(NguoiDungReponse ND);
+    
+    String guiTkMk(NguoiDungReponse ndr);
 
     String emaiFals(NguoiDungReponse ndr);
 

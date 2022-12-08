@@ -160,7 +160,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     //Van
 //    private final CardLayout cardLayout;
 
-    public SRM_BanHang(QLNguoiDungResponse response) throws IOException {
+    public SRM_BanHang() throws IOException {
         
         initComponents();
         initWebCam();
@@ -188,7 +188,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         BieuDoThongKe test = new BieuDoThongKe();
         test.Char1(BieuDoTKeDThu);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
-        ndRP = getND(response);
+        ndRP = getND();
         lblHoTenNV.setText(ndRP.getHoTen());
 //        cardLayout = (CardLayout) PN_Main.getLayout();
 //        setExtendedState(MAXIMIZED_BOTH);
@@ -3774,8 +3774,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   public QLNguoiDungResponse getND(QLNguoiDungResponse nguoiDungResponse) {
-        QLNguoiDungResponse qlndr = iqlnds.getOneNv(nguoiDungResponse);
+   public QLNguoiDungResponse getND() {
+        QLNguoiDungResponse qlndr = iqlnds.getOneNv();
         return qlndr;
     }
 
@@ -4190,25 +4190,26 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_btn_nd_SuaActionPerformed
 
     private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
-        NguoiDungReponse nd = new NguoiDungReponse();
-        String email = JOptionPane.showInputDialog("Nhập email để xác nhận thêm");
-        nd.setEmail(email);
-        if (inds.checkEmailXacNhan(nd) != null) {
-            JOptionPane.showMessageDialog(this, inds.checkEmailXacNhan(nd));
-            try {
-                String ma = JOptionPane.showInputDialog("Nhập mã xác nhận");
-                JOptionPane.showMessageDialog(this, inds.checkMa(ma));
-                inds.add(getFromMoi(null));
-                listND = inds.getAll();
-                loadND(inds.getAll());
-                JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
-            } catch (Exception ex) {
-                ex.printStackTrace(System.out);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, inds.emaiFals(nd));
-            return;
-        }
+//        NguoiDungReponse nd = new NguoiDungReponse();
+          new SRM_NDMail().setVisible(true);
+//        String email = JOptionPane.showInputDialog("Nhập email để xác nhận thêm");
+//        nd.setEmail(email);
+//        if (inds.checkEmailXacNhan(nd) != null) {
+//            JOptionPane.showMessageDialog(this, inds.checkEmailXacNhan(nd));
+//            try {
+//                String ma = JOptionPane.showInputDialog("Nhập mã xác nhận");
+//                JOptionPane.showMessageDialog(this, inds.checkMa(ma));
+//                inds.add(getFromMoi(null));
+//                listND = inds.getAll();
+//                loadND(inds.getAll());
+//                JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
+//            } catch (Exception ex) {
+//                ex.printStackTrace(System.out);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, inds.emaiFals(nd));
+//            return;
+//        }
     }//GEN-LAST:event_btn_nd_ThemActionPerformed
 
     private void tatcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tatcaActionPerformed

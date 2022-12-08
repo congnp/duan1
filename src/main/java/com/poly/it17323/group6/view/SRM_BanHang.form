@@ -110,9 +110,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -123,8 +123,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1009,7 +1009,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="KhachHang" max="32767" attributes="0"/>
-                                  <Component id="PanelChung" max="32767" attributes="0"/>
+                                  <Component id="PanelChung" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1020,7 +1020,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="KhachHang" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PanelChung" max="32767" attributes="0"/>
+                              <Component id="PanelChung" pref="617" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1470,7 +1470,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel111" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel105" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel106" alignment="0" pref="98" max="32767" attributes="0"/>
+                                                  <Component id="jLabel106" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel109" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                                                   <Component id="jLabel112" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel103" linkSize="45" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1512,7 +1512,7 @@
                                                   <Component id="txtTienKhachCK2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
                                                   <Component id="txtTienThua2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1521,9 +1521,9 @@
                                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                               <Component id="jButton9" min="-2" pref="95" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
