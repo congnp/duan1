@@ -4635,6 +4635,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 return;
             }
             loadQLCTSP();
+            loadDataSP();
             indextblCTSP = 0;
             showDetailChiTietSP();
             loadAll();
@@ -5006,9 +5007,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             HoaDon hd = iBH.getAll_HD().get(tblHoaDon.getSelectedRow());
             List<HoaDonChiTiet> lstHDCT = iBH.getAll_HDCTByIDHD(hd.getIdHD());
             for (HoaDonChiTiet hoaDonChiTiet : lstHDCT) {
-//                itemName.add(hoaDonChiTiet.getChiTietSanPham().getSanPham().getTenSP());
-//                itemPrice.add(String.valueOf(hoaDonChiTiet.getChiTietSanPham().getGia()));
-//                soLuong.add(String.valueOf(hoaDonChiTiet.getSlMua()));
+                itemName.add(hoaDonChiTiet.getChiTietSanPham().getSanPham().getTenSP());
+                itemPrice.add(String.valueOf(hoaDonChiTiet.getChiTietSanPham().getGia()));
+                soLuong.add(String.valueOf(hoaDonChiTiet.getSlMua()));
             }
 //            KhachHangResponse kh = (KhachHangResponse) iQlKH.getAll();
             KhachHangResponse khr = iQlKH.getOneByMa(lblMaKH.getText());
@@ -5041,7 +5042,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString(" Sđt:                  " + khr.getSdt(), 10, y);
                     y += yShift;
-                    g2d.drawString(" Địa chỉ nhận:         " + khr.getDiaChi(), 10, y);
+                    g2d.drawString(" Địa chỉ KH:         " + khr.getDiaChi(), 10, y);
                     y += yShift;
                     g2d.drawString(" Mã HD:                " + lblMaHD2.getText(), 10, y);
                     y += yShift;
@@ -5061,17 +5062,17 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         Double gia = Double.parseDouble(soLuong.get(s)) * Double.parseDouble(itemPrice.get(s));
                         g2d.drawString(" " + itemName.get(s) + "               ", 10, y);
                         g2d.drawString("                       " + soLuong.get(s), 10, y);
-                        g2d.drawString("     " + gia, 160, y);
+                        g2d.drawString("        " + gia, 160, y);
                         y += yShift;
 
                     }
-                    g2d.drawString(" Giảm giá:                      " + txtGiamGia2.getText() + "             ", 10, y);
+                    g2d.drawString(" Giảm giá:                          " + txtGiamGia2.getText() + "             ", 10, y);
                     y += yShift;
-                    g2d.drawString(" Tiền ship:                     " + txtTienShip.getText() + "             ", 10, y);
+                    g2d.drawString(" Tiền ship:                         " + txtTienShip.getText() + "             ", 10, y);
                     y += yShift;
                     g2d.drawString("-----------------------------------------------", 10, y);
                     y += yShift;
-                    g2d.drawString(" Tổng tiền:                     " + txtTongTien.getText() + "             ", 10, y);
+                    g2d.drawString(" Tổng tiền:                         " + txtTongTien.getText() + "             ", 10, y);
                     y += yShift;
 //                    g2d.drawString("-------------------------------------", 10, y);
 //                    y += yShift;
@@ -5088,8 +5089,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString("***********************************************", 10, y);
                     y += yShift;
-                    g2d.drawString("              THIẾT KẾ BỞI NHÓM 6              ", 10, y);
-                    y += yShift;
+//                    g2d.drawString("              THIẾT KẾ BỞI NHÓM 6              ", 10, y);
+//                    y += yShift;
 //                    g2d.drawString("   CONTACT: contact@codeguid.com       ", 10, y);
 //                    y += yShift;
 
