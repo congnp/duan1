@@ -110,9 +110,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -123,8 +123,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1009,7 +1009,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="KhachHang" max="32767" attributes="0"/>
-                                  <Component id="PanelChung" max="32767" attributes="0"/>
+                                  <Component id="PanelChung" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1020,7 +1020,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="KhachHang" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PanelChung" max="32767" attributes="0"/>
+                              <Component id="PanelChung" pref="617" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
