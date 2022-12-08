@@ -2,6 +2,8 @@ package com.poly.it17323.group6.domainmodel;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +44,7 @@ public class KhuyenMai implements Serializable {
     private Date ngayBD;
 
     @Column(name = "NgayKetThuc")
-    private Date ngayKT;
+    private Timestamp ngayKT;
 
     @Column(name = "MoTa")
     private String moTa;

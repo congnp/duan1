@@ -19,6 +19,7 @@ public class KhuyenMaiRepository {
     private String fromTable = "From KhuyenMai";
 
     public List<KhuyenMai> getAll() {
+        //database b dau 
         session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable, KhuyenMai.class);
         List<KhuyenMai> lists = query.getResultList();

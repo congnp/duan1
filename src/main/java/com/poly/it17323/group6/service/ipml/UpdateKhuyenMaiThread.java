@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.poly.it17323.group6.thread;
+package com.poly.it17323.group6.service.ipml;
 
 import com.poly.it17323.group6.domainmodel.KhuyenMai;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
+import com.poly.it17323.group6.view.SRM_BanHang;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,8 +19,17 @@ import java.util.logging.Logger;
  */
 public class UpdateKhuyenMaiThread implements Runnable{
     private final KhuyenMaiRepository repository = new KhuyenMaiRepository();
-    
+    private SRM_BanHang srm;
 
+    public UpdateKhuyenMaiThread(SRM_BanHang srm) {
+        this.srm = srm;
+    }
+    
+    
+ // mk phai tac dong vao no ms dung a
+  // no tu dung ma
+    
+   // npo ko load len ngay dc y, truoc no cung dau co load
     @Override
     public void run() {
         while(true){
@@ -27,14 +38,14 @@ public class UpdateKhuyenMaiThread implements Runnable{
                 List<KhuyenMai> list = repository.getAll();
                 
                 list.stream().forEach(km -> {
-                    Date current = new Date();
+                    Timestamp current = new Timestamp(new Date().getTime());
                     if(current.compareTo(km.getNgayKT()) > 0){
                         km.setTinhTrang(0);
                         repository.update(km);
                     }
                 });
-                
-                Thread.sleep(1000);
+                srm.loadKM(repository.getAll());
+                Thread.sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(UpdateKhuyenMaiThread.class.getName()).log(Level.SEVERE, null, ex);
             }

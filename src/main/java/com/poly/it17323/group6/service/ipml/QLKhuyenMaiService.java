@@ -9,8 +9,13 @@ import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.response.KhuyenMaiReponse;
 import com.poly.it17323.group6.service.IKhuyenMaiService;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,20 +39,23 @@ public class QLKhuyenMaiService implements IKhuyenMaiService{
 
     @Override
     public String add(KhuyenMaiReponse km) {
-        if (km.getTenKM().isEmpty()  || km.getMoTa().isEmpty()
-                ) {
-            return "Vui lòng nhập đầy đủ dữ liệu!";
+        try {
+            if (km.getTenKM().isEmpty()  || km.getMoTa().isEmpty()
+                    ) {
+                return "Vui lòng nhập đầy đủ dữ liệu!";
+            }
+            Date ngayBatDau = Date.valueOf(km.getNgayBD());
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+            
+            Date ngayTao = Date.valueOf(km.getNgayTao());
+            Date ngaySua = Date.valueOf(km.getNgaySua());
+            kmRepo.add(new KhuyenMai(null, km.getMaKM(), km.getTenKM(), ngayBatDau, new Timestamp(sdf2.parse(km.getNgayKT()).getTime()), km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
+            
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(QLKhuyenMaiService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Date ngayBatDau = Date.valueOf(km.getNgayBD());
-        Date ngayKetThuc = Date.valueOf(km.getNgayKT());
-        Date ngayTao = Date.valueOf(km.getNgayTao());
-        Date ngaySua = Date.valueOf(km.getNgaySua());
-        kmRepo.add(new KhuyenMai(null, km.getMaKM(), km.getTenKM(), ngayBatDau, ngayKetThuc, km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
-        if (km == null) {
-            return "THÊM THẤT BẠI!!!";
-        } else {
-            return "THÊM THÀNH CÔNG!";
-        }
+        return "THÊM THẤT BẠI!!!";
     }
         
         
@@ -63,7 +71,7 @@ public class QLKhuyenMaiService implements IKhuyenMaiService{
         Date ngayKetThuc = Date.valueOf(km.getNgayKT());
         Date ngayTao = Date.valueOf(km.getNgayTao());
         Date ngaySua = Date.valueOf(km.getNgaySua());
-        kmRepo.update(new KhuyenMai(km.getIdKM(), km.getMaKM(), km.getTenKM(), ngayBatDau, ngayKetThuc, km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
+        kmRepo.update(new KhuyenMai(km.getIdKM(), km.getMaKM(), km.getTenKM(), ngayBatDau, new Timestamp(ngayKetThuc.getTime()), km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
         if (km == null) {
             return "Sửa THẤT BẠI!!!";
         } else {
@@ -78,7 +86,7 @@ public class QLKhuyenMaiService implements IKhuyenMaiService{
         Date ngayKetThuc = Date.valueOf(km.getNgayKT());
         Date ngayTao = Date.valueOf(km.getNgayTao());
         Date ngaySua = Date.valueOf(km.getNgaySua());
-        kmRepo.delete(new KhuyenMai(km.getIdKM(), km.getMaKM(), km.getTenKM(), ngayBatDau, ngayKetThuc, km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
+        kmRepo.delete(new KhuyenMai(km.getIdKM(), km.getMaKM(), km.getTenKM(), ngayBatDau, new Timestamp(ngayKetThuc.getTime()), km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
         return null;
         
     }

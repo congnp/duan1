@@ -3,6 +3,7 @@ package com.poly.it17323.group6.view;
 import com.poly.it17323.group6.response.QLNguoiDungResponse;
 import com.poly.it17323.group6.service.IQLNguoiDungService;
 import com.poly.it17323.group6.service.ipml.QLNguoiDungService;
+import com.poly.it17323.group6.service.ipml.UpdateKhuyenMaiThread;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -147,7 +148,9 @@ public class SRM_Login extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, iND.login(qlndr));
             try {
-                new SRM_BanHang().setVisible(true);
+                SRM_BanHang srm = new SRM_BanHang();
+                srm.setVisible(true);
+                new Thread(new UpdateKhuyenMaiThread(srm)).start();
             } catch (IOException ex) {
                 Logger.getLogger(SRM_Login.class.getName()).log(Level.SEVERE, null, ex);
             }

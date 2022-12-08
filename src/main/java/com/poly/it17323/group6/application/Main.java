@@ -1,7 +1,11 @@
 package com.poly.it17323.group6.application;
 
-import com.poly.it17323.group6.thread.UpdateKhuyenMaiThread;
+import com.poly.it17323.group6.service.ipml.UpdateKhuyenMaiThread;
+import com.poly.it17323.group6.view.SRM_BanHang;
 import com.poly.it17323.group6.view.SRM_Login;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -9,11 +13,11 @@ import com.poly.it17323.group6.view.SRM_Login;
  */
 public class Main {
 
-    static {
-        new Thread(new UpdateKhuyenMaiThread()).start();
-    }
+
 
     public static void main(String[] args) {
-        new SRM_Login().setVisible(true);
+
+            new SRM_Login().setVisible(true);
+            
     }
 }
