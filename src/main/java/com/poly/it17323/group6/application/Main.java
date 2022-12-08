@@ -16,6 +16,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new SRM_ThemND().setVisible(true);
+        new SRM_Login().setVisible(true);
     }
 }

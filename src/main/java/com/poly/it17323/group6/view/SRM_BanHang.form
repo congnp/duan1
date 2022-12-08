@@ -1492,7 +1492,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="txtNgayKhachMuonNhan1" min="-2" pref="142" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jButton4" min="-2" pref="44" max="-2" attributes="0"/>
+                                                      <Component id="btnInHD" min="-2" pref="44" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="txtGiamGia2" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
@@ -1512,7 +1512,6 @@
                                                   <Component id="txtTienKhachCK2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
                                                   <Component id="txtTienThua2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1600,7 +1599,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel111" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtNgayKhachMuonNhan1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnInHD" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1801,10 +1800,13 @@
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="txtNgayKhachMuonNhan1">
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton4">
+                            <Component class="javax.swing.JButton" name="btnInHD">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="IN"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInHDActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="cboTTTT">
                               <Properties>
@@ -1986,7 +1988,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel16" min="-2" pref="1023" max="-2" attributes="0"/>
+                                  <Component id="jPanel16" min="-2" pref="1030" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1994,10 +1996,9 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Component id="tbl_nd_NghiLam" pref="399" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="tbl_nd_NghiLam" pref="385" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2033,21 +2034,14 @@
                                                   <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="txt_nd_MatKhau" alignment="0" pref="364" max="32767" attributes="0"/>
-                                                          <Component id="txt_nd_NgaySinh" alignment="0" min="-2" pref="177" max="-2" attributes="0"/>
-                                                          <Component id="txt_nd_MaND" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
-                                                          <Component id="cbb_nd_ChucVu" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
-                                                          <Component id="txt_nd_TenTK" max="32767" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                                      <Component id="txt_nd_HovaTen" min="-2" pref="364" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="Jdate_nd_ngaySinh" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
+                                                  <Component id="txt_nd_MaND" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txt_nd_MatKhau" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txt_nd_TenTK" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cbb_nd_ChucVu" alignment="0" pref="361" max="32767" attributes="0"/>
+                                                  <Component id="txt_nd_HovaTen" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="jLabel55" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2058,7 +2052,7 @@
                                               <Component id="rdo_nd_Nu" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2084,19 +2078,18 @@
                                               <Component id="txt_nd_Email" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txt_nd_Sdt" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txt_nd_DiaChi" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txt_nd_CCCD" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txt_nd_NgayTao" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txt_nd_NgaySua" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
+                                              <Component id="txt_nd_CCCD" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="Jdate_nd_ngayTao" min="-2" pref="263" max="-2" attributes="0"/>
+                                          <Component id="Jdate_nd_ngaySua" min="-2" pref="263" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="btn_nd_Xoa" linkSize="27" min="-2" max="-2" attributes="0"/>
                                           <Component id="btn_nd_Them" linkSize="27" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btn_nd_Sua" linkSize="27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btn_nd_Clear" linkSize="27" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btn_nd_Sua" linkSize="27" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2104,18 +2097,61 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_MaND" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="txt_nd_Email" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_Sdt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txt_nd_Sdt" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="52" pref="52" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_nd_DiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_nd_CCCD" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="rdo_nd_NghiLam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="rdo_nd_DangLam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="jLabel62" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Jdate_nd_ngayTao" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel63" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Jdate_nd_ngaySua" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txt_nd_MaND" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="btn_nd_Them" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="btn_nd_Xoa" min="-2" pref="34" max="-2" attributes="0"/>
+                                                  </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="3" attributes="0">
                                                           <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2125,58 +2161,41 @@
                                                       <Group type="103" groupAlignment="3" attributes="0">
                                                           <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
                                                           <Component id="txt_nd_TenTK" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="txt_nd_DiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                           <Component id="jLabel53" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                                              <Component id="txt_nd_MatKhau" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="txt_nd_CCCD" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="txt_nd_MatKhau" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_HovaTen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                      <Component id="rdo_nd_NghiLam" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="rdo_nd_DangLam" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txt_nd_HovaTen" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rdo_nd_Nam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rdo_nd_Nu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                                      <Component id="btn_nd_Sua" min="-2" pref="34" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_NgayTao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rdo_nd_Nam" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rdo_nd_Nu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="Jdate_nd_ngaySinh" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_NgaySinh" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_NgaySua" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btn_nd_Them" min="-2" pref="33" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Component id="btn_nd_Xoa" min="-2" pref="34" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                              <Component id="btn_nd_Sua" min="-2" pref="34" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="btn_nd_Clear" min="-2" pref="33" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2274,12 +2293,6 @@
                             </Component>
                             <Component class="javax.swing.JTextField" name="txt_nd_Sdt">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txt_nd_NgayTao">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txt_nd_NgaySinh">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txt_nd_NgaySua">
-                            </Component>
                             <Component class="javax.swing.JTextField" name="txt_nd_CCCD">
                             </Component>
                             <Component class="javax.swing.JRadioButton" name="rdo_nd_Nu">
@@ -2340,12 +2353,28 @@
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nd_XoaActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JButton" name="btn_nd_Clear">
+                            <Component class="com.toedter.calendar.JDateChooser" name="Jdate_nd_ngaySinh">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Clear"/>
+                                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nd_ClearActionPerformed"/>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Jdate_nd_ngaySinhMouseClicked"/>
+                              </Events>
+                            </Component>
+                            <Component class="com.toedter.calendar.JDateChooser" name="Jdate_nd_ngayTao">
+                              <Properties>
+                                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Jdate_nd_ngayTaoMouseClicked"/>
+                              </Events>
+                            </Component>
+                            <Component class="com.toedter.calendar.JDateChooser" name="Jdate_nd_ngaySua">
+                              <Properties>
+                                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Jdate_nd_ngaySuaMouseClicked"/>
                               </Events>
                             </Component>
                           </SubComponents>

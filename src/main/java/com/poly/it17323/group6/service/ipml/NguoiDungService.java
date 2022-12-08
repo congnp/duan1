@@ -8,6 +8,7 @@ import com.poly.it17323.group6.repository.NguoiDungRepository;
 import com.poly.it17323.group6.response.NguoiDungReponse;
 import com.poly.it17323.group6.service.INguoiDungService;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -109,6 +110,17 @@ public class NguoiDungService implements INguoiDungService {
             es.guiMail("Ten TK và MK", ndr.getTenTK(), "Tên TK:"+tenTk +"\n"+"Mật khẩu:"+ndr.getMatKhau());
         } catch (MessagingException ex) {
             
+        }
+        return null;
+    }
+
+    @Override
+    public String checkEmail(String email) {
+       
+        for (NguoiDung nguoiDung : ndRepo.getAll()) {
+            if(nguoiDung.getEmail().equalsIgnoreCase(email)){
+               return "trùng email";
+            }
         }
         return null;
     }

@@ -34,4 +34,6 @@ public interface INguoiDungService {
     String emaiFals(NguoiDungReponse ndr);
 
     String checkMa(String maXn);
+     
+    String checkEmail(String email);
 }
