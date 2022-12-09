@@ -126,6 +126,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     ArrayList<String> itemName = new ArrayList<>();
     ArrayList<String> soLuong = new ArrayList<>();
     ArrayList<String> itemPrice = new ArrayList<>();
+    ArrayList<String> itemNameDH = new ArrayList<>();
+    ArrayList<String> soLuongDH = new ArrayList<>();
+    ArrayList<String> itemPriceDH = new ArrayList<>();
 
     private final IQLBanHangService iBH = new BanHangService();
     private final IQLNguoiDungService iqlnds = new QLNguoiDungService();
@@ -5064,13 +5067,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_btnDaGiaoActionPerformed
 
     private void btnInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHDActionPerformed
-        bHeight = Double.valueOf(itemName.size());
+        bHeight = Double.valueOf(itemNameDH.size());
 //        System.out.println("SỐ PHẦN TỬ:" + itemName.size());
         //JOptionPane.showMessageDialog(rootPane, bHeight);
 
         PrinterJob pj1 = PrinterJob.getPrinterJob();
 
-        pj1.setPrintable(new BillPrintable1(), getPageFormat(pj1));
+        pj1.setPrintable(new BillPrintable1(), getPageFormat1(pj1));
 
         try {
             pj1.print();
@@ -5265,24 +5268,24 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
     }
 
-//    public PageFormat getPageFormat1(PrinterJob pj) {
-//
-//        PageFormat pf = pj.defaultPage();
-//        Paper paper = pf.getPaper();
-//
-//        double bodyHeight = bHeight;
-//        double headerHeight = 5.0;
-//        double footerHeight = 5.0;
-//        double width = cm_to_pp(11);
-//        double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
-//        paper.setSize(width, height);
-//        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
-//
-//        pf.setOrientation(PageFormat.PORTRAIT);
-//        pf.setPaper(paper);
-//
-//        return pf;
-//    }
+    public PageFormat getPageFormat1(PrinterJob pj) {
+
+        PageFormat pf = pj.defaultPage();
+        Paper paper = pf.getPaper();
+
+        double bodyHeight = bHeight;
+        double headerHeight = 5.0;
+        double footerHeight = 5.0;
+        double width = cm_to_pp(11);
+        double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
+        paper.setSize(width, height);
+        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
+
+        pf.setOrientation(PageFormat.PORTRAIT);
+        pf.setPaper(paper);
+
+        return pf;
+    }
 
     public class BillPrintable1 implements Printable {
 
@@ -5293,9 +5296,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             HoaDon hd = iBH.getAll_HD().get(tblHoaDon.getSelectedRow());
             List<HoaDonChiTiet> lstHDCT = iBH.getAll_HDCTByIDHD(hd.getIdHD());
             for (HoaDonChiTiet hoaDonChiTiet : lstHDCT) {
-                itemName.add(hoaDonChiTiet.getChiTietSanPham().getSanPham().getTenSP());
-                itemPrice.add(String.valueOf(hoaDonChiTiet.getChiTietSanPham().getGia()));
-                soLuong.add(String.valueOf(hoaDonChiTiet.getSlMua()));
+                itemNameDH.add(hoaDonChiTiet.getChiTietSanPham().getSanPham().getTenSP());
+                itemPriceDH.add(String.valueOf(hoaDonChiTiet.getChiTietSanPham().getGia()));
+                soLuongDH.add(String.valueOf(hoaDonChiTiet.getSlMua()));
             }
 //            KhachHangResponse kh = (KhachHangResponse) iQlKH.getAll();
             KhachHangResponse khr = iQlKH.getOneByMa(lblMaKH.getText());
@@ -5328,7 +5331,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString(" Sđt:                  " + khr.getSdt(), 10, y);
                     y += yShift;
-                    g2d.drawString(" Địa chỉ KH:         " + khr.getDiaChi(), 10, y);
+                    g2d.drawString(" Địa chỉ KH:           " + khr.getDiaChi(), 10, y);
                     y += yShift;
                     g2d.drawString(" Mã HD:                " + lblMaHD2.getText(), 10, y);
                     y += yShift;
@@ -5345,9 +5348,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += headerRectHeight;
 
                     for (int s = 0; s < lstHDCT.size(); s++) {
-                        Double gia = Double.parseDouble(soLuong.get(s)) * Double.parseDouble(itemPrice.get(s));
-                        g2d.drawString(" " + itemName.get(s) + "               ", 10, y);
-                        g2d.drawString("                       " + soLuong.get(s), 10, y);
+                        Double gia = Double.parseDouble(soLuongDH.get(s)) * Double.parseDouble(itemPriceDH.get(s));
+                        g2d.drawString(" " + itemNameDH.get(s) + "               ", 10, y);
+                        g2d.drawString("                       " + soLuongDH.get(s), 10, y);
                         g2d.drawString("        " + gia, 160, y);
                         y += yShift;
 
