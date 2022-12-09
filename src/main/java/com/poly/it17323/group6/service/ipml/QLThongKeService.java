@@ -6,6 +6,7 @@ package com.poly.it17323.group6.service.ipml;
 
 import com.poly.it17323.group6.domainmodel.HoaDon;
 import com.poly.it17323.group6.repository.HoaDonRepository;
+import com.poly.it17323.group6.repository.ThongKeRepository;
 import com.poly.it17323.group6.response.QLThongKeResponse;
 import com.poly.it17323.group6.service.IQLThongKeService;
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ import java.util.List;
  */
 public class QLThongKeService implements IQLThongKeService {
 
-    private HoaDonRepository hdRepo = new HoaDonRepository();
+    private ThongKeRepository tkeRepo = new ThongKeRepository();
 
     @Override
     public List<QLThongKeResponse> getThongKe() {
-        List<HoaDon> list = hdRepo.getAll2();
+        List<HoaDon> list = tkeRepo.getAll2();
         List<QLThongKeResponse> respon = new ArrayList<>();
         for (HoaDon hdon : list) {
             QLThongKeResponse tke = new QLThongKeResponse(hdon);
@@ -39,18 +40,12 @@ public class QLThongKeService implements IQLThongKeService {
 
     @Override
     public List<HoaDon> getDoanhThu() {
-        return hdRepo.DoanhThu();
+        return tkeRepo.DoanhThu();
 
     }
-
-    @Override
-    public List<QLThongKeResponse> getDoanhThuChart() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     @Override
     public List<QLThongKeResponse> getThongKeNV() {
-        List<HoaDon> list = hdRepo.getAll2();
+        List<HoaDon> list = tkeRepo.getAll2();
         List<QLThongKeResponse> respon = new ArrayList<>();
         for (HoaDon hdon : list) {
             QLThongKeResponse tke = new QLThongKeResponse(hdon);

@@ -28,12 +28,7 @@ public class HoaDonRepository {
         return list;
     }
 
-    public List<HoaDon> getAll2() {
-        session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable + " a where a.tinhTrang = 1 order by MaHD desc", HoaDon.class);
-        List<HoaDon> list = query.getResultList();
-        return list;
-    }
+   
 
     public List<HoaDon> getAll_ByTT(int tt) {
         session = Hibernate_Util.getFACTORY().openSession();
@@ -60,35 +55,6 @@ public class HoaDonRepository {
         return hoaDon;
     }
 
-    public List<HoaDon> DoanhThu() {
-        session = Hibernate_Util.getFACTORY().openSession();
-        String hql = "SELECT SUM(tongTienMat)+SUM(tongTienCK) AS TongDoanhThu FROM HoaDon WHERE tinhTrang = 1";
-        Query query = session.createQuery(hql);
-        List<HoaDon> result = query.getResultList();
-        return result;
-    }
-
-    public List<HoaDon> DoanhThuChart() {
-        session = Hibernate_Util.getFACTORY().openSession();
-        String hql = "SELECT ngayTao, SUM(tongTienMat) AS TongDoanhThu "
-                + "FROM HoaDon where tinhTrang = 1  group by ngayTao";
-        Query query = session.createQuery(hql);
-        List<HoaDon> result = query.getResultList();
-        return result;
-    }
-
-    public List<HoaDon> thongKeNVien() {
-        session = Hibernate_Util.getFACTORY().openSession();
-        String hql = "SELECT nguoiDung.hoTen,a.maHD,a.ngayTao, SUM(a.tongTienMat) AS TongDoanhThu "
-                + "FROM HoaDon a where a.tinhTrang = 1 group by a.ngayTao,nguoiDung.hoTen,a.maHD";
-        Query query = session.createQuery(hql);
-        List<HoaDon> result = query.getResultList();
-        return result;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepository().thongKeNVien());
-    }
 
     public Boolean add(HoaDon hoaDon) {
         Transaction transaction = null;

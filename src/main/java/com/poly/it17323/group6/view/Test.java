@@ -24,7 +24,7 @@ DefaultTableModel model = new DefaultTableModel();
         initComponents();
         setLocationRelativeTo(null);
         
-         BieuDoThongKe test = new BieuDoThongKe();
+        BieuDoThongKe test = new BieuDoThongKe();
         test.Char1(jPanel1);
         //loadTable();
         
@@ -133,6 +133,7 @@ DefaultTableModel model = new DefaultTableModel();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
