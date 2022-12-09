@@ -12,11 +12,9 @@ import java.util.logging.Logger;
  */
 public class Main {
 
-
-
     public static void main(String[] args) {
 
-            new SRM_Login().setVisible(true);
-            
+        new SRM_Login().setVisible(true);
+
     }
 }
