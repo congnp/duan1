@@ -4478,7 +4478,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
     private void inhoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inhoadonActionPerformed
         bHeight = Double.valueOf(itemName.size());
-        System.out.println("SỐ PHẦN TỬ:" + itemName.size());
+        
         //JOptionPane.showMessageDialog(rootPane, bHeight);
 
         PrinterJob pj = PrinterJob.getPrinterJob();
@@ -5070,7 +5070,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         PrinterJob pj1 = PrinterJob.getPrinterJob();
 
-        pj1.setPrintable(new BillPrintable1(), getPageFormat1(pj1));
+        pj1.setPrintable(new BillPrintable1(), getPageFormat(pj1));
 
         try {
             pj1.print();
@@ -5131,7 +5131,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         double width = cm_to_pp(8);
         double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
         paper.setSize(width, height);
-        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
+        paper.setImageableArea(0, 10, width, height);
 
         pf.setOrientation(PageFormat.PORTRAIT);
         pf.setPaper(paper);
@@ -5194,10 +5194,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     g2d.setFont(new Font("Monospaced", Font.PLAIN, 9));
                     g2d.drawImage(icon.getImage(), 60, 20, 170, 30, rootPane);
                     y += yShift + 30;
-                    g2d.drawString("-------------------------------------", 12, y);
+                    g2d.drawString("-----------------------------------------------", 12, y);
                     y += yShift;
-                    g2d.drawString("             HÓA ĐƠN          ", 12, y);
-                    y += yShift;
+                    g2d.drawString("                       HÓA ĐƠN                 ", 12, y);
+                    y += yShift; 
                     g2d.drawString(" Tên khách hàng:       " + lblTenKH.getText(), 10, y);
                     y += yShift;
                     g2d.drawString(" Mã KH:                " + lblMaKH.getText(), 10, y);
@@ -5212,26 +5212,28 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString("              ", 12, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------", 12, y);
+                    g2d.drawString("-----------------------------------------------", 12, y);
                     y += headerRectHeight;
 
                     g2d.drawString(" Tên sản phẩm       Số lượng     Giá", 12, y);
                     y += yShift;
-                    g2d.drawString("-------------------------------------------", 12, y);
+                    g2d.drawString("-----------------------------------------------", 12, y);
                     y += headerRectHeight;
 
                     for (int s = 0; s < lstHDCT.size(); s++) {
                         Double gia = Double.parseDouble(soLuong.get(s)) * Double.parseDouble(itemPrice.get(s));
-                        g2d.drawString(itemName.get(s) + "               ", 10, y);
-                        y += yShift;
+                        g2d.drawString(" "+itemName.get(s) + "               ", 10, y);
+                        
                         g2d.drawString("                      " + soLuong.get(s), 10, y);
-                        g2d.drawString(" " + gia, 160, y);
+                        g2d.drawString("     " + gia, 160, y);
                         y += yShift;
 
                     }
-                    g2d.drawString("-------------------------------------", 10, y);
+                    g2d.drawString(" Giảm giá:                       " + txtGiamGia2.getText() + "             ", 10, y);
                     y += yShift;
-//                    g2d.drawString("Tổng tiền:                  " + txtTongTien.getText() + "   ", 10, y);
+                    g2d.drawString("-----------------------------------------------", 10, y);
+                    y += yShift;
+                    g2d.drawString(" Tổng tiền:                      " + txtTongTien.getText() + "   ", 10, y);
                     y += yShift;
 //                    g2d.drawString("-------------------------------------", 10, y);
 //                    y += yShift;
@@ -5242,16 +5244,16 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 //                    g2d.drawString(" Balance   :                 " + txtBalance.getText() + "   ", 10, y);
 //                    y += yShift;
 
-                    g2d.drawString("*************************************", 10, y);
+                    g2d.drawString("************************************************", 10, y);
                     y += yShift;
-                    g2d.drawString("       CẢM ƠN BẠN ĐÃ GHÉ THẮM          ", 10, y);
+                    g2d.drawString("          CẢM ƠN BẠN ĐÃ GHÉ THẮM            ", 10, y);
                     y += yShift;
-                    g2d.drawString("*************************************", 10, y);
+                    g2d.drawString("************************************************", 10, y);
                     y += yShift;
-                    g2d.drawString("         THIẾT KẾ BỞI NHÓM 6           ", 10, y);
+                    g2d.drawString("            THIẾT KẾ BỞI NHÓM 6             ", 10, y);
                     y += yShift;
-//                    g2d.drawString("   CONTACT: contact@codeguid.com       ", 10, y);
-//                    y += yShift;
+                    g2d.drawString("         ", 10, y);
+                    y += yShift;
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -5263,24 +5265,24 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
     }
 
-    public PageFormat getPageFormat1(PrinterJob pj) {
-
-        PageFormat pf = pj.defaultPage();
-        Paper paper = pf.getPaper();
-
-        double bodyHeight = bHeight;
-        double headerHeight = 5.0;
-        double footerHeight = 5.0;
-        double width = cm_to_pp(11);
-        double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
-        paper.setSize(width, height);
-        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
-
-        pf.setOrientation(PageFormat.PORTRAIT);
-        pf.setPaper(paper);
-
-        return pf;
-    }
+//    public PageFormat getPageFormat1(PrinterJob pj) {
+//
+//        PageFormat pf = pj.defaultPage();
+//        Paper paper = pf.getPaper();
+//
+//        double bodyHeight = bHeight;
+//        double headerHeight = 5.0;
+//        double footerHeight = 5.0;
+//        double width = cm_to_pp(11);
+//        double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
+//        paper.setSize(width, height);
+//        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
+//
+//        pf.setOrientation(PageFormat.PORTRAIT);
+//        pf.setPaper(paper);
+//
+//        return pf;
+//    }
 
     public class BillPrintable1 implements Printable {
 
@@ -5373,10 +5375,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString("***********************************************", 10, y);
                     y += yShift;
-//                    g2d.drawString("              THIẾT KẾ BỞI NHÓM 6              ", 10, y);
-//                    y += yShift;
-//                    g2d.drawString("   CONTACT: contact@codeguid.com       ", 10, y);
-//                    y += yShift;
+                    g2d.drawString("              THIẾT KẾ BỞI NHÓM 6              ", 10, y);
+                    y += yShift;
+                    g2d.drawString("         ", 10, y);
+                    y += yShift;
 
                 } catch (Exception e) {
                     e.printStackTrace();
