@@ -95,6 +95,7 @@ import java.io.FileOutputStream;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -198,31 +199,21 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             }
             loadKM(iKM.getAll());
         });
-
         initWebCam();
-        txtNgayKhachMuonNhan.setEnabled(false);
+        tblSanPham.setEnabled(false);
         txtTienThua.setEditable(false);
         txtTienThua2.setEditable(false);
-        txtTienShip.setEditable(false);
+        txtNgayNhan.setEnabled(false);
         xoa.setEnabled(false);
         xoatatca.setEnabled(false);
         btnThanhToan.setEnabled(false);
         btnChoGiao.setEnabled(false);
         btnGiaoHang.setEnabled(false);
         btnDaGiao.setEnabled(false);
-        btnThanhToan.setEnabled(false);
         chon.setEnabled(false);
         thaydoi.setEnabled(false);
-        cboPthuctt.setEnabled(false);
-        cboPthuctt2.setEnabled(false);
-        txtTienKhachDua.setEditable(false);
-        txtTienKhachDua2.setEditable(false);
         txtTienKhachCK.setEditable(false);
         txtTienKhachCK2.setEditable(false);
-        txtNgayGuiDi.setEnabled(false);
-        txtNgayNhan.setEnabled(false);
-        cboTTTT.setEnabled(false);
-        txtNgayKhachMuonNhan.setEnabled(false);
         setLocationRelativeTo(null);
         effectNav(PN_BanHang, PN_KhachHang, PN_KhuyenMai, PN_QLHoaDon, PN_QLNguoiDung, PN_QLSanPham, PN_QLThongKe, "Bán Hàng");
         listKM = iKM.getAll();
@@ -1212,6 +1203,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         });
 
         jButton1.setText("Thêm SP");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SanPhamLayout = new javax.swing.GroupLayout(SanPham);
         SanPham.setLayout(SanPhamLayout);
@@ -1345,6 +1341,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jLabel97.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel97.setText("Tiền thừa :");
 
+        lblMaHD.setForeground(new java.awt.Color(51, 102, 255));
+
         jLabel98.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel98.setText("Phương thức tt :");
 
@@ -1362,6 +1360,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 btnTaoHDMouseClicked(evt);
             }
         });
+
+        lblTenND.setForeground(new java.awt.Color(51, 102, 255));
 
         txtTongTien.setText("0");
 
@@ -2337,11 +2337,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         BieuDoTKeDT.setLayout(BieuDoTKeDTLayout);
         BieuDoTKeDTLayout.setHorizontalGroup(
             BieuDoTKeDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGap(0, 994, Short.MAX_VALUE)
         );
         BieuDoTKeDTLayout.setVerticalGroup(
             BieuDoTKeDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout TongQuanTgianLayout = new javax.swing.GroupLayout(TongQuanTgian);
@@ -2354,7 +2354,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             TongQuanTgianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TongQuanTgianLayout.createSequentialGroup()
                 .addComponent(BieuDoTKeDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         jTabbedPane10.addTab("Tổng Quan", TongQuanTgian);
@@ -2383,13 +2383,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ChiTiet.setLayout(ChiTietLayout);
         ChiTietLayout.setHorizontalGroup(
             ChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
         );
         ChiTietLayout.setVerticalGroup(
             ChiTietLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ChiTietLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2418,7 +2418,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         BieuDoTKeSanPham.setLayout(BieuDoTKeSanPhamLayout);
         BieuDoTKeSanPhamLayout.setHorizontalGroup(
             BieuDoTKeSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGap(0, 994, Short.MAX_VALUE)
         );
         BieuDoTKeSanPhamLayout.setVerticalGroup(
             BieuDoTKeSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2464,7 +2464,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ChiTietSPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ChiTietSPLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ChiTietSPLayout.setVerticalGroup(
@@ -2500,7 +2500,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         BieuDoTKeNvien.setLayout(BieuDoTKeNvienLayout);
         BieuDoTKeNvienLayout.setHorizontalGroup(
             BieuDoTKeNvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1011, Short.MAX_VALUE)
+            .addGap(0, 994, Short.MAX_VALUE)
         );
         BieuDoTKeNvienLayout.setVerticalGroup(
             BieuDoTKeNvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2548,7 +2548,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ChiTietNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ChiTietNVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ChiTietNVLayout.setVerticalGroup(
@@ -2589,23 +2589,25 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(QL_ThongKeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane11))
-            .addGroup(QL_ThongKeLayout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jLabel19)
-                .addGap(34, 34, 34)
-                .addComponent(txtNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel20)
-                .addGap(27, 27, 27)
-                .addComponent(txtNgay1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(btnTimKiem)
-                .addGap(32, 32, 32)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(QL_ThongKeLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel19)
+                        .addGap(34, 34, 34)
+                        .addComponent(txtNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel20)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtNgay1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(btnTimKiem)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
+                    .addGroup(QL_ThongKeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3432,9 +3434,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                             .addComponent(jLabel26)
                             .addComponent(jLabel29))
                         .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanel_ThongTinKHLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel28)))
+                    .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(JPanel_ThongTinKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPanel_ThongTinKHLayout.createSequentialGroup()
@@ -4253,91 +4253,107 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         int index = tblHoaDon.getSelectedRow();
         HoaDon HD = iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(index, 1).toString());
         if (HD.getTinhTrang() == 1) {
-            btnThanhToan.setEnabled(false);
             xoatatca.setEnabled(false);
             xoa.setEnabled(false);
             tblSanPham.setEnabled(false);
             tblGioHang.setEnabled(false);
             txtTienKhachDua.setEditable(false);
             txtTienKhachCK.setEditable(false);
-            cboPthuctt.setEnabled(false);
             txtTienKhachDua2.setEditable(false);
             txtTienKhachCK2.setEditable(false);
-            cboPthuctt2.setEnabled(false);
             txtTienShip.setEditable(false);
-            btnGiaoHang.setEnabled(false);
             txtNgayGuiDi.setEnabled(false);
-        } else if (HD.getTinhTrang() == -1) {
-            btnThanhToan.setEnabled(false);
-            xoatatca.setEnabled(false);
-            xoa.setEnabled(false);
-            txtTienKhachDua.setEditable(false);
-            txtTienKhachCK.setEditable(false);
-            cboPthuctt.setEnabled(false);
-            txtTienKhachDua2.setEditable(true);
-            txtTienKhachCK2.setEditable(true);
-            cboPthuctt2.setEnabled(true);
-            txtTienShip.setEditable(true);
-            txtNgayGuiDi.setEnabled(true);
-            xoa.setEnabled(false);
-            btnGiaoHang.setEnabled(false);
+            txtNgayKhachMuonNhan.setEnabled(false);
             txtNgayNhan.setEnabled(false);
+            btnThanhToan.setEnabled(false);
+            btnChoGiao.setEnabled(false);
+            btnGiaoHang.setEnabled(false);
+            btnDaGiao.setEnabled(false);
+            rdoDaThanhToan.setSelected(true);
+            rdoChoGiao.setSelected(false);
+            rdoDangGiao.setSelected(false);
+            rdoHDCho.setSelected(false);
+            rdoTatCa.setSelected(false);
+        } else if (HD.getTinhTrang() == -1) {
+            btnDaGiao.setEnabled(false);
+            btnChoGiao.setEnabled(true);
+            btnGiaoHang.setEnabled(true);
             tblSanPham.setEnabled(true);
             tblGioHang.setEnabled(true);
-            btnGiaoHang.setEnabled(true);
-            btnChoGiao.setEnabled(true);
-            cboTTTT.setEnabled(true);
+            txtTienKhachDua2.setEditable(true);
             txtNgayKhachMuonNhan.setEnabled(true);
+            txtNgayGuiDi.setEnabled(true);
+            txtTienShip.setEditable(true);
+            txtNgayNhan.setEnabled(false);
+            rdoDaThanhToan.setSelected(false);
+            rdoChoGiao.setSelected(true);
+            rdoDangGiao.setSelected(false);
+            rdoHDCho.setSelected(false);
+            rdoTatCa.setSelected(false);
         } else if (HD.getTinhTrang() == -2) {
-            btnThanhToan.setEnabled(false);
             xoatatca.setEnabled(false);
             xoa.setEnabled(false);
-            txtTienKhachDua.setEditable(false);
-            txtTienKhachCK.setEditable(false);
-            cboPthuctt.setEnabled(false);
-            txtTienKhachDua2.setEditable(true);
-            txtTienKhachCK2.setEditable(true);
-            cboPthuctt2.setEnabled(true);
-            txtTienShip.setEditable(false);
-            btnGiaoHang.setEnabled(false);
+            tblSanPham.setEnabled(false);
+            tblGioHang.setEnabled(false);
             txtNgayGuiDi.setEnabled(false);
-            xoa.setEnabled(false);
+            txtNgayKhachMuonNhan.setEnabled(false);
             btnChoGiao.setEnabled(false);
             btnGiaoHang.setEnabled(false);
             btnDaGiao.setEnabled(true);
             txtNgayNhan.setEnabled(true);
-            tblSanPham.setEnabled(false);
-            tblGioHang.setEnabled(false);
-            cboTTTT.setEnabled(true);
-            txtNgayKhachMuonNhan.setEnabled(false);
+            rdoDaThanhToan.setSelected(false);
+            rdoChoGiao.setSelected(false);
+            rdoDangGiao.setSelected(true);
+            rdoHDCho.setSelected(false);
+            rdoTatCa.setSelected(false);
         } else {
             if (iBH.getAll_HDCTByIDHD(HD.getIdHD()).size() > 0) {
-                btnChoGiao.setEnabled(true);
-                btnThanhToan.setEnabled(true);
                 xoatatca.setEnabled(true);
                 xoa.setEnabled(true);
-                txtTienKhachDua.setEditable(true);
-                cboPthuctt.setEnabled(true);
-                txtTienKhachDua2.setEditable(true);
-                cboPthuctt2.setEnabled(true);
-                txtTienShip.setEditable(true);
-                btnGiaoHang.setEnabled(true);
-                txtNgayGuiDi.setEnabled(true);
-                cboTTTT.setEnabled(true);
+                if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                    btnThanhToan.setEnabled(true);
+                    txtTienKhachDua.setEditable(true);
+                    btnChoGiao.setEnabled(false);
+                    btnGiaoHang.setEnabled(false);
+                    btnDaGiao.setEnabled(false);
+                } else {
+                    btnChoGiao.setEnabled(true);
+                    btnGiaoHang.setEnabled(true);
+                    txtTienKhachDua2.setEditable(true);
+                    txtNgayKhachMuonNhan.setEnabled(true);
+                    txtNgayGuiDi.setEnabled(true);
+                    txtTienShip.setEditable(true);
+                    btnThanhToan.setEnabled(false);
+                    txtNgayNhan.setEnabled(false);
+                    btnDaGiao.setEnabled(false);
+                }
             } else {
-                btnChoGiao.setEnabled(false);
-                btnThanhToan.setEnabled(false);
                 xoatatca.setEnabled(false);
                 xoa.setEnabled(false);
-                txtTienKhachDua.setEditable(false);
-                cboPthuctt.setEnabled(false);
-                txtTienKhachDua2.setEditable(false);
-                cboPthuctt2.setEnabled(false);
-                txtTienShip.setEditable(false);
-                btnGiaoHang.setEnabled(false);
-                txtNgayGuiDi.setEnabled(false);
-                cboTTTT.setEnabled(false);
+                if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                    btnThanhToan.setEnabled(false);
+                    txtTienKhachDua.setEditable(true);
+                    btnChoGiao.setEnabled(false);
+                    btnGiaoHang.setEnabled(false);
+                    btnDaGiao.setEnabled(false);
+                } else {
+                    btnChoGiao.setEnabled(false);
+                    btnGiaoHang.setEnabled(false);
+                    txtTienKhachDua2.setEditable(true);
+                    txtNgayKhachMuonNhan.setEnabled(true);
+                    txtNgayGuiDi.setEnabled(true);
+                    txtTienShip.setEditable(true);
+                    btnThanhToan.setEnabled(false);
+                    txtNgayGuiDi.setEnabled(true);
+                    txtNgayNhan.setEnabled(false);
+                    btnDaGiao.setEnabled(false);
+                }
             }
+            rdoDaThanhToan.setSelected(false);
+            rdoChoGiao.setSelected(false);
+            rdoDangGiao.setSelected(false);
+            rdoHDCho.setSelected(true);
+            rdoTatCa.setSelected(false);
             tblSanPham.setEnabled(true);
             tblGioHang.setEnabled(true);
         }
@@ -4349,7 +4365,15 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             tblHoaDon.setRowSelectionAllowed(true);
         } else {
             PanelChung.setSelectedIndex(1);
-            showDetailHD_Dh(HD);
+            if (HD.getTinhTrang() == -2) {
+                showDetailHD_Dh_DG(HD);
+            } else if (HD.getTinhTrang() == -1) {
+                showDetailHD_Dh_CG(HD);
+            } else if (HD.getTinhTrang() == 0) {
+                showDetailHD_Dh_CTT(HD);
+            } else {
+                showDetailHD_Dh(HD);
+            }
             tblHoaDon.setRowSelectionAllowed(true);
             loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
             tblHoaDon.setRowSelectionAllowed(true);
@@ -4358,7 +4382,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
         if (PanelChung.getSelectedIndex() == 1 && lblMaKH.getText().equalsIgnoreCase("KH00")) {
-            JOptionPane.showMessageDialog(this, "Ban chua chon khach hang");;
+            JOptionPane.showMessageDialog(this, "Ban chua chon khach hang");
             return;
         }
         tblGioHang.setRowSelectionAllowed(false);
@@ -4405,19 +4429,16 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadDataSP();
         loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
         if (iBH.getAll_HDCTByIDHD(HD.getIdHD()).size() > 0) {
-            xoa.setEnabled(true);
-            xoatatca.setEnabled(true);
-            btnThanhToan.setEnabled(true);
-            btnChoGiao.setEnabled(true);
-            cboPthuctt.setEnabled(true);
-            txtTienKhachDua.setEditable(true);
-            txtTienKhachDua2.setEditable(true);
-            cboPthuctt2.setEnabled(true);
-            txtTienShip.setEditable(true);
-            btnGiaoHang.setEnabled(true);
-            txtNgayGuiDi.setEnabled(true);
-            txtNgayKhachMuonNhan.setEnabled(true);
-            cboTTTT.setEnabled(true);
+            if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                btnThanhToan.setEnabled(true);
+                xoa.setEnabled(true);
+                xoatatca.setEnabled(true);
+            } else {
+                btnChoGiao.setEnabled(true);
+                btnGiaoHang.setEnabled(true);
+                xoa.setEnabled(true);
+                xoatatca.setEnabled(true);
+            }
         }
         if (PanelChung.getSelectedIndex() == 0) {
             List<BigDecimal> lstGia = new ArrayList<>();
@@ -4492,31 +4513,21 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         if (iBH.getAll_HDCTByIDHD(HD.getIdHD()).size() == 0) {
             xoa.setEnabled(false);
             xoatatca.setEnabled(false);
-            btnThanhToan.setEnabled(false);
-            btnChoGiao.setEnabled(false);
-            cboPthuctt.setEnabled(false);
-            txtTienKhachDua.setEditable(false);
-            txtTienKhachDua2.setEditable(false);
-            cboPthuctt2.setEnabled(false);
-            txtTienShip.setEditable(false);
-            btnGiaoHang.setEnabled(false);
-            txtNgayGuiDi.setEnabled(false);
-            txtNgayKhachMuonNhan.setEnabled(false);
-            cboTTTT.setEnabled(false);
+            if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                btnThanhToan.setEnabled(false);
+            } else {
+                btnChoGiao.setEnabled(false);
+                btnGiaoHang.setEnabled(false);
+            }
         } else {
             xoa.setEnabled(true);
             xoatatca.setEnabled(true);
-            btnThanhToan.setEnabled(true);
-            btnChoGiao.setEnabled(true);
-            cboPthuctt.setEnabled(true);
-            txtTienKhachDua.setEditable(true);
-            txtTienKhachDua2.setEditable(true);
-            cboPthuctt2.setEnabled(true);
-            txtTienShip.setEditable(true);
-            btnGiaoHang.setEnabled(true);
-            txtNgayGuiDi.setEnabled(true);
-            txtNgayKhachMuonNhan.setEnabled(true);
-            cboTTTT.setEnabled(true);
+            if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                btnThanhToan.setEnabled(true);
+            } else {
+                btnChoGiao.setEnabled(true);
+                btnGiaoHang.setEnabled(true);
+            }
         }
         if (PanelChung.getSelectedIndex() == 0) {
             List<BigDecimal> lstGia = new ArrayList<>();
@@ -4588,24 +4599,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadAllthongKe();
         JOptionPane.showMessageDialog(this, "Thanh toan thanh cong !");
         clearForm();
-        rdoTatCa.setSelected(true);
-        xoa.setEnabled(false);
-        xoatatca.setEnabled(false);
-        txtTienKhachDua.setEditable(false);
-        txtTienKhachCK.setEditable(false);
-        txtTienShip.setEditable(false);
         tblSanPham.setEnabled(false);
         tblGioHang.setEnabled(false);
         btnThanhToan.setEnabled(false);
-        cboPthuctt.setEnabled(false);
-        cboPthuctt2.setEnabled(false);
-        cboTTTT.setEnabled(false);
-        txtNgayKhachMuonNhan.setEnabled(false);
-        txtNgayGuiDi.setEnabled(false);
-        txtTienKhachDua2.setEditable(false);
-        txtTienKhachCK2.setEditable(false);
-        txtTienShip.setEditable(false);
-        btnChoGiao.setEnabled(false);
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
     private void chonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chonMouseClicked
@@ -4681,8 +4677,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_btnChonKHMouseClicked
 
     private void thaydoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thaydoiMouseClicked
+        xoa.setEnabled(false);
+        xoatatca.setEnabled(false);
+        btnGiaoHang.setEnabled(false);
+        btnChoGiao.setEnabled(false);
+        btnDaGiao.setEnabled(false);
         if (tblKhachHang.getSelectedRow() == 0) {
-            JOptionPane.showMessageDialog(this, "Ban chon Khach Dat Hang");
+            JOptionPane.showMessageDialog(this, "Bạn cần chọn khách đặt hàng");
             return;
         }
         iBH.update_HD_KH(getFormDataHD_UD_KH());
@@ -4696,7 +4697,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         lblTenND2.setText(nd.getHoTen());
         tblKhachHang.setRowSelectionAllowed(false);
         thaydoi.setEnabled(false);
-        JOptionPane.showMessageDialog(this, "Cap nhat khach hang thanh cong");
+        JOptionPane.showMessageDialog(this, "Cập nhật khách hàng thành công");
     }//GEN-LAST:event_thaydoiMouseClicked
 
     private void btn_km_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_km_ClearActionPerformed
@@ -4917,6 +4918,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
 
     private void btnTaoHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoHDMouseClicked
+        txtTienKhachDua.setEditable(true);
         tblSanPham.setEnabled(true);
         tblGioHang.setEnabled(true);
         clearForm();
@@ -4952,6 +4954,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }//GEN-LAST:event_txtTienKhachDua2CaretUpdate
 
     private void btnTaoHD2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoHD2MouseClicked
+        clearFormDH();
+        txtTienKhachDua2.setEditable(true);
+        txtNgayKhachMuonNhan.setEnabled(true);
+        txtNgayGuiDi.setEnabled(true);
+        txtTienShip.setEditable(true);
         tblSanPham.setEnabled(true);
         tblGioHang.setEnabled(true);
         chon.setEnabled(true);
@@ -5009,17 +5016,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         if (getFormDataHD_UD_BH_GiaoHang(-2) == null) {
             return;
         }
-        JOptionPane.showMessageDialog(this, "Don hang da duoc giao cho SIPPER");
+        JOptionPane.showMessageDialog(this, "ĐƠN HÀNG ĐÃ ĐƯỢC GIAO CHO SHIPPER");
         iBH.update_HD_DH(getFormDataHD_UD_BH_GiaoHang(-2));
         loadDataHD(iBH.getAll_HD());
         clearFormDH();
         txtTienShip.setEditable(false);
         txtNgayKhachMuonNhan.setEnabled(false);
         txtNgayGuiDi.setEnabled(false);
-        cboPthuctt2.setEnabled(false);
-        txtTienKhachDua2.setEditable(false);
-        txtTienKhachCK2.setEditable(false);
-        cboTTTT.setEnabled(false);
         btnGiaoHang.setEnabled(false);
         btnChoGiao.setEnabled(false);
     }//GEN-LAST:event_btnGiaoHangActionPerformed
@@ -5030,6 +5033,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ttss = ttoan + Double.valueOf(txtTienShip.getText());
             DecimalFormat dftt = new DecimalFormat("#,###");
             txtThanhToan2.setText(dftt.format(ttss) + " VND");
+            BigDecimal tienThua = (txtTienKhachDua.getText().isEmpty() ? BigDecimal.valueOf(0.0) : BigDecimal.valueOf(Double.valueOf(txtTienKhachDua.getText()))).subtract(BigDecimal.valueOf(ttss));
+            DecimalFormat dfttt = new DecimalFormat("#,###");
+            txtTienThua2.setText(dfttt.format(tienThua) + " VND");
         }
     }//GEN-LAST:event_txtTienShipCaretUpdate
 
@@ -5082,16 +5088,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         iBH.update_HD_DH(getFormDataHD_UD_BH(-1));
         loadDataHD(iBH.getAll_HD());
         clearFormDH();
-        txtTienShip.setEditable(false);
-        txtNgayKhachMuonNhan.setEnabled(false);
-        txtNgayGuiDi.setEnabled(false);
-        cboTTTT.setEnabled(false);
-        cboPthuctt2.setEnabled(false);
-        txtTienKhachDua2.setEditable(false);
-        txtTienKhachCK2.setEditable(false);
         btnChoGiao.setEnabled(false);
         btnGiaoHang.setEnabled(false);
-        cboTTTT.setEnabled(false);
     }//GEN-LAST:event_btnChoGiaoMouseClicked
 
     private void btnDaGiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaGiaoActionPerformed
@@ -5099,16 +5097,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         if (getFormDataHD_UD_BH_DaGiao(1) == null) {
             return;
         }
-        JOptionPane.showMessageDialog(this, "Giao hang va thanh toan thanh cong");
+        JOptionPane.showMessageDialog(this, "GIAO HÀNG VÀ THANH TOÁN THÀNH CÔNG");
         iBH.update_HD_DH(getFormDataHD_UD_BH_DaGiao(1));
         loadDataHD(iBH.getAll_HD());
         txtNgayNhan.setEnabled(false);
         clearFormDH();
         btnDaGiao.setEnabled(false);
         txtTienKhachDua2.setEditable(false);
-        txtTienKhachCK2.setEditable(false);
-        cboPthuctt2.setEnabled(false);
-        cboTTTT.setEnabled(false);
     }//GEN-LAST:event_btnDaGiaoActionPerformed
 
     private void btnInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHDActionPerformed
@@ -5690,6 +5685,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btn_TaiMauActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        nextPN(QL_SanPham);
+        jTabbedPane3.setSelectedIndex(1);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public PageFormat getPageFormat(PrinterJob pj) {
 
@@ -6943,57 +6943,57 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         }
         if (pttt == 1) {
             if (txtTienKhachDua.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach dua");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa không được để trống");
                 return null;
             }
             int tienKhachDua;
             try {
                 tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachDua))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai >= Tien thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa đang NHỎ HƠN Tiền thanh toán");
                 return null;
             }
         } else if (pttt == 0) {
             if (txtTienKhachCK.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach Ck");
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách chuyển khoản");
                 return null;
             }
             int tienKhachCK;
             try {
                 tienKhachCK = Integer.parseInt(txtTienKhachCK.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai >= Tien thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản đang NHỎ HƠN Tiền thanh toán");
                 return null;
             }
         } else {
             if (txtTienKhachCK.getText().isEmpty() || txtTienKhachDua.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach dua hoac tien khach Ck");
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách đưa hoặc tiền khách chuyển khoản");
                 return null;
             }
             int tienKhachDua;
             try {
                 tienKhachDua = Integer.parseInt(txtTienKhachDua.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
                 return null;
             }
             int tienKhachCK;
             try {
                 tienKhachCK = Integer.parseInt(txtTienKhachCK.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien khach CK la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK + tienKhachDua))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua + Tien khach Ck >= Tien Thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền CK + Tiền KĐ NHỎ HƠN Tiền thanh toán");
                 return null;
             }
         }
@@ -7004,87 +7004,68 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         HoaDon hd = iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString());
         int indexPttt = cboPthuctt2.getSelectedIndex();
         int pttt;
-        if (indexPttt == 0) { // tien mat
+        if (indexPttt == 0) {
             pttt = 1;
-        } else if (indexPttt == 1) { // chuyen khoan
+        } else if (indexPttt == 1) {
             pttt = 0;
         } else {
-            pttt = 2; // ca hai
-        }
-        if (txtTienShip.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Tien ship khong duoc de trong");
-            return null;
-        }
-        int tienship;
-        try {
-            tienship = Integer.parseInt(txtTienShip.getText());
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Tien ship phai la so");
-            return null;
-        }
-        if (tienship <= 0) {
-            JOptionPane.showMessageDialog(this, "Tien ship phai lon hon 0");
-            return null;
+            pttt = 2;
         }
         if (pttt == 1) {
             if (txtTienKhachDua2.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach dua");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa không được để trống");
                 return null;
             }
             int tienKhachDua;
             try {
                 tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachDua))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai >= Tien thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa đang NHỎ HƠN Tiền thanh toán");
                 return null;
             }
         } else if (pttt == 0) {
             if (txtTienKhachCK2.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach Ck");
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách chuyển khoản");
                 return null;
             }
             int tienKhachCK;
             try {
                 tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai >= Tien thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản đang NHỎ HƠN Tiền thanh toán");
                 return null;
             }
         } else {
             if (txtTienKhachCK2.getText().isEmpty() || txtTienKhachDua2.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Khong duoc de trong tien khach dua hoac tien khach Ck");
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách đưa hoặc tiền khách chuyển khoản");
                 return null;
             }
             int tienKhachDua;
             try {
                 tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua phai la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
                 return null;
             }
             int tienKhachCK;
             try {
                 tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Tien khach CK la so");
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
                 return null;
             }
             if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK + tienKhachDua))) {
-                JOptionPane.showMessageDialog(this, "Tien khach dua + Tien khach Ck >= Tien Thanh toan");
+                JOptionPane.showMessageDialog(this, "Tiền CK + Tiền KĐ NHỎ HƠN Tiền thanh toán");
                 return null;
             }
-        }
-        if (txtNgayKhachMuonNhan.getDateFormatString().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui long chon ngay khach muon nhan");
-            return null;
         }
         BigDecimal ttmat = BigDecimal.valueOf(txtTienKhachDua2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachDua2.getText()));
         BigDecimal ttck = BigDecimal.valueOf(txtTienKhachCK2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachCK2.getText()));
@@ -7100,9 +7081,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             tttt = 0;
         }
         Date ngayKhachMuonNhan;
-        ngayKhachMuonNhan = Date.valueOf(sdf.format(txtNgayKhachMuonNhan.getDate()));
-        BigDecimal tShip = BigDecimal.valueOf(Double.parseDouble(txtTienShip.getText()));
-        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, txtNgayKhachMuonNhan.getDateFormatString().isEmpty() ? ngayTT : ngayKhachMuonNhan, ngayTT, ngayTT, tShip);
+        ngayKhachMuonNhan = txtNgayKhachMuonNhan.getDate() == null ? ngayTT : Date.valueOf(sdf.format(txtNgayKhachMuonNhan.getDate()));
+        BigDecimal tShip = BigDecimal.valueOf(txtTienShip.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienShip.getText()));
+        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, ngayKhachMuonNhan, ngayTT, ngayTT, tShip);
     }
 
     private BanhangReponse getFormDataHD_UD_BH_GiaoHang(int tt) {
@@ -7115,6 +7096,62 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             pttt = 0;
         } else {
             pttt = 2;
+        }
+        if (pttt == 1) {
+            if (txtTienKhachDua2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa không được để trống");
+                return null;
+            }
+            int tienKhachDua;
+            try {
+                tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachDua))) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa đang NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
+        } else if (pttt == 0) {
+            if (txtTienKhachCK2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách chuyển khoản");
+                return null;
+            }
+            int tienKhachCK;
+            try {
+                tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK))) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản đang NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
+        } else {
+            if (txtTienKhachCK2.getText().isEmpty() || txtTienKhachDua2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách đưa hoặc tiền khách chuyển khoản");
+                return null;
+            }
+            int tienKhachDua;
+            try {
+                tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
+                return null;
+            }
+            int tienKhachCK;
+            try {
+                tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK + tienKhachDua))) {
+                JOptionPane.showMessageDialog(this, "Tiền CK + Tiền KĐ NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
         }
         BigDecimal ttmat = BigDecimal.valueOf(txtTienKhachDua2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachDua2.getText()));
         BigDecimal ttck = BigDecimal.valueOf(txtTienKhachCK2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachCK2.getText()));
@@ -7130,15 +7167,30 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             tttt = 0;
         }
         if ((txtNgayGuiDi.getDate() == null)) {
-            JOptionPane.showMessageDialog(this, "Ban phai nhap ngay gui di");
+            JOptionPane.showMessageDialog(this, "Ngày gửi đi không được để trống");
             return null;
         }
-        Date ngayKhachMuonNhan;
-        ngayKhachMuonNhan = Date.valueOf(sdf.format(txtNgayKhachMuonNhan.getDate()));
         Date ngayGuiDi;
         ngayGuiDi = Date.valueOf(sdf.format(txtNgayGuiDi.getDate()));
+        if (txtTienShip.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tiền ship không được để trống");
+            return null;
+        }
+        int tienship;
+        try {
+            tienship = Integer.parseInt(txtTienShip.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Tiền ship phải là số");
+            return null;
+        }
+        if (tienship <= 0) {
+            JOptionPane.showMessageDialog(this, "Tiền ship phải lớn hơn 0");
+            return null;
+        }
         BigDecimal tShip = BigDecimal.valueOf(Double.parseDouble(txtTienShip.getText()));
-        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, ngayKhachMuonNhan, ngayGuiDi, ngayTT, tShip);
+        Date ngayKhachMuonNhan;
+        ngayKhachMuonNhan = Date.valueOf(sdf.format(txtNgayKhachMuonNhan.getDate()));
+        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, txtNgayKhachMuonNhan.getDate() == null ? hd.getNgayTT() : ngayKhachMuonNhan, ngayGuiDi, ngayTT, tShip);
     }
 
     private BanhangReponse getFormDataHD_UD_BH_DaGiao(int tt) {
@@ -7152,12 +7204,64 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         } else {
             pttt = 2;
         }
+        if (pttt == 1) {
+            if (txtTienKhachDua2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa không được để trống");
+                return null;
+            }
+            int tienKhachDua;
+            try {
+                tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachDua))) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa đang NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
+        } else if (pttt == 0) {
+            if (txtTienKhachCK2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách chuyển khoản");
+                return null;
+            }
+            int tienKhachCK;
+            try {
+                tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK))) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản đang NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
+        } else {
+            if (txtTienKhachCK2.getText().isEmpty() || txtTienKhachDua2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Không được để trống tiền khách đưa hoặc tiền khách chuyển khoản");
+                return null;
+            }
+            int tienKhachDua;
+            try {
+                tienKhachDua = Integer.parseInt(txtTienKhachDua2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách đưa phải là số");
+                return null;
+            }
+            int tienKhachCK;
+            try {
+                tienKhachCK = Integer.parseInt(txtTienKhachCK2.getText());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Tiền khách chuyển khoản phải là số");
+                return null;
+            }
+            if (ttoan > Double.parseDouble(String.valueOf(tienKhachCK + tienKhachDua))) {
+                JOptionPane.showMessageDialog(this, "Tiền CK + Tiền KĐ NHỎ HƠN Tiền thanh toán");
+                return null;
+            }
+        }
         BigDecimal ttmat = BigDecimal.valueOf(txtTienKhachDua2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachDua2.getText()));
         BigDecimal ttck = BigDecimal.valueOf(txtTienKhachCK2.getText().isEmpty() ? 0.0 : Double.parseDouble(txtTienKhachCK2.getText()));
-        java.util.Date currentDate = new java.util.Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date ngayTT;
-        ngayTT = Date.valueOf(sdf.format(currentDate));
         int indexTTTT = cboTTTT.getSelectedIndex();
         int tttt;
         if (indexTTTT == 0) {
@@ -7165,18 +7269,17 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         } else {
             tttt = 0;
         }
-        Date ngayKhachMuonNhan;
-        ngayKhachMuonNhan = Date.valueOf(sdf.format(txtNgayKhachMuonNhan.getDate()));
-        Date ngayGuiDi;
-        ngayGuiDi = Date.valueOf(sdf.format(txtNgayGuiDi.getDate()));
         if (txtNgayNhan.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Ban phai nhap ngay nhan");
             return null;
         }
-        BigDecimal tShip = BigDecimal.valueOf(Double.parseDouble(txtTienShip.getText()));
+        java.util.Date currentDate = new java.util.Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date ngayTT;
+        ngayTT = Date.valueOf(sdf.format(currentDate));
         Date ngayNhan;
         ngayNhan = Date.valueOf(sdf.format(txtNgayNhan.getDate()));
-        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, ngayKhachMuonNhan, ngayGuiDi, ngayNhan, tShip);
+        return new BanhangReponse(hd, pttt, ttmat, ttck, tt, ngayTT, tttt, hd.getNgayMuonNhan(), hd.getNgayGui(), ngayNhan, hd.getTienShip());
     }
 
     private BanhangReponse getFormDataHDCT(String ipSL) {
@@ -7202,7 +7305,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtThanhToan.setText("0");
         lblMaHD.setText("");
         lblMaKH.setText("KH00");
-        lblTenKH.setText("Khach ban le");
+        lblTenKH.setText("Khách bán lẻ");
         txtThanhToan.setText("");
         txtTienKhachDua.setText("");
         txtTienKhachCK.setText("");
@@ -7217,12 +7320,17 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtThanhToan2.setText("");
         lblMaHD2.setText("");
         lblMaKH.setText("KH00");
-        lblTenKH.setText("Khach ban le");
+        lblTenKH.setText("Khách bán lẻ");
         txtThanhToan2.setText("");
         txtTienKhachDua2.setText("");
         txtTienKhachCK2.setText("");
         txtTienThua2.setText("");
         txtTienShip.setText("");
+        txtNgayKhachMuonNhan.setDate(null);
+        txtNgayGuiDi.setDate(null);
+        txtNgayNhan.setDate(null);
+        cboPthuctt2.setSelectedIndex(0);
+        cboTTTT.setSelectedIndex(0);
     }
 
     private void showDetailHD_TQ(HoaDon hd) {
@@ -7247,9 +7355,24 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }
 
     private void showDetailHD_Dh(HoaDon hd) {
+        int pttt;
+        if (hd.getPttt() == 1) {
+            pttt = 0;
+        } else if (hd.getPttt() == 0) {
+            pttt = 1;
+        } else {
+            pttt = 2;
+        }
+        int tttt;
+        if (hd.getTttt() == 0) {
+            tttt = 1;
+        } else {
+            tttt = 0;
+        }
+        cboTTTT.setSelectedIndex(tttt);
+        cboPthuctt2.setSelectedIndex(pttt);
         KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
         NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
-        txtNgayKhachMuonNhan.setDate(hd.getNgayMuonNhan());
         lblMaKH.setText(kh.getMaKH());
         lblTenKH.setText(kh.getHoTen());
         lblMaHD2.setText(hd.getMaHD());
@@ -7257,6 +7380,105 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         txtTienShip.setText(hd.getTienShip() + "");
         txtTienKhachDua2.setText(hd.getTongTienMat() + "");
         txtTienKhachCK2.setText(hd.getTongTienCK() + "");
+        txtNgayKhachMuonNhan.setDate(hd.getNgayMuonNhan());
+        txtNgayGuiDi.setDate(hd.getNgayMuonNhan());
+        txtNgayNhan.setDate(hd.getNgayMuonNhan());
+        tinhTien_DH(hd);
+    }
+
+    private void showDetailHD_Dh_DG(HoaDon hd) {
+        int pttt;
+        if (hd.getPttt() == 1) {
+            pttt = 0;
+        } else if (hd.getPttt() == 0) {
+            pttt = 1;
+        } else {
+            pttt = 2;
+        }
+        int tttt;
+        if (hd.getTttt() == 0) {
+            tttt = 1;
+        } else {
+            tttt = 0;
+        }
+        cboTTTT.setSelectedIndex(tttt);
+        cboPthuctt2.setSelectedIndex(pttt);
+        KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
+        NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
+        lblMaKH.setText(kh.getMaKH());
+        lblTenKH.setText(kh.getHoTen());
+        lblMaHD2.setText(hd.getMaHD());
+        lblTenND2.setText(nd.getHoTen());
+        txtTienShip.setText(hd.getTienShip() + "");
+        txtTienKhachDua2.setText(hd.getTongTienMat() + "");
+        txtTienKhachCK2.setText(hd.getTongTienCK() + "");
+        txtNgayKhachMuonNhan.setDate(hd.getNgayMuonNhan());
+        txtNgayGuiDi.setDate(hd.getNgayMuonNhan());
+        txtNgayNhan.setDate(null);
+        tinhTien_DH(hd);
+    }
+
+    private void showDetailHD_Dh_CG(HoaDon hd) {
+        int pttt;
+        if (hd.getPttt() == 1) {
+            pttt = 0;
+        } else if (hd.getPttt() == 0) {
+            pttt = 1;
+        } else {
+            pttt = 2;
+        }
+        int tttt;
+        if (hd.getTttt() == 0) {
+            tttt = 1;
+        } else {
+            tttt = 0;
+        }
+        cboTTTT.setSelectedIndex(tttt);
+        cboPthuctt2.setSelectedIndex(pttt);
+        KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
+        NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
+        lblMaKH.setText(kh.getMaKH());
+        lblTenKH.setText(kh.getHoTen());
+        lblMaHD2.setText(hd.getMaHD());
+        lblTenND2.setText(nd.getHoTen());
+        txtTienShip.setText(hd.getTienShip() + "");
+        txtTienKhachDua2.setText(hd.getTongTienMat() + "");
+        txtTienKhachCK2.setText(hd.getTongTienCK() + "");
+        txtNgayKhachMuonNhan.setDate(hd.getNgayMuonNhan());
+        txtNgayGuiDi.setDate(null);
+        txtNgayNhan.setDate(null);
+        tinhTien_DH(hd);
+    }
+
+    private void showDetailHD_Dh_CTT(HoaDon hd) {
+        int pttt;
+        if (hd.getPttt() == 1) {
+            pttt = 0;
+        } else if (hd.getPttt() == 0) {
+            pttt = 1;
+        } else {
+            pttt = 2;
+        }
+        int tttt;
+        if (hd.getTttt() == 0) {
+            tttt = 1;
+        } else {
+            tttt = 0;
+        }
+        cboTTTT.setSelectedIndex(tttt);
+        cboPthuctt2.setSelectedIndex(pttt);
+        KhachHang kh = iBH.getOne_KH(hd.getKhachHang().getIdKH());
+        NguoiDung nd = iBH.getOne_ND(hd.getNguoiDung().getIdND());
+        lblMaKH.setText(kh.getMaKH());
+        lblTenKH.setText(kh.getHoTen());
+        lblMaHD2.setText(hd.getMaHD());
+        lblTenND2.setText(nd.getHoTen());
+        txtTienShip.setText(hd.getTienShip() + "");
+        txtTienKhachDua2.setText(hd.getTongTienMat() + "");
+        txtTienKhachCK2.setText(hd.getTongTienCK() + "");
+        txtNgayKhachMuonNhan.setDate(null);
+        txtNgayGuiDi.setDate(null);
+        txtNgayNhan.setDate(null);
         tinhTien_DH(hd);
     }
 
@@ -7317,13 +7539,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }
 
     private void loadDataSP() {
-        String Header[] = {"STT", "Ma SP", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
+        String Header[] = {"STT", "Ten SP", "Chat Lieu", "SIZE", "Mau Sac", "So Luong", "Don Gia"};
         modelSP = new DefaultTableModel(Header, 0);
         modelSP.setRowCount(0);
         tblSanPham.setModel(modelSP);
         int stt = 1;
         for (ChiTietSanPham x : iBH.getAll_CTSP_ByName(txtTimKiem.getText())) {
-            modelSP.addRow(new Object[]{stt++, x.getSanPham().getMaSP(), x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
+            modelSP.addRow(new Object[]{stt++, x.getSanPham().getTenSP(), x.getChatLieu().getTenCL(), x.getSize().getTen(), x.getMauSac().getTenMS(), x.getSlTon(), x.getGia()});
         }
     }
 
@@ -7435,7 +7657,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         checkQR = 1;
                         tblSanPham.setRowSelectionInterval(i, i);
                         if (PanelChung.getSelectedIndex() == 1 && lblMaKH.getText().equalsIgnoreCase("KH00")) {
-                            JOptionPane.showMessageDialog(this, "Ban chua chon khach hang");;
+                            JOptionPane.showMessageDialog(this, "Ban chua chon khach hang");
                             return;
                         }
                         tblGioHang.setRowSelectionAllowed(false);
@@ -7482,19 +7704,16 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         loadDataSP();
                         loadDataGH(iBH.getAll_HDCTByIDHD(HD.getIdHD()));
                         if (iBH.getAll_HDCTByIDHD(HD.getIdHD()).size() > 0) {
-                            xoa.setEnabled(true);
-                            xoatatca.setEnabled(true);
-                            btnThanhToan.setEnabled(true);
-                            btnChoGiao.setEnabled(true);
-                            cboPthuctt.setEnabled(true);
-                            txtTienKhachDua.setEditable(true);
-                            txtTienKhachDua2.setEditable(true);
-                            cboPthuctt2.setEnabled(true);
-                            txtTienShip.setEditable(true);
-                            btnGiaoHang.setEnabled(true);
-                            txtNgayGuiDi.setEnabled(true);
-                            txtNgayKhachMuonNhan.setEnabled(true);
-                            cboTTTT.setEnabled(true);
+                            if (HD.getKhachHang().getMaKH().equalsIgnoreCase("KH00")) {
+                                btnThanhToan.setEnabled(true);
+                                xoa.setEnabled(true);
+                                xoatatca.setEnabled(true);
+                            } else {
+                                btnChoGiao.setEnabled(true);
+                                btnGiaoHang.setEnabled(true);
+                                xoa.setEnabled(true);
+                                xoatatca.setEnabled(true);
+                            }
                         }
                         if (PanelChung.getSelectedIndex() == 0) {
                             List<BigDecimal> lstGia = new ArrayList<>();

@@ -98,6 +98,11 @@ public class BanhangReponse {
     public BanhangReponse(HoaDonChiTiet hdct) {
         this.hdct = hdct;
     }
+     
+    // DELETE ALL HDCT
+    public BanhangReponse(HoaDon hd) {
+        this.hd = hd;
+    }
 
     // UPDATE CTSP
     public BanhangReponse(ChiTietSanPham ctsp, String slMua) {

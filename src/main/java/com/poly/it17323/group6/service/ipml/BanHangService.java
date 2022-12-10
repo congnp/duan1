@@ -50,7 +50,7 @@ public class BanHangService implements IQLBanHangService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date ngayTao;
         ngayTao = Date.valueOf(sdf.format(currentDate));
-        hdRepo.add(new HoaDon(null, new BanHangService().getMaTang(), 1, BigDecimal.valueOf(0.0), BigDecimal.valueOf(0.0), 0, ngayTao, ngayTao, 0, ngayTao, ngayTao, ngayTao, BigDecimal.valueOf(0.0), b.getNd(), b.getKh()));
+        hdRepo.add(new HoaDon(null, new BanHangService().getMaTang(), 1, BigDecimal.valueOf(0.0), BigDecimal.valueOf(0.0), 0, ngayTao, ngayTao, 1, ngayTao, ngayTao, ngayTao, BigDecimal.valueOf(0.0), b.getNd(), b.getKh()));
         return true;
     }
 
@@ -92,6 +92,12 @@ public class BanHangService implements IQLBanHangService {
     @Override
     public boolean delete_HDCT(BanhangReponse b) {
         hdctRepo.delete(b.getHdct().getIdHDCT());
+        return true;
+    }
+
+    @Override
+    public boolean delete_All_HDCT(BanhangReponse b) {
+        hdctRepo.deleteAll(b.getHd().getIdHD());
         return true;
     }
 

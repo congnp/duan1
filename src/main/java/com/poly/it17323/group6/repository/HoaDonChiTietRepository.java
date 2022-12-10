@@ -88,6 +88,23 @@ public class HoaDonChiTietRepository {
         return null;
     }
 
+    public Boolean deleteAll(UUID idHD) {
+        Transaction transaction = null;
+        session = Hibernate_Util.getFACTORY().openSession();
+        try {
+            transaction = session.beginTransaction();
+            String sql = "DELETE FROM HoaDonChiTiet a WHERE a.hoaDon.idHD = :idHD";
+            Query query = session.createQuery(sql);
+            query.setParameter("idHD", idHD);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     public Boolean update(UUID idHDCT, int sl) {
         Transaction transaction = null;
         session = Hibernate_Util.getFACTORY().openSession();
