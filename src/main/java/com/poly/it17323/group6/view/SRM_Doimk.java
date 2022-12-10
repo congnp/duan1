@@ -27,7 +27,7 @@ public class SRM_Doimk extends javax.swing.JFrame {
     }
 
     QLNguoiDungResponse getFormData() {
-        return new QLNguoiDungResponse(txtCurrentPass.getText(), txtNewpass.getText(), txtConfirmPass.getText());
+        return new QLNguoiDungResponse(String.valueOf(psCurrentPass.getPassword()), String.valueOf(psNewPass.getPassword()), String.valueOf(psConfirmPass.getPassword()));
     }
 
     /**
@@ -45,12 +45,15 @@ public class SRM_Doimk extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnDoipass = new javax.swing.JButton();
-        txtCurrentPass = new javax.swing.JTextField();
-        txtNewpass = new javax.swing.JTextField();
-        txtConfirmPass = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        psConfirmPass = new javax.swing.JPasswordField();
+        psNewPass = new javax.swing.JPasswordField();
+        psCurrentPass = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,24 +81,51 @@ public class SRM_Doimk extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnDoipass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
-
-        txtCurrentPass.setBorder(null);
-        jPanel1.add(txtCurrentPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 150, -1));
-
-        txtNewpass.setBorder(null);
-        jPanel1.add(txtNewpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 200, -1));
-
-        txtConfirmPass.setBorder(null);
-        jPanel1.add(txtConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 200, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 150, 20));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 200, -1));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 200, 10));
+
+        psConfirmPass.setBorder(null);
+        jPanel1.add(psConfirmPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 200, -1));
+
+        psNewPass.setBorder(null);
+        jPanel1.add(psNewPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 200, -1));
+
+        psCurrentPass.setBorder(null);
+        jPanel1.add(psCurrentPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 150, -1));
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("ShowPass");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+
+        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setText("ShowPass");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
+
+        jCheckBox3.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox3.setText("ShowPass");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,6 +142,30 @@ public class SRM_Doimk extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, iqlnds.updatePass(qlndr));
         }
     }//GEN-LAST:event_btnDoipassActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if (jCheckBox1.isSelected()) {
+            psCurrentPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psCurrentPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        if (jCheckBox2.isSelected()) {
+            psNewPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psNewPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        if (jCheckBox3.isSelected()) {
+            psConfirmPass.setEchoChar((char) 0); //password = JPasswordField
+        } else {
+            psConfirmPass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,6 +204,9 @@ public class SRM_Doimk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoipass;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -158,8 +215,8 @@ public class SRM_Doimk extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField txtConfirmPass;
-    private javax.swing.JTextField txtCurrentPass;
-    private javax.swing.JTextField txtNewpass;
+    private javax.swing.JPasswordField psConfirmPass;
+    private javax.swing.JPasswordField psCurrentPass;
+    private javax.swing.JPasswordField psNewPass;
     // End of variables declaration//GEN-END:variables
 }
