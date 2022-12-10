@@ -107,9 +107,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -120,8 +120,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1020,7 +1020,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="KhachHang" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PanelChung" max="32767" attributes="0"/>
+                              <Component id="PanelChung" pref="617" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2667,29 +2667,31 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="txtNgay" min="-2" pref="129" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="txtNgay1" min="-2" pref="138" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="btnTimKiem" linkSize="48" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="jButton5" linkSize="48" min="-2" pref="93" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton4" linkSize="48" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_NgayBatDauTKe" min="-2" pref="169" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt_NgayKetThucTKe" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnTimKiem" linkSize="48" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnExcel" linkSize="48" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton6" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jTabbedPane11" min="-2" pref="1006" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2697,19 +2699,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnTimKiem" linkSize="49" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNgay" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNgay1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jButton4" linkSize="49" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="jButton5" linkSize="49" alignment="3" pref="33" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_NgayBatDauTKe" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_NgayKetThucTKe" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnTimKiem" linkSize="49" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnExcel" linkSize="49" alignment="3" pref="33" max="32767" attributes="0"/>
+                                      <Component id="jButton4" linkSize="49" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="jButton6" linkSize="49" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jTabbedPane11" min="-2" pref="474" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
@@ -2889,12 +2900,12 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel25" pref="213" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel25" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="lblSLuong" min="-2" pref="56" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lblDoanhThuhnay" max="32767" attributes="0"/>
+                                          <Component id="lblDoanhThuhnay" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2951,13 +2962,16 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="btnExcel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Excel"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcelActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
@@ -2967,7 +2981,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y k&#x1ebf;t th&#xfa;c"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="txtNgay1">
+                <Component class="com.toedter.calendar.JDateChooser" name="txt_NgayKetThucTKe">
                 </Component>
                 <Container class="javax.swing.JTabbedPane" name="jTabbedPane11">
 
@@ -3105,9 +3119,8 @@
                                     <Component class="javax.swing.JTable" name="tblDoanhThu">
                                       <Properties>
                                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                          <Table columnCount="6" rowCount="0">
+                                          <Table columnCount="5" rowCount="0">
                                             <Column editable="false" title="STT" type="java.lang.Object"/>
-                                            <Column editable="false" title="M&#xe3; HD" type="java.lang.Object"/>
                                             <Column editable="false" title="M&#xe3; ND" type="java.lang.Object"/>
                                             <Column editable="false" title="T&#xea;n SP" type="java.lang.Object"/>
                                             <Column editable="false" title="Ng&#xe0;y" type="java.lang.Object"/>
@@ -3440,7 +3453,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y b&#x1eaf;t &#x111;&#x1ea7;u"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="txtNgay">
+                <Component class="com.toedter.calendar.JDateChooser" name="txt_NgayBatDauTKe">
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton4">
                   <Properties>
@@ -3457,6 +3470,20 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton6">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -4741,7 +4768,7 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="txt_kh_NgaySinh" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jScrollPane6" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="txt_kh_sdt" alignment="0" pref="200" max="32767" attributes="0"/>
+                                          <Component id="txt_kh_sdt" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   </Group>
@@ -4869,6 +4896,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txt_kh_MaKh">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txt_kh_HoTenKH">
                     </Component>
@@ -4977,7 +5007,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="DELETE"/>
+                            <Property name="text" type="java.lang.String" value="X&#xd3;A"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
@@ -4988,7 +5018,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="CHOOSE"/>
+                            <Property name="text" type="java.lang.String" value="CH&#x1ecc;N"/>
                           </Properties>
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnChonKHMouseClicked"/>
@@ -4999,7 +5029,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="UPDATE"/>
+                            <Property name="text" type="java.lang.String" value="C&#x1eac;P NH&#x1eac;T"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaKHActionPerformed"/>
@@ -5010,7 +5040,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="ADD"/>
+                            <Property name="text" type="java.lang.String" value="TH&#xca;M"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemKHActionPerformed"/>
@@ -5021,7 +5051,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="12" style="1"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="CLEAR"/>
+                            <Property name="text" type="java.lang.String" value="L&#xc0;M M&#x1eda;I"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLamMoiKHActionPerformed"/>
@@ -5069,7 +5099,7 @@
                               <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                               <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="txtTimKiemKHang" min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="txtTimKiemKHang" min="-2" pref="271" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -5559,7 +5589,7 @@
                                               <Component id="txt_ctsp_NgaySua" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="84" max="32767" attributes="0"/>
+                                      <EmptySpace pref="80" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

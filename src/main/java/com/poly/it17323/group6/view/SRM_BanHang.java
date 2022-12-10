@@ -67,10 +67,11 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.poly.it17323.group6.domainmodel.KhachHang;
-import com.poly.it17323.group6.hibernateconfig.BieuDoThongKe;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.repository.ThongKeRepository;
+import com.poly.it17323.group6.response.ThongKeResponse;
 import com.poly.it17323.group6.service.ipml.QLKhuyenMaiService;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -120,6 +121,11 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -271,20 +277,97 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadThongKeSPham();
         loadThongKeDTHU();
         loadThongKeNVien();
-        BieuDoThongKe test = new BieuDoThongKe();
-        test.Char1(BieuDoTKeDT);
-        test.Char2(BieuDoTKeNvien);
-        test.Char3(BieuDoTKeSanPham);
+        Char1(BieuDoTKeDT);
+        Char2(BieuDoTKeNvien);
+        Char3(BieuDoTKeSanPham);
         soHoaDon();
         getdoanhThu();
     }
+    public void Char1(JPanel jpanelItem1){
+        //List<Object[]> lst = tblDoanhThu.getThongKeTgian();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < tblDoanhThu.getRowCount(); i++) {
+            ThongKeResponse tke = new ThongKeResponse();
+                tke.setNgayTao((java.util.Date) tblDoanhThu.getValueAt(i, 3));
+                String n = tblDoanhThu.getValueAt(i, 4).toString();
+                String t = n.substring(0, n.length() - 4);
+                BigDecimal big = BigDecimal.valueOf(Double.parseDouble(t));
+                tke.setTong(big);
+//                Double d = tke.getTong().doubleValue();
+                dataset.addValue(tke.getTong(), "Doanh Thu", tke.getNgayTao());
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "THỐNG KÊ DOANH THU ".toUpperCase(),
+                "Thời gian", "Doanh Thu",
+                dataset, PlotOrientation.VERTICAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
 
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+    }
+    public void Char2(JPanel jpanelItem1){
+        //List<Object[]> lst = tke.getThongKeNV();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < tblNhanVienTke.getRowCount(); i++) {
+            ThongKeResponse tke = new ThongKeResponse();
+                tke.setTenNV((String) tblNhanVienTke.getValueAt(i, 2));
+                String n = tblNhanVienTke.getValueAt(i, 4).toString();
+                String t = n.substring(0, n.length() - 4);
+                BigDecimal big = BigDecimal.valueOf(Double.parseDouble(t));
+                tke.setTong(big);
+                //Double d = tke.getTong().doubleValue();
+                dataset.addValue(tke.getTong(), "Doanh Thu", tke.getTenNV());
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "THỐNG KÊ NHÂN VIÊN ".toUpperCase(),
+                "Tên Nhân Viên", "Doanh Thu",
+                dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
+
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+
+    }
+    public void Char3(JPanel jpanelItem1){
+        //List<Object[]> lst = tkeRepo.getThongKeSPham();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < tblSanPhamTke.getRowCount(); i++) {
+            ThongKeResponse tke = new ThongKeResponse();
+                tke.setTenSP((String) tblSanPhamTke.getValueAt(i, 2));
+                String n = tblSanPhamTke.getValueAt(i, 5).toString();
+                String t = n.substring(0, n.length() - 4);
+                BigDecimal big = BigDecimal.valueOf(Double.parseDouble(t));
+                tke.setTong(big);
+                dataset.addValue(tke.getTong(), "Doanh Thu", tke.getTenSP());
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "THỐNG KÊ SẢN PHẨM ".toUpperCase(),
+                "Tên Sản Phẩm", "Doanh Thu",
+                dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
+
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+
+    }
     private void loadThongKeDTHU() {
         model = (DefaultTableModel) tblDoanhThu.getModel();
         model.setRowCount(0);
         List<Object[]> lst = tke.getThongKeTgian();
         for (Object[] hd : lst) {
-            model.addRow(new Object[]{tblDoanhThu.getRowCount() + 1, hd[0], hd[2], hd[3], hd[1], hd[4] + " VNĐ"});
+            model.addRow(new Object[]{tblDoanhThu.getRowCount() + 1, hd[1], hd[2], hd[0], hd[3] + " VNĐ"});
         }
     }
 
@@ -293,7 +376,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         model.setRowCount(0);
         List<Object[]> lst = tke.getThongKeNV();
         for (Object[] hd : lst) {
-            model.addRow(new Object[]{tblNhanVienTke.getRowCount() + 1, hd[0], hd[1], hd[2], hd[3]});
+            model.addRow(new Object[]{tblNhanVienTke.getRowCount() + 1, hd[0], hd[1], hd[2], hd[3] + " VNĐ"});
         }
     }
 
@@ -302,20 +385,25 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         model.setRowCount(0);
         List<Object[]> lst = tke.getThongKeSPham();
         for (Object[] hd : lst) {
-            model.addRow(new Object[]{tblSanPhamTke.getRowCount() + 1, hd[0], hd[1], hd[2], hd[3], hd[4]});
+            model.addRow(new Object[]{tblSanPhamTke.getRowCount() + 1, hd[0], hd[1], hd[2], hd[3], hd[4] + " VNĐ"});
         }
     }
 
     private void soHoaDon() {
         lblHoaDon.setText("");
-        lblHoaDon.setText(tblDoanhThu.getRowCount() + "");
+        lblHoaDon.setText(tke.getSoHD().get(0)+ "");
     }
 
     private void getdoanhThu() {
+        DecimalFormat dt = new DecimalFormat("#,###");
         lblDoanhThu.setText("");
-        lblDoanhThu.setText(tke.DoanhThu() + " VND");
-        lblSLuong.setText(tke.getSoHDHienTai() + "/");
-        lblDoanhThuhnay.setText(tke.getDoanhThuHienTai() + " VND");
+        lblDoanhThu.setText(dt.format(tke.DoanhThu().get(0)) + " VND");
+        lblSLuong.setText(tke.getSoHDHienTai().get(0) + "    /");
+        if(tke.getDoanhThuHienTai().get(0)==null){
+            lblDoanhThuhnay.setText("0 VND");
+        }else{
+            lblDoanhThuhnay.setText(dt.format(tke.getDoanhThuHienTai().get(0) + " VND"));
+        }
     }
 
     //---MAI---//
@@ -511,9 +599,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         lblSLuong = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         lblDoanhThuhnay = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnExcel = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        txtNgay1 = new com.toedter.calendar.JDateChooser();
+        txt_NgayKetThucTKe = new com.toedter.calendar.JDateChooser();
         jTabbedPane11 = new javax.swing.JTabbedPane();
         ThoiGian2 = new javax.swing.JPanel();
         jTabbedPane10 = new javax.swing.JTabbedPane();
@@ -537,9 +625,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jScrollPane5 = new javax.swing.JScrollPane();
         tblNhanVienTke = new javax.swing.JTable();
         jLabel19 = new javax.swing.JLabel();
-        txtNgay = new com.toedter.calendar.JDateChooser();
+        txt_NgayBatDauTKe = new com.toedter.calendar.JDateChooser();
         jButton4 = new javax.swing.JButton();
         btnTimKiem = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         QL_HoaDon = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
@@ -997,9 +1086,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ChucNangLayout.setHorizontalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PN_KhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
             .addComponent(PN_QLThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(ChucNangLayout.createSequentialGroup()
                 .addComponent(pnDetailND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1008,8 +1097,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnExist, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
-            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
         ChucNangLayout.setVerticalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1772,7 +1861,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             .addGroup(DonHangLayout.createSequentialGroup()
                 .addComponent(KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelChung))
+                .addComponent(PanelChung, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -2274,12 +2363,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(lblSLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDoanhThuhnay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblDoanhThuhnay, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -2321,8 +2410,13 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton5.setText("Xuất Excel");
+        btnExcel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExcel.setText("Xuất Excel");
+        btnExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelActionPerformed(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel20.setText("Ngày kết thúc");
@@ -2366,11 +2460,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
             },
             new String [] {
-                "STT", "Mã HD", "Mã ND", "Tên SP", "Ngày", "Doanh Thu"
+                "STT", "Mã ND", "Tên SP", "Ngày", "Doanh Thu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -2582,6 +2676,19 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         btnTimKiem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTimKiem.setText("Tìm Kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
+
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton6.setText("Refresh");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout QL_ThongKeLayout = new javax.swing.GroupLayout(QL_ThongKe);
         QL_ThongKe.setLayout(QL_ThongKeLayout);
@@ -2589,50 +2696,58 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(QL_ThongKeLayout.createSequentialGroup()
-                .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(QL_ThongKeLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
+                        .addGap(78, 78, 78)
                         .addComponent(jLabel19)
-                        .addGap(34, 34, 34)
-                        .addComponent(txtNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel20)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtNgay1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(btnTimKiem)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(txt_NgayBatDauTKe, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_NgayKetThucTKe, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTimKiem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(QL_ThongKeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTabbedPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 1006, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        QL_ThongKeLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnTimKiem, jButton4, jButton5});
+        QL_ThongKeLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnExcel, btnTimKiem});
 
         QL_ThongKeLayout.setVerticalGroup(
             QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QL_ThongKeLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnTimKiem)
-                    .addComponent(jLabel19)
-                    .addComponent(txtNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20)
-                    .addComponent(txtNgay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(QL_ThongKeLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19)
+                            .addComponent(txt_NgayBatDauTKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20)
+                            .addComponent(txt_NgayKetThucTKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QL_ThongKeLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(QL_ThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnTimKiem)
+                            .addComponent(btnExcel, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jTabbedPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
-        QL_ThongKeLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnTimKiem, jButton4, jButton5});
+        QL_ThongKeLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnExcel, btnTimKiem, jButton4, jButton6});
 
         PN_Main.add(QL_ThongKe, "card3");
 
@@ -3294,6 +3409,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel29.setText("Ngày sinh :");
 
+        txt_kh_MaKh.setEnabled(false);
+
         txt_kh_DiaChi.setColumns(20);
         txt_kh_DiaChi.setRows(5);
         jScrollPane6.setViewportView(txt_kh_DiaChi);
@@ -3313,7 +3430,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jPanel6.setBackground(new java.awt.Color(232, 211, 227));
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDelete.setText("DELETE");
+        btnDelete.setText("XÓA");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -3321,7 +3438,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         });
 
         btnChonKH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnChonKH.setText("CHOOSE");
+        btnChonKH.setText("CHỌN");
         btnChonKH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnChonKHMouseClicked(evt);
@@ -3329,7 +3446,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         });
 
         btnSuaKH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSuaKH.setText("UPDATE");
+        btnSuaKH.setText("CẬP NHẬT");
         btnSuaKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaKHActionPerformed(evt);
@@ -3337,7 +3454,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         });
 
         btnThemKH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnThemKH.setText("ADD");
+        btnThemKH.setText("THÊM");
         btnThemKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThemKHActionPerformed(evt);
@@ -3345,7 +3462,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         });
 
         btnLamMoiKH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnLamMoiKH.setText("CLEAR");
+        btnLamMoiKH.setText("LÀM MỚI");
         btnLamMoiKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLamMoiKHActionPerformed(evt);
@@ -3446,7 +3563,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         .addGroup(JPanel_ThongTinKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_kh_NgaySinh, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(txt_kh_sdt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                            .addComponent(txt_kh_sdt, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(57, 57, 57)))
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -3549,7 +3666,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addGap(182, 182, 182)
                 .addComponent(jLabel32)
                 .addGap(47, 47, 47)
-                .addComponent(txtTimKiemKHang, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimKiemKHang, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanel_DanhSachKHLayout.createSequentialGroup()
                 .addContainerGap()
@@ -3865,7 +3982,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txt_ctsp_NgayTao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                         .addComponent(txt_ctsp_NgaySua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5691,6 +5808,215 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jTabbedPane3.setSelectedIndex(1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date ngaybd = Date.valueOf(sdf.format(txt_NgayBatDauTKe.getDate()));
+        Date ngaykt = Date.valueOf(sdf.format(txt_NgayKetThucTKe.getDate()));
+        tke.searchThongKe(ngaybd, ngaykt);
+//        for (Object[] s : tke.searchThongKe(ngaybd, ngaykt)) {
+//            System.out.println(s[0]);
+//        }      
+        model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        List<Object[]> lst = tke.searchThongKe(ngaybd, ngaykt);
+        for (Object[] hd : lst) {
+            model.addRow(new Object[]{tblDoanhThu.getRowCount() + 1, hd[1], hd[2], hd[0], hd[3] + " VNĐ"});
+        }
+   
+        model = (DefaultTableModel) tblNhanVienTke.getModel();
+        model.setRowCount(0);
+        List<Object[]> lst1 = tke.searchThongKe(ngaybd, ngaykt);
+        for (Object[] hd1 : lst1) {
+            model.addRow(new Object[]{tblNhanVienTke.getRowCount() + 1, hd1[1], hd1[4], hd1[5], hd1[3] + " VNĐ"});
+        }
+        
+        model = (DefaultTableModel) tblSanPhamTke.getModel();
+        model.setRowCount(0);
+        List<Object[]> lst2 = tke.searchThongKe(ngaybd, ngaykt);
+        for (Object[] hd2 : lst2) {
+            model.addRow(new Object[]{tblSanPhamTke.getRowCount() + 1, hd2[6], hd2[2], hd2[7], hd2[8], hd2[3]+ " VNĐ"});
+        }
+        
+        Char1(BieuDoTKeDT);
+        Char2(BieuDoTKeNvien);
+        Char3(BieuDoTKeSanPham);
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        loadAllthongKe();
+        txt_NgayBatDauTKe.setDate(Date.valueOf(java.time.LocalDate.now()));
+        txt_NgayKetThucTKe.setDate(Date.valueOf(java.time.LocalDate.now()));
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+        // TODO add your handling code here:
+        FileOutputStream excelFOU = null;
+        BufferedOutputStream excelBOU = null;
+        XSSFWorkbook excelJTableExporter = null;
+
+        JFileChooser excelFileChooser = new JFileChooser();
+
+        excelFileChooser.setDialogTitle("Save As");
+        // lọc các tệp có đuôi "xls", "xlsx", "xlsm"
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILES", "xls", "xlsx", "xlsm");
+        excelFileChooser.setFileFilter(fnef);
+        int excelChooser = excelFileChooser.showSaveDialog(null);
+
+        if (excelChooser == JFileChooser.APPROVE_OPTION) {
+
+            try {
+                //Nhập thư viện excel poi vào netbeans
+                excelJTableExporter = new XSSFWorkbook();
+                XSSFSheet excelSheet1 = excelJTableExporter.createSheet("Thống Kê Doanh Thu");
+                XSSFSheet excelSheet2 = excelJTableExporter.createSheet("Thống Kê Sản Phẩm");
+                XSSFSheet excelSheet3 = excelJTableExporter.createSheet("Thống Kê Nhân Viên");
+                //Vòng lặp để nhận các cột và hàng jtable
+                CellStyle cellStyle1 = createStyleForHeader(excelSheet1);
+
+                //Tạo dòng
+                Row row = excelSheet1.createRow(0);
+
+                //Tạo cột
+                Cell cell = row.createCell(0);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("STT");
+                               
+                cell = row.createCell(1);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("Mã HĐ");
+
+                cell = row.createCell(2);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("Mã ND");
+
+                cell = row.createCell(3);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("Tên SP");
+
+                cell = row.createCell(4);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("Ngày Tạo");
+
+                cell = row.createCell(5);
+                cell.setCellStyle(cellStyle1);
+                cell.setCellValue("Doanh Thu");
+
+                 //Sản phẩm
+                CellStyle cellStyle2 = createStyleForHeader(excelSheet2);
+                Row row2 = excelSheet2.createRow(0);
+                
+                Cell cell2 = row2.createCell(0);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("STT");
+                
+                cell2 = row2.createCell(1);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("Mã SP");
+                
+                cell2  = row2.createCell(2);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("Tên SP");
+
+                cell2 = row2.createCell(3);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("SL Tồn");
+
+                cell2 = row2.createCell(4);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("SL Bán");
+
+                cell2 = row2.createCell(5);
+                cell2.setCellStyle(cellStyle2);
+                cell2.setCellValue("Doanh Thu");
+
+                //Nhân Viên
+                CellStyle cellStyle3 = createStyleForHeader(excelSheet3);
+                Row row3 = excelSheet3.createRow(0);
+                
+                Cell cell3 = row3.createCell(0);
+                cell3.setCellStyle(cellStyle3);
+                cell3.setCellValue("STT");
+                
+                cell3 = row3.createCell(1);
+                cell3.setCellStyle(cellStyle3);
+                cell3.setCellValue("Mã ND");
+                
+                cell3 = row3.createCell(2);
+                cell3.setCellStyle(cellStyle3);
+                cell3.setCellValue("Họ Tên");
+
+                cell3 = row3.createCell(3);
+                cell3.setCellStyle(cellStyle3);
+                cell3.setCellValue("Tổng HĐ Bán");
+
+                cell3 = row3.createCell(4);
+                cell3.setCellStyle(cellStyle3);
+                cell3.setCellValue("Doanh Thu");
+
+                
+                //Đẩy dữ liệu từ bảng vào excel
+                for (int i = 0; i < tblDoanhThu.getRowCount(); i++) {
+                    XSSFRow excelRow = excelSheet1.createRow(i + 1);
+                    for (int j = 0; j < tblDoanhThu.getColumnCount(); j++) {
+                        XSSFCell excelCell = excelRow.createCell(j);
+                        System.out.println(excelCell);
+
+                        excelCell.setCellValue(tblDoanhThu.getValueAt(i, j).toString());
+                    }
+                }
+                //Sản phẩm
+                for (int i = 0; i < tblSanPhamTke.getRowCount(); i++) {
+                    XSSFRow excelRow1 = excelSheet2.createRow(i + 1);
+                    for (int j = 0; j < tblSanPhamTke.getColumnCount(); j++) {
+                        XSSFCell excelCell = excelRow1.createCell(j);
+                        System.out.println(excelCell);
+
+                        excelCell.setCellValue(tblSanPhamTke.getValueAt(i, j).toString());
+                    }
+                }
+                //Nhân Vien 
+                for (int i = 0; i < tblNhanVienTke.getRowCount(); i++) {
+                    XSSFRow excelRow2 = excelSheet3.createRow(i + 1);
+                    for (int j = 0; j < tblNhanVienTke.getColumnCount(); j++) {
+                        XSSFCell excelCell = excelRow2.createCell(j);
+                        System.out.println(excelCell);
+
+                        excelCell.setCellValue(tblNhanVienTke.getValueAt(i, j).toString());
+                    }
+                }
+                //Nối các phần mở rộng tệp xlsx vào các tệp đã chọn. Để tạo tên tệp duy nhất
+                excelFOU = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
+                excelBOU = new BufferedOutputStream(excelFOU);
+                excelJTableExporter.write(excelBOU);
+                JOptionPane.showMessageDialog(null, "IN DANH SÁCH THÀNH CÔNG!");
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "LỖI IN !!!");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "LỖI IN !!!");
+            } finally {
+                try {
+                    if (excelBOU != null) {
+                        excelBOU.close();
+                    }
+                    if (excelFOU != null) {
+                        excelFOU.close();
+                    }
+                    if (excelJTableExporter != null) {
+                        excelJTableExporter.close();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "LỖI IN !!!");
+                }
+            }
+
+        }
+    }//GEN-LAST:event_btnExcelActionPerformed
+
     public PageFormat getPageFormat(PrinterJob pj) {
 
         PageFormat pf = pj.defaultPage();
@@ -6569,6 +6895,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JButton btnChonKH;
     private javax.swing.JButton btnDaGiao;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnExist;
     private javax.swing.JButton btnGiaoHang;
     private javax.swing.JButton btnInHD;
@@ -6631,7 +6958,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -6841,8 +7168,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JLabel timkiem;
     private javax.swing.JLabel txtGiamGia;
     private javax.swing.JLabel txtGiamGia2;
-    private com.toedter.calendar.JDateChooser txtNgay;
-    private com.toedter.calendar.JDateChooser txtNgay1;
     private com.toedter.calendar.JDateChooser txtNgayGuiDi;
     private com.toedter.calendar.JDateChooser txtNgayKhachMuonNhan;
     private com.toedter.calendar.JDateChooser txtNgayNhan;
@@ -6860,6 +7185,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private javax.swing.JTextField txtTimKiemKHang;
     private javax.swing.JLabel txtTongTien;
     private javax.swing.JLabel txtTongTien2;
+    private com.toedter.calendar.JDateChooser txt_NgayBatDauTKe;
+    private com.toedter.calendar.JDateChooser txt_NgayKetThucTKe;
     private javax.swing.JTextField txt_ctsp_Gia;
     private javax.swing.JTextArea txt_ctsp_MoTa;
     private com.toedter.calendar.JDateChooser txt_ctsp_NgaySua;

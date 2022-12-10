@@ -19,7 +19,7 @@ public class ChatLieuRepository {
 
     public List<ChatLieu> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, ChatLieu.class);
+        Query query = session.createQuery(fromTable + " order by maCL desc", ChatLieu.class);
         List<ChatLieu> list = query.getResultList();
         return list;
     }

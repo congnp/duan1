@@ -20,7 +20,7 @@ public class SanPhamRepository {
 
     public List<SanPham> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, SanPham.class);
+        Query query = session.createQuery(fromTable + " order by maSP desc", SanPham.class);
         List<SanPham> lists = query.getResultList();
         return lists;
     }

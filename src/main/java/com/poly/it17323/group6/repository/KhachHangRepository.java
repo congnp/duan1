@@ -19,7 +19,7 @@ public class KhachHangRepository {
 
     public List<KhachHang> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable + " order by MaKH asc", KhachHang.class);
+        Query query = session.createQuery(fromTable+" order by maKH asc" , KhachHang.class);
         List<KhachHang> lists = query.getResultList();
         return lists;
     }

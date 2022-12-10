@@ -20,7 +20,7 @@ public class SizeRepository {
 
     public List<Size> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, Size.class);
+        Query query = session.createQuery(fromTable + " ORDER BY ma DESC", Size.class);
         List<Size> lists = query.getResultList();
         return lists;
     }

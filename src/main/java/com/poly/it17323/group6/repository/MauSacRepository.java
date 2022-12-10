@@ -20,7 +20,7 @@ public class MauSacRepository {
 
     public List<MauSac> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, MauSac.class);
+        Query query = session.createQuery(fromTable + " order by maMS desc", MauSac.class);
         List<MauSac> lists = query.getResultList();
         return lists;
     }

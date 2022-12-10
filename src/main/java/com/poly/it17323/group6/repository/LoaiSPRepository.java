@@ -20,7 +20,7 @@ public class LoaiSPRepository {
 
     public List<LoaiSP> getAll() {
         session = Hibernate_Util.getFACTORY().openSession();
-        Query query = session.createQuery(fromTable, LoaiSP.class);
+        Query query = session.createQuery(fromTable + " order by ma desc", LoaiSP.class);
         List<LoaiSP> lists = query.getResultList();
         return lists;
     }
