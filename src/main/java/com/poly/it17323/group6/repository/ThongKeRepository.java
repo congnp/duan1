@@ -140,7 +140,7 @@ public class ThongKeRepository {
         String hql = "SELECT SUM(tongTienMat)+SUM(tongTienCK) AS TongDoanhThu FROM HoaDon "
                 + "WHERE ngayTao = CONVERT (date,GETDATE()) and tinhTrang = 1";
         org.hibernate.query.Query query = session.createQuery(hql);
-        List<BigDecimal> result = query.getResultList();
+        List<BigDecimal> result = query.list();
         return result;
     }
 
