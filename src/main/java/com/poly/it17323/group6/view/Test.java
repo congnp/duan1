@@ -5,9 +5,8 @@
 package com.poly.it17323.group6.view;
 
 import com.poly.it17323.group6.hibernateconfig.BieuDoThongKe;
-import com.poly.it17323.group6.response.QLThongKeResponse;
-import com.poly.it17323.group6.service.IQLThongKeService;
-import com.poly.it17323.group6.service.ipml.QLThongKeService;
+import com.poly.it17323.group6.repository.ThongKeRepository;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,29 +14,48 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class Test extends javax.swing.JFrame {
-DefaultTableModel model = new DefaultTableModel();
-    IQLThongKeService tkeSer = new QLThongKeService();
+
+    DefaultTableModel model = new DefaultTableModel();
+    ThongKeRepository tke = new ThongKeRepository();
+
     /**
      * Creates new form Test
      */
     public Test() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         BieuDoThongKe test = new BieuDoThongKe();
-        test.Char1(jPanel1);
-        //loadTable();
-        
+        test.Char2(jPanel1);
+        loadTable();
+
     }
-//    private void loadTable(){
-//   model = (DefaultTableModel) jTable1.getModel();
+
+    private void loadTable() {
+        model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        List<Object[]> lst = tke.getThongKeTgian();
+        int s = 1;
+        for (Object[] hd : lst) {
+            model.addRow(new Object[]{hd[0], hd[2], hd[3], hd[1], hd[4]});
+//           int row = tbDT.getSelectedRow();
+//        Date ngay = (Date) tbDT.getValueAt(row, 0);
+//        String ngay2 = ngay.toString();
+//        System.out.println(ngay2);
+//        List<Object[]> list = tkdt.getSP();
+//        model = (DefaultTableModel) tbSP.getModel();
 //        model.setRowCount(0);
-//        //lst = tkeSer.getThongKe();
-//        int s = 1;
-//        for (QLThongKeResponse x : tkeSer.getThongKe()) {
-//            model.addRow(new Object[]{ x.getHoTen(), x.getMaHDnv(), x.getNgayTaonv(), x.getTongDt()});
-//        }
-//}
+//        for (Object[] dt : list) {
+//            String ngay3 = dt[2].toString();
+//            System.out.println(ngay3);
+//            if (ngay3.equals(ngay2)) {
+//                model.addRow(new Object[]{
+//                    dt[2], dt[0], dt[1], dt[3]
+//                });
+//            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,11 +89,11 @@ DefaultTableModel model = new DefaultTableModel();
 
             },
             new String [] {
-                "Họ Tên", "Mã HD", "Ngày Tạo", "Tổng Doanh Thu"
+                "Mã HD", "Mã ND", "Tên SP", "Ngày Tạo", "Tổng Doanh Thu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,6 +151,8 @@ DefaultTableModel model = new DefaultTableModel();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

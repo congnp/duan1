@@ -22,36 +22,18 @@ public class QLThongKeService implements IQLThongKeService {
 
     @Override
     public List<QLThongKeResponse> getThongKe() {
-        List<HoaDon> list = tkeRepo.getAll2();
-        List<QLThongKeResponse> respon = new ArrayList<>();
-        for (HoaDon hdon : list) {
-            QLThongKeResponse tke = new QLThongKeResponse(hdon);
-            respon.add(tke);
-        }
-
-        return respon;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-//    public static void main(String[] args) {
-//        List<QLThongKeResponse> lists = new QLThongKeService().getThongKe();
-//        for (QLThongKeResponse x : lists) {
-//            System.out.println(x.toString());
-//        }
-//    }
+
+    @Override
+    public List<QLThongKeResponse> getThongKeNV() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     @Override
     public List<HoaDon> getDoanhThu() {
-        return tkeRepo.DoanhThu();
-
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    @Override
-    public List<QLThongKeResponse> getThongKeNV() {
-        List<HoaDon> list = tkeRepo.getAll2();
-        List<QLThongKeResponse> respon = new ArrayList<>();
-        for (HoaDon hdon : list) {
-            QLThongKeResponse tke = new QLThongKeResponse(hdon);
-            respon.add(tke);
-        }
 
-        return respon;
-    }
+    
 }

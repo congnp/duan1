@@ -4,15 +4,12 @@
  */
 package com.poly.it17323.group6.hibernateconfig;
 
-import com.poly.it17323.group6.domainmodel.HoaDon;
-import com.poly.it17323.group6.repository.HoaDonRepository;
 import com.poly.it17323.group6.repository.ThongKeRepository;
 import com.poly.it17323.group6.response.ThongKeResponse;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -48,7 +45,7 @@ public class BieuDoThongKe {
             }
         }
         JFreeChart barChart = ChartFactory.createBarChart(
-                "Biểu đồ thống kê doanh thu ".toUpperCase(),
+                "THỐNG KÊ DOANH THU ".toUpperCase(),
                 "Thời gian", "Doanh Thu",
                 dataset, PlotOrientation.VERTICAL, false, true, false);
         ChartPanel chartPanel = new ChartPanel(barChart);
@@ -61,6 +58,57 @@ public class BieuDoThongKe {
         jpanelItem1.repaint();
     }
     public void Char2(JPanel jpanelItem1){
-        
+        List<Object[]> lst = tkeRepo.NhanVienChart();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (lst != null) {
+            for (Object[] hd : lst) {
+                ThongKeResponse tke = new ThongKeResponse();
+                tke.setTenNV((String) hd[0]);
+                BigDecimal big = (BigDecimal) hd[1];
+                tke.setTong(big);
+                Double d = tke.getTong().doubleValue();
+                dataset.addValue(d, "Doanh Thu", tke.getTenNV());
+            }
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "THỐNG KÊ NHÂN VIÊN ".toUpperCase(),
+                "Tên Nhân Viên", "Doanh Thu",
+                dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
+
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+
+    }
+    public void Char3(JPanel jpanelItem1){
+        List<Object[]> lst = tkeRepo.SanPhamChart();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (lst != null) {
+            for (Object[] hd : lst) {
+                ThongKeResponse tke = new ThongKeResponse();
+                tke.setTenSP((String) hd[0]);
+                BigDecimal big = (BigDecimal) hd[1];
+                tke.setTong(big);
+                Double d = tke.getTong().doubleValue();
+                dataset.addValue(d, "Doanh Thu", tke.getTenSP());
+            }
+        }
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "THỐNG KÊ SẢN PHẨM ".toUpperCase(),
+                "Tên Sản Phẩm", "Doanh Thu",
+                dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new Dimension(jpanelItem1.getWidth(), 321));
+
+        jpanelItem1.removeAll();
+        jpanelItem1.setLayout(new CardLayout());
+        jpanelItem1.add(chartPanel);
+        jpanelItem1.validate();
+        jpanelItem1.repaint();
+
     }
 }
