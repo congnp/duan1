@@ -5799,11 +5799,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         y += yShift;
 
                     }
-                    g2d.drawString(" Giảm giá:                       " + txtGiamGia2.getText() + "             ", 10, y);
+                    g2d.drawString(" Giảm giá:                       " + txtGiamGia.getText() + "             ", 10, y);
                     y += yShift;
                     g2d.drawString("-----------------------------------------------", 10, y);
                     y += yShift;
-                    g2d.drawString(" Tổng tiền:                      " + txtTongTien.getText() + "   ", 10, y);
+                    g2d.drawString(" Tổng tiền:                      " + txtThanhToan.getText() + "   ", 10, y);
                     y += yShift;
 //                    g2d.drawString("-------------------------------------", 10, y);
 //                    y += yShift;
@@ -5928,7 +5928,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString("-----------------------------------------------", 10, y);
                     y += yShift;
-                    g2d.drawString(" Tổng tiền:                         " + txtTongTien.getText() + "             ", 10, y);
+                    g2d.drawString(" Tổng tiền:                         " + txtThanhToan2.getText() + "             ", 10, y);
                     y += yShift;
 //                    g2d.drawString("-------------------------------------", 10, y);
 //                    y += yShift;
