@@ -50,14 +50,11 @@ public class QLKhachHangService implements IQLKhachHangService {
                 || kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
         }
-        if (kh.getSdt().length() < 10) {
-            return "Số điện thoại phải nhập đủ 10 số";
-        }
-        int sdt;
-        try {
-            sdt = Integer.parseInt(kh.getSdt());
-        } catch (Exception e) {
-            return "Số điện thoại phải là số!";
+        String phone = "(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\\b";
+        if (kh.getSdt().length() == 0) {
+            return  "Nhập Số điện thoại";
+        } else if ((!kh.getSdt().matches(phone))) {
+            return "SĐT đúng định dạng của Việt Nam (+84)";
         }
 
 //        if(kh.getHoTen().matches("[a-zA-Z][a-zA-Z ]+")){
@@ -81,14 +78,11 @@ public class QLKhachHangService implements IQLKhachHangService {
                 || kh.getSdt().isEmpty()) {
             return "Vui lòng nhập đầy đủ dữ liệu!";
         }
-        if (kh.getSdt().length() < 10) {
-            return "Số điện thoại phải nhập đủ 10 số";
-        }
-        int sdt;
-        try {
-            sdt = Integer.parseInt(kh.getSdt());
-        } catch (Exception e) {
-            return "Số điện thoại phải là số!";
+        String phone = "(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\\b";
+        if (kh.getSdt().length() == 0) {
+            return  "Nhập Số điện thoại";
+        } else if ((!kh.getSdt().matches(phone))) {
+            return "SĐT đúng định dạng của Việt Nam (+84)";
         }
         Date ngaySinh = Date.valueOf(kh.getNgaySinh());
         Date ngayTao = Date.valueOf(kh.getNgayTao());
