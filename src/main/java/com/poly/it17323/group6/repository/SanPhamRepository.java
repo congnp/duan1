@@ -34,12 +34,12 @@ public class SanPhamRepository {
         return sanpham;
     }
     
-         public SanPham getOneByTen(String tenSP) {
+    public List<SanPham> getOneByTen(String tenSP) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE tenSP like :tenSP";
         Query query = session.createQuery(sql, SanPham.class);
         query.setParameter("tenSP", tenSP);
-        SanPham sanpham = (SanPham) query.getSingleResult();
+        List<SanPham> sanpham = query.getResultList();
         return sanpham;
     }
 

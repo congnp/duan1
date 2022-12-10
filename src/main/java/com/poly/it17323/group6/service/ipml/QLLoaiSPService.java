@@ -11,6 +11,7 @@ import com.poly.it17323.group6.service.IQLLoaiSPService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,9 +50,16 @@ public class QLLoaiSPService implements IQLLoaiSPService {
 
     @Override
     public boolean addQLLoaiSP(QLSanPhamResponse qlLoaiSP) {
-        qlLoaiSP.setIdLoaiSP(null);
-        var cl = repo.add(new LoaiSP(null,new QLLoaiSPService().getMaTang(), qlLoaiSP.getTenLoaiSP(), null));
-        return cl;
+        if (qlLoaiSP.getTenLoaiSP().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống tên !!! ");
+            return false;
+        }
+        if((new QLLoaiSPService().getOneByLoai(qlLoaiSP.getTenLoaiSP())) != null){
+            JOptionPane.showMessageDialog(null, "Không được để trùng tên !!! ");
+            return false;
+        }else{
+            return repo.add(new LoaiSP(null,new QLLoaiSPService().getMaTang(), qlLoaiSP.getTenLoaiSP(), null));
+        }
     }
 
     @Override
@@ -68,11 +76,16 @@ public class QLLoaiSPService implements IQLLoaiSPService {
     
         @Override
     public QLSanPhamResponse getOneByLoai(String ten) {
-        LoaiSP cl = repo.getOneByTen(ten);
-        if (cl == null) {
+        List<LoaiSP> list = repo.getOneByTen(ten);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (LoaiSP l : list) {
+            QLSanPhamResponse loai = new QLSanPhamResponse(l);
+            respon.add(loai);
+        }
+        if(respon.size()>0){
+            return respon.get(0);
+        }else{
             return null;
-        } else {
-            return new QLSanPhamResponse(cl);
         }
     }
 

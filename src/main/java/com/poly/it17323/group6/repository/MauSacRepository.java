@@ -1,4 +1,3 @@
-
 package com.poly.it17323.group6.repository;
 
 import com.poly.it17323.group6.domainmodel.MauSac;
@@ -33,12 +32,12 @@ public class MauSacRepository {
         MauSac mausac = (MauSac) query.getSingleResult();
         return mausac;
     }
-    
-        public MauSac getOneByTen(String ten) {
+
+    public List<MauSac> getOneByTen(String ten) {
         String sql = fromTable + " WHERE tenMS like :ten";
         Query query = session.createQuery(sql, MauSac.class);
         query.setParameter("ten", ten);
-        MauSac mausac = (MauSac) query.getSingleResult();
+        List<MauSac> mausac = query.getResultList();
         return mausac;
     }
 

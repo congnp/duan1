@@ -4,6 +4,7 @@
  */
 package com.poly.it17323.group6.service.ipml;
 
+import com.poly.it17323.group6.domainmodel.SanPham;
 import com.poly.it17323.group6.domainmodel.Size;
 import com.poly.it17323.group6.repository.SizeRepository;
 import com.poly.it17323.group6.response.QLSanPhamResponse;
@@ -11,12 +12,13 @@ import com.poly.it17323.group6.service.IQLSizeService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class QLSizeService implements IQLSizeService{
+public class QLSizeService implements IQLSizeService {
 
     private SizeRepository repo = new SizeRepository();
 
@@ -26,7 +28,7 @@ public class QLSizeService implements IQLSizeService{
     public String getMaTang() {
         return "SZ0" + (ma++);
     }
-    
+
     @Override
     public List<QLSanPhamResponse> getAllQLSize() {
         List<Size> list = repo.getAll();
@@ -50,13 +52,21 @@ public class QLSizeService implements IQLSizeService{
 
     @Override
     public boolean addQLSize(QLSanPhamResponse qlSize) {
-        var sp = repo.add(new Size(null,new QLSizeService().getMaTang(),qlSize.getTenSize()));
-        return sp;
+        if (qlSize.getTenSize().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống tên !!! ");
+            return false;
+        }
+        if ((new QLSizeService().getOneByTenSize(qlSize.getTenSize())) != null) {
+            JOptionPane.showMessageDialog(null, "Không được để trùng tên !!! ");
+            return false;
+        } else {
+            return repo.add(new Size(null, new QLSizeService().getMaTang(), qlSize.getTenSize()));
+        }
     }
 
     @Override
     public boolean updateQLSize(QLSanPhamResponse qlSize) {
-        var sp = repo.update(new Size(qlSize.getIdSize(),qlSize.getMaSize(),qlSize.getTenSize()));
+        var sp = repo.update(new Size(qlSize.getIdSize(), qlSize.getMaSize(), qlSize.getTenSize()));
         return sp;
     }
 
@@ -64,16 +74,21 @@ public class QLSizeService implements IQLSizeService{
     public boolean deleteQLSize(QLSanPhamResponse qlSize) {
         Size sp = new Size();
         sp.setId(qlSize.getIdSize());
-       return repo.delete(sp);
+        return repo.delete(sp);
     }
-    
-        @Override
+
+    @Override
     public QLSanPhamResponse getOneByTenSize(String ten) {
-        Size s = repo.getOneByTen(ten);
-        if (s == null) {
+        List<Size> list = repo.getOneByTen(ten);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (Size sanpham : list) {
+            QLSanPhamResponse sp = new QLSanPhamResponse(sanpham);
+            respon.add(sp);
+        }
+        if(respon.size()>0){
+            return respon.get(0);
+        }else{
             return null;
-        } else {
-            return new QLSanPhamResponse(s);
         }
     }
 

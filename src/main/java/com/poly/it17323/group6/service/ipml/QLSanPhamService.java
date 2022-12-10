@@ -11,6 +11,7 @@ import com.poly.it17323.group6.service.IQLSanPhamService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,7 +51,16 @@ public class QLSanPhamService implements IQLSanPhamService {
 
     @Override
     public boolean addQLSP(QLSanPhamResponse qlSP) {
-        return repo.add(new SanPham(null, new QLSanPhamService().getMaTang(), qlSP.getTenSP(), null));
+        if (qlSP.getTenSP().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống tên !!! ");
+            return false;
+        }
+        if((new QLSanPhamService().getOneByTenSP(qlSP.getTenSP())) != null){
+            JOptionPane.showMessageDialog(null, "Không được để trùng tên !!! ");
+            return false;
+        }else{
+            return repo.add(new SanPham(null, new QLSanPhamService().getMaTang(), qlSP.getTenSP(), null));
+        }
     }
 
     @Override
@@ -69,11 +79,16 @@ public class QLSanPhamService implements IQLSanPhamService {
 
     @Override
     public QLSanPhamResponse getOneByTenSP(String ten) {
-        SanPham sp = repo.getOneByTen(ten);
-        if (sp == null) {
+        List<SanPham> list = repo.getOneByTen(ten);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (SanPham sanpham : list) {
+            QLSanPhamResponse sp = new QLSanPhamResponse(sanpham);
+            respon.add(sp);
+        }
+        if(respon.size()>0){
+            return respon.get(0);
+        }else{
             return null;
-        } else {
-            return new QLSanPhamResponse(sp);
         }
     }
 

@@ -59,6 +59,11 @@ public class QLCTSPService implements ISanPhamChiTietService {
         ChatLieu cl = new ChatLieu(qlCTSP.getIdChatLieu(), qlCTSP.getMaChatLieu(), qlCTSP.getTenChatLieu());
         MauSac ms = new MauSac(qlCTSP.getIdMauSac(), qlCTSP.getMaMauSac(), qlCTSP.getTenMauSac());
         Size s = new Size(qlCTSP.getIdSize(), qlCTSP.getMaSize(), qlCTSP.getTenSize());
+        
+        if(new QLCTSPService().getOne_ByTen(qlCTSP.getTenSP(), qlCTSP.getTenLoaiSP(), qlCTSP.getTenChatLieu(), qlCTSP.getTenMauSac(), qlCTSP.getTenSize())!=null){
+            JOptionPane.showMessageDialog(null, "Đã có SP này");
+            return false;
+        }
         if (qlCTSP.getSLTon().length() == 0) {
             JOptionPane.showMessageDialog(null, "Không được để trống số lượng !!");
             return false;
@@ -162,6 +167,21 @@ public class QLCTSPService implements ISanPhamChiTietService {
             respon.add(chiTietSP);
         }
         return respon;
+    }
+
+    @Override
+    public QLSanPhamResponse getOne_ByTen(String SP, String LoaiSP, String CL, String MS, String Size) {
+        List<ChiTietSanPham> list = repo.getOne_ByTen(SP, LoaiSP, CL, MS, Size);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (ChiTietSanPham sanpham : list) {
+            QLSanPhamResponse sp = new QLSanPhamResponse(sanpham);
+            respon.add(sp);
+        }
+        if (respon.size() > 0) {
+            return respon.get(0);
+        } else {
+            return null;
+        }
     }
 
 }

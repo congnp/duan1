@@ -5,12 +5,14 @@
 package com.poly.it17323.group6.service.ipml;
 
 import com.poly.it17323.group6.domainmodel.MauSac;
+import com.poly.it17323.group6.domainmodel.SanPham;
 import com.poly.it17323.group6.repository.MauSacRepository;
 import com.poly.it17323.group6.response.QLSanPhamResponse;
 import com.poly.it17323.group6.service.IQLMauSacService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,9 +52,17 @@ public class QLMauSacService implements IQLMauSacService {
 
     @Override
     public boolean addQLMauSac(QLSanPhamResponse qlMauSac) {
-        qlMauSac.setIdMauSac(null);
-        var ms = repo.add(new MauSac(null, new QLMauSacService().getMaTang(), qlMauSac.getTenMauSac()));
-        return ms;
+        
+        if (qlMauSac.getTenMauSac().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Không được để trống tên !!! ");
+            return false;
+        }
+        if((new QLMauSacService().getOneByTenMS(qlMauSac.getTenMauSac())) != null){
+            JOptionPane.showMessageDialog(null, "Không được để trùng tên !!! ");
+            return false;
+        }else{
+            return repo.add(new MauSac(null, new QLMauSacService().getMaTang(), qlMauSac.getTenMauSac()));
+        }
     }
 
     @Override
@@ -70,11 +80,16 @@ public class QLMauSacService implements IQLMauSacService {
     
         @Override
     public QLSanPhamResponse getOneByTenMS(String ten) {
-        MauSac ms = repo.getOneByTen(ten);
-        if (ms == null) {
+        List<MauSac> list = repo.getOneByTen(ten);
+        List<QLSanPhamResponse> respon = new ArrayList<>();
+        for (MauSac ms : list) {
+            QLSanPhamResponse sp = new QLSanPhamResponse(ms);
+            respon.add(sp);
+        }
+        if(respon.size()>0){
+            return respon.get(0);
+        }else{
             return null;
-        } else {
-            return new QLSanPhamResponse(ms);
         }
     }
 

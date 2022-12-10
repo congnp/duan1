@@ -18,6 +18,8 @@ public interface ISanPhamChiTietService {
     
     QLSanPhamResponse getOneQLChiTietSP(UUID id);
     
+    QLSanPhamResponse getOne_ByTen(String SP, String LoaiSP, String CL, String MS, String Size);
+    
     List<QLSanPhamResponse> getAll_ByName(String ten);
     
     boolean addQLChiTietSP(QLSanPhamResponse qlCTSP);
