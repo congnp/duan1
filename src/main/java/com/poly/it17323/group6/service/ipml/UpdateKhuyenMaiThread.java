@@ -41,7 +41,7 @@ public class UpdateKhuyenMaiThread implements Runnable {
                     }
                 });
                 srm.loadKM(repository.getAll());
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(UpdateKhuyenMaiThread.class.getName()).log(Level.SEVERE, null, ex);
             }

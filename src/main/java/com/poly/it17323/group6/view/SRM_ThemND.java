@@ -53,7 +53,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         initComponents();
         initWebCam();
         setLocationRelativeTo(this);
-
+        txt_nd_MaND.setEditable(false);
 //        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -86,10 +86,6 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
     }
 
     public boolean check() {
-        if (txt_nd_MaND.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã");
-            return false;
-        }
         if (txt_nd_TenTK.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên tài khoản");
             return false;

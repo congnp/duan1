@@ -79,7 +79,7 @@ public class BanHangService implements IQLBanHangService {
 
     @Override
     public boolean add_HDCT(BanhangReponse b) {
-        hdctRepo.add(new HoaDonChiTiet(null, b.getCtsp().getGia(), Integer.parseInt(b.getSlMua()), new BigDecimal(1 - (b.getKm().getGiamGia() / 100.0)).multiply(b.getCtsp().getGia()), b.getHd(), b.getKm(), b.getCtsp()));
+        hdctRepo.add(new HoaDonChiTiet(null, b.getCtsp().getGia(), Integer.parseInt(b.getSlMua()), b.getKm() == null ? b.getCtsp().getGia() : new BigDecimal(1 - (b.getKm().getGiamGia() / 100.0)).multiply(b.getCtsp().getGia()), b.getHd(), b.getKm()==null?null:b.getKm(), b.getCtsp()));
         return true;
     }
 
