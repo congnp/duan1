@@ -137,4 +137,12 @@ public class NguoiDungRepository {
         List<NguoiDung> list = query.getResultList();
         return list;
     }
+    public List<NguoiDung> getTT(int tt){
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " WHERE TinhTrang = :tt";
+        Query query = session.createQuery(sql, NguoiDung.class);
+        query.setParameter("tt", tt); 
+        List<NguoiDung> lists = query.getResultList();
+        return lists;
+    }
 }

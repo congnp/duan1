@@ -125,5 +125,21 @@ public class NguoiDungService implements INguoiDungService {
         return true;
     }
 
+    @Override
+    public List<NguoiDung> getTT(int tt) {
+        return ndRepo.getTT(tt);
+    }
+
+    @Override
+    public boolean checkMaND(String ma) {
+         List<NguoiDung> list = ndRepo.getAll();
+        for (NguoiDung nguoiDung : list) {
+            if(nguoiDung.getMaND().equals(ma)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }

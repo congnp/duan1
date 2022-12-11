@@ -161,6 +161,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private DefaultTableModel modelCTHD;
     private DefaultTableModel modelKM;
     private DefaultTableModel modelND;
+    private DefaultTableModel modelNghiLam;
+    private DefaultTableModel modelDangLam;
     private DefaultComboBoxModel comboBoxND;
     private final DefaultComboBoxModel boxKM = new DefaultComboBoxModel();
     public List<KhuyenMai> listKM;
@@ -232,6 +234,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         loadKhachHang();
         loadComboBoxNd();
         loadND(inds.getAll());
+        loadTableNghiLam();
+        loadTableDangLam();
         loadKM(iKM.getAll());
         loadAllthongKe();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("Logo.png"));
@@ -4936,6 +4940,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         inds.delete(getFromMoi(nd.getIdND()));
         JOptionPane.showMessageDialog(this, "Xóa thành công");
         loadND(inds.getAll());
+        loadTableDangLam();
+        loadTableNghiLam();
     }//GEN-LAST:event_btn_nd_XoaActionPerformed
 
     private void btn_nd_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_SuaActionPerformed
@@ -4945,6 +4951,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             System.out.println(nd);
             inds.update(getFromMoi(nd.getIdND()));
             loadND(inds.getAll());
+            loadTableDangLam();
+            loadTableNghiLam();
             JOptionPane.showMessageDialog(this, "SỬA THÀNH CÔNG!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -6386,6 +6394,29 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         cbb_nd_ChucVu.setModel(comboBoxND);
         for (ChucVu cv : icvs.getAll()) {
             comboBoxND.addElement(cv.getTenCV());
+        }
+    }
+    private void loadTableNghiLam() {
+        modelNghiLam = (DefaultTableModel) txtNghiLam.getModel();
+        modelNghiLam.setRowCount(0);
+        txtNghiLam.setModel(modelNghiLam);
+        for (NguoiDung x : inds.getTT(0)) {
+            modelNghiLam.addRow(new Object[]{x.getMaND(), x.getTenTK(), x.getMatKhau(),
+                x.getHoTen(), x.getGioiTinh(), x.getNgaySinh(), x.getEmail(),
+                x.getSdt(), x.getDiaChi(), x.getCccd(), setTinhTrang(x.getTinhTrang()),
+                x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
+        }
+    }
+
+    private void loadTableDangLam() {
+        modelDangLam = (DefaultTableModel) tbl_nd_DangLam.getModel();
+        modelDangLam.setRowCount(0);
+        tbl_nd_DangLam.setModel(modelDangLam);
+        for (NguoiDung x : inds.getTT(1)) {
+            modelDangLam.addRow(new Object[]{x.getMaND(), x.getTenTK(), x.getMatKhau(),
+                x.getHoTen(), x.getGioiTinh(), x.getNgaySinh(), x.getEmail(),
+                x.getSdt(), x.getDiaChi(), x.getCccd(), setTinhTrang(x.getTinhTrang()),
+                x.getNgayTao(), x.getNgaySua(), x.getChucVu().getTenCV()});
         }
     }
 

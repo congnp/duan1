@@ -36,4 +36,8 @@ public interface INguoiDungService {
     String checkMa(String maXn);
      
     boolean checkEmail(String email);
+    
+    List<NguoiDung> getTT(int tt);
+    
+    boolean checkMaND(String ma);
 }

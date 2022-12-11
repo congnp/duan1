@@ -89,6 +89,10 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã");
             return false;
         }
+        if(inds.checkMaND(txt_nd_MaND.getText())){
+            JOptionPane.showMessageDialog(this, "Trùng mã");
+            return false;
+        }
         if (txt_nd_TenTK.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên tài khoản");
             return false;
