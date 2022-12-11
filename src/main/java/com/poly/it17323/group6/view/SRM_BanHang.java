@@ -6166,7 +6166,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         double bodyHeight = bHeight;
         double headerHeight = 5.0;
         double footerHeight = 5.0;
-        double width = cm_to_pp(8);
+        double width = cm_to_pp(9);
         double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
         paper.setSize(width, height);
         paper.setImageableArea(0, 10, width, height);
@@ -6233,7 +6233,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift + 30;
                     g2d.drawString("-----------------------------------------------", 12, y);
                     y += yShift;
-                    g2d.drawString("                       HÓA ĐƠN                 ", 12, y);
+                    g2d.drawString("                   HÓA ĐƠN                 ", 12, y);
                     y += yShift;
                     g2d.drawString(" Tên khách hàng:       " + lblTenKH.getText(), 10, y);
                     y += yShift;
@@ -6243,9 +6243,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString(" Địa chỉ:              " + khr.getDiaChi(), 10, y);
                     y += yShift;
-//                    g2d.drawString(" Mã HD:                " + lblMaHD.getText(), 10, y);
+                    g2d.drawString(" Mã HD:                " + lblMaHD.getText(), 10, y);
                     y += yShift;
-//                    g2d.drawString(" Nhân viên:            " + lblTenND.getText(), 10, y);
+                    g2d.drawString(" Nhân viên:            " + lblTenND.getText(), 10, y);
                     y += yShift;
                     g2d.drawString("              ", 12, y);
                     y += yShift;
@@ -6262,7 +6262,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         g2d.drawString(" " + itemName.get(s) + "               ", 10, y);
 
                         g2d.drawString("                      " + soLuong.get(s), 10, y);
-                        g2d.drawString("     " + gia, 160, y);
+                        g2d.drawString("     " + gia + " VND", 160, y);
                         y += yShift;
 
                     }
@@ -6272,15 +6272,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     y += yShift;
                     g2d.drawString(" Tổng tiền:                      " + txtThanhToan.getText() + "   ", 10, y);
                     y += yShift;
-//                    g2d.drawString("-------------------------------------", 10, y);
-//                    y += yShift;
-//                    g2d.drawString(" Cash      :                 " + txtCash.getText() + "   ", 10, y);
-//                    y += yShift;
-//                    g2d.drawString("-------------------------------------", 10, y);
-//                    y += yShift;
-//                    g2d.drawString(" Balance   :                 " + txtBalance.getText() + "   ", 10, y);
-//                    y += yShift;
-
                     g2d.drawString("************************************************", 10, y);
                     y += yShift;
                     g2d.drawString("          CẢM ƠN BẠN ĐÃ GHÉ THẮM            ", 10, y);
@@ -6313,7 +6304,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         double width = cm_to_pp(11);
         double height = cm_to_pp(headerHeight + bodyHeight + footerHeight);
         paper.setSize(width, height);
-        paper.setImageableArea(0, 10, width, height - cm_to_pp(1));
+        paper.setImageableArea(0, 10, width, height);
 
         pf.setOrientation(PageFormat.PORTRAIT);
         pf.setPaper(paper);
@@ -6385,27 +6376,18 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                         Double gia = Double.parseDouble(soLuongDH.get(s)) * Double.parseDouble(itemPriceDH.get(s));
                         g2d.drawString(" " + itemNameDH.get(s) + "               ", 10, y);
                         g2d.drawString("                       " + soLuongDH.get(s), 10, y);
-                        g2d.drawString("        " + gia, 160, y);
+                        g2d.drawString("        " + gia + " VND", 160, y);
                         y += yShift;
 
                     }
                     g2d.drawString(" Giảm giá:                          " + txtGiamGia2.getText() + "             ", 10, y);
                     y += yShift;
-                    g2d.drawString(" Tiền ship:                         " + txtTienShip.getText() + "             ", 10, y);
+                    g2d.drawString(" Tiền ship:                         " + txtTienShip.getText() + " VND", 10, y);
                     y += yShift;
                     g2d.drawString("-----------------------------------------------", 10, y);
                     y += yShift;
                     g2d.drawString(" Tổng tiền:                         " + txtThanhToan2.getText() + "             ", 10, y);
                     y += yShift;
-//                    g2d.drawString("-------------------------------------", 10, y);
-//                    y += yShift;
-//                    g2d.drawString(" Cash      :                 " + txtCash.getText() + "   ", 10, y);
-//                    y += yShift;
-//                    g2d.drawString("-------------------------------------", 10, y);
-//                    y += yShift;
-//                    g2d.drawString(" Balance   :                 " + txtBalance.getText() + "   ", 10, y);
-//                    y += yShift;
-
                     g2d.drawString("***********************************************", 10, y);
                     y += yShift;
                     g2d.drawString("             CẢM ƠN BẠN ĐÃ GHÉ THẮM            ", 10, y);
