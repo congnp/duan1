@@ -7651,7 +7651,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }
 
     private BanhangReponse getFormDataHDCT(String ipSL) {
-        return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), iBH.getAll_CTSP_ByName(txtTimKiem.getText()).get(tblSanPham.getSelectedRow()), ipSL, iBH.getAll_KM().get(cboKM.getSelectedIndex()));
+        return new BanhangReponse(iBH.getOne_HD_ByMa(tblHoaDon.getValueAt(tblHoaDon.getSelectedRow(), 1).toString()), iBH.getAll_CTSP_ByName(txtTimKiem.getText()).get(tblSanPham.getSelectedRow()), ipSL, iKM.getAllbyTT(1).get(cboKM.getSelectedIndex()));
     }
 
     private BanhangReponse getFormDataHDCT_UD(HoaDonChiTiet HDCT, String ipSL) {
