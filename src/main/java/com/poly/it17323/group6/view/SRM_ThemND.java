@@ -22,8 +22,10 @@ import com.poly.it17323.group6.service.ipml.NguoiDungService;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -36,7 +38,7 @@ import javax.swing.JOptionPane;
  * @author LE BAO NGOC
  */
 public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFactory {
-
+    
     private WebcamPanel panel1 = null;
     private Webcam webcam1 = null;
     private static final long serialVersionUID = 6441489157408381878L;
@@ -54,9 +56,11 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         initWebCam();
         setLocationRelativeTo(this);
         txt_nd_MaND.setEditable(false);
+        Jdate_nd_ngayTao.setEnabled(false);
+        Jdate_nd_ngaySua.setEnabled(false);
 //        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-
+    
     private NguoiDungReponse getFromMoi() {
         NguoiDungReponse ndr = new NguoiDungReponse();
         ndr.setMaND(txt_nd_MaND.getText().trim());
@@ -65,15 +69,17 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         ndr.setHoVaTen(txt_nd_HovaTen.getText().trim());
         ndr.setGioiTinh(rdo_nd_Nam.isSelected() ? "Nam" : "Nữ");
         ndr.setNgaySinh(txt_nd_NgaySinh.getText());
-        ndr.setSdt(txt_nd_CCCD.getText());
-        ndr.setDiaChi(txt_nd_DiaChi.getText());
-        ndr.setCccd(txtDiaChi.getText());
+        ndr.setSdt(txtSDT.getText());
+        ndr.setDiaChi(txtSDT.getText());
+        ndr.setCccd(txt_nd_CCCD.getText());
         ndr.setTinhTrang(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String ngayTao = sdf.format(Jdate_nd_ngayTao.getDate());
-        ndr.setNgayTao(ngayTao);
+        java.util.Date currentDate = new java.util.Date();
+        Date ngayTao;
+        ngayTao = Date.valueOf(sdf.format((currentDate)));
+        ndr.setNgayTao(String.valueOf(ngayTao));
         String ngaySua = sdf.format(Jdate_nd_ngaySua.getDate());
-        ndr.setNgaySua(ngaySua);
+        ndr.setNgaySua(String.valueOf(ngayTao));
 //        ndr.setTenCV("Nhân viên");
 //        ChucVu cv = new ChucVu();
 //        cv.setTenCV("Nhân viên");
@@ -82,9 +88,9 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
 
 //        CV(cv.getIdCV());
         return ndr;
-
+        
     }
-
+    
     public boolean check() {
         if (txt_nd_TenTK.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập tên tài khoản");
@@ -102,15 +108,15 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập ngày sinh");
             return false;
         }
-        if (txt_nd_CCCD.getText().isBlank()) {
+        if (txtSDT.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Sdt");
             return false;
         }
-        if (txt_nd_DiaChi.getText().isBlank()) {
+        if (txtDiaChi.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập địa chỉ");
             return false;
         }
-        if (txtDiaChi.getText().isBlank()) {
+        if (txt_nd_CCCD.getText().isBlank()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập CCCD/CMND");
             return false;
         }
@@ -157,7 +163,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         txtDiaChi = new javax.swing.JTextField();
         rdo_nd_Nu = new javax.swing.JRadioButton();
         rdo_nd_Nam = new javax.swing.JRadioButton();
-        txt_nd_DiaChi = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
         btn_nd_Them = new javax.swing.JButton();
         pnQr = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -275,7 +281,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
                                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Jdate_nd_ngayTao, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_nd_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txt_nd_CCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(jLabel60))
@@ -321,7 +327,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
                                     .addComponent(jLabel51))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_nd_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_nd_TenTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel52)))
                             .addComponent(jLabel58, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -392,7 +398,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
 
     private void btn_nd_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nd_ThemActionPerformed
         if (check()) {
-
+            
             NguoiDungReponse ndr = getFromMoi();
 //        String email = JOptionPane.showInputDialog("Nhập email để xác nhận thêm");
             //        nd.setEmail(email);
@@ -476,19 +482,19 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             }
         });
     }
-
+    
     private void initWebCam() {
         Dimension size = WebcamResolution.QVGA.getSize();//Lấy kích thước
         webcam1 = Webcam.getWebcams().get(0); //0 is default webcam
         //Lấy webcam đầu mặc định là 0
         webcam1.setViewSize(size);
-
+        
         panel1 = new WebcamPanel(webcam1);
         panel1.setPreferredSize(size);
 //        panel1.setFPSDisplayed(true);
 
         jPanel2.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 200));
-
+        
         executor.execute(this);
     }
 
@@ -517,8 +523,8 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
     private javax.swing.JRadioButton rdo_nd_Nam;
     private javax.swing.JRadioButton rdo_nd_Nu;
     private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txt_nd_CCCD;
-    private javax.swing.JTextField txt_nd_DiaChi;
     private javax.swing.JTextField txt_nd_HovaTen;
     private javax.swing.JTextField txt_nd_MaND;
     private javax.swing.JTextField txt_nd_MatKhau;
@@ -534,10 +540,10 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+            
             Result result = null;
             BufferedImage image = null;
-
+            
             if (webcam1.isOpen()) {
                 if ((image = webcam1.getImage()) == null) {
                     continue;
@@ -545,31 +551,31 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             }
             LuminanceSource source = new BufferedImageLuminanceSource(image);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-
+            
             try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException e) {
-
+                
             }
             if (result != null) {
                 String txtCmt = String.valueOf(result.getText());
 //                txtCmt.setText(result.getText());
                 String chuoi = txtCmt;
                 String nganCach = "|";
-
+                
                 int c = chuoi.indexOf(nganCach); // lấy ra vị trí
                 String soCanCuocCongDan = chuoi.substring(0, c);
                 txt_nd_CCCD.setText(soCanCuocCongDan);
-
+                
                 int d = chuoi.indexOf(nganCach, c + 1);// lấy ra vị trí
                 String sochungMinhThu = chuoi.substring(c + 1, d);
                 System.out.println(sochungMinhThu);
-
+                
                 int e = chuoi.indexOf(nganCach, d + 1);// lấy ra vị trí
 
                 String hoVaTen = chuoi.substring(d + 1, e);
                 txt_nd_HovaTen.setText(hoVaTen);
-
+                
                 int f = chuoi.indexOf(nganCach, e + 1);// lấy ra vị trí
                 String ngaySinh = chuoi.substring(e + 1, f);
                 SimpleDateFormat simDate = new SimpleDateFormat("yyyy-MM-dd");
@@ -582,12 +588,12 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
 //                System.out.println(catThangSinh);
 //                System.out.println(catNamSinh);
                 txt_nd_NgaySinh.setText(gepNgaySing);
-
+                
                 try {
                     System.out.println(simDate.parse(gepNgaySing));
 //       
                 } catch (ParseException ex) {
-
+                    
                 }
                 int i = chuoi.indexOf(nganCach, f + 1);// lấy ra vị trí
                 String gioiTinh = chuoi.substring(f + 1, i);
@@ -598,7 +604,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
                 } else {
                     rdo_nd_Nu.setSelected(true);
                 }
-
+                
                 int k = chuoi.indexOf(nganCach, i + 1);// lấy ra vị trí
                 String diaChi = chuoi.substring(i + 1, k);
 //                System.out.println(diaChi);
@@ -615,7 +621,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
             }
         } while (true);
     }
-
+    
     @Override
     public Thread newThread(Runnable r) {
         Thread t1 = new Thread(r, "My Thread");

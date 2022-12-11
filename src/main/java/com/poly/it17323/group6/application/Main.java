@@ -1,7 +1,6 @@
 package com.poly.it17323.group6.application;
 
 import com.poly.it17323.group6.view.SRM_Login;
-import com.poly.it17323.group6.view.SRM_ThemND;
 
 /**
  *
@@ -10,6 +9,6 @@ import com.poly.it17323.group6.view.SRM_ThemND;
 public class Main {
 
     public static void main(String[] args) {
-        new SRM_ThemND().setVisible(true);
+        new SRM_Login().setVisible(true);
     }
 }

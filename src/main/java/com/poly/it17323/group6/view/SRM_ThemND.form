@@ -121,7 +121,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="Jdate_nd_ngayTao" min="-2" pref="274" max="-2" attributes="0"/>
                                                   <Component id="txtDiaChi" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
-                                                  <Component id="txt_nd_DiaChi" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
+                                                  <Component id="txtSDT" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
                                                   <Component id="txt_nd_CCCD" alignment="0" min="-2" pref="272" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -179,7 +179,7 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_nd_DiaChi" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtSDT" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txt_nd_TenTK" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -310,7 +310,7 @@
                 <Property name="text" type="java.lang.String" value="Nam"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nd_DiaChi">
+            <Component class="javax.swing.JTextField" name="txtSDT">
             </Component>
             <Component class="javax.swing.JButton" name="btn_nd_Them">
               <Properties>

@@ -107,9 +107,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="PN_KhachHang" alignment="1" max="32767" attributes="0"/>
-                  <Component id="PN_KhuyenMai" alignment="1" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_QLHoaDon" alignment="1" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_QLSanPham" alignment="1" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_KhuyenMai" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLHoaDon" alignment="1" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_QLSanPham" alignment="1" pref="213" max="32767" attributes="0"/>
                   <Component id="PN_QLThongKe" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnDetailND" min="-2" max="-2" attributes="0"/>
@@ -120,8 +120,8 @@
                       <Component id="btnExist" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PN_QLNguoiDung" pref="215" max="32767" attributes="0"/>
-                  <Component id="PN_BanHang" alignment="0" pref="215" max="32767" attributes="0"/>
+                  <Component id="PN_QLNguoiDung" pref="213" max="32767" attributes="0"/>
+                  <Component id="PN_BanHang" alignment="0" pref="213" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1020,7 +1020,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="KhachHang" min="-2" pref="103" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PanelChung" pref="611" max="32767" attributes="0"/>
+                              <Component id="PanelChung" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1491,7 +1491,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel111" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel105" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel106" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jLabel106" alignment="0" pref="120" max="32767" attributes="0"/>
                                                   <Component id="jLabel109" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                                                   <Component id="jLabel112" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel103" linkSize="45" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1510,11 +1510,6 @@
                                                   <Component id="cboTTTT" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                                   <Component id="cboPthuctt2" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
                                                   <Component id="txtTienKhachDua2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txtNgayNhan" min="-2" pref="142" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btnInHD" min="-2" pref="44" max="-2" attributes="0"/>
-                                                  </Group>
                                                   <Component id="txtGiamGia2" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1525,19 +1520,26 @@
                                                       <Component id="btnTaoHD2" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="txtTongTien2" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="txtNgayKhachMuonNhan" min="-2" pref="108" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="txtNgayGuiDi" min="-2" pref="103" max="-2" attributes="0"/>
-                                                  </Group>
                                                   <Component id="txtTienKhachCK2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
                                                   <Component id="txtTienThua2" alignment="0" min="-2" pref="191" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="txtNgayNhan" min="-2" pref="142" max="-2" attributes="0"/>
+                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                          <Component id="btnInHD" pref="0" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Component id="txtNgayKhachMuonNhan" min="-2" pref="108" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="txtNgayGuiDi" min="-2" pref="103" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                               <Component id="btnChoGiao" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
                                               <Component id="btnGiaoHang" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                               <Component id="btnDaGiao" min="-2" pref="95" max="-2" attributes="0"/>
@@ -1628,7 +1630,7 @@
                                           <Component id="btnGiaoHang" linkSize="47" alignment="3" max="32767" attributes="0"/>
                                           <Component id="btnChoGiao" linkSize="47" alignment="3" pref="42" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2673,7 +2675,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
@@ -2685,12 +2687,10 @@
                                   <Component id="txt_NgayKetThucTKe" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnTimKiem" linkSize="48" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Component id="btnExcel" linkSize="48" min="-2" pref="93" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton6" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                  <Component id="jButton6" min="-2" pref="77" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2721,7 +2721,6 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnTimKiem" linkSize="49" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnExcel" linkSize="49" alignment="3" pref="33" max="32767" attributes="0"/>
-                                      <Component id="jButton4" linkSize="49" alignment="3" max="32767" attributes="0"/>
                                       <Component id="jButton6" linkSize="49" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -3460,17 +3459,6 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="txt_NgayBatDauTKe">
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="G&#x1eed;i B&#xe1;o C&#xe1;o"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTimKiem">
                   <Properties>
@@ -5053,8 +5041,14 @@
                       </SubComponents>
                     </Container>
                     <Component class="com.toedter.calendar.JDateChooser" name="txt_kh_NgayTao">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="txt_kh_NgaySua">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="com.toedter.calendar.JDateChooser" name="txt_kh_NgaySinh">
                     </Component>
@@ -5571,7 +5565,7 @@
                                               <Component id="txt_ctsp_NgaySua" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                                      <EmptySpace pref="84" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>

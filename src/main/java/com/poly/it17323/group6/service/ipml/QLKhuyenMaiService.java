@@ -48,7 +48,7 @@ public class QLKhuyenMaiService implements IKhuyenMaiService {
 
             Date ngayTao = Date.valueOf(km.getNgayTao());
             Date ngaySua = Date.valueOf(km.getNgaySua());
-            kmRepo.add(new KhuyenMai(null, km.getMaKM(), km.getTenKM(), ngayBatDau, new Timestamp(sdf2.parse(km.getNgayKT()).getTime()), km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
+            kmRepo.add(new KhuyenMai(null, new QLKhuyenMaiService().MaKm(), km.getTenKM(), ngayBatDau, new Timestamp(sdf2.parse(km.getNgayKT()).getTime()), km.getMoTa(), km.getGiamGia(), km.getTinhTrang(), ngayTao, ngaySua));
 
         } catch (ParseException ex) {
             Logger.getLogger(QLKhuyenMaiService.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,6 +106,5 @@ public class QLKhuyenMaiService implements IKhuyenMaiService {
     public List<KhuyenMai> getAllbyTT(int tt) {
         return kmRepo.getAllByTT(tt);
     }
-    
 
 }

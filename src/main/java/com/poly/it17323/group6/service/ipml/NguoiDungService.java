@@ -43,7 +43,8 @@ public class NguoiDungService implements INguoiDungService {
         Date ngaySinh = Date.valueOf(ND.getNgaySinh());
         Date ngayTao = Date.valueOf(ND.getNgayTao());
         Date ngaySua = Date.valueOf(ND.getNgaySua());
-        ndRepo.add(new NguoiDung(null, new NguoiDungService().getMaTang(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, emailCheck, ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cvRepo.getOne(ND.getIdCV())));
+        ChucVu cv = cvRepo.getOneND("Nhân viên");
+        ndRepo.add(new NguoiDung(null, new NguoiDungService().getMaTang(), ND.getTenTK(), ND.getMatKhau(), ND.getHoVaTen(), ND.getGioiTinh(), ngaySinh, emailCheck, ND.getSdt(), ND.getDiaChi(), ND.getCccd(), ND.getTinhTrang(), ngayTao, ngaySua, cv));
         return true;
     }
 
@@ -107,7 +108,7 @@ public class NguoiDungService implements INguoiDungService {
     @Override
     public String guiTkMk(NguoiDungReponse ndr) {
         try {
-            es.guiMail("Ten TK và MK", ndr.getTenTK(), "Tên TK:" + tenTk + "\n" + "Mật khẩu:" + ndr.getMatKhau());
+            es.guiMail("Ten TK và MK", emailCheck, "Tên TK:" + ndr.getTenTK() + "\n" + "Mật khẩu:" + ndr.getMatKhau());
         } catch (MessagingException ex) {
 
         }

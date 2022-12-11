@@ -39,7 +39,7 @@ public class ChiTietSanPhamRepository {
         ChiTietSanPham chiTietSanPham = (ChiTietSanPham) query.getSingleResult();
         return chiTietSanPham;
     }
-    
+
     public List<ChiTietSanPham> getOne_ByTen(String SP, String LoaiSP, String CL, String MS, String Size) {
         session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable + " a where a.sanPham.tenSP LIKE :SP and a.loaiSP.ten LIKE :LoaiSP and a.chatLieu.tenCL LIKE :CL and a.size.ten LIKE :Size and a.mauSac.tenMS LIKE :MS", ChiTietSanPham.class);
@@ -48,9 +48,10 @@ public class ChiTietSanPhamRepository {
         query.setParameter("CL", CL);
         query.setParameter("MS", MS);
         query.setParameter("Size", Size);
-        List<ChiTietSanPham> chiTietSanPham =  query.getResultList();
+        List<ChiTietSanPham> chiTietSanPham = query.getResultList();
         return chiTietSanPham;
     }
+
     public ChiTietSanPham getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + "Where id =: id";
@@ -119,7 +120,7 @@ public class ChiTietSanPhamRepository {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         for (ChiTietSanPham chiTietSanPham : new ChiTietSanPhamRepository().getAll()) {
             System.out.println(chiTietSanPham);

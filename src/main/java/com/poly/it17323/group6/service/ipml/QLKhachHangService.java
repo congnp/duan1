@@ -24,7 +24,7 @@ public class QLKhachHangService implements IQLKhachHangService {
 
     public QLKhachHangService() {
         khRepo = new KhachHangRepository();
-        ma = khRepo.getAll().size() + 1;
+        ma = khRepo.getAll().size();
     }
 
     @Override
