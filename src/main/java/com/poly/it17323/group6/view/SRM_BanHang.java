@@ -67,6 +67,7 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.poly.it17323.group6.domainmodel.KhachHang;
+import com.poly.it17323.group6.hibernateconfig.EmailSender;
 import com.poly.it17323.group6.repository.HoaDonRepository;
 import com.poly.it17323.group6.repository.KhuyenMaiRepository;
 import com.poly.it17323.group6.repository.ThongKeRepository;
@@ -2679,6 +2680,11 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("Gửi Báo Cáo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         btnTimKiem.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnTimKiem.setText("Tìm Kiếm");
@@ -2826,7 +2832,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel47.setText("Trạng thái thanh toán:");
 
-        cbb_hd_ttttoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chờ thanh toán", "Đã thanh toán", "Đã huỷ" }));
+        cbb_hd_ttttoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chờ Thanh Toán", "Đã thanh toán", "Chờ Giao", "Đã Giao" }));
         cbb_hd_ttttoan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbb_hd_ttttoanItemStateChanged(evt);
@@ -2861,7 +2867,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel48.setText("Hình thức thanh toán: ");
 
-        cbb_hd_HinhThucTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt" }));
+        cbb_hd_HinhThucTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản", "Chuyển khoản và tiền mặt" }));
         cbb_hd_HinhThucTT.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbb_hd_HinhThucTTItemStateChanged(evt);
@@ -6103,6 +6109,12 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
         loadTTrang();
     }//GEN-LAST:event_cbb_hd_ttttoanItemStateChanged
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+//        EmailSender mail = new EmailSender();
+//        mail.guiMail("BÁO CÁO THỐNG KÊ", "mailtnph26407@fpt.edu.vn", );
+    }//GEN-LAST:event_jButton4ActionPerformed
     public void loadTTrang() {
         mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
         mdHD.setRowCount(0);

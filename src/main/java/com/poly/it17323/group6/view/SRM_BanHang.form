@@ -3460,6 +3460,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="G&#x1eed;i B&#xe1;o C&#xe1;o"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTimKiem">
                   <Properties>
@@ -3726,10 +3729,11 @@
                         <Component class="javax.swing.JComboBox" name="cbb_hd_ttttoan">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="3">
-                                <StringItem index="0" value="Ch&#x1edd; thanh to&#xe1;n"/>
+                              <StringArray count="4">
+                                <StringItem index="0" value="Ch&#x1edd; Thanh To&#xe1;n"/>
                                 <StringItem index="1" value="&#x110;&#xe3; thanh to&#xe1;n"/>
-                                <StringItem index="2" value="&#x110;&#xe3; hu&#x1ef7;"/>
+                                <StringItem index="2" value="Ch&#x1edd; Giao"/>
+                                <StringItem index="3" value="&#x110;&#xe3; Giao"/>
                               </StringArray>
                             </Property>
                           </Properties>
@@ -3788,8 +3792,10 @@
                         <Component class="javax.swing.JComboBox" name="cbb_hd_HinhThucTT">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="1">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Ti&#x1ec1;n m&#x1eb7;t"/>
+                                <StringItem index="1" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
+                                <StringItem index="2" value="Chuy&#x1ec3;n kho&#x1ea3;n v&#xe0; ti&#x1ec1;n m&#x1eb7;t"/>
                               </StringArray>
                             </Property>
                           </Properties>
