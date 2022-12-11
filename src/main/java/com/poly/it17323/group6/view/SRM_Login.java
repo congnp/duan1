@@ -150,7 +150,7 @@ public class SRM_Login extends javax.swing.JFrame {
             try {
                 SRM_BanHang srm = new SRM_BanHang();
                 srm.setVisible(true);
-//                new Thread(new UpdateKhuyenMaiThread(srm)).start();
+                new Thread(new UpdateKhuyenMaiThread(srm)).start();
             } catch (IOException ex) {
                 Logger.getLogger(SRM_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
