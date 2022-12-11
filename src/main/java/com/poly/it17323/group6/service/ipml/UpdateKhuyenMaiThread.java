@@ -17,29 +17,25 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class UpdateKhuyenMaiThread implements Runnable{
+public class UpdateKhuyenMaiThread implements Runnable {
+
     private final KhuyenMaiRepository repository = new KhuyenMaiRepository();
     private SRM_BanHang srm;
 
     public UpdateKhuyenMaiThread(SRM_BanHang srm) {
         this.srm = srm;
     }
-    
-    
- // mk phai tac dong vao no ms dung a
-  // no tu dung ma
-    
-   // npo ko load len ngay dc y, truoc no cung dau co load
+
     @Override
     public void run() {
-        while(true){
+        while (true) {
             try {
                 System.out.println("running update khuyen mai...");
                 List<KhuyenMai> list = repository.getAll();
-                
+
                 list.stream().forEach(km -> {
                     Timestamp current = new Timestamp(new Date().getTime());
-                    if(current.compareTo(km.getNgayKT()) > 0){
+                    if (current.compareTo(km.getNgayKT()) > 0) {
                         km.setTinhTrang(0);
                         repository.update(km);
                     }
@@ -51,6 +47,4 @@ public class UpdateKhuyenMaiThread implements Runnable{
             }
         }
     }
-    
-    
 }

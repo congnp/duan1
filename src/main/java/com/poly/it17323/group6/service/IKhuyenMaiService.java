@@ -16,7 +16,7 @@ import java.util.UUID;
 public interface IKhuyenMaiService {
 
     List<KhuyenMai> getAll();
-    
+
     KhuyenMaiReponse getOne(UUID id);
 
     String add(KhuyenMaiReponse km);
@@ -24,10 +24,11 @@ public interface IKhuyenMaiService {
     String update(KhuyenMaiReponse km);
 
     String delete(KhuyenMaiReponse km);
-    
-    String MaKm();
-    
-    List<KhuyenMai> get_By_Name(String name);
 
+    String MaKm();
+
+    List<KhuyenMai> get_By_Name(String name);
     
+    List<KhuyenMai> getAllbyTT(int tt);
+
 }

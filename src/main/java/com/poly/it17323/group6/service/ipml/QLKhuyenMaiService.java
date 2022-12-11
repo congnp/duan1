@@ -21,7 +21,8 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
-public class QLKhuyenMaiService implements IKhuyenMaiService{
+public class QLKhuyenMaiService implements IKhuyenMaiService {
+
     private KhuyenMaiRepository kmRepo = new KhuyenMaiRepository();
 
     private int ma = kmRepo.getAll().size() + 1;
@@ -101,6 +102,10 @@ public class QLKhuyenMaiService implements IKhuyenMaiService{
         return kmRepo.getAll();
     }
 
-   
+    @Override
+    public List<KhuyenMai> getAllbyTT(int tt) {
+        return kmRepo.getAllByTT(tt);
+    }
     
+
 }

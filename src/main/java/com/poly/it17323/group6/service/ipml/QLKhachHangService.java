@@ -52,7 +52,7 @@ public class QLKhachHangService implements IQLKhachHangService {
         }
         String phone = "(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\\b";
         if (kh.getSdt().length() == 0) {
-            return  "Nhập Số điện thoại";
+            return "Nhập Số điện thoại";
         } else if ((!kh.getSdt().matches(phone))) {
             return "SĐT đúng định dạng của Việt Nam (+84)";
         }
@@ -80,7 +80,7 @@ public class QLKhachHangService implements IQLKhachHangService {
         }
         String phone = "(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\\b";
         if (kh.getSdt().length() == 0) {
-            return  "Nhập Số điện thoại";
+            return "Nhập Số điện thoại";
         } else if ((!kh.getSdt().matches(phone))) {
             return "SĐT đúng định dạng của Việt Nam (+84)";
         }
@@ -123,9 +123,9 @@ public class QLKhachHangService implements IQLKhachHangService {
     public List<KhachHangResponse> getByName(String name) {
         List<KhachHang> list = khRepo.getByName(name);
         List<KhachHangResponse> respon = new ArrayList<>();
-        for(KhachHang kh :list){
-           KhachHangResponse khang = new KhachHangResponse(kh);
-           respon.add(khang);
+        for (KhachHang kh : list) {
+            KhachHangResponse khang = new KhachHangResponse(kh);
+            respon.add(khang);
         }
         return respon;
     }

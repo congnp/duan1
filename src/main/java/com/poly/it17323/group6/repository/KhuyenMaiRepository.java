@@ -26,6 +26,21 @@ public class KhuyenMaiRepository {
         return lists;
     }
 
+    public List<KhuyenMai> getAllByTT(int tt) {
+        //database b dau 
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " WHERE tinhTrang = :tt", KhuyenMai.class);
+        query.setParameter("tt", tt);
+        List<KhuyenMai> lists = query.getResultList();
+        return lists;
+    }
+    
+    public static void main(String[] args) {
+        for (KhuyenMai khuyenMai : new KhuyenMaiRepository().getAllByTT(0)) {
+            System.out.println(khuyenMai);
+        }
+    }
+
     public KhuyenMai getOne(UUID id) {
         session = Hibernate_Util.getFACTORY().openSession();
         String sql = fromTable + " WHERE id = :id";
@@ -76,8 +91,9 @@ public class KhuyenMaiRepository {
         }
         return null;
     }
+
     public List<KhuyenMai> get_By_Name(String name) {
-         session = Hibernate_Util.getFACTORY().openSession();
+        session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable + " where TenKM like : name", KhuyenMai.class);
         query.setParameter("name", name);
         List<KhuyenMai> list = query.getResultList();

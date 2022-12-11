@@ -13,19 +13,21 @@ import java.util.UUID;
  * @author Admin
  */
 public interface IQLKhachHangService {
+
     List<KhachHangResponse> getAll();
-    
+
     KhachHangResponse getOne(UUID id);
-    
+
     KhachHangResponse getOneByMa(String ma);
-    
+
     String addKh(KhachHangResponse kh);
-    
+
     String updateKh(KhachHangResponse kh);
-    
+
     String deleteKh(KhachHangResponse kh);
-    
+
     String MaKh();
-    
+
     List<KhachHangResponse> getByName(String name);
+
 }

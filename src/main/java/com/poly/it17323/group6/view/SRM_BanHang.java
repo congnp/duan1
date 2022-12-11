@@ -4871,6 +4871,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             e.printStackTrace(System.out);
             JOptionPane.showMessageDialog(this, "THÊM THẤT BẠI!!!");
         }
+        JOptionPane.showMessageDialog(this, "THÊM THÀNH CÔNG!");
     }//GEN-LAST:event_btn_km_ThemActionPerformed
 
     private void pnDetailNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnDetailNDMouseClicked
@@ -4899,7 +4900,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             String txtNgayKetThuc = tbl_km.getValueAt(row, 7).toString();
 
             txtNgayKetThuc = txtNgayKetThuc.substring(0, txtNgayKetThuc.length() - 2);
-            System.out.println(txtNgayKetThuc); 
+            System.out.println(txtNgayKetThuc);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             java.util.Date d = sdf.parse(txtNgayKetThuc);
             LocalDateTime lcl = LocalDateTime.ofInstant(d.toInstant(), ZoneId.systemDefault());
@@ -6460,9 +6461,10 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     private KhuyenMaiReponse getKM() {
         KhuyenMaiReponse km = new KhuyenMaiReponse();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         km.setMaKM(txt_km_Ma.getText().trim());
         km.setTenKM(txt_km_Ten.getText().trim());
+        System.out.println("MAXKM: " + km.getMaKM());
         km.setGiamGia(Integer.parseInt(txt_km_GiamGia.getText()));
         km.setTinhTrang(rdo_km_ConKhuyenMai.isSelected() ? 1 : 0);
         km.setMoTa(txt_km_MoTa.getText().trim());
@@ -6475,7 +6477,6 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         km.setNgayTao(ngayTao);
         String ngaySua = sdf.format(txt_km_NgaySua.getDate());
         km.setNgaySua(ngaySua);
-
         return km;
     }
 
@@ -7956,7 +7957,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
     }
 
     private void loadDataKM() {
-        for (KhuyenMai x : iBH.getAll_KM()) {
+        for (KhuyenMai x : iKM.getAllbyTT(1)) {
             boxKM.addElement(x.getGiamGia());
         }
         cboKM.setModel(boxKM);
