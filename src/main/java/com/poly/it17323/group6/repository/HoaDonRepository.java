@@ -5,7 +5,6 @@ import com.poly.it17323.group6.domainmodel.KhachHang;
 import com.poly.it17323.group6.hibernateconfig.Hibernate_Util;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Query;
@@ -28,8 +27,63 @@ public class HoaDonRepository {
         return list;
     }
 
-   
+    //TÌM KIẾM TỔNG TIỀN
+    public List<Object[]> searchTien(BigDecimal tien1, BigDecimal tien2) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String hql = """
+                     SELECT a.maHD, a.nguoiDung.maND, a.khachHang.hoTen, a.pttt, a.tinhTrang, 
+                     SUM(a.tongTienMat),SUM(a.tongTienCK) AS TongDoanhThu,a.ngayTao, 
+                     a.tienShip FROM HoaDon a 
+                     group by a.maHD, a.nguoiDung.maND, a.khachHang.hoTen, a.pttt, a.tinhTrang, 
+                     a.ngayTao, a.tienShip
+                     HAVING SUM(a.tongTienMat)+SUM(a.tongTienCK) between :tien1 and :tien2""";
+        org.hibernate.query.Query query = session.createQuery(hql);
+        query.setParameter("tien1", tien1);
+        query.setParameter("tien2", tien2);
+        List<Object[]> result = query.list();
+        return result;
+    }
 
+    //TÌM KIẾM NGÀY THÁNG
+    public List<Object[]> searchNgay(java.util.Date ngayBD, java.util.Date ngayKT) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = """
+                     SELECT a.maHD, a.nguoiDung.maND, a.khachHang.hoTen, a.pttt, a.tinhTrang, 
+                     SUM(a.tongTienMat),SUM(a.tongTienCK) AS TongDoanhThu,a.ngayTao, 
+                     a.tienShip FROM HoaDon a WHERE a.ngayTao between :ngayBD and :ngayKT
+                     group by a.maHD, a.nguoiDung.maND, a.khachHang.hoTen, a.pttt, a.tinhTrang, 
+                     a.ngayTao, a.tienShip""";
+        Query query = session.createQuery(sql);
+        query.setParameter("ngayBD", ngayBD);
+        query.setParameter("ngayKT", ngayKT);
+        List<Object[]> list = query.getResultList();
+        return list;
+    }
+    //TÌM KIẾM TINH TRẠNG TTOAN
+    public List<HoaDon> searchTTTT(int ttrang) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " a WHERE a.tinhTrang = :tinhTrang";   
+        Query query = session.createQuery(sql, HoaDon.class);
+        query.setParameter("tinhTrang", ttrang);
+        List<HoaDon> list = query.getResultList();
+        return list;
+    }
+    //TÌM KIẾM HT TTOAN
+    public List<HoaDon> searchHTTT(int ttrang) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        String sql = fromTable + " a WHERE a.pttt = :tinhTrang";   
+        Query query = session.createQuery(sql, HoaDon.class);
+        query.setParameter("tinhTrang", ttrang);
+        List<HoaDon> list = query.getResultList();
+        return list;
+    }
+    public List<HoaDon> getByMa2(String ma) {
+        session = Hibernate_Util.getFACTORY().openSession();
+        Query query = session.createQuery(fromTable + " a where a.maHD LIKE CONCAT('%',:ma,'%')", HoaDon.class);
+        query.setParameter("ma", ma);
+        List<HoaDon> hoaDon = query.getResultList();
+        return hoaDon;
+    }
     public List<HoaDon> getAll_ByTT(int tt) {
         session = Hibernate_Util.getFACTORY().openSession();
         Query query = session.createQuery(fromTable + " a where a.tinhTrang = :tt order by MaHD desc", HoaDon.class);

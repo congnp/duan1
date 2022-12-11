@@ -31,4 +31,9 @@ public class HoaDonService implements IHoaDonService {
         return true;
     }
 
+    @Override
+    public List<HoaDon> getByMa(String ma) {
+        return (List<HoaDon>) repoHD.getByMa2(ma);
+    }
+
 }

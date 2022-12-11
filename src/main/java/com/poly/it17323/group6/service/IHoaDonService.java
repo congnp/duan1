@@ -15,4 +15,6 @@ public interface IHoaDonService {
     boolean update(HoaDon hd);
 
     boolean delete(UUID idHD);
+    
+    List<HoaDon> getByMa(String ma);
 }
