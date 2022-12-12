@@ -1098,9 +1098,9 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ChucNangLayout.setHorizontalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PN_KhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_KhuyenMai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_QLSanPham, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
             .addComponent(PN_QLThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(ChucNangLayout.createSequentialGroup()
                 .addComponent(pnDetailND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1109,8 +1109,8 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnExist, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
-            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+            .addComponent(PN_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(PN_BanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
         ChucNangLayout.setVerticalGroup(
             ChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1876,7 +1876,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
             .addGroup(DonHangLayout.createSequentialGroup()
                 .addComponent(KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelChung))
+                .addComponent(PanelChung, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -2226,9 +2226,14 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
 
             },
             new String [] {
-                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua"
+                "MaND", "TenTK", "MatKhau", "HoVaTen", "GioiTinh", "NgaySinh", "Email", "Sdt", "DiaChi", "CCCD/CMT", "TinhTrang", "NgayTao", "NgaySua", "ChucVu"
             }
         ));
+        txtNghiLam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNghiLamMouseClicked(evt);
+            }
+        });
         jScrollPane13.setViewportView(txtNghiLam);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -4001,7 +4006,7 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
                     .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txt_ctsp_NgayTao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                         .addComponent(txt_ctsp_NgaySua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -6147,6 +6152,38 @@ public final class SRM_BanHang extends javax.swing.JFrame implements Runnable, T
         ihd.getByMa("%" + txt_hd_timKiem.getText() + "%");
         loadHoaDon();
     }//GEN-LAST:event_txt_hd_timKiemCaretUpdate
+
+    private void txtNghiLamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNghiLamMouseClicked
+       int row = txtNghiLam.getSelectedRow();
+        NguoiDung nd = inds.getAll().get(row);
+        txt_nd_MaND.setText(nd.getMaND());
+        txt_nd_TenTK.setText(nd.getTenTK());
+        txt_nd_MatKhau.setText(nd.getMatKhau());
+        txt_nd_HovaTen.setText(nd.getHoTen());
+        String check = nd.getGioiTinh();
+        if (check.equalsIgnoreCase("Nam")) {
+            rdo_nd_Nam.setSelected(true);
+        } else {
+            rdo_nd_Nu.setSelected(true);
+        }
+        Date ngaySinh = Date.valueOf(txtNghiLam.getValueAt(row, 5).toString());
+        Jdate_nd_ngaySinh.setDate(ngaySinh);
+        txt_nd_Email.setText(nd.getEmail());
+        txt_nd_Sdt.setText(nd.getSdt());
+        txt_nd_DiaChi.setText(nd.getDiaChi());
+        txt_nd_CCCD.setText(nd.getCccd());
+        int tt = nd.getTinhTrang();
+        if (tt == 1) {
+            rdo_nd_DangLam.setSelected(true);
+        } else {
+            rdo_nd_NghiLam.setSelected(true);
+        }
+        Date ngayTao = Date.valueOf(txtNghiLam.getValueAt(row, 11).toString());
+        Jdate_nd_ngayTao.setDate(ngayTao);
+        Date ngaySua = Date.valueOf(txtNghiLam.getValueAt(row, 12).toString());
+        Jdate_nd_ngaySua.setDate(ngaySua);
+        cbb_nd_ChucVu.setSelectedItem(nd.getChucVu().getTenCV());
+    }//GEN-LAST:event_txtNghiLamMouseClicked
     public void loadTTrang() {
         mdHD = (DefaultTableModel) tbl_HoaDon.getModel();
         mdHD.setRowCount(0);

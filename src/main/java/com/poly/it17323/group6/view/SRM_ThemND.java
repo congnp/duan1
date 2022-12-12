@@ -57,7 +57,6 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         setLocationRelativeTo(this);
         txt_nd_MaND.setEditable(false);
         Jdate_nd_ngayTao.setEnabled(false);
-        Jdate_nd_ngaySua.setEnabled(false);
 //        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
@@ -79,7 +78,7 @@ public class SRM_ThemND extends javax.swing.JFrame implements Runnable, ThreadFa
         ngayTao = Date.valueOf(sdf.format((currentDate)));
         ndr.setNgayTao(String.valueOf(ngayTao));
         String ngaySua = sdf.format(Jdate_nd_ngaySua.getDate());
-        ndr.setNgaySua(String.valueOf(ngayTao));
+        ndr.setNgaySua(ngaySua);
 //        ndr.setTenCV("Nhân viên");
 //        ChucVu cv = new ChucVu();
 //        cv.setTenCV("Nhân viên");
